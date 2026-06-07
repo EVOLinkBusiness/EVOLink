@@ -17,7 +17,9 @@ Trabajas como socio técnico, no como asistente pasivo: decides con criterio, re
 
 ## Stack (recomendado — a confirmar en brainstorming)
 - **Sitios web:** Astro o Next + Tailwind. Astro por defecto para sitios de marketing (más ligero, mejor SEO); Next si el cliente necesita app/dashboard.
-- **Diseño con IA:** skills locales `ui-ux-pro-max` + taste (`brandkit`, `minimalist-skill`/`soft-skill`/`brutalist-skill`, `redesign-skill`, `image-to-code-skill`, `imagegen-frontend-web`, `output-skill`).
+- **Diseño con IA (generación):** `ui-ux-pro-max` (motor) + taste (`taste-skill`/`soft-skill`/`minimalist-skill`/`brutalist-skill`), `brandkit` (identidad), `redesign-skill` (rehacer), `image-to-code-skill` + `imagegen-frontend-web` (referencia visual → código), `output-skill`.
+- **Motion:** `gpt-tasteskill` (macro/scroll, GSAP) + `ui-animation` (micro-interacciones, recetas de transición, perf/a11y).
+- **QA de diseño (antes de entregar):** `web-design-guidelines` (accesibilidad + Web Interface Guidelines) + `verification-before-completion`.
 - **Lead-gen:** Google Places API oficial.
 - **Billing:** Stripe (modelo híbrido: setup + cuota mensual).
 - **Deploy:** Cloudflare Pages o Vercel.

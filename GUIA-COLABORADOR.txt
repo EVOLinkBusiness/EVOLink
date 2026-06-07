@@ -1,0 +1,139 @@
+==========================================================
+  GUÍA PARA EL COLABORADOR — Proyecto-Webs
+  Cómo clonar el proyecto y trabajar el día a día
+  (paso a paso, sin prisa)
+==========================================================
+
+Repositorio actual: https://github.com/Kravitzz/Proyecto-Webs
+(Es PRIVADO. Necesitas que Kravitzz te invite como colaborador en GitHub.
+ GitHub te llegará un email o lo verás en https://github.com/notifications)
+
+
+----------------------------------------------------------
+PARTE 0 — INSTALAR UNA SOLA VEZ (en tu PC)
+----------------------------------------------------------
+Antes de nada, instala esto (si ya lo tienes, sáltalo):
+
+1) Git  ->  https://git-scm.com/download/win
+   - Durante la instalación deja todo por defecto.
+   - Esto instala también "Git Bash" (lo usan los automatismos del proyecto).
+
+2) Node.js (versión LTS)  ->  https://nodejs.org
+   - Botón verde "LTS". Instalar con opciones por defecto.
+
+3) Visual Studio Code  ->  https://code.visualstudio.com
+
+4) Claude Code dentro de VS Code:
+   - Abre VS Code -> icono de Extensiones (cuadraditos en la barra izquierda)
+   - Busca "Claude Code" (de Anthropic) e instálala.
+   - Inicia sesión con tu cuenta cuando te lo pida.
+
+5) Una cuenta de GitHub y que Kravitzz te haya dado acceso al repo.
+
+
+----------------------------------------------------------
+PARTE 1 — CLONAR EL PROYECTO (solo la PRIMERA vez)
+----------------------------------------------------------
+"Clonar" = descargar una copia del proyecto a tu PC conectada al repositorio.
+
+1) Abre VS Code.
+
+2) Abre una terminal dentro de VS Code:
+   Menú superior -> Terminal -> New Terminal
+   (o pulsa  Ctrl + ñ )
+
+3) Ve a la carpeta donde quieras guardar el proyecto. Ejemplo:
+       cd C:\Proyectos
+   (Si la carpeta no existe, créala antes con:  mkdir C:\Proyectos )
+
+4) Clona el repositorio (copia y pega esta línea y pulsa Enter):
+       git clone https://github.com/Kravitzz/Proyecto-Webs.git
+
+   - La primera vez quizá te pida iniciar sesión en GitHub: hazlo en la
+     ventana que se abre. Eso queda guardado para siempre.
+
+5) Entra en la carpeta del proyecto:
+       cd Proyecto-Webs
+
+6) Ábrelo en VS Code:
+       code .
+   (eso vuelve a abrir VS Code ya dentro del proyecto)
+
+¡Listo! Ya tienes el proyecto en tu PC.
+
+
+----------------------------------------------------------
+PARTE 2 — LA MECÁNICA DEL DÍA A DÍA  (¡LO MÁS IMPORTANTE!)
+----------------------------------------------------------
+REGLA DE ORO:
+  >> NUNCA trabajamos los dos a la vez. <<
+  >> SIEMPRE descargar antes de empezar (pull) y subir al terminar (push). <<
+
+Así el proyecto está siempre actualizado para los dos.
+
+>>> AL EMPEZAR a trabajar (cada día / cada sesión):
+
+  1) Abre VS Code en el proyecto.
+  2) Abre la terminal (Ctrl + ñ).
+  3) DESCARGA lo último que subió el compañero:
+         git pull
+     (si dice "Already up to date" es que no había cambios nuevos: perfecto)
+  4) Arranca la sesión de Claude escribiendo en el chat de Claude Code:
+         /inicio
+     Eso lee el estado del proyecto y te dice por dónde vamos.
+
+>>> MIENTRAS trabajas:
+  - Trabaja normal con Claude.
+  - Si Claude avisa de "muchos prompts" o el contexto está alto, sigue sus
+    indicaciones (/compact para resumir, /clear si cambias de tarea).
+
+>>> AL TERMINAR de trabajar (cada sesión):
+
+  1) En el chat de Claude escribe:
+         /cierre
+     Eso actualiza el archivo de estado (HANDOVER.md) y te propone guardar
+     los cambios (commit). Acepta cuando te lo proponga.
+  2) SUBE tu trabajo al repositorio:
+         git push
+  3) Avisa al compañero: "Ya he subido, te toca."
+
+Y ya está. El otro, cuando empiece, hará "git pull" y tendrá tu trabajo.
+
+
+----------------------------------------------------------
+PARTE 3 — RESUMEN ULTRA-CORTO (chuleta)
+----------------------------------------------------------
+EMPEZAR:   git pull   ->   /inicio
+TRABAJAR:  (normal con Claude)
+TERMINAR:  /cierre   ->   git push   ->   avisar al compañero
+
+
+----------------------------------------------------------
+PARTE 4 — SI ALGO SALE MAL
+----------------------------------------------------------
+- "git pull" da un error raro o habla de "conflicto":
+    Probablemente alguien trabajó sin avisar. NO toques nada, NO fuerces.
+    Haz captura de pantalla y avisa a Kravitzz. Se arregla fácil hablándolo.
+
+- Te pide usuario/contraseña de GitHub al hacer pull/push:
+    Inicia sesión en la ventana que abre. Si no abre ventana, avisa.
+
+- No te aparecen las "skills" en el explorador de la izquierda:
+    Es A PROPÓSITO (están ocultas para no saturar la vista). Claude las usa
+    igualmente. No hay que hacer nada.
+
+
+----------------------------------------------------------
+PARTE 5 — CUANDO MIGREMOS AL REPOSITORIO CONJUNTO
+----------------------------------------------------------
+Dentro de poco moveremos el proyecto a una cuenta de GitHub compartida por
+los dos. Cuando pase, solo habrá que cambiar la dirección del repositorio
+con UN comando (os lo pasaremos ya escrito), algo como:
+
+    git remote set-url origin https://github.com/CUENTA-CONJUNTA/Proyecto-Webs.git
+
+No se pierde nada: todo el historial viaja con el proyecto.
+
+==========================================================
+  Dudas -> pregunta a Kravitzz antes de tocar nada raro.
+==========================================================

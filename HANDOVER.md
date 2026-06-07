@@ -2,23 +2,19 @@
 
 **Última sesión:** 2026-06-08
 **Branch:** main
-**Último commit:** `c89c072 chore: vendor local Claude skills for team access`
-**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (migrará a cuenta conjunta)
+**Último commit:** `chore: curate design skills + collaborator guide (cierre 2026-06-08)`
+**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (privado; migrará a cuenta conjunta)
 
 ---
 
 ## Estado del proyecto
-Infraestructura de trabajo recién montada (metodología re-oni-roll/AllergINC replicada). El negocio aún NO está diseñado ni implementado: estamos en F0 (infra) a punto de pasar a F1 (brainstorming/descomposición).
+Infraestructura + metodología montadas, versionadas y subidas a GitHub (privado). Set de skills de diseño curado. El negocio sigue en F0→F1: aún NO hay diseño ni código de producto.
 
 ## Hecho en la sesión actual (2026-06-08)
-- `git init` (branch main) + `.gitignore`.
-- `CLAUDE.md` (manual operativo) y este `HANDOVER.md`.
-- `docs/BUSINESS.md`, `docs/ROADMAP.md`, `docs/superpowers/ESTADO-FLUJO.md`, `docs/superpowers/specs/`.
-- Comandos `/inicio` y `/cierre` (`.claude/commands/`).
-- Hooks y scripts (`.claude/scripts/` + `.claude/settings.json`): watchdog de tokens, session-start, dirty-check, statusline.
-- Memoria de proyecto guardada (webs-javi-venture).
-- Skills locales (28) versionadas en git para el socio; junctions NTFS excluidas.
-- Repo remoto creado y push inicial: `origin` = https://github.com/Kravitzz/Proyecto-Webs.
+- Bootstrap completo (CLAUDE/HANDOVER/docs/comandos/hooks) + 28 skills versionadas + repo remoto creado y push.
+- `GUIA-COLABORADOR.txt`: guía paso a paso (clonar en VS Code + mecánica diaria pull → /inicio → trabajo → /cierre → push, nunca los dos a la vez).
+- Skills curadas: **+`ui-animation`** (micro-interacciones, recetas de transición, perf/a11y) y **+`web-design-guidelines`** (QA: accesibilidad + Web Interface Guidelines), aplanadas a carpetas reales/portables. **−`css-animations`** (era adapter de HyperFrames, no encajaba). Retirados `.agents/` + symlinks + lockfile.
+- `CLAUDE.md` actualizado con el combo de diseño (generación / motion / QA); las 2 nuevas ocultas en explorador y agrupadas en "UI-UX skill".
 
 ## Subsistemas / módulos en estado
 - Lead-gen (Google Places) — pendiente (diseño en F1).
@@ -32,23 +28,24 @@ Infraestructura de trabajo recién montada (metodología re-oni-roll/AllergINC r
 - Monetización = híbrida: setup inicial + cuota mensual (recurrencia).
 - Lead-gen = Google Places API oficial.
 - Metodología = réplica de re-oni-roll/AllergINC + plugin superpowers (brainstorming → spec → plan → código).
+- Set de skills de diseño = generación (ui-ux-pro-max + taste) · motion (gpt-tasteskill + ui-animation) · QA (web-design-guidelines). css-animations descartada.
 
 ## Riesgos y avisos vivos
 - Negocio en fase de diseño: nada de producto sin spec aprobada (HARD-GATE de brainstorming).
-- Las 4 decisiones cerradas no se reabren sin acuerdo de los 2 socios.
-- Migración prevista (≈mediados de junio 2026): mover el repo a una cuenta conjunta de los 2 socios. El historial git es portable (transferir el repo en GitHub o añadir el nuevo remoto y `git push`); no se pierde nada.
+- Las decisiones cerradas no se reabren sin acuerdo de los 2 socios.
+- Migración prevista (≈mediados de junio 2026) a cuenta conjunta. Historial git portable (transferir repo en GitHub o nuevo remoto + `git push`); no se pierde nada.
+- **Skills con `npx skills add`:** el CLI crea `.agents/` + symlink de ruta ABSOLUTA (se rompe al clonar). Tras instalar, aplanar a carpeta real en `.claude/skills/` y borrar `.agents/` + `skills-lock.json` (como se hizo con ui-animation/web-design-guidelines).
 
 ## Próximo paso concreto
-**Arrancar el brainstorming del negocio: descomponer en subsistemas y diseñar el primero.**
+**Arrancar el brainstorming del negocio (F1): descomponer en subsistemas y diseñar el primero.**
 1. `/inicio` para cargar contexto.
-2. Invocar la skill `brainstorming` (superpowers): descomposición en sub-proyectos (lead-gen, producción web, ventas, entrega/billing, marketing) y diseño del primero.
-3. Generar la primera spec en `docs/superpowers/specs/` y actualizar `ESTADO-FLUJO.md`.
+2. Invocar la skill `brainstorming` (superpowers): descomposición (lead-gen, producción web, ventas, entrega/billing, marketing) y diseño del primero.
+3. Generar la primera spec en `docs/superpowers/specs/` y actualizar `docs/superpowers/ESTADO-FLUJO.md`.
 
 ## Pendientes
 - [ ] Brainstorming + descomposición del negocio (F1).
 - [ ] Decidir qué subsistema se construye primero (probable: lead-gen o pipeline de producción).
 - [ ] Migrar el repo a la cuenta conjunta cuando esté lista (transferencia GitHub o nuevo remoto + push).
-- [ ] Confirmar que el repo de GitHub es PRIVADO (es estrategia de negocio).
 
 ## Comando para reanudar
 /inicio

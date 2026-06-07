@@ -27,6 +27,8 @@
     ".claude/skills/stitch-skill": true,
     ".claude/skills/taste-skill": true,
     ".claude/skills/taste-skill-v1": true,
-    ".claude/skills/ui-ux-pro-max": true
+    ".claude/skills/ui-ux-pro-max": true,
+    ".claude/skills/ui-animation": true,
+    ".claude/skills/web-design-guidelines": true
   }
 }
