@@ -2,7 +2,8 @@
 
 **Última sesión:** 2026-06-08
 **Branch:** main
-**Último commit:** `afdc7ea chore: bootstrap project infrastructure and session methodology`
+**Último commit:** `c89c072 chore: vendor local Claude skills for team access`
+**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (migrará a cuenta conjunta)
 
 ---
 
@@ -16,6 +17,8 @@ Infraestructura de trabajo recién montada (metodología re-oni-roll/AllergINC r
 - Comandos `/inicio` y `/cierre` (`.claude/commands/`).
 - Hooks y scripts (`.claude/scripts/` + `.claude/settings.json`): watchdog de tokens, session-start, dirty-check, statusline.
 - Memoria de proyecto guardada (webs-javi-venture).
+- Skills locales (28) versionadas en git para el socio; junctions NTFS excluidas.
+- Repo remoto creado y push inicial: `origin` = https://github.com/Kravitzz/Proyecto-Webs.
 
 ## Subsistemas / módulos en estado
 - Lead-gen (Google Places) — pendiente (diseño en F1).
@@ -33,6 +36,7 @@ Infraestructura de trabajo recién montada (metodología re-oni-roll/AllergINC r
 ## Riesgos y avisos vivos
 - Negocio en fase de diseño: nada de producto sin spec aprobada (HARD-GATE de brainstorming).
 - Las 4 decisiones cerradas no se reabren sin acuerdo de los 2 socios.
+- Migración prevista (≈mediados de junio 2026): mover el repo a una cuenta conjunta de los 2 socios. El historial git es portable (transferir el repo en GitHub o añadir el nuevo remoto y `git push`); no se pierde nada.
 
 ## Próximo paso concreto
 **Arrancar el brainstorming del negocio: descomponer en subsistemas y diseñar el primero.**
@@ -43,7 +47,8 @@ Infraestructura de trabajo recién montada (metodología re-oni-roll/AllergINC r
 ## Pendientes
 - [ ] Brainstorming + descomposición del negocio (F1).
 - [ ] Decidir qué subsistema se construye primero (probable: lead-gen o pipeline de producción).
-- [ ] (Opcional) Crear remoto GitHub (cuenta Kravitzz) y `git push`.
+- [ ] Migrar el repo a la cuenta conjunta cuando esté lista (transferencia GitHub o nuevo remoto + push).
+- [ ] Confirmar que el repo de GitHub es PRIVADO (es estrategia de negocio).
 
 ## Comando para reanudar
 /inicio
