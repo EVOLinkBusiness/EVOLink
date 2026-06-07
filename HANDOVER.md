@@ -2,7 +2,7 @@
 
 **Última sesión:** 2026-06-08
 **Branch:** main
-**Último commit:** `(commit inicial pendiente)`
+**Último commit:** `afdc7ea chore: bootstrap project infrastructure and session methodology`
 
 ---
 
