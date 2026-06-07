@@ -1,0 +1,32 @@
+{
+  "files.exclude": {
+    ".claude/skills/brainstorming": true,
+    ".claude/skills/dispatching-parallel-agents": true,
+    ".claude/skills/executing-plans": true,
+    ".claude/skills/finishing-a-development-branch": true,
+    ".claude/skills/receiving-code-review": true,
+    ".claude/skills/requesting-code-review": true,
+    ".claude/skills/subagent-driven-development": true,
+    ".claude/skills/systematic-debugging": true,
+    ".claude/skills/test-driven-development": true,
+    ".claude/skills/using-git-worktrees": true,
+    ".claude/skills/using-superpowers": true,
+    ".claude/skills/verification-before-completion": true,
+    ".claude/skills/writing-plans": true,
+    ".claude/skills/writing-skills": true,
+    ".claude/skills/brandkit": true,
+    ".claude/skills/brutalist-skill": true,
+    ".claude/skills/gpt-tasteskill": true,
+    ".claude/skills/image-to-code-skill": true,
+    ".claude/skills/imagegen-frontend-mobile": true,
+    ".claude/skills/imagegen-frontend-web": true,
+    ".claude/skills/minimalist-skill": true,
+    ".claude/skills/output-skill": true,
+    ".claude/skills/redesign-skill": true,
+    ".claude/skills/soft-skill": true,
+    ".claude/skills/stitch-skill": true,
+    ".claude/skills/taste-skill": true,
+    ".claude/skills/taste-skill-v1": true,
+    ".claude/skills/ui-ux-pro-max": true
+  }
+}

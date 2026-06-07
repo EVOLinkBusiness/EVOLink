@@ -1,0 +1,42 @@
+# Dependencias
+node_modules/
+.pnp/
+.pnp.js
+
+# Builds / salida
+dist/
+build/
+.next/
+out/
+.astro/
+.vercel/
+.netlify/
+.wrangler/
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+*.local
+
+# Estado de sesión Claude (no versionar)
+.claude/.prompt_counter
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+
+# Skills (no versionar)
+# - Las 3 carpetas-grupo (Superpowers, Taste Skill, UI-UX skill) son junctions NTFS:
+#   git las seguiría como carpetas reales y DUPLICARÍA el contenido de las 28 skills.
+# - Las skills son de terceros e instaladas localmente por proyecto.
+.claude/skills/

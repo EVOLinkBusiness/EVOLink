@@ -1,0 +1,5 @@
+# Normaliza saltos de línea. Almacenar siempre en LF.
+* text=auto
+
+# Los scripts de hooks DEBEN ser LF: Git Bash falla si tienen CRLF (\r).
+*.sh text eol=lf
