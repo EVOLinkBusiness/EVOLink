@@ -35,8 +35,9 @@ Thumbs.db
 *.swp
 .idea/
 
-# Skills (no versionar)
-# - Las 3 carpetas-grupo (Superpowers, Taste Skill, UI-UX skill) son junctions NTFS:
-#   git las seguiría como carpetas reales y DUPLICARÍA el contenido de las 28 skills.
-# - Las skills son de terceros e instaladas localmente por proyecto.
-.claude/skills/
+# Skills: SÍ versionamos las 28 skills reales (el socio las recibe al clonar).
+# Pero las 3 carpetas-grupo son junctions NTFS que apuntan a esas mismas skills:
+# git las seguiría como carpetas reales y DUPLICARÍA todo el contenido. Se excluyen.
+.claude/skills/Superpowers/
+.claude/skills/Taste Skill/
+.claude/skills/UI-UX skill/
