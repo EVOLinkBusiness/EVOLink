@@ -1,139 +1,203 @@
 ==========================================================
-  GUÍA PARA EL COLABORADOR — Proyecto-Webs
-  Cómo clonar el proyecto y trabajar el día a día
-  (paso a paso, sin prisa)
+  GUÍA DEL COLABORADOR — EVOLink
+  De cero (sin tener nada instalado) hasta trabajar en el proyecto.
+  Escrita paso a paso, sin dar nada por sabido.
 ==========================================================
 
-Repositorio actual: https://github.com/Kravitzz/Proyecto-Webs
-(Es PRIVADO. Necesitas que Kravitzz te invite como colaborador en GitHub.
- GitHub te llegará un email o lo verás en https://github.com/notifications)
+El proyecto se llama EVOLink. El repositorio en GitHub todavía se llama
+"Proyecto-Webs" (se renombrará a EVOLink más adelante); mientras tanto, usa
+la dirección que aparece más abajo TAL CUAL.
+
+Vas a necesitar 4 programas (VS Code, Git, Node.js y la extensión Claude Code)
+y una cuenta de GitHub con acceso al repositorio. Sigue las PARTES EN ORDEN.
+Tómatelo con calma; cada paso es un clic o una línea.
 
 
-----------------------------------------------------------
-PARTE 0 — INSTALAR UNA SOLA VEZ (en tu PC)
-----------------------------------------------------------
-Antes de nada, instala esto (si ya lo tienes, sáltalo):
+##########################################################
+PARTE 0 — CUENTA DE GITHUB Y ACCESO  (haz esto primero)
+##########################################################
+GitHub es la "nube" donde vive el proyecto.
 
-1) Git  ->  https://git-scm.com/download/win
-   - Durante la instalación deja todo por defecto.
-   - Esto instala también "Git Bash" (lo usan los automatismos del proyecto).
-
-2) Node.js (versión LTS)  ->  https://nodejs.org
-   - Botón verde "LTS". Instalar con opciones por defecto.
-
-3) Visual Studio Code  ->  https://code.visualstudio.com
-
-4) Claude Code dentro de VS Code:
-   - Abre VS Code -> icono de Extensiones (cuadraditos en la barra izquierda)
-   - Busca "Claude Code" (de Anthropic) e instálala.
-   - Inicia sesión con tu cuenta cuando te lo pida.
-
-5) Una cuenta de GitHub y que Kravitzz te haya dado acceso al repo.
+1) Crea una cuenta gratis en  https://github.com  (botón "Sign up").
+   Apunta tu usuario y contraseña.
+2) Dile a Kravitzz tu nombre de usuario de GitHub.
+3) Él te invitará al repositorio (es PRIVADO). Te llegará un email con un botón
+   "Accept invitation": púlsalo (o entra en https://github.com/notifications).
+   ⚠ Sin aceptar la invitación NO podrás descargar el proyecto.
 
 
-----------------------------------------------------------
-PARTE 1 — CLONAR EL PROYECTO (solo la PRIMERA vez)
-----------------------------------------------------------
-"Clonar" = descargar una copia del proyecto a tu PC conectada al repositorio.
+##########################################################
+PARTE 1 — INSTALAR LOS 4 PROGRAMAS  (solo una vez en tu PC)
+##########################################################
+Instálalos EN ESTE ORDEN. En todos, deja las opciones por defecto
+(Siguiente -> Siguiente -> Instalar) salvo donde se indique.
+
+--- 1.1) Visual Studio Code  (el editor donde harás TODO) ---
+   Web:  https://code.visualstudio.com
+   - Pulsa el botón azul "Download for Windows" y ejecuta el archivo descargado
+     (estará en tu carpeta "Descargas").
+   - En la pantalla "Tareas adicionales", deja marcada "Add to PATH"
+     (viene marcada por defecto).
+   - Al terminar, abre VS Code una vez para comprobar que arranca.
+
+--- 1.2) Git  (control de versiones; instala también "Git Bash") ---
+   Web:  https://git-scm.com/download/win   (la descarga empieza sola)
+   - Ejecuta el instalador y pulsa "Next" en todas las pantallas (por defecto
+     está bien). No necesitas cambiar nada.
+
+--- 1.3) Node.js  (motor que ejecuta las herramientas del proyecto) ---
+   Web:  https://nodejs.org
+   - Descarga el botón que dice "LTS" (versión estable). Instala por defecto.
+
+--- 1.4) Reinicia VS Code ---
+   Ciérralo del todo y vuelve a abrirlo, para que detecte Git y Node.
+
+--- 1.5) Comprobar que está todo (recomendado) ---
+   - En VS Code: menú superior "Terminal" -> "New Terminal".
+   - Escribe estos 3 comandos, uno a uno + Enter. Cada uno debe responder con
+     un número de versión (NO un error):
+         git --version
+         node --version
+         npm --version
+   - Si alguno falla, reinicia el PC y prueba otra vez.
+
+--- 1.6) Extensión Claude Code  (la IA con la que trabajarás) ---
+   - En VS Code, barra izquierda: icono de Extensiones (4 cuadraditos).
+   - Busca "Claude Code" (de Anthropic) y pulsa "Install".
+   - Cuando lo pida, inicia sesión con la cuenta de Claude que te indique
+     Kravitzz.
+
+
+##########################################################
+PARTE 2 — DESCARGAR EL PROYECTO  (clonar; solo la PRIMERA vez)
+##########################################################
+"Clonar" = traer una copia del proyecto a tu PC, conectada a GitHub.
 
 1) Abre VS Code.
+2) Abre la terminal:  "Terminal" -> "New Terminal"  (o pulsa  Ctrl + ñ ).
+3) Elige DÓNDE guardarlo. Recomendado: una carpeta "Proyectos" en C:.
+   Escribe (Enter tras cada línea):
+         cd C:\
+         mkdir Proyectos
+         cd Proyectos
+   (Si "mkdir Proyectos" dice que ya existe, da igual, sigue.)
+4) Descarga el proyecto (copia y pega esta línea tal cual):
+         git clone https://github.com/Kravitzz/Proyecto-Webs.git
+   - Si pide iniciar sesión en GitHub, hazlo en la ventana que se abre.
+     Queda guardado para siempre.
+5) Entra en la carpeta descargada:
+         cd Proyecto-Webs
+6) Ábrela como proyecto en VS Code:
+         code .
+   VS Code se recarga ya "dentro" del proyecto; a la izquierda verás los
+   archivos (README, docs, etc.).
 
-2) Abre una terminal dentro de VS Code:
-   Menú superior -> Terminal -> New Terminal
-   (o pulsa  Ctrl + ñ )
-
-3) Ve a la carpeta donde quieras guardar el proyecto. Ejemplo:
-       cd C:\Proyectos
-   (Si la carpeta no existe, créala antes con:  mkdir C:\Proyectos )
-
-4) Clona el repositorio (copia y pega esta línea y pulsa Enter):
-       git clone https://github.com/Kravitzz/Proyecto-Webs.git
-
-   - La primera vez quizá te pida iniciar sesión en GitHub: hazlo en la
-     ventana que se abre. Eso queda guardado para siempre.
-
-5) Entra en la carpeta del proyecto:
-       cd Proyecto-Webs
-
-6) Ábrelo en VS Code:
-       code .
-   (eso vuelve a abrir VS Code ya dentro del proyecto)
-
-¡Listo! Ya tienes el proyecto en tu PC.
+Ya tienes EVOLink en tu PC. Esto se hace UNA sola vez. A partir de aquí, cada
+día se usa "git pull" (Parte 4), no se vuelve a clonar.
 
 
-----------------------------------------------------------
-PARTE 2 — LA MECÁNICA DEL DÍA A DÍA  (¡LO MÁS IMPORTANTE!)
-----------------------------------------------------------
+##########################################################
+PARTE 3 — PRIMERA VEZ DENTRO DEL PROYECTO  (cosas que conviene saber)
+##########################################################
+- Las "skills" (capacidades de la IA) están OCULTAS en el explorador a
+  propósito, para no saturar la vista. Claude las usa igualmente. No toques nada.
+- El proyecto usa Supabase (base de datos en la nube) mediante algo llamado
+  "MCP". La configuración ya viene incluida (archivo .mcp.json). La PRIMERA vez
+  que Claude use Supabase puede abrir el navegador para que autorices el acceso
+  (login con la cuenta de Supabase que te diga Kravitzz): acepta.
+- Regla con los archivos: NO muevas ni borres carpetas que no entiendas
+  (.claude, .git, docs). Si dudas, pregunta antes.
+
+
+##########################################################
+PARTE 4 — LA MECÁNICA DEL DÍA A DÍA  (¡LO MÁS IMPORTANTE!)
+##########################################################
 REGLA DE ORO:
-  >> NUNCA trabajamos los dos a la vez. <<
-  >> SIEMPRE descargar antes de empezar (pull) y subir al terminar (push). <<
+  >> NUNCA trabajáis los dos a la vez en el proyecto. <<
+  >> SIEMPRE: descargar antes de empezar (pull) y subir al terminar (push). <<
+Así el proyecto está siempre actualizado para los dos y nada se pisa.
 
-Así el proyecto está siempre actualizado para los dos.
-
->>> AL EMPEZAR a trabajar (cada día / cada sesión):
-
-  1) Abre VS Code en el proyecto.
-  2) Abre la terminal (Ctrl + ñ).
-  3) DESCARGA lo último que subió el compañero:
+>>> AL EMPEZAR (cada sesión):
+  1) Abre VS Code en el proyecto. Si lo cerraste:
+     "File" -> "Open Folder" -> C:\Proyectos\Proyecto-Webs
+  2) Abre la terminal ( Ctrl + ñ ).
+  3) Descarga lo último del compañero:
          git pull
-     (si dice "Already up to date" es que no había cambios nuevos: perfecto)
-  4) Arranca la sesión de Claude escribiendo en el chat de Claude Code:
-         /inicio
-     Eso lee el estado del proyecto y te dice por dónde vamos.
+     ("Already up to date" = no había novedades, perfecto).
+  4) En el chat de Claude Code escribe:   /inicio
+     Claude lee el estado y te dice por dónde vamos y el siguiente paso.
 
 >>> MIENTRAS trabajas:
-  - Trabaja normal con Claude.
-  - Si Claude avisa de "muchos prompts" o el contexto está alto, sigue sus
-    indicaciones (/compact para resumir, /clear si cambias de tarea).
+  - Habla con Claude con normalidad y pídele lo que toque.
+  - Si Claude avisa de contexto alto o de muchos prompts, hazle caso:
+       /compact  (resume y libera memoria)      /clear  (si cambias de tema)
 
->>> AL TERMINAR de trabajar (cada sesión):
-
-  1) En el chat de Claude escribe:
-         /cierre
-     Eso actualiza el archivo de estado (HANDOVER.md) y te propone guardar
-     los cambios (commit). Acepta cuando te lo proponga.
-  2) SUBE tu trabajo al repositorio:
+>>> AL TERMINAR (cada sesión):
+  1) En el chat de Claude escribe:   /cierre
+     Actualiza el estado (HANDOVER.md) y te propone "guardar" (commit): acepta.
+  2) Sube tu trabajo a la nube:
          git push
   3) Avisa al compañero: "Ya he subido, te toca."
 
-Y ya está. El otro, cuando empiece, hará "git pull" y tendrá tu trabajo.
 
-
-----------------------------------------------------------
-PARTE 3 — RESUMEN ULTRA-CORTO (chuleta)
-----------------------------------------------------------
+##########################################################
+PARTE 5 — CHULETA  (pégala en la pared)
+##########################################################
 EMPEZAR:   git pull   ->   /inicio
-TRABAJAR:  (normal con Claude)
+TRABAJAR:  (hablar con Claude)      [ /compact  si avisa ]
 TERMINAR:  /cierre   ->   git push   ->   avisar al compañero
 
 
-----------------------------------------------------------
-PARTE 4 — SI ALGO SALE MAL
-----------------------------------------------------------
-- "git pull" da un error raro o habla de "conflicto":
-    Probablemente alguien trabajó sin avisar. NO toques nada, NO fuerces.
-    Haz captura de pantalla y avisa a Kravitzz. Se arregla fácil hablándolo.
+##########################################################
+PARTE 6 — QUÉ ES EVOLINK Y DÓNDE ESTAMOS AHORA
+##########################################################
+EVOLink es un negocio: una agencia que crea y mantiene webs para negocios sin
+presencia online, de forma muy automatizada. Se cobra un setup inicial + una
+cuota mensual. El sistema se apoya en DOS "agentes" (herramientas de IA):
+  - AUDITOR: analiza un negocio y genera una auditoría profesional. Sirve para
+    venderle (gancho) y como guía para hacerle la web.
+  - GENERADOR WEB: con esa auditoría, crea la web.
+Todo se guarda en Supabase.
 
-- Te pide usuario/contraseña de GitHub al hacer pull/push:
-    Inicia sesión en la ventana que abre. Si no abre ventana, avisa.
+PUNTO ACTUAL (Fase 1): el DISEÑO del Auditor ya está cerrado y escrito
+(documento en  docs/superpowers/specs/ ). El siguiente paso es convertir ese
+diseño en un plan de tareas para empezar a programarlo.
 
-- No te aparecen las "skills" en el explorador de la izquierda:
-    Es A PROPÓSITO (están ocultas para no saturar la vista). Claude las usa
-    igualmente. No hay que hacer nada.
+Para entender el negocio a fondo, lee en este orden:
+  docs/BUSINESS.md   ->   docs/ROADMAP.md   ->   HANDOVER.md
 
 
-----------------------------------------------------------
-PARTE 5 — CUANDO MIGREMOS AL REPOSITORIO CONJUNTO
-----------------------------------------------------------
-Dentro de poco moveremos el proyecto a una cuenta de GitHub compartida por
-los dos. Cuando pase, solo habrá que cambiar la dirección del repositorio
-con UN comando (os lo pasaremos ya escrito), algo como:
+##########################################################
+PARTE 7 — SI ALGO SALE MAL
+##########################################################
+- "git pull" da error o habla de "conflict": alguien trabajó sin avisar.
+  NO fuerces nada. Haz una captura y avisa a Kravitzz; se arregla hablándolo.
+- Te pide usuario/contraseña de GitHub: inicia sesión en la ventana que abre.
+- No ves las skills en el explorador: es a propósito (están ocultas). Normal.
+- VS Code no encuentra "git" o "node": cierra y reabre VS Code; si sigue,
+  reinicia el PC (a veces hace falta tras instalar).
 
-    git remote set-url origin https://github.com/CUENTA-CONJUNTA/Proyecto-Webs.git
 
-No se pierde nada: todo el historial viaja con el proyecto.
+##########################################################
+PARTE 8 — GLOSARIO MÍNIMO
+##########################################################
+- Repositorio (repo): el proyecto guardado en GitHub (la nube).
+- Clonar: descargar el repo a tu PC la primera vez.
+- pull:  traer los últimos cambios de la nube a tu PC.
+- push:  subir tus cambios de tu PC a la nube.
+- commit: "guardar un punto" con tus cambios (lo hace /cierre por ti).
+- terminal: la ventana donde escribes comandos (dentro de VS Code).
+- branch (rama): la línea de trabajo; nosotros usamos "main".
+
+
+##########################################################
+PARTE 9 — FUTURO  (cuando toque)
+##########################################################
+- El repo y la carpeta se renombrarán de "Proyecto-Webs" a "EVOLink".
+- Migraremos a una cuenta de GitHub compartida por los dos. Cuando pase, solo
+  cambiará la dirección del repo con UN comando que os pasaremos ya escrito.
+  No se pierde nada: todo el historial viaja con el proyecto.
 
 ==========================================================
-  Dudas -> pregunta a Kravitzz antes de tocar nada raro.
+  ¿Dudas? Pregunta a Kravitzz ANTES de tocar algo que no entiendas.
 ==========================================================
