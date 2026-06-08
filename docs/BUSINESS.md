@@ -1,46 +1,47 @@
-# BUSINESS.md — Webs Javi
+# BUSINESS.md — EVOLink
 
-Documento vivo del negocio (el "GDD" de la agencia). Se actualiza cuando cambian visión, modelo o herramientas. Es la fuente de verdad de "qué hacemos y por qué".
+Documento vivo del negocio (el "GDD" de la agencia). Fuente de verdad de "qué hacemos y por qué". *(Antes "Webs Javi".)*
 
 ## Visión
-Agencia web **productizada** y altamente automatizada: convertir un negocio sin presencia online en un cliente con web profesional y de pago recurrente, con el mínimo trabajo manual por venta. Equipo de 2 personas; el apalancamiento viene de la automatización (IA + APIs), no de contratar.
+**EVOLink**: agencia web **automatizada** para ganar dinero. Convertimos negocios sin presencia online en clientes con web profesional y pago recurrente, con el mínimo trabajo manual por venta. El apalancamiento es la **automatización con agentes autónomos** sobre Supabase, no contratar. Equipo de 2.
 
-## Propuesta de valor
-Para un negocio sin web: presencia profesional lista, rápida y sin fricción —diseño a medida hecho con IA, no plantilla genérica— a un precio de entrada bajo y una cuota mensual que cubre hosting, mantenimiento y mejoras.
+## Modelo operativo — tejido de agentes
+El sistema debe ser funcional por sí solo: bloques autocontenidos (skills/agentes) en 4 roles — **Creación** (Auditor, Generador web), **Supervisión** (QA automático), **Ops/Registro** (sesión + `agent_runs`), **Mejora** (aprende de registros; diferido). Regla: determinista primero, LLM para juicio; maximizar tokens.
+
+## Los 2 agentes núcleo
+- **Agente Auditor:** dado un negocio, produce una auditoría profesional de presencia digital. Es a la vez **gancho de ventas** y **brief** para el generador. Arranca con datos manuales/controlados; evoluciona a APIs de Google + aprendizaje.
+- **Agente Generador web:** dada la auditoría + datos, produce una web funcional con las skills de diseño. Se hospeda, mantiene y cobra.
 
 ## Cliente ideal (ICP)
-Negocios **sin web** localizables en Google Maps (locales o no): hostelería, comercios, servicios, oficios, profesionales. Señales: ficha en Maps activa pero sin sitio enlazado, reseñas recientes (negocio vivo), sector donde una web convierte (reservas, contacto, catálogo).
+Negocios **sin web** localizables en Google Maps (locales o no): hostelería, comercios, servicios, oficios. Señales: ficha activa sin sitio enlazado, reseñas recientes (negocio vivo). **Upsell** posterior: mejorar webs flojas de quien ya tiene.
 
-## Modelo de monetización — híbrido (decisión cerrada)
-- **Setup inicial:** pago único por diseño + puesta en marcha de la web.
-- **Cuota mensual:** recurrencia por hosting, dominio gestionado, mantenimiento, cambios y soporte.
-- La recurrencia es el activo del negocio: prioriza retención y volumen sobre el ticket único.
+## Monetización — híbrida (decisión cerrada)
+Setup inicial (pago único por diseño/puesta en marcha) + cuota mensual (hosting, dominio gestionado, mantenimiento, soporte). La recurrencia (**MRR**) es el activo: prioriza retención y volumen sobre el ticket único.
 
-## Pilares del flujo (todos a automatizar)
-1. **Captación (lead-gen):** Google Places API → negocios sin web → lista cualificada.
-2. **Diseño + build:** pipeline IA con skills propias → web Astro/Next + Tailwind a medida.
-3. **Entrega + hosting:** deploy automatizado (Cloudflare Pages/Vercel) + dominio.
-4. **Venta + outreach:** contacto automatizado con demo/preview ya hecha.
-5. **Cobro:** Stripe, híbrido (setup + suscripción).
-6. **Marketing a largo plazo:** automatización de captación y nurturing continuos.
+## Funnel (todo a automatizar)
+Captación (escaneo automático de Maps / **outreach legítimo** — *no phishing*: datos públicos, RGPD/LOPD, opt-out) → recogida de datos → **auditoría** → **web** → entrega + billing → mantenimiento → **upsell**.
 
-## Decisiones cerradas (2026-06-07 — no reabrir sin acuerdo de los 2)
-1. **Producción web:** IA a medida con skills propias (`ui-ux-pro-max` + taste), código Astro/Next + Tailwind.
+## Decisiones cerradas (no reabrir sin acuerdo de los 2)
+1. **Producción web:** IA a medida con skills propias (`ui-ux-pro-max` + taste), Next/Astro + Tailwind.
 2. **Monetización:** híbrida (setup + cuota mensual).
 3. **Lead-gen:** Google Places API oficial.
-4. **Metodología:** réplica de re-oni-roll/AllergINC + plugin superpowers.
+4. **Metodología:** réplica re-oni-roll/AllergINC + plugin superpowers.
+5. **Núcleo = 2 agentes** (Auditor + Generador) bajo el modelo de tejido de agentes.
+6. **Persistencia:** un único proyecto **Supabase multi-tenant** (`client_id` + RLS), no BD por cliente. Proyecto `kdernwxajzzrriolnnmq`, conectado por MCP.
 
-## Stack y herramientas (recomendado — se cierra por subsistema en brainstorming)
-| Área | Elección / candidatos |
-|------|----------------------|
-| Sitios | Astro (marketing) / Next (app) + Tailwind |
-| Diseño IA | skills `ui-ux-pro-max`, `brandkit`, `minimalist/soft/brutalist`, `redesign`, `image-to-code`, `imagegen-frontend-web`, `output` |
+## Stack y herramientas
+| Área | Elección |
+|------|----------|
+| Sitios/app | Next (app/dashboard) / Astro (marketing) + Tailwind |
+| Backend/datos | Supabase (Postgres + RLS + Auth + Storage + Edge Functions + pgvector) |
+| LLM | Claude (API Anthropic) |
+| Diseño IA | `ui-ux-pro-max`, taste (`taste`/`soft`/`minimalist`), `brandkit`, `redesign`, `image-to-code`, `imagegen-frontend-web`, `output` |
+| Motion | `gpt-tasteskill` (macro) + `ui-animation` (micro) |
+| QA diseño | `web-design-guidelines` + `verification-before-completion` |
 | Lead-gen | Google Places API |
 | Billing | Stripe (híbrido) |
-| Deploy | Cloudflare Pages / Vercel |
-| Outreach email | Resend / Postmark (a evaluar) |
-| QA de webs | Playwright / browser MCP (a evaluar) |
-| Docs de librerías | `context7` MCP |
+| Deploy | Vercel (app) + Supabase (backend) |
+| Outreach | Resend / Postmark (a evaluar), legítimo |
 
 ## Métricas que importarán (cuando arranque la operación)
-- Leads cualificados/semana, tasa de respuesta del outreach, conversión a setup, **MRR** y churn, coste por web producida (tokens + APIs), tiempo de producción por web.
+Leads cualificados/semana, tasa de respuesta del outreach, conversión a setup, **MRR** y churn, coste por web producida (tokens + APIs), tiempo de producción por web.

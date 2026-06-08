@@ -3,7 +3,7 @@ description: Cierra la sesión. Reescribe HANDOVER.md con estado y próximo paso
 allowed-tools: Read, Write, Bash(git status*), Bash(git log*), Bash(git diff*), Bash(git add *), Bash(git commit -m *)
 ---
 
-# /cierre — Cierre de sesión (Webs Javi)
+# /cierre — Cierre de sesión (EVOLink)
 
 Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 6 tool calls.
 
@@ -11,7 +11,7 @@ Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 6 tool calls.
 2. Sobrescribe `HANDOVER.md` (raíz) con este formato EXACTO:
 
 ```
-# HANDOVER — Webs Javi
+# HANDOVER — EVOLink
 
 **Última sesión:** [YYYY-MM-DD]
 **Branch:** [git branch --show-current]

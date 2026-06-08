@@ -35,9 +35,14 @@ Thumbs.db
 *.swp
 .idea/
 
-# Skills: SÍ versionamos las 28 skills reales (el socio las recibe al clonar).
-# Pero las 3 carpetas-grupo son junctions NTFS que apuntan a esas mismas skills:
-# git las seguiría como carpetas reales y DUPLICARÍA todo el contenido. Se excluyen.
+# Skills: SÍ versionamos las skills reales (el socio las recibe al clonar).
+# Pero las carpetas-grupo son junctions/symlinks que apuntan a esas mismas skills:
+# git las seguiría y DUPLICARÍA el contenido. Se excluyen.
 .claude/skills/Superpowers/
 .claude/skills/Taste Skill/
 .claude/skills/UI-UX skill/
+.claude/skills/Backend/
+
+# Scratch del CLI de skills (npx skills add): se aplana a .claude/skills/, no se versiona.
+.agents/
+skills-lock.json

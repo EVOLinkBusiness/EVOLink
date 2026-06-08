@@ -3,7 +3,7 @@ description: Arranca la sesión. Lee el contexto mínimo y reporta dónde estamo
 allowed-tools: Read, Bash(git status*), Bash(git log*), Bash(git branch*)
 ---
 
-# /inicio — Arranque de sesión (Webs Javi)
+# /inicio — Arranque de sesión (EVOLink)
 
 Ejecuta SIN pedir confirmación entre pasos. Máximo 4 tool calls.
 
@@ -15,7 +15,7 @@ Ejecuta SIN pedir confirmación entre pasos. Máximo 4 tool calls.
 Reporta en este formato exacto:
 
 ```
-Contexto cargado — Webs Javi
+Contexto cargado — EVOLink
 
 Última sesión: [fecha del HANDOVER]
 Branch: [actual]
