@@ -2,52 +2,56 @@
 
 **Última sesión:** 2026-06-09
 **Branch:** main
-**Último commit:** `cd4720b chore: rename to EVOLink, curate skills, vendor supabase config, refresh vision docs`
-**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (privado; repo y carpeta se renombrarán a EVOLink más adelante)
+**Último commit:** `docs: integrate planning decisions (esta sesión)`
+**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (privado; repo y carpeta se renombrarán a EVOLink)
 
 ---
 
 ## Estado del proyecto
-EVOLink = agencia web **automatizada** con 2 agentes núcleo (Auditor + Generador web) sobre Supabase. Infra + metodología listas y en GitHub. **F1 en curso:** diseño del **Agente Auditor v1 cerrado y spec aprobada**; pendiente el plan de implementación (`writing-plans`). Aún NO hay código de producto.
+EVOLink = agencia web **semiautónoma** (mapa de 4 agentes sobre Supabase; los humanos cierran la venta). Infra + metodología listas y en GitHub. **F1:** Agente Auditor v1 con spec aprobada; pendiente `writing-plans`. Integradas en los docs vivos las decisiones de la sesión de planificación (`docs/TRANSICION-PLANIFICACION.md`). Aún NO hay código de producto.
 
-## Hecho en la sesión actual (2026-06-09)
-- Brainstorming completo del **Agente Auditor v1** → spec aprobada: `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
-- Visión elevada a **2 agentes + tejido de agentes** (creación/supervisión/ops/mejora); Supabase multi-tenant = decisión cerrada #6.
-- **Rename** Webs Javi → EVOLink (contenido del repo + memoria).
-- **Curación de skills:** podadas 4 (taste-skill-v1, imagegen-frontend-mobile, stitch-skill, brutalist-skill); `animation-designer` descartada (redundante); `supabase` + `supabase-postgres-best-practices` aplanadas; `.agents/` + `skills-lock.json` gitignored.
-- Docs refrescados (BUSINESS/ROADMAP/ESTADO-FLUJO/CLAUDE); `.mcp.json` versionado.
-- `README.md` + `GUIA-COLABORADOR.txt` (paso a paso desde cero) actualizados.
+## Hecho en la sesión actual (2026-06-09 — planificación)
+- Integradas en los docs vivos las decisiones de `docs/TRANSICION-PLANIFICACION.md`: mapa de 4 agentes, captación reformulada (co-prioritaria), nicho reformas, precios (30 € + setup subir), validación con pilotos, herramientas (Playwright, Cloudflare Pages, Resend), visión semiautónoma.
+- (Sesión previa) Auditor v1 diseñado + spec aprobada; rename a EVOLink; curación de skills; README + GUIA.
 
-## Subsistemas / módulos en estado
-- **Auditor** — diseñado (spec aprobada); siguiente: `writing-plans`.
-- Generador web — pendiente (F2).
-- Funnel/captación, Entrega+billing, Aprendizaje+upsell, Marketing — pendientes.
+## Subsistemas / módulos en estado (mapa de 4 agentes)
+- **Auditor** — spec aprobada; siguiente `writing-plans`.
+- **Generador web** — pendiente (F2; fórmula fabricar→evaluar→entregar + Playwright).
+- **Captación/Seguimiento** — co-prioritario; asistente (humanos cierran); pendiente.
+- **Revisor/QA de webs** — futuro; depende del Generador; Playwright.
+- En paralelo: validación sin promo (piloto `mudanzasroy.es` + auditorías manuales de reformas).
 
 ## Decisiones cerradas (no reabrir)
 1. Producción web = IA a medida (`ui-ux-pro-max` + taste), Next/Astro + Tailwind.
-2. Monetización = híbrida (setup + cuota mensual).
-3. Lead-gen = Google Places API; outreach **legítimo** (no phishing).
+2. Monetización = **cuota 30 €/mes + setup 250-300 €→400-600 €** (vía "subir setup").
+3. Captación = asistente (los socios cierran); outreach legítimo (RGPD/ePrivacy/LSSI; sin frío masivo); lead-gen = Places.
 4. Metodología = re-oni-roll/AllergINC + plugin superpowers.
-5. Núcleo = 2 agentes (Auditor + Generador) bajo tejido de agentes.
-6. Persistencia = Supabase multi-tenant (`client_id` + RLS), proyecto `kdernwxajzzrriolnnmq` (MCP).
+5. Núcleo = **mapa de 4 agentes** sobre el tejido de agentes.
+6. Persistencia = Supabase multi-tenant (`client_id` + RLS), `kdernwxajzzrriolnnmq` (MCP).
+7. **Nicho de arranque = reformas** (Móstoles/Madrid).
+8. Herramientas: **Playwright** (evaluar/QA), **Cloudflare Pages** (webs de cliente), **Resend** (email).
+
+## Puntos abiertos
+- **Canales de promoción** (presencial / redes / internet) → sesión de brainstorming aparte. *(No resuelto.)*
 
 ## Riesgos y avisos vivos
-- Nada de producto sin spec aprobada (HARD-GATE de brainstorming).
-- Tras `npx skills add`: aplanar la skill a carpeta real + borrar `.agents/` + `skills-lock.json` (ya gitignored).
-- Skills **globales** (`gsd-*`, etc.) fuera del repo cargan tokens cada sesión → desactivar globalmente si no se usan.
-- Carpeta local "Webs Javi" y repo "Proyecto-Webs" pendientes de renombrar a EVOLink (coordinar; rompe junctions de ruta absoluta).
-- Migración a cuenta GitHub conjunta pendiente.
+- Nada de producto sin spec aprobada (HARD-GATE).
+- El riesgo es de **demanda/distribución**, no técnico → validar sin promocionarse.
+- No superar ~50 €/mes hasta tener clientes que paguen.
+- Tras `npx skills add`: aplanar la skill + borrar `.agents/` + `skills-lock.json` (gitignored).
+- Skills globales (`gsd-*`, etc.) cargan tokens cada sesión → desactivar si no se usan.
+- Renombrar repo/carpeta a EVOLink + migrar a cuenta GitHub conjunta (pendiente).
 
-## Próximo paso concreto (MAÑANA)
-**`writing-plans` sobre la spec del Auditor v1** → plan de implementación por tareas.
+## Próximo paso concreto
+**`writing-plans` sobre la spec del Auditor v1** (estas decisiones no lo bloquean).
 1. `/inicio`.
-2. Invocar `writing-plans` con `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
-3. El plan debería arrancar por: backbone Supabase (tablas + RLS) → rúbrica de scoring (TDD) → Edge Function `generate-audit` → supervisión → dashboard Next → informe público.
+2. `writing-plans` con `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
+3. Orden sugerido: backbone Supabase (tablas + RLS) → rúbrica de scoring (TDD) → Edge Function `generate-audit` → supervisión → dashboard Next → informe público.
 
 ## Pendientes
-- [ ] `writing-plans` del Auditor v1 (mañana).
-- [ ] Renombrar repo + carpeta a EVOLink (coordinado) + migrar a cuenta conjunta.
-- [ ] (Opcional) Desactivar skills globales no usadas para bajar el consumo de tokens.
+- [ ] `writing-plans` del Auditor v1.
+- [ ] Sesión: canales de promoción.
+- [ ] Renombrar repo/carpeta a EVOLink + migrar a cuenta conjunta.
 
 ## Comando para reanudar
 /inicio

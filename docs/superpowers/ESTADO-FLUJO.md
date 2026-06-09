@@ -7,13 +7,13 @@ Fase global: **F1 — Agente Auditor + backbone**. Diseño cerrado (spec escrita
 ## Regla de continuidad
 Antes de cerrar, `/cierre` vuelca el estado a `HANDOVER.md`; al abrir, `/inicio` lo recupera. Mientras el repo esté commiteado, no se pierde detalle.
 
-## Subsistemas (cada uno su ciclo spec → plan → código)
-1. **Auditor** ← actual (spec lista)
+## Subsistemas (mapa de 4 agentes; cada uno su ciclo spec → plan → código)
+1. **Auditor** ← actual (spec aprobada)
 2. Generador web
-3. Funnel / captación (Maps + outreach)
-4. Entrega / hosting / billing
-5. Aprendizaje + upsell
-6. Marketing
+3. Captación/Seguimiento (co-prioritario; asistente, humanos cierran)
+4. Revisor/QA de webs (depende del Generador)
+
+En paralelo: **validación sin promo** (piloto `mudanzasroy.es` + auditorías manuales de reformas).
 
 ## Checklist de brainstorming — subsistema: Auditor v1
 | # | Paso | Estado |
