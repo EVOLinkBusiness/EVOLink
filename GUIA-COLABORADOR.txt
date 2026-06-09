@@ -4,9 +4,8 @@
   Escrita paso a paso, sin dar nada por sabido.
 ==========================================================
 
-El proyecto se llama EVOLink. El repositorio en GitHub todavía se llama
-"Proyecto-Webs" (se renombrará a EVOLink más adelante); mientras tanto, usa
-la dirección que aparece más abajo TAL CUAL.
+El proyecto y el repositorio en GitHub se llaman EVOLink. Usa la dirección
+que aparece más abajo TAL CUAL.
 
 Vas a necesitar 4 programas (VS Code, Git, Node.js y la extensión Claude Code)
 y una cuenta de GitHub con acceso al repositorio. Sigue las PARTES EN ORDEN.
@@ -82,11 +81,11 @@ PARTE 2 — DESCARGAR EL PROYECTO  (clonar; solo la PRIMERA vez)
          cd Proyectos
    (Si "mkdir Proyectos" dice que ya existe, da igual, sigue.)
 4) Descarga el proyecto (copia y pega esta línea tal cual):
-         git clone https://github.com/Kravitzz/Proyecto-Webs.git
+         git clone https://github.com/Kravitzz/EVOLink.git
    - Si pide iniciar sesión en GitHub, hazlo en la ventana que se abre.
      Queda guardado para siempre.
 5) Entra en la carpeta descargada:
-         cd Proyecto-Webs
+         cd EVOLink
 6) Ábrela como proyecto en VS Code:
          code .
    VS Code se recarga ya "dentro" del proyecto; a la izquierda verás los
@@ -119,7 +118,7 @@ Así el proyecto está siempre actualizado para los dos y nada se pisa.
 
 >>> AL EMPEZAR (cada sesión):
   1) Abre VS Code en el proyecto. Si lo cerraste:
-     "File" -> "Open Folder" -> C:\Proyectos\Proyecto-Webs
+     "File" -> "Open Folder" -> C:\Proyectos\EVOLink
   2) Abre la terminal ( Ctrl + ñ ).
   3) Descarga lo último del compañero:
          git pull
@@ -193,7 +192,7 @@ PARTE 8 — GLOSARIO MÍNIMO
 ##########################################################
 PARTE 9 — FUTURO  (cuando toque)
 ##########################################################
-- El repo y la carpeta se renombrarán de "Proyecto-Webs" a "EVOLink".
+- El repositorio ya se llama EVOLink (hecho).
 - Migraremos a una cuenta de GitHub compartida por los dos. Cuando pase, solo
   cambiará la dirección del repo con UN comando que os pasaremos ya escrito.
   No se pierde nada: todo el historial viaja con el proyecto.

@@ -3,7 +3,7 @@
 **Última sesión:** 2026-06-09
 **Branch:** main
 **Último commit:** `docs: integrate planning decisions (esta sesión)`
-**Remoto:** `origin` = https://github.com/Kravitzz/Proyecto-Webs (privado; repo y carpeta se renombrarán a EVOLink)
+**Remoto:** `origin` = https://github.com/Kravitzz/EVOLink (privado). Carpeta local de Kravitzz aún "Webs Javi" (rename pendiente).
 
 ---
 
@@ -40,7 +40,7 @@ EVOLink = agencia web **semiautónoma** (mapa de 4 agentes sobre Supabase; los h
 - No superar ~50 €/mes hasta tener clientes que paguen.
 - Tras `npx skills add`: aplanar la skill + borrar `.agents/` + `skills-lock.json` (gitignored).
 - Skills globales (`gsd-*`, etc.) cargan tokens cada sesión → desactivar si no se usan.
-- Renombrar repo/carpeta a EVOLink + migrar a cuenta GitHub conjunta (pendiente).
+- Repo ya renombrado a EVOLink (remoto actualizado). Pendiente: renombrar la carpeta local + migrar a cuenta GitHub conjunta.
 
 ## Próximo paso concreto
 **`writing-plans` sobre la spec del Auditor v1** (estas decisiones no lo bloquean).
@@ -51,7 +51,7 @@ EVOLink = agencia web **semiautónoma** (mapa de 4 agentes sobre Supabase; los h
 ## Pendientes
 - [ ] `writing-plans` del Auditor v1.
 - [ ] Sesión: canales de promoción.
-- [ ] Renombrar repo/carpeta a EVOLink + migrar a cuenta conjunta.
+- [ ] Renombrar la carpeta local + migrar a cuenta conjunta (repo ya = EVOLink).
 
 ## Comando para reanudar
 /inicio
