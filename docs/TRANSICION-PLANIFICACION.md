@@ -1,5 +1,7 @@
 # EVOLink — Documento de transición a VS Code
 
+> ⚠️ **Documento histórico (snapshot 2026-06-10). NO se mantiene al día.** Fuentes vivas: `docs/BUSINESS.md` (decisiones) · `docs/ROADMAP.md` (fases) · `docs/bloques/` (agentes). Desfases conocidos: el grupo de skills "taste" (§7) fue archivado y sustituido por `frontend-design`; la arquitectura de 7 bloques es posterior a este documento.
+>
 > **Propósito.** Poner al día la sesión de Claude Code (VS Code) con todas las decisiones tomadas en la fase de planificación. Recoge **solo conclusiones acordadas**, no el proceso de deliberación.
 >
 > **Fecha:** 10 de junio de 2026
