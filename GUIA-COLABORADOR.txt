@@ -81,7 +81,7 @@ PARTE 2 — DESCARGAR EL PROYECTO  (clonar; solo la PRIMERA vez)
          cd Proyectos
    (Si "mkdir Proyectos" dice que ya existe, da igual, sigue.)
 4) Descarga el proyecto (copia y pega esta línea tal cual):
-         git clone https://github.com/Kravitzz/EVOLink.git
+         git clone https://github.com/EVOLinkBusiness/EVOLink.git
    - Si pide iniciar sesión en GitHub, hazlo en la ventana que se abre.
      Queda guardado para siempre.
 5) Entra en la carpeta descargada:

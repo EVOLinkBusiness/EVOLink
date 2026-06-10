@@ -1,8 +1,8 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-10
+**Última sesión:** 2026-06-11
 **Branch:** main
-**Último commit:** `7bf72d2 docs: guia colaborador actualizada (4 agentes, bloques, punto actual)`
+**Último commit:** `chore: migracion a repo conjunto EVOLinkBusiness` (este mismo)
 
 ---
 
@@ -12,7 +12,10 @@ EVOLink = agencia web semiautónoma (mapa de 4 agentes sobre Supabase; los human
 ## Bloque activo
 2-auditor — detalle en `docs/bloques/2-auditor/ESTADO.md` (spec aprobada; siguiente: writing-plans)
 
-## Hecho en la sesión actual (2026-06-10)
+## Hecho en la sesión actual (2026-06-11)
+- **Migración al repo conjunto COMPLETADA:** `origin` → `https://github.com/EVOLinkBusiness/EVOLink` (historial completo subido; Kravitzz como colaborador). URL antigua sustituida en README, GUIA-COLABORADOR.txt y docs/TRANSICION-PLANIFICACION.md.
+
+## Hecho en la sesión anterior (2026-06-10)
 - CLAUDE.md v2: arquitectura de bloques + regla de 200 líneas + aprendizaje vía CHANGELOG por bloque.
 - Creados los 7 bloques en `docs/bloques/` (contratos, rúbrica del Generador, ESTADO del Auditor, CHANGELOG con formato de registro de errores + ejemplo en cada bloque).
 - /inicio y /cierre v2: bloque activo + decisiones por referencia (fin de la duplicación con BUSINESS.md).
@@ -36,15 +39,11 @@ Ver `docs/BUSINESS.md` §Decisiones (8 activas). Nueva de esta sesión (añadida
 - Skills globales no usadas cargan tokens cada sesión → poda pendiente (ver inventario).
 
 ## Próximo paso concreto
-**Migrar el proyecto al repositorio conjunto de GitHub con el socio.**
-1. Crear cuenta/organización u obtener acceso conjunto.
-2. Nuevo remoto + push de main (historial completo).
-3. Actualizar `origin`, README/GUIA-COLABORADOR si cambia la URL, y renombrar la carpeta local (pendiente antiguo).
-4. **Después de la migración: empezar la programación** → `writing-plans` sobre la spec del Auditor v1 (bloque 2).
+**Empezar la programación:** `writing-plans` sobre la spec aprobada del Auditor v1 (bloque 2, `docs/bloques/2-auditor/ESTADO.md`).
 
 ## Pendientes
-- [ ] Migración a repo conjunto.
-- [ ] `writing-plans` del Auditor v1 (tras migrar).
+- [x] Migración a repo conjunto (2026-06-11).
+- [ ] `writing-plans` del Auditor v1.
 - [ ] Sesión: canales de promoción (punto abierto en BUSINESS.md).
 - [ ] Spec del bloque 5 (pagos) antes del primer cliente.
 

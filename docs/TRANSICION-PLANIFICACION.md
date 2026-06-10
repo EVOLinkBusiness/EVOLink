@@ -3,7 +3,7 @@
 > **Propósito.** Poner al día la sesión de Claude Code (VS Code) con todas las decisiones tomadas en la fase de planificación. Recoge **solo conclusiones acordadas**, no el proceso de deliberación.
 >
 > **Fecha:** 10 de junio de 2026
-> **Repositorio:** https://github.com/Kravitzz/EVOLink
+> **Repositorio:** https://github.com/EVOLinkBusiness/EVOLink
 > **Equipo:** 2 socios. **Meta:** agencia web semiautónoma con ingresos recurrentes mensuales.
 
 ---

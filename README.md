@@ -3,7 +3,7 @@
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
 > **Estado:** Fase F1 (Agente Auditor) — diseño aprobado, plan de implementación pendiente. Todavía sin código de producto.
-> Repositorio privado: https://github.com/Kravitzz/EVOLink
+> Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
 
