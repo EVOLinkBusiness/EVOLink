@@ -1,57 +1,52 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-09
+**Última sesión:** 2026-06-10
 **Branch:** main
-**Último commit:** `docs: integrate planning decisions (esta sesión)`
-**Remoto:** `origin` = https://github.com/Kravitzz/EVOLink (privado). Carpeta local de Kravitzz aún "Webs Javi" (rename pendiente).
+**Último commit:** `7bf72d2 docs: guia colaborador actualizada (4 agentes, bloques, punto actual)`
 
 ---
 
 ## Estado del proyecto
-EVOLink = agencia web **semiautónoma** (mapa de 4 agentes sobre Supabase; los humanos cierran la venta). Infra + metodología listas y en GitHub. **F1:** Agente Auditor v1 con spec aprobada; pendiente `writing-plans`. Integradas en los docs vivos las decisiones de la sesión de planificación (`docs/TRANSICION-PLANIFICACION.md`). Aún NO hay código de producto.
+EVOLink = agencia web semiautónoma (mapa de 4 agentes sobre Supabase; los humanos cierran la venta). **Reorganización por bloques completada:** 7 bloques en `docs/bloques/`, CLAUDE.md v2 (regla 200 líneas), /inicio y /cierre v2, skill `playwright-cli` instalada, inventario de skills creado. Aún NO hay código de producto.
 
-## Hecho en la sesión actual (2026-06-09 — planificación)
-- Integradas en los docs vivos las decisiones de `docs/TRANSICION-PLANIFICACION.md`: mapa de 4 agentes, captación reformulada (co-prioritaria), nicho reformas, precios (30 € + setup subir), validación con pilotos, herramientas (Playwright, Cloudflare Pages, Resend), visión semiautónoma.
-- (Sesión previa) Auditor v1 diseñado + spec aprobada; rename a EVOLink; curación de skills; README + GUIA.
+## Bloque activo
+2-auditor — detalle en `docs/bloques/2-auditor/ESTADO.md` (spec aprobada; siguiente: writing-plans)
 
-## Subsistemas / módulos en estado (mapa de 4 agentes)
-- **Auditor** — spec aprobada; siguiente `writing-plans`.
-- **Generador web** — pendiente (F2; fórmula fabricar→evaluar→entregar + Playwright).
-- **Captación/Seguimiento** — co-prioritario; asistente (humanos cierran); pendiente.
-- **Revisor/QA de webs** — futuro; depende del Generador; Playwright.
-- En paralelo: validación sin promo (piloto `mudanzasroy.es` + auditorías manuales de reformas).
+## Hecho en la sesión actual (2026-06-10)
+- CLAUDE.md v2: arquitectura de bloques + regla de 200 líneas + aprendizaje vía CHANGELOG por bloque.
+- Creados los 7 bloques en `docs/bloques/` (contratos, rúbrica del Generador, ESTADO del Auditor, CHANGELOG con formato de registro de errores + ejemplo en cada bloque).
+- /inicio y /cierre v2: bloque activo + decisiones por referencia (fin de la duplicación con BUSINESS.md).
+- Instalada y aplanada la skill `playwright-cli` (Microsoft; QA del Generador y base del Revisor).
+- `docs/contexto/inventario-skills.md`: mapa skill→bloque con criba aprobada y ejecutada (grupo taste archivado).
+- ROADMAP referenciando bloques. Eliminado ESTADO-FLUJO.md (migrado al bloque 2).
+- Descartada la skill externa `self-improving-agent` (seguridad en Warn); sus 2 buenas ideas adoptadas en el bloque 7.
+- Creadas las fichas de accesos de los 4 agentes (`docs/bloques/{1,2,3,4}-*/referencias/*-agente-accesos.md`): mapa de skills/APIs/MCPs, flujo, señales de aprendizaje y conexiones. Insumo de cada writing-plans.
+- Criba de skills APROBADA por ambos socios y ejecutada: grupo taste archivado en `docs/archivo-skills/`; 31 skills activas mapeadas a bloque en `docs/contexto/inventario-skills.md`.
+- Instaladas 5 skills nuevas aprobadas: `frontend-design` (oficial), `next-best-practices`, `extract-design-system`, `seo-audit`, `copywriting`.
+- Evaluado Claude Design (beta Anthropic): NO sustituye al Generador (sin API, no automatizable); aprobado como herramienta de los socios para la fase de validación manual y el piloto mudanzasroy.es.
 
-## Decisiones cerradas (no reabrir)
-1. Producción web = IA a medida (`ui-ux-pro-max` + taste), Next/Astro + Tailwind.
-2. Monetización = **cuota 30 €/mes + setup 250-300 €→400-600 €** (vía "subir setup").
-3. Captación = asistente (los socios cierran); outreach legítimo (RGPD/ePrivacy/LSSI; sin frío masivo); lead-gen = Places.
-4. Metodología = re-oni-roll/AllergINC + plugin superpowers.
-5. Núcleo = **mapa de 4 agentes** sobre el tejido de agentes.
-6. Persistencia = Supabase multi-tenant (`client_id` + RLS), `kdernwxajzzrriolnnmq` (MCP).
-7. **Nicho de arranque = reformas** (Móstoles/Madrid).
-8. Herramientas: **Playwright** (evaluar/QA), **Cloudflare Pages** (webs de cliente), **Resend** (email).
-
-## Puntos abiertos
-- **Canales de promoción** (presencial / redes / internet) → sesión de brainstorming aparte. *(No resuelto.)*
+## Decisiones cerradas
+Ver `docs/BUSINESS.md` §Decisiones (8 activas). Nueva de esta sesión (añadida a BUSINESS.md como punto 8): los bloques viven en `docs/bloques/`; skills ejecutables en `.claude/skills/`.
 
 ## Riesgos y avisos vivos
 - Nada de producto sin spec aprobada (HARD-GATE).
-- El riesgo es de **demanda/distribución**, no técnico → validar sin promocionarse.
+- El riesgo es de demanda/distribución, no técnico → validar sin promocionarse.
 - No superar ~50 €/mes hasta tener clientes que paguen.
-- Tras `npx skills add`: aplanar la skill + borrar `.agents/` + `skills-lock.json` (gitignored).
-- Skills globales (`gsd-*`, etc.) cargan tokens cada sesión → desactivar si no se usan.
-- Repo ya renombrado a EVOLink (remoto actualizado). Pendiente: renombrar la carpeta local + migrar a cuenta GitHub conjunta.
+- Tras `npx skills add`: aplanar la skill + borrar `.agents/` + `skills-lock.json`.
+- Skills globales no usadas cargan tokens cada sesión → poda pendiente (ver inventario).
 
 ## Próximo paso concreto
-**`writing-plans` sobre la spec del Auditor v1** (estas decisiones no lo bloquean).
-1. `/inicio`.
-2. `writing-plans` con `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
-3. Orden sugerido: backbone Supabase (tablas + RLS) → rúbrica de scoring (TDD) → Edge Function `generate-audit` → supervisión → dashboard Next → informe público.
+**Migrar el proyecto al repositorio conjunto de GitHub con el socio.**
+1. Crear cuenta/organización u obtener acceso conjunto.
+2. Nuevo remoto + push de main (historial completo).
+3. Actualizar `origin`, README/GUIA-COLABORADOR si cambia la URL, y renombrar la carpeta local (pendiente antiguo).
+4. **Después de la migración: empezar la programación** → `writing-plans` sobre la spec del Auditor v1 (bloque 2).
 
 ## Pendientes
-- [ ] `writing-plans` del Auditor v1.
-- [ ] Sesión: canales de promoción.
-- [ ] Renombrar la carpeta local + migrar a cuenta conjunta (repo ya = EVOLink).
+- [ ] Migración a repo conjunto.
+- [ ] `writing-plans` del Auditor v1 (tras migrar).
+- [ ] Sesión: canales de promoción (punto abierto en BUSINESS.md).
+- [ ] Spec del bloque 5 (pagos) antes del primer cliente.
 
 ## Comando para reanudar
 /inicio

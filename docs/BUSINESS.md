@@ -51,6 +51,7 @@ Mismo patrón del tejido: **fabricar → evaluar → entregar**. Rúbrica explí
 5. Núcleo = **mapa de 4 agentes** (Auditor, Generador, Captación/Seguimiento, Revisor/QA) sobre el tejido de agentes.
 6. Persistencia = Supabase multi-tenant (`client_id` + RLS), proyecto `kdernwxajzzrriolnnmq` (MCP).
 7. **Nicho de arranque = reformas** (Móstoles/Madrid).
+8. Estructura física = **los bloques viven en `docs/bloques/`** (contratos organizativos); las skills ejecutables viven en `.claude/skills/` y cada BLOQUE.md indexa cuáles usa. *(2026-06-10.)*
 
 ## Puntos abiertos
 - **Canales de promoción** (presencial / redes / internet) → sesión de brainstorming aparte. *(No resuelto.)*
