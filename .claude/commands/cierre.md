@@ -1,14 +1,15 @@
 ---
-description: Cierra la sesión. Reescribe HANDOVER.md con estado y próximo paso, y propone commit.
+description: Cierra la sesión. Reescribe HANDOVER.md (y el ESTADO.md del bloque activo) y propone commit.
 allowed-tools: Read, Write, Bash(git status*), Bash(git log*), Bash(git diff*), Bash(git add *), Bash(git commit -m *)
 ---
 
 # /cierre — Cierre de sesión (EVOLink)
 
-Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 6 tool calls.
+Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 7 tool calls.
 
 1. Una sola llamada Bash: `git status --short && echo --- && git log --oneline -5`
-2. Sobrescribe `HANDOVER.md` (raíz) con este formato EXACTO:
+2. Si en la sesión se avanzó un bloque, actualiza `docs/bloques/<bloque>/ESTADO.md` (checklist + "dónde retomar"). Si un cambio fue una corrección motivada por un fallo, añade una línea a su `CHANGELOG.md`.
+3. Sobrescribe `HANDOVER.md` (raíz) con este formato EXACTO (límite duro: 200 líneas; objetivo: <80):
 
 ```
 # HANDOVER — EVOLink
@@ -22,23 +23,17 @@ Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 6 tool calls.
 ## Estado del proyecto
 [2-3 frases sobre la fase actual y qué funciona]
 
+## Bloque activo
+[N-nombre, o "ninguno"] — detalle en docs/bloques/<bloque>/ESTADO.md
+
 ## Hecho en la sesión actual ([fecha])
 - [bullet por cada cambio significativo]
 
-## Subsistemas / módulos en estado
-- [Subsistema o módulo] — [diseñado / en código / a medias / pendiente]
-
-## Decisiones cerradas (no reabrir)
-[copiar del anterior + añadir nuevas]
-- Producción web = IA a medida con skills propias (ui-ux-pro-max + taste); código Astro/Next + Tailwind.
-- Monetización = híbrida: setup inicial + cuota mensual (recurrencia).
-- Lead-gen = Google Places API oficial.
-- Metodología = réplica de re-oni-roll/AllergINC + plugin superpowers (brainstorming → spec → plan → código).
+## Decisiones cerradas
+Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta sesión: listarlas aquí y AVISAR de añadirlas a BUSINESS.md.]
 
 ## Riesgos y avisos vivos
-- Negocio aún en fase de diseño: nada de producto sin spec aprobada (HARD-GATE de brainstorming).
-- Las 4 decisiones cerradas no se reabren sin acuerdo de los 2 socios.
-- [otros que surjan]
+- [copiar del anterior + añadir nuevos; NUNCA vaciar]
 
 ## Próximo paso concreto
 **[Una frase con archivo y acción]**
@@ -52,12 +47,13 @@ Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 6 tool calls.
 /inicio
 ```
 
-3. Muestra `git diff HANDOVER.md` (primeras 40 líneas).
-4. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
-5. Si confirma: propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
-6. Termina con: "Sesión cerrada. Próxima vez: /inicio".
+4. Muestra `git diff HANDOVER.md` (primeras 40 líneas).
+5. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
+6. Si confirma: propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
+7. Termina con: "Sesión cerrada. Próxima vez: /inicio".
 
 Reglas:
+- Las decisiones cerradas viven SOLO en `docs/BUSINESS.md`: el HANDOVER las referencia, NUNCA las copia.
+- "Riesgos vivos" siempre se copia del anterior y se añade lo nuevo; nunca se vacía.
 - NO leas `docs/` enteros: infiere de la sesión y del HANDOVER anterior.
-- "Decisiones cerradas" y "Riesgos vivos" SIEMPRE se copian y se añade lo nuevo; nunca se vacían.
 - Responde en español, conciso.
