@@ -13,18 +13,23 @@ Monetización híbrida: setup inicial (pago único) + cuota mensual (hosting, ma
 
 ## Arquitectura — tejido de agentes
 
-El sistema se compone de bloques autocontenidos (skills/agentes), cada uno testeable y arreglable por separado, organizados en cuatro roles:
+El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques autocontenidos** bajo [`docs/bloques/`](docs/bloques/). Cada bloque tiene contrato idéntico: `BLOQUE.md` (qué hace, contrato E/S, skills que usa) · `CHANGELOG.md` (qué cambió y qué error lo motivó) · `ESTADO.md` (solo si está en trabajo activo).
 
-- **Creación** — producen el artefacto: Agente **Auditor**, Agente **Generador web**.
-- **Supervisión** — QA automático del output antes de la revisión humana.
-- **Ops / Registro** — gestionan y registran cada sesión y ejecución.
-- **Mejora** — minan los registros para mejorar las skills (diferido).
+| # | Bloque | Rol |
+|---|--------|-----|
+| 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran la venta |
+| 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital *(activo, F1)* |
+| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web |
+| 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) |
+| 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos |
+| 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas (futuro) |
+| 7 | [mejora](docs/bloques/7-mejora/BLOQUE.md) | Mejora — mina `agent_runs` → propone diffs (futuro) |
 
 Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 
 ```
-Captación (Maps / outreach) → datos → AUDITOR → GENERADOR WEB → deploy + Stripe → soporte
-                                         └──────── Supabase (multi-tenant + RLS + pgvector) ────────┘
+1-CAPTACIÓN → 2-AUDITOR → 3-GENERADOR → 4-REVISOR → entrega + Stripe → mantenimiento
+      └────────── Supabase (multi-tenant + RLS) · agent_runs → 7-mejora ──────────┘
 ```
 
 ## Stack
@@ -34,14 +39,15 @@ Captación (Maps / outreach) → datos → AUDITOR → GENERADOR WEB → deploy 
 | App / dashboard | Next + Tailwind (Astro para marketing) |
 | Backend y datos | Supabase: Postgres + RLS multi-tenant, Auth, Storage, Edge Functions, pgvector (vía MCP) |
 | IA | Claude (API de Anthropic) |
-| Diseño | `ui-ux-pro-max` + taste · motion (`gpt-tasteskill`, `ui-animation`) · QA (`web-design-guidelines`) |
-| Lead-gen / Billing / Deploy | Google Places API · Stripe (setup + suscripción) · Vercel + Supabase |
+| Diseño | `ui-ux-pro-max` + `frontend-design` (oficial Anthropic) · motion (`gpt-tasteskill`, `ui-animation`) · QA (`web-design-guidelines` + `playwright-cli`) |
+| Lead-gen / Billing / Deploy | Google Places API · Stripe (setup + suscripción) · Vercel + Cloudflare Pages + Supabase |
 
 ## Estructura del repositorio
 
 ```
 .claude/                comandos (/inicio, /cierre), hooks y skills locales
-docs/                   BUSINESS.md, ROADMAP.md, superpowers/ (flujo + specs)
+docs/bloques/           el MAPA del producto: un bloque por agente/área (1-captacion ... 7-mejora)
+docs/                   BUSINESS.md, ROADMAP.md, contexto/ (inventario de skills), superpowers/ (specs), archivo-skills/
 CLAUDE.md               manual operativo permanente (se lee al arrancar)
 HANDOVER.md             estado de la última sesión y próximo paso
 GUIA-COLABORADOR.txt    guía de instalación y trabajo, paso a paso desde cero
@@ -63,15 +69,15 @@ Sesiones reproducibles y token-económicas:
 
 ## Estado y próximos pasos
 
-- **F0 Infraestructura** — completada.
-- **F1 Agente Auditor + backbone Supabase** — en curso. Diseño aprobado: [`docs/superpowers/specs/2026-06-08-auditor-v1-design.md`](docs/superpowers/specs/2026-06-08-auditor-v1-design.md). **Próximo: `writing-plans`** (plan de implementación por tareas).
-- **F2** Generador web · **F3** Funnel (Maps + outreach) · **F4** Entrega + billing · **F5** Aprendizaje + upsell · **F6** Marketing — planificadas.
+- **F0 Infraestructura** — completada (incluye la reorganización por bloques, 2026-06-10).
+- **F1 Agente Auditor + backbone Supabase** — en curso (bloque `2-auditor`). Diseño aprobado: [`docs/superpowers/specs/2026-06-08-auditor-v1-design.md`](docs/superpowers/specs/2026-06-08-auditor-v1-design.md). **Próximo: migración a repo conjunto → `writing-plans`** (plan de implementación por tareas).
+- **F2** Generador web (bloque 3) · **Captación/Seguimiento** (bloque 1, co-prioritario) · **Revisor/QA** (bloque 4) · **Entrega + billing** (bloques 5-6) — planificadas; ver [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Documentación
 
 - [`docs/BUSINESS.md`](docs/BUSINESS.md) — el negocio: qué, a quién, cómo se gana dinero.
 - [`docs/ROADMAP.md`](docs/ROADMAP.md) — fases del proyecto.
-- [`docs/superpowers/ESTADO-FLUJO.md`](docs/superpowers/ESTADO-FLUJO.md) — punto exacto del flujo por subsistema.
+- [`docs/bloques/2-auditor/ESTADO.md`](docs/bloques/2-auditor/ESTADO.md) — punto exacto del bloque activo (cada bloque activo tiene su ESTADO.md).
 - [`HANDOVER.md`](HANDOVER.md) — estado vivo de la última sesión.
 
 ---
