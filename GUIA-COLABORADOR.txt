@@ -104,6 +104,8 @@ PARTE 3 — PRIMERA VEZ DENTRO DEL PROYECTO  (cosas que conviene saber)
   "MCP". La configuración ya viene incluida (archivo .mcp.json). La PRIMERA vez
   que Claude use Supabase puede abrir el navegador para que autorices el acceso
   (login con la cuenta de Supabase que te diga Kravitzz): acepta.
+- El MAPA del proyecto está en  docs/bloques/ : una carpeta por cada agente
+  o área del negocio. Es el mejor sitio para orientarse.
 - Regla con los archivos: NO muevas ni borres carpetas que no entiendas
   (.claude, .git, docs). Si dudas, pregunta antes.
 
@@ -152,18 +154,33 @@ PARTE 6 — QUÉ ES EVOLINK Y DÓNDE ESTAMOS AHORA
 ##########################################################
 EVOLink es un negocio: una agencia que crea y mantiene webs para negocios sin
 presencia online, de forma muy automatizada. Se cobra un setup inicial + una
-cuota mensual. El sistema se apoya en DOS "agentes" (herramientas de IA):
-  - AUDITOR: analiza un negocio y genera una auditoría profesional. Sirve para
-    venderle (gancho) y como guía para hacerle la web.
-  - GENERADOR WEB: con esa auditoría, crea la web.
-Todo se guarda en Supabase.
+cuota mensual. El sistema se apoya en CUATRO "agentes" (herramientas de IA);
+los socios solo revisamos y cerramos las ventas:
 
-PUNTO ACTUAL (Fase 1): el DISEÑO del Auditor ya está cerrado y escrito
-(documento en  docs/superpowers/specs/ ). El siguiente paso es convertir ese
-diseño en un plan de tareas para empezar a programarlo.
+  1. CAPTACIÓN: busca negocios sin web, los puntúa y redacta los emails de
+     contacto (nosotros los revisamos y enviamos).
+  2. AUDITOR: analiza un negocio y genera una auditoría profesional. Sirve
+     para venderle (gancho) y como guía para hacerle la web.
+  3. GENERADOR WEB: con esa auditoría, crea la web (con marca, rápida, que
+     no parezca plantilla) y la deja publicada.
+  4. REVISOR: vigila que las webs funcionen (enlaces, formularios, velocidad)
+     y detecta fallos en webs ajenas para ofrecer rediseños.
+
+Cada agente tiene su CARPETA dentro de  docs/bloques/  (1-captacion,
+2-auditor, 3-generador, 4-revisor... hasta 7). Dentro de cada carpeta está
+escrito qué hace, qué herramientas usa y en qué estado está. Si quieres
+saber qué hace un agente, entra en su carpeta y lee BLOQUE.md.
+
+PUNTO ACTUAL: la PLANIFICACIÓN está terminada. El diseño del Auditor está
+cerrado y aprobado (documento en docs/superpowers/specs/), y toda la
+estructura de bloques, herramientas y skills ya está instalada y decidida
+por los dos socios. Lo siguiente, en orden:
+  1) Migrar el proyecto a un repositorio compartido por los dos (Parte 9).
+  2) EMPEZAR A PROGRAMAR: convertir el diseño del Auditor en un plan de
+     tareas y picar código.
 
 Para entender el negocio a fondo, lee en este orden:
-  docs/BUSINESS.md   ->   docs/ROADMAP.md   ->   HANDOVER.md
+  docs/BUSINESS.md  ->  docs/ROADMAP.md  ->  HANDOVER.md  ->  docs/bloques/
 
 
 ##########################################################
