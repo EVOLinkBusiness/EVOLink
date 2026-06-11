@@ -10,4 +10,5 @@ Ejemplo ilustrativo (NO real, no copiar):
 Reglas: nunca borrar entradas · si un cambio se revierte, se añade entrada nueva explicándolo · el bloque 7 (Mejora) usará este historial para validar que las correcciones siguen vigentes.
 
 ---
-*(sin entradas — bloque aún sin código)*
+- **[2026-06-11]** El test del happy path destapó que `llmCheck` (supervisor) lanzaba excepción si la salida de Haiku no traía el campo `flags`, tumbando el run entero → parseo defensivo en `supabase/functions/_shared/supervisor.ts` (flags ausentes/malformados ⇒ `[]`, el run continúa) → aprobado por Kravitzz (ejecución del plan aprobado). Run manual (test, commit `b386b92`).
+- **[2026-06-11]** Los advisors de Supabase avisaron de `search_path` mutable en `set_updated_at` y de `is_admin()` ejecutable por `anon`; además el proyecto tiene default privileges recortados (sin SELECT/INSERT ni para `service_role`, habría roto la Edge Function) → migraciones `20260611000003_hardening.sql` + `20260611000004_grants.sql` → aprobado por Kravitzz. Run manual (commit `f598585`).
