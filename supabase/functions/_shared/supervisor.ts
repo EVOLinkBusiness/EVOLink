@@ -53,7 +53,10 @@ Narrativa: ${JSON.stringify(narrative)}`,
     }],
   });
   const text = res.content.find((b) => b.type === "text")?.text ?? '{"flags":[]}';
-  return { flags: (JSON.parse(text) as { flags: string[] }).flags, usage: res.usage };
+  // Defensivo: si la salida no trae "flags" (schema violado), no tumbar el run
+  const parsed = JSON.parse(text) as { flags?: unknown };
+  const flags = Array.isArray(parsed.flags) ? parsed.flags.filter((f) => typeof f === "string") : [];
+  return { flags, usage: res.usage };
 }
 
 export async function supervise(
