@@ -19,6 +19,7 @@ ninguno (2-auditor cerrado y validado) — detalle en `docs/bloques/2-auditor/ES
 - **Endurecimiento:** `extractFromScreenshot` ya no pisa `has_maps_listing` a ciegas (`130b133`).
 - 3 limitaciones documentadas en CHANGELOG (sin CORS, cost:0 en runs fallidos de extract, recencia de reseñas siempre 0 en intake manual). No se tocan (diseño/diferido).
 - **Piloto de visión real** de `extract-presence` con captura de Maps ("MG Reformas Integrales"): extracción correcta, `formToClient` correcto, coste $0,0027. Cierra el smoke pendiente de ETAPA 4.
+- **Redeploy de `generate-audit` (v5 ACTIVE)**: el fix de coste ya está en producción.
 - Suite 35/35 (33 + 2 nuevos). Todo en `docs/bloques/2-auditor/CHANGELOG.md`.
 
 ## Decisiones cerradas
@@ -35,7 +36,6 @@ Ver `docs/BUSINESS.md` §Decisiones (8 activas). Sin decisiones nuevas de negoci
 - No hay Docker ni Deno en la máquina: tests con `npx deno test supabase/functions/`; RLS por SQL remoto.
 - Deploy de Edge Functions vía MCP `deploy_edge_function`: hay que pasar TODOS los archivos `_shared/` que importa el entrypoint (no bundlea solo).
 - En Supabase, un `DELETE` dentro de un CTE no ve el `INSERT` de un CTE hermano (snapshot). Limpiar datos en sentencias separadas.
-- **`generate-audit` desplegada tarifa el coste mal (pre-fix `632424e`): requiere redeploy** para que `agent_runs.cost` sea exacto en producción.
 
 ## Próximo paso concreto
 **ETAPA 2 — Crear el Generador (bloque 3). Leer y ejecutar `2026-06-12-ORDEN-Programacion-Agente-Generador_v1.md` de principio a fin.**
@@ -43,7 +43,6 @@ Ver `docs/BUSINESS.md` §Decisiones (8 activas). Sin decisiones nuevas de negoci
 2. La ORDEN incluye su propia fase final de autoborrado.
 
 ## Pendientes
-- [ ] Redeploy de `generate-audit` para activar el fix de coste en producción.
 - [ ] Datos de prueba del smoke en Supabase (cliente sintético "Mudanzas Roy" `39932a68…` + audits + runs): limpiar antes del piloto real si molestan.
 - [ ] Supabase/Anthropic bajo perfil conjunto: renombrar org + invitar al socio como Owner.
 - [ ] Anthropic Console: datos fiscales cuando exista CIF/NIF.

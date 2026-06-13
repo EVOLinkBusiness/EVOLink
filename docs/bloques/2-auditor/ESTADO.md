@@ -32,8 +32,7 @@ Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → pl
 Suite completa: **35/35 en verde** (`npx deno test supabase/functions/`). Confirmación humana = bucle manual en v1 (UI en Plan B).
 
 ## Dónde retomar
-El bloque está cerrado y validado (incluido el camino de visión). **Próximo: ETAPA 2 — Generador (bloque 3).** Pendientes menores del Auditor antes de un cliente real:
-- **Redeploy de `generate-audit`** para que el fix de coste (`632424e`) entre en producción (el código desplegado aún tarifa todo a Opus). Vía MCP `deploy_edge_function` pasando `_shared/` completo.
+El bloque está cerrado y validado (incluido el camino de visión). **Próximo: ETAPA 2 — Generador (bloque 3).** El fix de coste ya está en producción (`generate-audit` v5 ACTIVE). Pendiente menor del Auditor:
 - Plan B (dashboard Next + informe público `/r/[slug]`) — diferido tras los 3 agentes; al construirlo, resolver CORS de las Edge Functions.
 
 ## Notas técnicas de la ejecución
