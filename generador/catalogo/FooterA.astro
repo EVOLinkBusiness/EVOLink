@@ -1,0 +1,28 @@
+---
+// FooterA — pie en columnas: marca, navegacion, contacto.
+interface NavItem { label: string; ruta: string; }
+interface Contacto { email?: string; telefono?: string; direccion?: string; }
+interface Props { nav: NavItem[]; contacto: Contacto; nombre_negocio: string; }
+const { nav, contacto, nombre_negocio } = Astro.props;
+const year = new Date().getFullYear();
+const telHref = contacto.telefono ? `tel:${contacto.telefono.replace(/\s+/g, "")}` : undefined;
+---
+
+<footer class="border-t border-borde bg-fondo">
+  <div class="contenedor grid gap-8 py-12 md:grid-cols-3">
+    <div>
+      <p class="font-titulares text-lg font-bold">{nombre_negocio}</p>
+      {contacto.direccion && <p class="mt-2 text-sm text-texto-suave">{contacto.direccion}</p>}
+    </div>
+    <nav aria-label="Pie" class="grid gap-2 text-sm">
+      {nav.map((i) => <a class="text-texto-suave hover:text-texto" href={i.ruta}>{i.label}</a>)}
+    </nav>
+    <div class="grid gap-2 text-sm text-texto-suave">
+      {contacto.email && <a class="hover:text-texto" href={`mailto:${contacto.email}`}>{contacto.email}</a>}
+      {contacto.telefono && <a class="hover:text-texto" href={telHref}>{contacto.telefono}</a>}
+    </div>
+  </div>
+  <div class="contenedor border-t border-borde py-6 text-xs text-texto-suave">
+    © {year} {nombre_negocio}. Todos los derechos reservados.
+  </div>
+</footer>

@@ -1,0 +1,16 @@
+{
+  "name": "evolink-site",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.5",
+    "astro": "^5.13.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

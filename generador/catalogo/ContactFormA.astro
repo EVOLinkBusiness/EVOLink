@@ -1,0 +1,41 @@
+---
+// ContactFormA — datos de contacto a la izquierda + formulario a la derecha.
+// El form hace POST a form_action (endpoint Resend/servicio de formularios).
+interface Props {
+  email: string;
+  form_action: string;
+  telefono?: string;
+  direccion?: string;
+  titulo?: string;
+}
+const { email, form_action, telefono, direccion, titulo = "Pide tu presupuesto" } = Astro.props;
+const telHref = telefono ? `tel:${telefono.replace(/\s+/g, "")}` : undefined;
+---
+
+<section class="seccion bg-superficie" id="contacto">
+  <div class="contenedor grid gap-10 md:grid-cols-2">
+    <div>
+      <h2 class="titulo-seccion">{titulo}</h2>
+      <ul class="mt-6 space-y-3 text-texto-suave">
+        <li>Email: <a class="text-primario underline" href={`mailto:${email}`}>{email}</a></li>
+        {telefono && <li>Telefono: <a class="text-primario underline" href={telHref}>{telefono}</a></li>}
+        {direccion && <li>Zona de servicio: {direccion}</li>}
+      </ul>
+    </div>
+    <form class="grid gap-4" action={form_action} method="POST">
+      <label class="grid gap-1 text-sm">Nombre
+        <input class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" type="text" name="nombre" required />
+      </label>
+      <label class="grid gap-1 text-sm">Email
+        <input class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" type="email" name="email" required />
+      </label>
+      <label class="grid gap-1 text-sm">Telefono
+        <input class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" type="tel" name="telefono" />
+      </label>
+      <label class="grid gap-1 text-sm">Cuentanos tu proyecto
+        <textarea class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" name="mensaje" rows="4" required></textarea>
+      </label>
+      <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</section>

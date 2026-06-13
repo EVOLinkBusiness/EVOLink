@@ -1,0 +1,25 @@
+---
+// TestimonialsA — fila con scroll-snap (sin JS). Cita corta + atribucion.
+interface TestimonialItem { nombre: string; texto: string; rol?: string; }
+interface Props { items: TestimonialItem[]; titulo?: string; }
+const { items, titulo = "Lo que dicen nuestros clientes" } = Astro.props;
+---
+
+<section class="seccion bg-superficie">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">{titulo}</h2>
+    <div class="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+      {
+        items.map((t) => (
+          <figure class="w-80 shrink-0 snap-start rounded-xl border border-borde bg-fondo p-6">
+            <blockquote class="text-texto">{`“${t.texto}”`}</blockquote>
+            <figcaption class="mt-4 text-sm font-medium">
+              {t.nombre}
+              {t.rol ? <span class="text-texto-suave"> · {t.rol}</span> : null}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

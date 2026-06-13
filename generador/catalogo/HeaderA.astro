@@ -1,0 +1,20 @@
+---
+// HeaderA — logo a la izquierda, nav a la derecha, CTA. Sticky.
+interface NavItem { label: string; ruta: string; }
+interface Props {
+  nav: NavItem[];
+  cta?: { label: string; ruta: string };
+  nombre_negocio?: string;
+}
+const { nav, cta, nombre_negocio = "" } = Astro.props;
+---
+
+<header class="sticky top-0 z-40 border-b border-borde bg-fondo">
+  <div class="contenedor flex h-16 items-center justify-between gap-4">
+    <a href="/" class="font-titulares text-lg font-bold text-texto">{nombre_negocio}</a>
+    <nav aria-label="Principal" class="hidden items-center gap-6 md:flex">
+      {nav.map((i) => <a class="text-sm text-texto-suave hover:text-texto" href={i.ruta}>{i.label}</a>)}
+    </nav>
+    {cta && <a class="btn btn--primary text-sm" href={cta.ruta}>{cta.label}</a>}
+  </div>
+</header>

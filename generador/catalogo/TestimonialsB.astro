@@ -1,0 +1,25 @@
+---
+// TestimonialsB — rejilla de 2 columnas con citas destacadas.
+interface TestimonialItem { nombre: string; texto: string; rol?: string; }
+interface Props { items: TestimonialItem[]; titulo?: string; }
+const { items, titulo = "Opiniones de clientes" } = Astro.props;
+---
+
+<section class="seccion">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">{titulo}</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        items.map((t) => (
+          <figure class="rounded-xl border border-borde bg-fondo p-6">
+            <blockquote class="text-lg text-texto">{`“${t.texto}”`}</blockquote>
+            <figcaption class="mt-4 text-sm font-medium">
+              {t.nombre}
+              {t.rol ? <span class="text-texto-suave"> · {t.rol}</span> : null}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

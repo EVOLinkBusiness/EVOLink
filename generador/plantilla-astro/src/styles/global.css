@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-fondo text-texto font-cuerpo antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-titulares;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  p {
+    line-height: 1.6;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .contenedor {
+    @apply mx-auto w-full max-w-contenido px-4 md:px-8;
+  }
+  .seccion {
+    @apply py-16 md:py-24;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium transition-transform duration-200 active:scale-[0.98];
+  }
+  .btn--primary {
+    @apply bg-primario text-primario-contraste hover:opacity-90;
+  }
+  .btn--ghost {
+    @apply border border-primario text-primario hover:bg-primario hover:text-primario-contraste;
+  }
+  .titulo-seccion {
+    @apply text-3xl md:text-4xl font-titulares;
+  }
+  .subtitulo-seccion {
+    @apply mt-3 max-w-2xl text-texto-suave;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

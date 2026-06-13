@@ -1,0 +1,15 @@
+---
+// CtaA — banda a color de marca con titular + boton (contraste invertido).
+interface Props { titulo: string; texto?: string; cta_label: string; cta_ruta: string; }
+const { titulo, texto, cta_label, cta_ruta } = Astro.props;
+---
+
+<section class="seccion bg-primario text-primario-contraste">
+  <div class="contenedor flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+    <div>
+      <h2 class="text-2xl font-bold md:text-3xl">{titulo}</h2>
+      {texto && <p class="mt-2 max-w-xl opacity-90">{texto}</p>}
+    </div>
+    <a class="btn bg-primario-contraste text-primario hover:opacity-90" href={cta_ruta}>{cta_label}</a>
+  </div>
+</section>

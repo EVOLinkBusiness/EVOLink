@@ -1,0 +1,19 @@
+---
+// GalleryA — masonry por columnas CSS (sin JS). Para trabajos de altura variable.
+interface Imagen { src: string; alt: string; }
+interface Props { imagenes: Imagen[]; titulo?: string; }
+const { imagenes, titulo = "Trabajos realizados" } = Astro.props;
+---
+
+<section class="seccion" id="galeria">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">{titulo}</h2>
+    <div class="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
+      {
+        imagenes.map((img) => (
+          <img class="w-full rounded-xl object-cover" src={img.src} alt={img.alt} loading="lazy" />
+        ))
+      }
+    </div>
+  </div>
+</section>

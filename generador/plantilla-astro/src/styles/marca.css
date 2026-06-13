@@ -1,0 +1,16 @@
+/* marca.css — tokens de marca por defecto. El ensamblador (scripts/assemble.ts)
+   REGENERA este archivo por cliente desde marca.json. No editar a mano en un
+   sitio generado: se sobreescribe en cada ensamblado. */
+:root {
+  --color-primario: #1a5fb4;
+  --color-primario-contraste: #ffffff;
+  --color-secundario: #163a5f;
+  --color-acento: #e66100;
+  --color-fondo: #ffffff;
+  --color-superficie: #f6f7f9;
+  --color-texto: #1a1a1a;
+  --color-texto-suave: #555b66;
+  --color-borde: #e5e7eb;
+  --font-titulares: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-cuerpo: system-ui, -apple-system, "Segoe UI", sans-serif;
+}

@@ -1,0 +1,17 @@
+---
+// CtaB — bloque dividido sobre superficie, boton primario.
+interface Props { titulo: string; texto?: string; cta_label: string; cta_ruta: string; }
+const { titulo, texto, cta_label, cta_ruta } = Astro.props;
+---
+
+<section class="seccion">
+  <div class="contenedor grid items-center gap-6 rounded-2xl border border-borde bg-superficie p-8 md:grid-cols-2 md:p-12">
+    <div>
+      <h2 class="text-2xl font-bold md:text-3xl">{titulo}</h2>
+      {texto && <p class="mt-2 text-texto-suave">{texto}</p>}
+    </div>
+    <div class="md:text-right">
+      <a class="btn btn--primary" href={cta_ruta}>{cta_label}</a>
+    </div>
+  </div>
+</section>

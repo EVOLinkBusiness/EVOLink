@@ -1,0 +1,40 @@
+---
+// Layout.astro — shell HTML del sitio. Importa estilos globales + tokens de marca.
+// Fuentes: por defecto stack de sistema (mejor Lighthouse, cero <link>); si la marca
+// declara google_fonts, se cargan con preconnect + display=swap.
+interface Props {
+  titulo: string;
+  descripcion: string;
+  google_fonts?: string[];
+}
+const { titulo, descripcion, google_fonts = [] } = Astro.props;
+import "../../styles/marca.css";
+import "../../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    {
+      google_fonts.length > 0 && (
+        <>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          {google_fonts.map((f) => (
+            <link rel="stylesheet" href={`https://fonts.googleapis.com/css2?family=${f}&display=swap`} />
+          ))}
+        </>
+      )
+    }
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

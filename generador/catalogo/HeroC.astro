@@ -1,0 +1,33 @@
+---
+// HeroC — imagen de fondo a sangre con scrim oscuro (texto blanco, contraste AA).
+interface Imagen { src: string; alt: string; }
+interface Props {
+  titulo: string;
+  subtitulo: string;
+  cta_label: string;
+  cta_ruta: string;
+  imagen?: Imagen;
+}
+const { titulo, subtitulo, cta_label, cta_ruta, imagen } = Astro.props;
+---
+
+<section class="relative isolate min-h-[70vh] overflow-hidden">
+  {
+    imagen && (
+      <img
+        class="absolute inset-0 -z-10 h-full w-full object-cover"
+        src={imagen.src}
+        alt={imagen.alt}
+        width="1600"
+        height="900"
+        loading="eager"
+      />
+    )
+  }
+  <div class="absolute inset-0 -z-10 bg-black/60"></div>
+  <div class="contenedor flex min-h-[70vh] flex-col justify-center py-20 text-white">
+    <h1 class="max-w-3xl text-4xl font-bold md:text-6xl">{titulo}</h1>
+    <p class="mt-5 max-w-xl text-lg text-white/90">{subtitulo}</p>
+    <div><a class="btn btn--primary mt-8" href={cta_ruta}>{cta_label}</a></div>
+  </div>
+</section>

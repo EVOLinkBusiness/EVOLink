@@ -1,0 +1,19 @@
+---
+// GalleryB — rejilla uniforme cuadrada. Para conjuntos homogeneos de fotos.
+interface Imagen { src: string; alt: string; }
+interface Props { imagenes: Imagen[]; titulo?: string; }
+const { imagenes, titulo = "Galeria" } = Astro.props;
+---
+
+<section class="seccion bg-superficie" id="galeria">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">{titulo}</h2>
+    <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {
+        imagenes.map((img) => (
+          <img class="aspect-square w-full rounded-lg object-cover" src={img.src} alt={img.alt} loading="lazy" />
+        ))
+      }
+    </div>
+  </div>
+</section>

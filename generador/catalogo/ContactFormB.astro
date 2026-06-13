@@ -1,0 +1,33 @@
+---
+// ContactFormB — formulario centrado y compacto, con email de respaldo.
+interface Props {
+  email: string;
+  form_action: string;
+  telefono?: string;
+  direccion?: string;
+  titulo?: string;
+}
+const { email, form_action, titulo = "Contacta con nosotros" } = Astro.props;
+---
+
+<section class="seccion" id="contacto">
+  <div class="contenedor max-w-xl">
+    <h2 class="titulo-seccion text-center">{titulo}</h2>
+    <p class="subtitulo-seccion mx-auto text-center">Te respondemos en menos de 24 horas.</p>
+    <form class="mt-8 grid gap-4" action={form_action} method="POST">
+      <label class="grid gap-1 text-sm">Nombre
+        <input class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" type="text" name="nombre" required />
+      </label>
+      <label class="grid gap-1 text-sm">Email
+        <input class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" type="email" name="email" required />
+      </label>
+      <label class="grid gap-1 text-sm">Mensaje
+        <textarea class="rounded-lg border border-borde bg-fondo px-3 py-2 text-texto" name="mensaje" rows="4" required></textarea>
+      </label>
+      <button class="btn btn--primary" type="submit">Enviar</button>
+    </form>
+    <p class="mt-4 text-center text-sm text-texto-suave">
+      O escribenos a <a class="text-primario underline" href={`mailto:${email}`}>{email}</a>
+    </p>
+  </div>
+</section>

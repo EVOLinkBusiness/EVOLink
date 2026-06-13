@@ -1,0 +1,32 @@
+---
+// HeroB — composicion centrada a pantalla, imagen ancha debajo.
+interface Imagen { src: string; alt: string; }
+interface Props {
+  titulo: string;
+  subtitulo: string;
+  cta_label: string;
+  cta_ruta: string;
+  imagen?: Imagen;
+}
+const { titulo, subtitulo, cta_label, cta_ruta, imagen } = Astro.props;
+---
+
+<section class="seccion">
+  <div class="contenedor flex flex-col items-center text-center">
+    <h1 class="max-w-3xl text-4xl font-bold md:text-6xl">{titulo}</h1>
+    <p class="mt-5 max-w-xl text-lg text-texto-suave">{subtitulo}</p>
+    <a class="btn btn--primary mt-8" href={cta_ruta}>{cta_label}</a>
+    {
+      imagen && (
+        <img
+          class="mt-12 aspect-[16/9] w-full max-w-4xl rounded-2xl object-cover"
+          src={imagen.src}
+          alt={imagen.alt}
+          width="1024"
+          height="576"
+          loading="eager"
+        />
+      )
+    }
+  </div>
+</section>

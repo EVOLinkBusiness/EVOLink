@@ -1,0 +1,23 @@
+---
+// FooterB — pie simple centrado.
+interface NavItem { label: string; ruta: string; }
+interface Contacto { email?: string; telefono?: string; direccion?: string; }
+interface Props { nav: NavItem[]; contacto: Contacto; nombre_negocio: string; }
+const { nav, contacto, nombre_negocio } = Astro.props;
+const year = new Date().getFullYear();
+const telHref = contacto.telefono ? `tel:${contacto.telefono.replace(/\s+/g, "")}` : undefined;
+---
+
+<footer class="border-t border-borde bg-fondo">
+  <div class="contenedor flex flex-col items-center gap-4 py-10 text-center">
+    <p class="font-titulares text-lg font-bold">{nombre_negocio}</p>
+    <nav aria-label="Pie" class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+      {nav.map((i) => <a class="text-texto-suave hover:text-texto" href={i.ruta}>{i.label}</a>)}
+    </nav>
+    <div class="flex flex-wrap justify-center gap-x-6 text-sm text-texto-suave">
+      {contacto.email && <a class="hover:text-texto" href={`mailto:${contacto.email}`}>{contacto.email}</a>}
+      {contacto.telefono && <a class="hover:text-texto" href={telHref}>{contacto.telefono}</a>}
+    </div>
+    <p class="text-xs text-texto-suave">© {year} {nombre_negocio}.</p>
+  </div>
+</footer>
