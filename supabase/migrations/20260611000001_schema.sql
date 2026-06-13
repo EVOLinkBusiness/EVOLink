@@ -31,7 +31,7 @@ create table public.audits (
   result jsonb not null default '{}'::jsonb,
   llm_draft jsonb,
   supervisor_flags jsonb not null default '[]'::jsonb,
-  share_slug text unique not null default encode(gen_random_bytes(9), 'base64url'),
+  share_slug text unique not null default replace(replace(encode(gen_random_bytes(9), 'base64'), '+', '-'), '/', '_'),
   approved_by uuid references public.profiles (id),
   approved_at timestamptz,
   created_by uuid references public.profiles (id),
