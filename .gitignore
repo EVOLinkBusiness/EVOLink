@@ -22,6 +22,10 @@ out/
 # Estado de sesión Claude (no versionar)
 .claude/.prompt_counter
 
+# Generador: artefactos por cliente (datos de cliente fuera del repo; el
+# registro durable es agent_runs en Supabase). Ver docs/bloques/3-generador.
+clientes/
+
 # Logs
 *.log
 npm-debug.log*

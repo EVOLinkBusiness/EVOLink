@@ -1,0 +1,19 @@
+{
+  "name": "evolink-generador",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "EVOLink Generador (bloque 3): ensamblador determinista + evaluacion + entrega de webs de cliente.",
+  "scripts": {
+    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "assemble": "node --import tsx scripts/assemble.cli.ts",
+    "evaluate": "node --import tsx scripts/evaluate.cli.ts",
+    "deploy": "node --import tsx scripts/deploy.cli.ts",
+    "record": "node --import tsx scripts/record.cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
