@@ -65,7 +65,8 @@ export const CATALOG_CONTRACT: Record<string, { variantes: string[]; required: s
   Gallery: { variantes: ["A", "B"], required: ["imagenes"] },
   Cta: { variantes: ["A", "B"], required: ["titulo", "cta_label", "cta_ruta"] },
   ContactForm: { variantes: ["A", "B"], required: ["email", "form_action"] },
-  Footer: { variantes: ["A", "B"], required: ["nav", "contacto", "nombre_negocio"] },
+  // nombre_negocio lo deriva injectDefaults desde marca (como en Header): no se exige al plan.
+  Footer: { variantes: ["A", "B"], required: ["nav", "contacto"] },
 };
 
 export type ValidationResult = { ok: true } | { ok: false; errors: string[] };
