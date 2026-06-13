@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> **Estado:** Fase F1 (Agente Auditor) — diseño aprobado, plan de implementación pendiente. Todavía sin código de producto.
+> **Estado:** Fase F1 (Agente Auditor) — **COMPLETADA**: backend + entrada de datos en producción sobre Supabase, validados end-to-end (scoring, narrativa Opus 4.8, supervisión Haiku 4.5, extracción por visión). Próximo: **ETAPA 2 — Agente Generador (bloque 3)**.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -18,8 +18,8 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 | # | Bloque | Rol |
 |---|--------|-----|
 | 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran la venta |
-| 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital *(activo, F1)* |
-| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web |
+| 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital *(✅ completado, F1)* |
+| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web *(activo, ETAPA 2)* |
 | 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) |
 | 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos |
 | 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas (futuro) |
@@ -70,8 +70,9 @@ Sesiones reproducibles y token-económicas:
 ## Estado y próximos pasos
 
 - **F0 Infraestructura** — completada (incluye la reorganización por bloques, 2026-06-10).
-- **F1 Agente Auditor + backbone Supabase** — en curso (bloque `2-auditor`). Diseño aprobado: [`docs/superpowers/specs/2026-06-08-auditor-v1-design.md`](docs/superpowers/specs/2026-06-08-auditor-v1-design.md). **Próximo: migración a repo conjunto → `writing-plans`** (plan de implementación por tareas).
-- **F2** Generador web (bloque 3) · **Captación/Seguimiento** (bloque 1, co-prioritario) · **Revisor/QA** (bloque 4) · **Entrega + billing** (bloques 5-6) — planificadas; ver [`docs/ROADMAP.md`](docs/ROADMAP.md).
+- **F1 Agente Auditor + backbone Supabase** — ✅ **completada** (bloque `2-auditor`). Backend + entrada de datos validados end-to-end; dos Edge Functions desplegadas y activas (`generate-audit` v5, `extract-presence` v1); suite 35/35 en verde. Revisado y endurecido antes de la ETAPA 2. Detalle: [`docs/bloques/2-auditor/ESTADO.md`](docs/bloques/2-auditor/ESTADO.md).
+- **ETAPA 2 — Agente Generador** (bloque 3) — en curso. Spec aprobada: [`docs/superpowers/specs/2026-06-12-generador-v1-design.md`](docs/superpowers/specs/2026-06-12-generador-v1-design.md).
+- **Siguientes:** Captación/Seguimiento (bloque 1, co-prioritario) · Revisor/QA (bloque 4) · Entrega + billing (bloques 5-6) — planificadas; ver [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Documentación
 
