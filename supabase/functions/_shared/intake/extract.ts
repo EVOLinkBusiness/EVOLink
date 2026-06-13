@@ -62,7 +62,9 @@ export async function extractFromScreenshot(
   if (!text) throw new Error("No text block in extraction response");
 
   const raw = JSON.parse(text) as Partial<IntakeForm>;
-  // Si hay captura, por definición el negocio TIENE ficha de Maps.
-  const form: Partial<IntakeForm> = { ...raw, has_maps_listing: true };
+  // Si hay captura, por defecto el negocio TIENE ficha de Maps; pero respetamos un
+  // valor explícito del modelo por si el schema gana en el futuro una señal de
+  // "esto no es una ficha de Maps" (hoy el schema no la expone => siempre true).
+  const form: Partial<IntakeForm> = { ...raw, has_maps_listing: raw.has_maps_listing ?? true };
   return { form, usage: res.usage };
 }

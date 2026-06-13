@@ -39,6 +39,14 @@ Deno.test("extractFromScreenshot: parsea campos + devuelve usage", async () => {
   assertEquals(usage.input_tokens, 1200);
 });
 
+Deno.test("extractFromScreenshot: respeta has_maps_listing explícito (no lo pisa a ciegas)", async () => {
+  // Hoy el schema no expone has_maps_listing => siempre true; este test fija el
+  // contrato por si el schema gana esa señal: un valor explícito no se sobrescribe.
+  const client = fakeClient({ business_name: "X", has_maps_listing: false });
+  const { form } = await extractFromScreenshot(client, [IMG]);
+  assertEquals(form.has_maps_listing, false);
+});
+
 Deno.test("extractFromScreenshot: campos no vistos => null preservado", async () => {
   const client = fakeClient({ business_name: "X", phone: null, website_url: null });
   const { form } = await extractFromScreenshot(client, [IMG]);
