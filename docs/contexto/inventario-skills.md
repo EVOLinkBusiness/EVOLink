@@ -20,18 +20,19 @@ Criba informada por las fichas de accesos de los 4 agentes (`docs/bloques/*/refe
 ## Diseño (bloque 3, comparte con 2 y 4)
 | Skill | Bloques | Veredicto |
 |-------|---------|-----------|
-| ui-ux-pro-max | 3 (motor) · 2 (informe) | Mantener |
+| **estilo-evolink** | 3 (etapas 2-3) | **ACTIVA** — voz de diseño EVOLink, consolida el grupo taste (creada 2026-06-13); coexiste con `frontend-design` (método general) |
+| ui-ux-pro-max | 3 (motor) · 2 (informe) | Mantener (activa, **en evaluación** — se decide tras las primeras webs) |
 | brandkit | 3 | Mantener |
 | redesign-skill | 3-4 (upsell) | Mantener |
 | image-to-code-skill | 3 | Mantener |
 | imagegen-frontend-web | 3 | Mantener |
-| gpt-tasteskill | 3 (macro-motion GSAP) | Mantener |
+| gpt-tasteskill | 3 (macro-motion GSAP) | Mantener (activa, **en evaluación** — se decide tras las primeras webs) |
 | ui-animation | 3 (micro-interacciones) | Mantener |
 | output-skill | 3 (salida completa) | Mantener |
 | web-design-guidelines | 3-4 (QA) · 2 | Mantener |
-| **taste-skill** | 3 | **ARCHIVADA** (aprobado 2026-06-10) — sustituida por `frontend-design` oficial |
-| **soft-skill** | 3 | **ARCHIVADA** (aprobado 2026-06-10) — solapaba con frontend-design |
-| **minimalist-skill** | 3 | **ARCHIVADA** (aprobado 2026-06-10) — solapaba con frontend-design |
+| **taste-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
+| **soft-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
+| **minimalist-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
 
 ## Nuevas (instaladas por la orden de setup; aprobadas en planificación 2026-06-10)
 | Skill | Bloques | Por qué entra | Instalación |
