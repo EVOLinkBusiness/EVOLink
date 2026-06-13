@@ -48,7 +48,9 @@ export function findContrastFailures(html: string, min = 4.5): ContrastFailure[]
 // Enlaces internos que no resuelven. Externos (http/tel/mailto) se ignoran aqui.
 export function findBrokenLinks(html: string, validRoutes: string[]): string[] {
   const broken: string[] = [];
-  const hrefs = [...html.matchAll(/href\s*=\s*["']([^"']*)["']/gi)].map((m) => m[1]);
+  // Solo anclas de navegacion <a href>. Los <link>/<script>/<img> apuntan a
+  // assets gestionados por el build (p.ej. /_astro/*.css), no a rutas.
+  const hrefs = [...html.matchAll(/<a\b[^>]*?\shref\s*=\s*["']([^"']*)["']/gi)].map((m) => m[1]);
   for (const href of hrefs) {
     if (/^(https?:|tel:|mailto:)/i.test(href)) continue;
     if (href.startsWith("#")) {
