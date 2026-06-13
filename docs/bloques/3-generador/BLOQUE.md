@@ -1,6 +1,6 @@
 # Bloque 3 — Generador web
 
-**Estado:** ACTIVO — **implementado v1 (2026-06-13)**. Co-prioritario con el bloque 1.
+**Estado:** **implementado v1 (2026-06-13) + diagnóstico superado (2026-06-14) → listo para piloto.** Co-prioritario con el bloque 1.
 **Rol en el tejido:** Creación. Fórmula: **fabricar → evaluar → entregar**.
 **Spec (fuente de diseño):** `docs/superpowers/specs/2026-06-12-generador-v1-design.md`.
 **Plan de implementación:** `docs/superpowers/plans/2026-06-13-generador-v1.md`.

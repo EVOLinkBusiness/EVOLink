@@ -16,8 +16,8 @@ El proyecto se organiza en **7 bloques** bajo `docs/bloques/`. Cada bloque es un
 | # | Bloque | Es |
 |---|--------|----|
 | 1 | captacion | Agente Captación/Seguimiento (co-prioritario) |
-| 2 | auditor | Agente Auditor *(activo, F1)* |
-| 3 | generador | Agente Generador web + índice de skills de diseño |
+| 2 | auditor | Agente Auditor *(✅ completado, F1)* |
+| 3 | generador | Agente Generador web *(✅ v1 + diagnóstico, listo para piloto)* |
 | 4 | revisor | Agente Revisor/QA (Playwright; depende del 3) |
 | 5 | pagos | Stripe + facturación ES + impagos |
 | 6 | mantenimiento | Operación de webs vivas (futuro) |

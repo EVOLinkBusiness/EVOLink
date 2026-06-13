@@ -4,12 +4,12 @@ Fases de alto nivel, organizadas alrededor del **mapa de 4 agentes**. La fase ac
 
 - **F0 — Infraestructura** ✅
   Repo, metodología (CLAUDE/HANDOVER/docs), `/inicio` `/cierre`, hooks, Supabase conectado (MCP), set de skills curado.
-- **F1 — Agente Auditor + backbone Supabase** ⏳ *(actual)* → bloque `2-auditor`
-  Auditoría de presencia digital (negocios sin web), datos manuales, motor híbrido (reglas + Claude), supervisión + `agent_runs`, dashboard interno, informe web. Spec: `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
-- **Validación (en paralelo, SIN promocionarse)**
-  (a) Piloto rediseño de `mudanzasroy.es` (prueba la vía Generador/rediseño + portfolio/testimonio). (b) Auditorías manuales internas sobre reformas reales (afinar el Auditor con datos reales). Riesgo bajo, sin prometer nada al mercado.
-- **F2 — Agente Generador web** → bloque `3-generador`
-  De auditoría + datos → web funcional. Fórmula **fabricar → evaluar → entregar** con rúbrica explícita; **Playwright** en el paso "evaluar". Posicionamiento: rápidas, con marca, no plantilla.
+- **F1 — Agente Auditor + backbone Supabase** ✅ → bloque `2-auditor`
+  Auditoría de presencia digital (negocios sin web), datos manuales, motor híbrido (reglas + Claude), supervisión + `agent_runs`, informe. **Completada:** 2 Edge Functions activas, suite 35/35. Spec: `docs/superpowers/specs/2026-06-08-auditor-v1-design.md`.
+- **F2 — Agente Generador web** ✅ v1 → bloque `3-generador`
+  De auditoría + datos → web Astro con marca. Fórmula **fabricar → evaluar → entregar** con rúbrica explícita; ensamblado determinista + **Playwright** + Lighthouse. **Implementado y diagnosticado** (suite 24/24, 3 muestras con variedad real). Posicionamiento: rápidas, con marca, no plantilla.
+- **▶ Piloto `mudanzasroy.es` (local)** ⏳ *(siguiente)*
+  Cadena Auditor→Generador con datos reales como **cliente nuevo** (no rediseño, no se toca la web actual), servida en `localhost` — sin deploy; Cloudflare diferido. Prueba empírica de los 2 agentes encadenados. *Bloqueado por credenciales:* `generador/.env` (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`). En paralelo (validación sin promo): auditorías manuales sobre reformas reales.
 - **Agente Captación/Seguimiento — CO-PRIORITARIO** *(no al final)* → bloque `1-captacion`
   Asistente: rastrea / cualifica / contacta / secuencia / contenido; los socios cierran. Arranca con datos manuales/semi y crece (Google Places cuando toque). Límites legales (RGPD/ePrivacy/LSSI); nada de frío masivo.
 - **Agente Revisor/QA de webs** → bloque `4-revisor`
