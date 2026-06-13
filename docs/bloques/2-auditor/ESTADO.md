@@ -2,7 +2,9 @@
 
 Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → plan aprobado → **COMPLETADO (backend v1 + entrada de datos)**. Plan: `docs/superpowers/plans/2026-06-11-auditor-v1-backend.md`.
 
-> **✅ COMPLETADO 2026-06-13.** Smoke test real pasado (run `e55cdfe5`: score 47, 7 hallazgos por clave, `supervisor_flags: []`, coste $0,062). Dos bugs detectados y corregidos en el smoke test (share_slug base64url, dimension sin enum) — ver CHANGELOG. Suite: 33/33 en verde. Ambas Edge Functions desplegadas y activas. Pendiente futuro: smoke real del camino de visión (`extract-presence` con captura real) → se cubre en el piloto de ETAPA 4.
+> **✅ COMPLETADO 2026-06-13.** Smoke test real pasado (run `e55cdfe5`: score 47, 7 hallazgos por clave, `supervisor_flags: []`, coste $0,062). Dos bugs detectados y corregidos en el smoke test (share_slug base64url, dimension sin enum) — ver CHANGELOG. Ambas Edge Functions desplegadas y activas.
+>
+> **✅ Revisión profunda + caza de bugs 2026-06-13 (previa a ETAPA 2).** Backend revisado a fondo: sólido y defensivo. 1 bug vivo corregido (coste mal tarifado Opus/Haiku, commit `632424e`) + 1 endurecimiento (`has_maps_listing`, `130b133`) + 3 limitaciones documentadas (sin CORS, cost:0 en runs fallidos, recencia=0) — ver CHANGELOG. **Camino de visión de `extract-presence` validado end-to-end con captura real** (MG Reformas Integrales, coste $0,0027, sin bugs). Suite: **35/35 en verde**.
 
 ## Checklist de ejecución del plan (backend, Plan A)
 | Task | Qué | Estado |
@@ -27,16 +29,12 @@ Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → pl
 | 14 | Edge Function `extract-presence` (borrador para confirmación, TDD, 3 tests) | ✅ |
 | 15 | CHANGELOG + BLOQUE.md (contrato de entrada) + ESTADO.md | ✅ |
 
-Suite completa: **32/32 en verde** (`npx deno test supabase/functions/`). Confirmación humana = bucle manual en v1 (UI en Plan B).
+Suite completa: **35/35 en verde** (`npx deno test supabase/functions/`). Confirmación humana = bucle manual en v1 (UI en Plan B).
 
-## Dónde retomar (Task 16 — smoke test real)
-0. **Deploy hecho**: `generate-audit` (v1) y `extract-presence` (v1) DESPLEGADAS y ACTIVAS. Solo falta el secret `ANTHROPIC_API_KEY` para que respondan en tiempo de ejecución.
-1. **Usuario**: añadir crédito en https://console.anthropic.com/settings/billing (org "EVOLink" creada, saldo 0 $) → crear API key en https://console.anthropic.com/settings/keys → guardarla como secret `ANTHROPIC_API_KEY` en https://supabase.com/dashboard/project/kdernwxajzzrriolnnmq/functions/secrets (vía dashboard; la clave nunca pasa por el repo).
-2. **Camino de entrada nuevo**: aportar captura(s) de la ficha de Maps del piloto → invocar `extract-presence` → revisar el borrador `IntakeForm` → confirmar/corregir (rellenar nicho y zona, que no salen de la captura).
-3. Insertar el `clients` confirmado (vía `formToClient`) en `clients` por MCP `execute_sql`.
-4. Invocar `generate-audit` (POST `/functions/v1/generate-audit`, Bearer = anon key) y verificar `audits` + `agent_runs` (tokens, coste, flags) + el run `auditor_intake` de la extracción.
-5. Revisión humana de la primera narrativa → cualquier corrección a prompt/rúbrica va al CHANGELOG citando el run.
-6. Commit de cierre `chore: auditor v1 backend deployed and smoke-tested`.
+## Dónde retomar
+El bloque está cerrado y validado (incluido el camino de visión). **Próximo: ETAPA 2 — Generador (bloque 3).** Pendientes menores del Auditor antes de un cliente real:
+- **Redeploy de `generate-audit`** para que el fix de coste (`632424e`) entre en producción (el código desplegado aún tarifa todo a Opus). Vía MCP `deploy_edge_function` pasando `_shared/` completo.
+- Plan B (dashboard Next + informe público `/r/[slug]`) — diferido tras los 3 agentes; al construirlo, resolver CORS de las Edge Functions.
 
 ## Notas técnicas de la ejecución
 - No hay Docker ni Deno instalados en la máquina: usar `npx deno test supabase/functions/` (Deno 2.8.3 vía npm) y verificación RLS por SQL remoto.
