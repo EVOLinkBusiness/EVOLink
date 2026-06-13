@@ -1,26 +1,23 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-13
+**Última sesión:** 2026-06-14
 **Branch:** main
-**Último commit:** `docs: handover generador v1 + remove completed ORDEN`
+**Último commit:** `docs: generador diagnostic complete, pilot-ready`
 
 ---
 
 ## Estado del proyecto
-**Agente Auditor v1 (bloque 2) COMPLETADO** y **Agente Generador v1 (bloque 3) IMPLEMENTADO Y VERIFICADO E2E.** El Generador convierte el `result` de una auditoría + datos de cliente en una web Astro con marca, evaluada (Playwright + Lighthouse) y desplegable en preview de Cloudflare Pages. Pipeline de 6 etapas, 2 checkpoints humanos, registro por etapa en `agent_runs`. Suite del bloque **20/20**. E2E con cliente ficticio `demo`: ensamblado determinista → build Astro OK → evaluación **PASA** (Lighthouse móvil 98, 0 enlaces rotos, 0 placeholders, contraste AA, formulario presente).
+**Agente Auditor v1 (bloque 2) COMPLETADO** y **Agente Generador v1 (bloque 3) IMPLEMENTADO, VERIFICADO E2E y DIAGNOSTICADO → listo para piloto.** El Generador convierte el `result` de una auditoría + datos de cliente en una web Astro con marca, evaluada (Playwright + Lighthouse) y desplegable en preview de Cloudflare Pages. Pipeline de 6 etapas, 2 checkpoints humanos, registro por etapa en `agent_runs`. Suite del bloque **24/20→24** (4 tests adversarios nuevos). E2E con cliente ficticio `demo`: PASA (Lighthouse móvil 98). **Diagnóstico v1 superado (2026-06-14):** robustez (build hostil sin XSS ni fugas), skills sin contradicciones, calidad con 3 muestras distintas (todas PASAN, variedad real); 1 bug corregido (`Footer.nombre_negocio` derivado) + 2 hallazgos de calidad documentados (ver CHANGELOG del bloque 3).
 
 ## Bloque activo
 **3-generador (implementado v1)** — detalle en `docs/bloques/3-generador/ESTADO.md`. El motor vive en `generador/`.
 
-## Hecho en la sesión actual (2026-06-13)
-- **ETAPA 2 ejecutada de principio a fin** (ORDEN del Generador, FASE 0→9, metodología superpowers).
-- Plan de implementación (`docs/superpowers/plans/2026-06-13-generador-v1.md`), aprobado en HARD-GATE.
-- **Skill `estilo-evolink`** (consolida el grupo taste, adaptada al nicho local; coexiste con `frontend-design` por decisión del usuario).
-- **Motor `generador/`** (Node + Astro, TDD con `node:test`): `schema.ts` (validadores) · catálogo Astro (8 familias ×2-3 variantes + Layout) + plantilla base (Astro 5 + Tailwind 3) · **ensamblador determinista** · **pipeline de evaluación** (checkers + Playwright + Lighthouse + informe) · `agent_runs` (constructor + insert) · deploy Cloudflare Pages preview (guarded).
-- **Skill `generador-web`** (orquestación de las 6 etapas, 2 checkpoints, máx. 2 iteraciones).
-- **Migración aditiva `agent_runs`** (stage/output/flags) aplicada al remoto vía MCP.
-- Documentación del bloque (BLOQUE/ESTADO/CHANGELOG) + 7 decisiones nuevas en `BUSINESS.md` (§Decisiones, ahora 15).
-- 3 correcciones registradas en el CHANGELOG del bloque (checker de anclas, Lighthouse `userDataDir`, auto-install en evaluate).
+## Hecho en la sesión actual (2026-06-14)
+- **Diagnóstico profundo del Generador v1 ejecutado de principio a fin** (ORDEN-Diagnostico, FASE 0→5, metodología superpowers). ORDEN autoborrada al completarse.
+- **FASE 1 (robustez):** suite adversaria (`generador/tests/adversarial.test.ts`) + build con datos hostiles → 0 fugas `null`/`undefined`, escapado completo de Astro, sin XSS. **1 bug corregido:** `Footer.nombre_negocio` se exigía al plan aunque se deriva de marca → quitado de `required` (`67b6abb`).
+- **FASE 2 (skills):** límites verificados; sin contradicciones duras entre `frontend-design`/`estilo-evolink`/`generador-web`; añadido el orden explícito al orquestador (`d3b1c46`).
+- **FASE 3 (calidad):** 3 webs ficticias (garcia/novabano/montanes) con paletas/variantes/secciones distintas → variedad real, no plantilla; las 3 PASAN (Lighthouse 91/94/98). 2 hallazgos: `google_fonts` `<link>` hunde el móvil bajo 90; HeroC con imagen sobredimensionada penaliza LCP (ambos los caza el gate ≥90).
+- Suite del bloque: **24/24**. CHANGELOG + ESTADO del bloque 3 actualizados (`2212bce`).
 
 ## Decisiones cerradas
 Ver `docs/BUSINESS.md` §Decisiones (**15 activas**; las 9-15 son del Generador v1).
@@ -37,7 +34,7 @@ Ver `docs/BUSINESS.md` §Decisiones (**15 activas**; las 9-15 son del Generador 
 - 28 symlinks pre-existentes en las carpetas-grupo de `.claude/skills/` (Superpowers/Taste Skill/UI-UX skill/Backend), ya gitignored → poda pendiente (ajena al Generador).
 
 ## Próximo paso concreto
-**Run piloto del Generador** (web nueva de cliente real del nicho). Antes, reunir las credenciales del run vivo (Cloudflare, Supabase service role, endpoint Resend). Ver Pendientes.
+**Piloto parcial mudanzasroy.es en LOCAL** (cadena Auditor → Generador, sin deploy; Cloudflare diferido) — ORDEN `2026-06-13-ORDEN-Piloto-Mudanzasroy-Local.md` (sin tocar hasta confirmar). **Bloqueado por credenciales:** falta `generador/.env` con `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (para invocar el Auditor como Edge Function y escribir en `agent_runs`). Para el piloto local NO hacen falta Cloudflare ni Resend.
 
 ## Pendientes
 - [ ] Datos de prueba del smoke en Supabase (cliente sintético "Mudanzas Roy" `39932a68…` + audits + runs): limpiar antes del piloto real si molestan.
