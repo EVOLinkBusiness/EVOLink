@@ -1,0 +1,125 @@
+{
+  "cliente_id": "demo",
+  "tipo": "one-page",
+  "navegacion": [
+    { "label": "Servicios", "ruta": "#servicios" },
+    { "label": "Trabajos", "ruta": "#galeria" },
+    { "label": "Contacto", "ruta": "#contacto" }
+  ],
+  "contacto": {
+    "email": "hola@reformasbilbaonorte.es",
+    "telefono": "944 123 456",
+    "direccion": "Bilbao y alrededores (Bizkaia)",
+    "form_action": "https://formspree.io/f/demo-reformas"
+  },
+  "paginas": [
+    {
+      "ruta": "/",
+      "titulo": "Reformas integrales en Bilbao | Reformas Bilbao Norte",
+      "descripcion": "Reformas de cocinas, baños y viviendas completas en Bilbao y Bizkaia. Presupuesto cerrado, plazos que se cumplen y más de 15 años de experiencia.",
+      "secciones": [
+        {
+          "componente": "Header",
+          "variante": "A",
+          "props": {
+            "nav": [
+              { "label": "Servicios", "ruta": "#servicios" },
+              { "label": "Trabajos", "ruta": "#galeria" },
+              { "label": "Contacto", "ruta": "#contacto" }
+            ],
+            "cta": { "label": "Pedir presupuesto", "ruta": "#contacto" }
+          }
+        },
+        {
+          "componente": "Hero",
+          "variante": "A",
+          "props": {
+            "titulo": "Reformas integrales en Bilbao, sin sorpresas",
+            "subtitulo": "Cocinas, baños y viviendas completas con presupuesto cerrado y plazos que cumplimos. Más de 15 años reformando hogares en Bizkaia.",
+            "cta_label": "Pedir presupuesto gratis",
+            "cta_ruta": "#contacto",
+            "cta_secundario": { "label": "Ver trabajos", "ruta": "#galeria" },
+            "imagen": {
+              "src": "https://picsum.photos/seed/reforma-cocina/800/600",
+              "alt": "Cocina reformada por Reformas Bilbao Norte"
+            }
+          }
+        },
+        {
+          "componente": "Services",
+          "variante": "A",
+          "props": {
+            "titulo": "Qué hacemos",
+            "items": [
+              { "titulo": "Reforma de cocinas", "texto": "Diseño, fontanería, electricidad y muebles a medida. Tu cocina lista para usar." },
+              { "titulo": "Reforma de baños", "texto": "Cambio de bañera por plato de ducha, alicatado, sanitarios y ventilación." },
+              { "titulo": "Viviendas completas", "texto": "Coordinamos todos los gremios para que solo te preocupes de la mudanza." }
+            ]
+          }
+        },
+        {
+          "componente": "Gallery",
+          "variante": "A",
+          "props": {
+            "titulo": "Trabajos realizados",
+            "imagenes": [
+              { "src": "https://picsum.photos/seed/reforma-1/600/800", "alt": "Cocina moderna en blanco y madera" },
+              { "src": "https://picsum.photos/seed/reforma-2/600/600", "alt": "Baño con plato de ducha y azulejo gris" },
+              { "src": "https://picsum.photos/seed/reforma-3/600/700", "alt": "Salón reformado con suelo laminado" },
+              { "src": "https://picsum.photos/seed/reforma-4/600/500", "alt": "Dormitorio con armario empotrado a medida" }
+            ]
+          }
+        },
+        {
+          "componente": "Testimonials",
+          "variante": "B",
+          "props": {
+            "titulo": "Opiniones de clientes",
+            "items": [
+              { "nombre": "Marta G.", "rol": "Deusto", "texto": "Reformaron nuestra cocina en tres semanas y cumplieron el presupuesto al céntimo. Muy recomendables." },
+              { "nombre": "Iñaki R.", "rol": "Getxo", "texto": "Cambiaron la bañera por ducha y dejaron el baño impecable. Limpios y serios." }
+            ]
+          }
+        },
+        {
+          "componente": "Cta",
+          "variante": "A",
+          "props": {
+            "titulo": "¿Tienes una reforma en mente?",
+            "texto": "Te visitamos sin compromiso y te damos un presupuesto cerrado en 48 horas.",
+            "cta_label": "Pedir presupuesto",
+            "cta_ruta": "#contacto"
+          }
+        },
+        {
+          "componente": "ContactForm",
+          "variante": "A",
+          "props": {
+            "titulo": "Pide tu presupuesto",
+            "email": "hola@reformasbilbaonorte.es",
+            "telefono": "944 123 456",
+            "direccion": "Bilbao y alrededores (Bizkaia)",
+            "form_action": "https://formspree.io/f/demo-reformas"
+          }
+        },
+        {
+          "componente": "Footer",
+          "variante": "A",
+          "props": {
+            "nombre_negocio": "Reformas Bilbao Norte",
+            "nav": [
+              { "label": "Servicios", "ruta": "#servicios" },
+              { "label": "Trabajos", "ruta": "#galeria" },
+              { "label": "Contacto", "ruta": "#contacto" }
+            ],
+            "contacto": {
+              "email": "hola@reformasbilbaonorte.es",
+              "telefono": "944 123 456",
+              "direccion": "Bilbao y alrededores (Bizkaia)"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

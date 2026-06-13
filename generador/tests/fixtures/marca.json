@@ -1,0 +1,19 @@
+{
+  "nombre_negocio": "Reformas Bilbao Norte",
+  "colores": {
+    "primario": "#1f5f3f",
+    "secundario": "#14352a",
+    "acento": "#d98324",
+    "fondo": "#ffffff",
+    "texto": "#1a1a1a"
+  },
+  "tipografia": {
+    "titulares": "Geist",
+    "cuerpo": "Geist"
+  },
+  "logo": {
+    "tipo": "wordmark",
+    "texto": "Reformas Bilbao Norte"
+  },
+  "tono": "cercano y profesional"
+}
