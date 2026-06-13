@@ -23,12 +23,12 @@ Motor en `generador/` (Node + Astro). Comandos desde `generador/`:
 ## Etapa 2 — Marca  → `clientes/<id>/marca.json`
 - Quién: **modelo + `brandkit`**.
 - Qué: si el cliente no tiene marca, genera básica (colores + tipografía + logo sencillo). Rellena `marca.json` (contrato en `generador/scripts/schema.ts`): `colores.primario` obligatorio (hex), resto opcional con defaults.
-- Skills: `brandkit` (identidad), `estilo-evolink` (paleta de confianza, contraste AA, evitar look de plantilla).
+- Skills (en este orden): `brandkit` (identidad) → `frontend-design` (método general anti-plantilla, 1º) → `estilo-evolink` (voz EVOLink, 2º; precedencia en conflicto: paleta de confianza, contraste AA).
 
 ## Etapa 3 — Plan de página  → `clientes/<id>/plan-pagina.json`
 - Quién: **modelo** (compone catálogo + redacta textos).
 - Qué: elige componentes y **variantes** del catálogo (`generador/catalogo/`) por sección y redacta TODOS los textos reales (cero relleno). La variedad nace de combinar variantes distintas con marcas distintas. Respeta el contrato: componentes/variantes/props válidas (`CATALOG_CONTRACT`).
-- Skills: `estilo-evolink` (voz de diseño: jerarquía, anti-plantilla, 1 CTA por intención, mobile-first), `ui-ux-pro-max` (motor de diseño, *en evaluación*), `copywriting` (textos que captan en el nicho). Para macro-motion concreto: `gpt-tasteskill` (*en evaluación*); micro-interacciones: `ui-animation`.
+- Skills (en este orden): `frontend-design` (método general distintivo, 1º) → `estilo-evolink` (voz de diseño: jerarquía, anti-plantilla, 1 CTA por intención, mobile-first; 2º y manda en conflicto), `ui-ux-pro-max` (motor de diseño, *en evaluación*), `copywriting` (textos que captan en el nicho). Para macro-motion concreto: `gpt-tasteskill` (*en evaluación*); micro-interacciones: `ui-animation`.
 - Catálogo v1: Header, Hero, Services, Testimonials, Gallery, Cta, ContactForm, Footer (2-3 variantes c/u) + Layout. Si falta una pieza, se crea como **componente nuevo del catálogo** (reutilizable), nunca código suelto del cliente.
 
 > ## 🔵 CHECKPOINT 1 (brief + diseño) — OBLIGATORIO
