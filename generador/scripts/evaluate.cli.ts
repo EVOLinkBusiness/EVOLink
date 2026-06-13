@@ -46,6 +46,10 @@ async function main(): Promise<void> {
   const siteDir = join(clienteDir, "site");
   const distDir = join(siteDir, "dist");
   if (!existsSync(distDir)) {
+    if (!existsSync(join(siteDir, "node_modules"))) {
+      console.log("node_modules no existe; instalando dependencias del sitio...");
+      execSync("npm install", { cwd: siteDir, stdio: "inherit" });
+    }
     console.log("dist no existe; construyendo el sitio...");
     execSync("npm run build", { cwd: siteDir, stdio: "inherit" });
   }

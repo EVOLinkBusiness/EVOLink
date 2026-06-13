@@ -11,5 +11,6 @@ Reglas: nunca borrar entradas · si un cambio se revierte, se añade entrada nue
 
 ---
 
+- **[2026-06-13]** En FASE 8, re-ensamblar borra `site/` entero (incl. `node_modules`) y el build de `evaluate` fallaba (`astro` no encontrado) → `evaluate.cli.ts` hace `npm install` automático si falta `node_modules` antes de construir (pipeline reanudable tras un ensamblado limpio) → aprobado por Kravitzz. Run: manual (E2E `demo`).
 - **[2026-06-13]** El checker de enlaces (`evaluate-checks.ts`) marcaba como roto el `href` de `<link rel=stylesheet>` (`/_astro/*.css`), no solo las anclas → `findBrokenLinks` ahora solo escanea `<a href>` (los assets los gestiona el build) → aprobado por Kravitzz. Run: manual (E2E `demo`, FASE 8).
 - **[2026-06-13]** Lighthouse fallaba con EPERM al crear su `user-data-dir` en el temp global del sistema (entorno restringido) → `evaluate.cli.ts` lanza chrome-launcher con un `userDataDir` local dentro de `clientes/<id>/eval/` → aprobado por Kravitzz. Run: manual (E2E `demo`, Lighthouse 98).
