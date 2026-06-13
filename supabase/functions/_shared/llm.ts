@@ -12,7 +12,12 @@ export const NARRATIVE_SCHEMA = {
       items: {
         type: "object",
         properties: {
-          dimension: { type: "string" },
+          // Claves exactas de las dimensiones (no etiquetas): el supervisor casa
+          // la cobertura de hallazgos contra estas claves.
+          dimension: {
+            type: "string",
+            enum: ["gbp", "reviews", "maps_visibility", "opportunity", "nap", "social", "local_seo"],
+          },
           finding: { type: "string" },
           severity: { type: "string", enum: ["low", "medium", "high"] },
         },
@@ -97,7 +102,8 @@ Subscores deterministas (0-100, null = datos insuficientes): ${JSON.stringify(in
 Score global: ${input.overall ?? "datos insuficientes"}
 Dimensiones sin datos: ${input.insufficient.join(", ") || "ninguna"}
 
-Redacta la auditoría: resumen ejecutivo, un hallazgo por dimensión con datos, y recomendaciones priorizadas.`,
+Redacta la auditoría: resumen ejecutivo, un hallazgo por dimensión con datos, y recomendaciones priorizadas.
+En cada hallazgo, el campo "dimension" DEBE ser la clave exacta (gbp, reviews, maps_visibility, opportunity, nap, social, local_seo), no una etiqueta legible; el nombre legible va en el texto del hallazgo.`,
     }],
   });
   if (res.stop_reason === "refusal") {

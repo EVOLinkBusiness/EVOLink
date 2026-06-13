@@ -35,3 +35,18 @@ Deno.test("generateNarrative: parsea JSON y devuelve usage", async () => {
 Deno.test("NARRATIVE_SCHEMA exige los 3 campos", () => {
   assertEquals(NARRATIVE_SCHEMA.required, ["executive_summary", "findings", "recommendations"]);
 });
+
+Deno.test("NARRATIVE_SCHEMA: dimension restringida a las 7 claves (no etiquetas)", () => {
+  // Sin enum, el modelo devuelve 'Google Business Profile' y el supervisor
+  // no casa la cobertura => 7 flags espurios (run dffb63b6).
+  const dimEnum = NARRATIVE_SCHEMA.properties.findings.items.properties.dimension.enum;
+  assertEquals(dimEnum, [
+    "gbp",
+    "reviews",
+    "maps_visibility",
+    "opportunity",
+    "nap",
+    "social",
+    "local_seo",
+  ]);
+});
