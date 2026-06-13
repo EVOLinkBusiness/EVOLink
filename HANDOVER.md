@@ -1,51 +1,50 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-11
+**Última sesión:** 2026-06-13
 **Branch:** main
-**Último commit:** `2c86e11 test: RLS policies via pgTAP (verified remotely via SQL, no local Docker)`
+**Último commit:** `53eab2d docs: mark auditor block v1 COMPLETADO (smoke test passed)`
 
 ---
 
 ## Estado del proyecto
-**Primer código de producto del proyecto: backend del Agente Auditor v1 ejecutado al ~90%.** Las 4 tablas + RLS están aplicadas al Supabase remoto (`kdernwxajzzrriolnnmq`), el motor de scoring/narrativa/supervisión tiene 16/16 tests en verde, y la Edge Function `generate-audit` está DESPLEGADA y ACTIVA. Solo falta el secret `ANTHROPIC_API_KEY` y el smoke test real (Task 11 del plan).
+**Agente Auditor v1 COMPLETADO al 100%** (ETAPA 1 del plan maestro). Backend + entrada de datos funcionando end-to-end: el smoke test real generó una auditoría completa (score 47, 7 hallazgos, recomendaciones, `supervisor_flags: []`, coste $0,062). Ambas Edge Functions (`generate-audit` v3, `extract-presence` v1) desplegadas y ACTIVAS. Suite 33/33 en verde.
 
 ## Bloque activo
-2-auditor — detalle en `docs/bloques/2-auditor/ESTADO.md` (checklist de las 11 tasks con commits)
+ninguno (2-auditor cerrado) — detalle en `docs/bloques/2-auditor/ESTADO.md`. Próximo: bloque 3 (Generador), ETAPA 2.
 
-## Hecho en la sesión actual (2026-06-11)
-- Plan de implementación escrito y aprobado: `docs/superpowers/plans/2026-06-11-auditor-v1-backend.md` (11 tasks).
-- Tasks 1-10 completadas con TDD y commits atómicos (11 commits): estructura supabase/, esquema, RLS, scoring, cliente Opus 4.8, supervisor, Edge Function, rubrica.md.
-- Migraciones aplicadas al remoto vía MCP: schema, rls, hardening (advisors), grants (el proyecto tiene default privileges recortados — sin GRANTs explícitos la Edge Function no podría escribir).
-- RLS verificada por SQL remoto (anon no lee nada; no-admin autenticado 0 filas; `get_public_audit` solo aprueba; datos de prueba limpiados).
-- Edge Function `generate-audit` desplegada (versión 1, ACTIVA, verify_jwt on).
-- 2 correcciones anotadas en `docs/bloques/2-auditor/CHANGELOG.md` (supervisor defensivo + hardening/grants).
-- Usuario creó la organización "EVOLink" en Anthropic Console (platform.claude.com) — saldo aún 0 $.
+## Hecho en la sesión actual (2026-06-13)
+- ETAPA 1 (anexo de entrada): formulario formal `IntakeForm` + `validateForm`/`formToClient` (`_shared/intake/form.ts`), extracción por visión Haiku desde captura de Maps (`_shared/intake/extract.ts`), y Edge Function `extract-presence` (devuelve borrador para confirmación humana, registra run). 16 tests nuevos, TDD.
+- Smoke test real de `generate-audit` con un negocio sintético: pasó tras corregir 2 bugs que destapó.
+- **Fix 1 (bloqueante):** `audits.share_slug` usaba `encode(..,'base64url')` (no existe en Postgres) → todo INSERT reventaba. Migración `20260613000001` + esquema corregido.
+- **Fix 2:** el modelo devolvía `dimension` como etiqueta, no clave → 7 flags de supervisión espurios → `enum` en `NARRATIVE_SCHEMA` + prompt. Verificado limpio.
+- Confirmación humana = bucle manual en v1 (UI a Plan B). Camino de visión con captura real se valida en el piloto (ETAPA 4).
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones (8 activas). Nueva de esta sesión (añadir a BUSINESS.md si se considera de negocio): narrativa con **Opus 4.8** + supervisión con **Haiku 4.5** (elección del usuario en el plan aprobado).
+Ver `docs/BUSINESS.md` §Decisiones (8 activas). Sin decisiones nuevas de negocio esta sesión (modelo de visión Haiku 4.5 es decisión técnica, ya en CHANGELOG/BLOQUE).
 
 ## Riesgos y avisos vivos
 - Nada de producto sin spec aprobada (HARD-GATE).
 - El riesgo es de demanda/distribución, no técnico → validar sin promocionarse.
 - No superar ~50 €/mes hasta tener clientes que paguen.
 - Tras `npx skills add`: aplanar la skill + borrar `.agents/` + `skills-lock.json`.
-- Skills globales no usadas cargan tokens cada sesión → poda pendiente (ver inventario).
-- La clave `ANTHROPIC_API_KEY` NUNCA se commitea: solo como secret de Edge Function (dashboard o CLI).
-- El MCP de Supabase pide re-OAuth cada sesión (el usuario autoriza en el navegador).
-- No hay Docker ni Deno en la máquina: tests con `npx deno test supabase/functions/`; RLS se verifica por SQL remoto.
+- Skills globales no usadas cargan tokens cada sesión → poda pendiente.
+- `ANTHROPIC_API_KEY` NUNCA se commitea: solo como secret de Edge Function. **Ya está puesto** (smoke test funcionó).
+- El MCP de Supabase pide re-OAuth cada sesión (el usuario autoriza en navegador).
+- No hay Docker ni Deno en la máquina: tests con `npx deno test supabase/functions/`; RLS por SQL remoto.
+- Deploy de Edge Functions vía MCP `deploy_edge_function`: hay que pasar TODOS los archivos `_shared/` que importa el entrypoint (no bundlea solo).
+- En Supabase, un `DELETE` dentro de un CTE no ve el `INSERT` de un CTE hermano (snapshot). Limpiar datos en sentencias separadas.
 
 ## Próximo paso concreto
-**Terminar Task 11 (smoke test real) — ver pasos exactos en `docs/bloques/2-auditor/ESTADO.md` §Dónde retomar.**
-1. Usuario: añadir crédito (5 $) en console.anthropic.com/settings/billing → crear API key → pegarla como secret `ANTHROPIC_API_KEY` en el dashboard de Supabase (Edge Functions → Secrets).
-2. Claude: insertar negocio real en `clients`, invocar `generate-audit`, verificar `audits` + `agent_runs` (coste ~0,05-0,10 €).
-3. Usuario: revisar la primera narrativa (calidad/tono) → commit de cierre.
+**ETAPA 2 — Crear el Generador (bloque 3). Leer y ejecutar `2026-06-12-ORDEN-Programacion-Agente-Generador_v1.md` de principio a fin.**
+1. Verificar primero que el Auditor sigue al 100% (lo está).
+2. La ORDEN incluye su propia fase final de autoborrado.
 
 ## Pendientes
-- [ ] Task 11: secret + smoke test + revisión humana de la 1ª auditoría.
-- [ ] Supabase bajo perfil conjunto: renombrar org a "EVOLink" + invitar al socio como Owner (supabase.com/dashboard → org Settings/Team). En Anthropic Console igual: Miembros → invitar socio.
-- [ ] Anthropic Console: rellenar datos fiscales cuando exista CIF/NIF (no bloquea; ver nota en próxima sesión).
-- [ ] Plan B del Auditor (dashboard Next + informe público `/r/[slug]`) cuando el smoke test pase.
-- [ ] Sesión: canales de promoción (punto abierto en BUSINESS.md).
+- [ ] Datos de prueba del smoke test en Supabase (cliente sintético "Mudanzas Roy" `39932a68…` + 2 audits + runs): limpiar antes del piloto real de ETAPA 4 si molestan.
+- [ ] Smoke real del camino de visión (`extract-presence` con captura real de Maps) → ETAPA 4.
+- [ ] Supabase/Anthropic bajo perfil conjunto: renombrar org + invitar al socio como Owner.
+- [ ] Anthropic Console: datos fiscales cuando exista CIF/NIF.
+- [ ] Plan B del Auditor (dashboard Next + informe público `/r/[slug]`) — diferido tras los 3 agentes.
 - [ ] Spec del bloque 5 (pagos) antes del primer cliente.
 
 ## Comando para reanudar
