@@ -1,6 +1,8 @@
 # ESTADO — Bloque 2 (Auditor) · flujo superpowers
 
-Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → plan aprobado → **código ejecutado al ~90%**. Plan: `docs/superpowers/plans/2026-06-11-auditor-v1-backend.md`.
+Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → plan aprobado → **COMPLETADO (backend v1 + entrada de datos)**. Plan: `docs/superpowers/plans/2026-06-11-auditor-v1-backend.md`.
+
+> **✅ COMPLETADO 2026-06-13.** Smoke test real pasado (run `e55cdfe5`: score 47, 7 hallazgos por clave, `supervisor_flags: []`, coste $0,062). Dos bugs detectados y corregidos en el smoke test (share_slug base64url, dimension sin enum) — ver CHANGELOG. Suite: 33/33 en verde. Ambas Edge Functions desplegadas y activas. Pendiente futuro: smoke real del camino de visión (`extract-presence` con captura real) → se cubre en el piloto de ETAPA 4.
 
 ## Checklist de ejecución del plan (backend, Plan A)
 | Task | Qué | Estado |
@@ -15,7 +17,7 @@ Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → pl
 | 8 | Supervisor reglas + Haiku (4 tests) | ✅ `e6a0d76` |
 | 9 | Edge Function `generate-audit` (2 tests; 16/16 total en verde) | ✅ `b386b92` |
 | 10 | `rubrica.md` del bloque | ✅ `4ece835` |
-| 11→16 | Deploy + smoke test real | 🔶 `generate-audit` DESPLEGADA y ACTIVA; falta secret + smoke test |
+| 11→16 | Deploy + smoke test real | ✅ ambas funciones desplegadas; smoke test pasado (run `e55cdfe5`) + 2 fixes |
 
 ## Entrada de datos (anexo 2026-06-12) — añadido al plan original
 | Task | Qué | Estado |
