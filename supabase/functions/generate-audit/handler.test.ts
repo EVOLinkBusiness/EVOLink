@@ -1,4 +1,4 @@
-import { assertEquals } from "jsr:@std/assert";
+import { assertAlmostEquals, assertEquals } from "jsr:@std/assert";
 import { type Deps, handleGenerateAudit } from "./index.ts";
 
 function makeDeps(overrides: Partial<Deps> = {}): { deps: Deps; writes: Record<string, unknown>[] } {
@@ -63,6 +63,52 @@ Deno.test("happy path: crea audit draft + agent_run ok", async () => {
   const run = writes.find((w) => w.table === "agent_runs")!;
   assertEquals(run.status, "ok");
   assertEquals(run.agent, "auditor");
+});
+
+Deno.test("coste: narrativa (Opus) y supervisor (Haiku) se tarifan por separado", async () => {
+  // 1ª llamada = narrativa (Opus $5/$25); 2ª = supervisor (Haiku $1/$5).
+  // El bug original sumaba ambos y aplicaba tarifa Opus a todo => coste inflado.
+  let call = 0;
+  const { deps, writes } = makeDeps({
+    llm: {
+      // deno-lint-ignore require-await
+      create: async () => {
+        call += 1;
+        if (call === 1) {
+          return {
+            content: [{
+              type: "text",
+              text: JSON.stringify({
+                executive_summary:
+                  "Resumen ejecutivo lo bastante largo para pasar todas las reglas del supervisor sin generar ningún flag.",
+                findings: [{ dimension: "gbp", finding: "ok", severity: "low" }],
+                recommendations: [
+                  { priority: 1, action: "a", impact: "i" },
+                  { priority: 2, action: "b", impact: "i" },
+                  { priority: 3, action: "c", impact: "i" },
+                ],
+              }),
+            }],
+            stop_reason: "end_turn",
+            usage: { input_tokens: 1000, output_tokens: 500 }, // Opus
+          };
+        }
+        return {
+          content: [{ type: "text", text: JSON.stringify({ flags: [] }) }],
+          stop_reason: "end_turn",
+          usage: { input_tokens: 200, output_tokens: 40 }, // Haiku
+        };
+      },
+    },
+  });
+  await handleGenerateAudit({ client_id: "c1" }, deps);
+  const run = writes.find((w) => w.table === "agent_runs")!;
+  // tokens: totales (Opus + Haiku)
+  assertEquals(run.tokens_in, 1200);
+  assertEquals(run.tokens_out, 540);
+  // coste: Opus 1000·5 + 500·25 ; Haiku 200·1 + 40·5 ; todo /1e6
+  const expected = (1000 * 5 + 500 * 25 + 200 * 1 + 40 * 5) / 1_000_000;
+  assertAlmostEquals(run.cost as number, expected, 1e-12);
 });
 
 Deno.test("fallo de Claude: guarda subscores deterministas + run error", async () => {

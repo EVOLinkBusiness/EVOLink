@@ -4,9 +4,12 @@ import type { PresenceData } from "../_shared/scoring/types.ts";
 import { generateNarrative, type NarrativeClient, realClient } from "../_shared/llm.ts";
 import { supervise } from "../_shared/supervisor.ts";
 
-// Precios Opus 4.8 ($5/$25 MTok) — coste aproximado del run para agent_runs.cost
-const PRICE_IN = 5 / 1_000_000;
-const PRICE_OUT = 25 / 1_000_000;
+// Precios por modelo ($/MTok) — la narrativa va en Opus 4.8 y el supervisor en
+// Haiku 4.5: tarifar ambos a precio Opus inflaba agent_runs.cost (lo mina el bloque 7).
+const OPUS_IN = 5 / 1_000_000;
+const OPUS_OUT = 25 / 1_000_000;
+const HAIKU_IN = 1 / 1_000_000;
+const HAIKU_OUT = 5 / 1_000_000;
 
 export interface ClientRow {
   id: string;
@@ -28,7 +31,8 @@ export async function handleGenerateAudit(
   deps: Deps,
 ): Promise<{ audit_id?: string; status: string; narrative_error?: boolean }> {
   const t0 = Date.now();
-  let tokensIn = 0, tokensOut = 0;
+  let opusIn = 0, opusOut = 0; // narrativa (Opus)
+  let haikuIn = 0, haikuOut = 0; // supervisor (Haiku)
 
   // 1. Carga
   const client = await deps.loadClient(body.client_id);
@@ -56,11 +60,11 @@ export async function handleGenerateAudit(
       overall: scoring.overall,
       insufficient: scoring.insufficient,
     });
-    tokensIn += usage.input_tokens;
-    tokensOut += usage.output_tokens;
+    opusIn += usage.input_tokens;
+    opusOut += usage.output_tokens;
     const sup = await supervise(deps.llm, narrative, scoring.subscores, scoring.insufficient);
-    tokensIn += sup.usage.input_tokens;
-    tokensOut += sup.usage.output_tokens;
+    haikuIn += sup.usage.input_tokens;
+    haikuOut += sup.usage.output_tokens;
     flags = sup.flags;
     result = { ...result, ...narrative };
     llmDraft = { ...narrative }; // señal de aprendizaje: original vs result editado
@@ -83,9 +87,9 @@ export async function handleGenerateAudit(
     audit_id: auditId,
     status: narrativeError ? "error" : "ok",
     input: { client_id: body.client_id },
-    tokens_in: tokensIn,
-    tokens_out: tokensOut,
-    cost: tokensIn * PRICE_IN + tokensOut * PRICE_OUT,
+    tokens_in: opusIn + haikuIn,
+    tokens_out: opusOut + haikuOut,
+    cost: opusIn * OPUS_IN + opusOut * OPUS_OUT + haikuIn * HAIKU_IN + haikuOut * HAIKU_OUT,
     duration_ms: Date.now() - t0,
     error: narrativeError,
   });
