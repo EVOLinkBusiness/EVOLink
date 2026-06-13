@@ -7,7 +7,7 @@
 Dado un negocio sin web (o con web floja), produce una auditoría profesional de presencia digital. Doble función: **gancho de venta + brief** para el bloque 3 (Generador).
 
 ## Contrato (de la spec aprobada)
-- **Entrada:** datos del negocio (manuales en v1).
+- **Entrada:** formulario formal `IntakeForm` (anexo 2026-06-12) — obligatorios (nombre, nicho, zona, teléfono, ¿web?, ¿ficha Maps?) + opcionales. Dos vías lo rellenan: captura de Maps por visión (v1, `extract-presence`) o Places API (v2). El humano confirma antes de auditar; el scoring opera siempre sobre el formulario confirmado, nunca sobre la captura.
 - **Salida:** auditoría (motor híbrido: reglas deterministas + Claude para juicio/redacción) + informe web + registro completo en `agent_runs` (inputs, tokens, coste, duración, estado, flags de supervisión).
 - **Supervisión:** pase de revisión (reglas + check Claude) antes del humano.
 
