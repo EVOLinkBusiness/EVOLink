@@ -16,7 +16,8 @@
     "lighthouse": "^13.4.0",
     "playwright": "^1.60.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "wrangler": "^4.100.0"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.1"
