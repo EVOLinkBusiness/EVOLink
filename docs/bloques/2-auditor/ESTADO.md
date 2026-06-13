@@ -28,7 +28,7 @@ Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → pl
 Suite completa: **32/32 en verde** (`npx deno test supabase/functions/`). Confirmación humana = bucle manual en v1 (UI en Plan B).
 
 ## Dónde retomar (Task 16 — smoke test real)
-0. **Pendiente de deploy**: `extract-presence` aún NO está desplegada (falta el secret; misma key que `generate-audit`). Desplegar junto al smoke test.
+0. **Deploy hecho**: `generate-audit` (v1) y `extract-presence` (v1) DESPLEGADAS y ACTIVAS. Solo falta el secret `ANTHROPIC_API_KEY` para que respondan en tiempo de ejecución.
 1. **Usuario**: añadir crédito en https://console.anthropic.com/settings/billing (org "EVOLink" creada, saldo 0 $) → crear API key en https://console.anthropic.com/settings/keys → guardarla como secret `ANTHROPIC_API_KEY` en https://supabase.com/dashboard/project/kdernwxajzzrriolnnmq/functions/secrets (vía dashboard; la clave nunca pasa por el repo).
 2. **Camino de entrada nuevo**: aportar captura(s) de la ficha de Maps del piloto → invocar `extract-presence` → revisar el borrador `IntakeForm` → confirmar/corregir (rellenar nicho y zona, que no salen de la captura).
 3. Insertar el `clients` confirmado (vía `formToClient`) en `clients` por MCP `execute_sql`.
