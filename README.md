@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-14):** Auditor (F1) en producción · **Generador (F2) v1 implementado, diagnosticado y listo para piloto**. Próximo: piloto real Auditor→Generador en local (`mudanzasroy.es`).
+> 🟢 **Estado (2026-06-14):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (cerebro `impeccable`+`design-taste-frontend`, despensa `skillui`, 8 previews/cliente).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -18,8 +18,9 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 ```
 [██████████] F0  Infraestructura ............... ✅ completada
 [██████████] F1  Agente Auditor ................ ✅ completada · en producción
-[██████████] F2  Agente Generador web .......... ✅ v1 + diagnóstico · listo para piloto
-[███░░░░░░░] ▶   Piloto mudanzasroy (local) .... ⏳ siguiente · bloqueado por credenciales
+[██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
+[██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
+[██████░░░░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · spec + skills listas
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
 [░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
@@ -35,7 +36,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 ### ⏳ En curso / siguiente
 
-- **▶ Piloto real `mudanzasroy.es` en local** — cadena Auditor→Generador con datos reales, servida en `localhost` (sin deploy; Cloudflare diferido). *Bloqueado por credenciales:* `generador/.env` con `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`.
+- **Generador v2 — rediseño artístico** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); lo mejorable es la estética. v2 inyecta criterio real: cerebro `impeccable` (anti-slop) + `design-taste-frontend` (diales), despensa de ADN visual (`skillui`) y **8 previews por cliente** (5 nuestras + 1 de URL de referencia manual + 2 de Google Stitch manual). Spec y skills ya listas; siguiente: ampliar despensa → regenerar previews → `writing-plans` del agente de producción.
 
 ### ⬜ Por hacer
 
@@ -54,7 +55,7 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 |---|--------|-----|--------|
 | 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | ⬜ pendiente |
 | 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital | ✅ completado |
-| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 · listo para piloto |
+| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ⏳ rediseño v2 |
 | 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | ⬜ pendiente |
 | 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos | ⬜ pendiente |
 | 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas | ⬜ futuro |
@@ -66,6 +67,48 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 1-CAPTACIÓN → 2-AUDITOR → 3-GENERADOR → 4-REVISOR → entrega + Stripe → mantenimiento
       └────────── Supabase (multi-tenant + RLS) · agent_runs → 7-mejora ──────────┘
 ```
+
+## Sub-bloques — pasos dentro de cada bloque
+
+`[x]` terminado · `[~]` en curso · `[ ]` por hacer.
+
+**1 · Captación** `░░░░░░░░░░` 0%
+- [ ] brainstorming → spec
+- [ ] fuente de datos (manual → Google Places)
+- [ ] cualificación + secuencia de contacto
+- [ ] cumplimiento legal (RGPD/ePrivacy/LSSI)
+- [ ] registro en `agent_runs`
+
+**2 · Auditor** `██████████` 100%
+- [x] esquema Supabase + RLS + grants
+- [x] rúbrica determinista + narrativa (Opus)
+- [x] supervisor (Haiku) + `agent_runs`
+- [x] entrada por visión (ficha de Maps)
+- [x] 2 Edge Functions desplegadas (suite 35/35)
+- [ ] *(diferido)* Plan B: dashboard + informe público `/r/[slug]`
+
+**3 · Generador** `██████░░░░` ~60%
+- [x] motor v1 (catálogo + ensamblador + evaluación + registro)
+- [x] piloto E2E (mudanzasroy, Lighthouse móvil 100)
+- [x] rediseño v2: spec + cerebro `impeccable`+`design-taste-frontend` + despensa `skillui`
+- [~] 8 previews/cliente (5 nuestras + 1 URL manual + 2 Google Stitch manual)
+- [ ] `writing-plans` del agente de producción
+- [ ] deploy vivo (Cloudflare Pages + Resend)
+
+**4 · Revisor / QA** `░░░░░░░░░░` 0% *(depende del 3)*
+- [ ] spec
+- [ ] suite QA Playwright (enlaces, formularios, responsive, contraste)
+- [ ] upsell de rediseño
+
+**5 · Pagos** `░░░░░░░░░░` 0%
+- [ ] spec Stripe + facturación ES
+- [ ] cuota + gestión de impagos
+
+**6 · Mantenimiento** `░░░░░░░░░░` 0% *(futuro)*
+- [ ] spec operación de webs vivas
+
+**7 · Mejora** `░░░░░░░░░░` 0% *(futuro)*
+- [ ] minado de `agent_runs` → propuestas de diffs a skills/rúbricas
 
 ## Stack
 

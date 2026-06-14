@@ -12,7 +12,7 @@ De la auditoría (bloque 2) + datos del cliente → 7 previews premium para eleg
 ## Flujo interno (4 fases — detalle en `referencias/flujo-previews.md`)
 - **0 · Despensa (una vez):** skillUI extrae ADN de webs premium → ingredientes reutilizables.
 - **1 · Brief y encaje:** auditoría → impeccable fija marca → elige ingredientes que encajan.
-- **2 · 7 previews:** 5 (impeccable+taste+despensa, HTML) + 2 (Google Stitch).
+- **2 · 8 previews:** 5 (impeccable+taste+despensa, HTML) + 1 (URL de referencia manual) + 2 (Google Stitch manual).
 - **3 · Elección:** elegir / mezclar / pedir variantes.
 - **4 · Ascenso + QA + entrega:** elegida → Next+Tailwind → playwright-cli → OK → resto de bloques.
 
@@ -22,7 +22,8 @@ De la auditoría (bloque 2) + datos del cliente → 7 previews premium para eleg
 | Cerebro (criterio + anti-slop) | `impeccable` |
 | Diales (variación, motion, densidad) | `design-taste-frontend` |
 | Despensa (ADN de webs premium) | `skillui` (vía npx) → `referencias-visuales/` |
-| 2 previews extra | Google Stitch (MCP) |
+| Tipografías (pares premium por perfil) | `referencias/tipografias.md` |
+| 2 previews extra | Google Stitch **manual** (prompts en `referencias/stitch-prompts.md`) |
 | Evaluar / QA | `playwright-cli` + `verification-before-completion` |
 | Ascenso | Next + Tailwind + Vercel (solo la elegida) |
 

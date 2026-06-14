@@ -1,11 +1,11 @@
 ---
-description: Cierra la sesión. Reescribe HANDOVER.md (y el ESTADO.md del bloque activo) y propone commit.
+description: Cierra la sesión. Reescribe HANDOVER.md (y el ESTADO.md del bloque activo), actualiza README.md y propone commit.
 allowed-tools: Read, Write, Bash(git status*), Bash(git log*), Bash(git diff*), Bash(git add *), Bash(git commit -m *)
 ---
 
 # /cierre — Cierre de sesión (EVOLink)
 
-Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 7 tool calls.
+Ejecuta en orden SIN pedir confirmación entre pasos. Máximo 8 tool calls.
 
 1. Una sola llamada Bash: `git status --short && echo --- && git log --oneline -5`
 2. Si en la sesión se avanzó un bloque, actualiza `docs/bloques/<bloque>/ESTADO.md` (checklist + "dónde retomar"). Si un cambio fue una corrección motivada por un fallo, añade una línea a su `CHANGELOG.md`.
@@ -47,10 +47,11 @@ Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta 
 /inicio
 ```
 
-4. Muestra `git diff HANDOVER.md` (primeras 40 líneas).
-5. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
-6. Si confirma: propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
-7. Termina con: "Sesión cerrada. Próxima vez: /inicio".
+4. Si en la sesión cambió el **estado o el avance** de algún bloque, actualiza `README.md` (raíz): pon al día su **barra de progreso** y el checklist de **sub-bloques** (formato definido en el propio README). Si no cambió nada de progreso, no lo toques.
+5. Muestra `git diff --stat` (HANDOVER.md, README.md y el ESTADO.md si se tocó).
+6. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
+7. **Solo con tu OK:** propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
+8. Termina con: "Sesión cerrada. Próxima vez: /inicio".
 
 Reglas:
 - Las decisiones cerradas viven SOLO en `docs/BUSINESS.md`: el HANDOVER las referencia, NUNCA las copia.

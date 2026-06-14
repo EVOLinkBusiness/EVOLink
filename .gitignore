@@ -50,3 +50,6 @@ Thumbs.db
 # Scratch del CLI de skills (npx skills add): se aplana a .claude/skills/, no se versiona.
 .agents/
 skills-lock.json
+
+# Previews de prueba del rediseño generador v2 (temporal; se borra en Fase 7)
+docs/bloques/3-generador/_pruebas/
