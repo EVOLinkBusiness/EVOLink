@@ -16,6 +16,7 @@ export interface ClientRow {
   name: string;
   category: string | null;
   city: string | null;
+  website_url: string | null;
   presence_data: PresenceData;
 }
 
@@ -55,6 +56,7 @@ export async function handleGenerateAudit(
       clientName: client.name,
       category: client.category,
       city: client.city,
+      websiteUrl: client.website_url ?? null,
       presence: client.presence_data ?? {},
       subscores: scoring.subscores,
       overall: scoring.overall,
@@ -108,7 +110,7 @@ if (import.meta.main) {
       const deps: Deps = {
         loadClient: async (id) => {
           const { data, error } = await supabase.from("clients")
-            .select("id,name,category,city,presence_data").eq("id", id).maybeSingle();
+            .select("id,name,category,city,website_url,presence_data").eq("id", id).maybeSingle();
           if (error) throw error;
           return data as ClientRow | null;
         },

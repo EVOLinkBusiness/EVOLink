@@ -53,6 +53,7 @@ export interface NarrativeInput {
   clientName: string;
   category: string | null;
   city: string | null;
+  websiteUrl: string | null; // web propia del cliente (clients.website_url); null = no consta
   presence: PresenceData;
   subscores: Subscores;
   overall: number | null;
@@ -76,10 +77,11 @@ export function realClient(apiKey: string): NarrativeClient {
 }
 
 const SYSTEM =
-  `Eres el analista senior de EVOLink, agencia web. Redactas auditorías de presencia digital para negocios locales SIN página web, con tono profesional y persuasivo (es un gancho de venta honesto).
+  `Eres el analista senior de EVOLink, agencia web. Redactas auditorías de presencia digital para negocios locales, con tono profesional y persuasivo (es un gancho de venta honesto).
 REGLAS ESTRICTAS:
 - Los números (scores) los calcula el sistema: EXPLÍCALOS, jamás inventes métricas ni cifras nuevas.
 - Si una dimensión está marcada como "datos insuficientes", dilo tal cual; no especules.
+- Página web: se te indica si el negocio YA tiene web propia (con su URL) o si no consta. Si la tiene, trátala como un activo existente; NUNCA afirmes que no tiene web, que su presencia digital es "nula/inexistente", ni recomiendes "crear/lanzar una web" que ya existe (a lo sumo, mejorarla u optimizarla). Si no consta, su ausencia sí es un hallazgo válido.
 - Escribe en español. Recomendaciones accionables, priorizadas, máximo 5.`;
 
 export async function generateNarrative(
@@ -97,6 +99,7 @@ export async function generateNarrative(
       content: `Negocio: ${input.clientName} (${input.category ?? "sin categoría"}, ${
         input.city ?? "sin ciudad"
       })
+Página web propia: ${input.websiteUrl ? `SÍ — ${input.websiteUrl} (activo existente; no es un hallazgo de ausencia)` : "no consta"}
 Datos de presencia (recogidos a mano): ${JSON.stringify(input.presence)}
 Subscores deterministas (0-100, null = datos insuficientes): ${JSON.stringify(input.subscores)}
 Score global: ${input.overall ?? "datos insuficientes"}

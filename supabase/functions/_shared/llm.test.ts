@@ -1,4 +1,4 @@
-import { assertEquals } from "jsr:@std/assert";
+import { assert, assertEquals, assertStringIncludes } from "jsr:@std/assert";
 import { generateNarrative, NARRATIVE_SCHEMA, type NarrativeClient } from "./llm.ts";
 
 const FAKE_NARRATIVE = {
@@ -23,6 +23,7 @@ Deno.test("generateNarrative: parsea JSON y devuelve usage", async () => {
     clientName: "Mudanzas Roy",
     category: "mudanzas",
     city: "Madrid",
+    websiteUrl: null,
     presence: {},
     subscores: { gbp: 40 } as never,
     overall: 40,
@@ -30,6 +31,78 @@ Deno.test("generateNarrative: parsea JSON y devuelve usage", async () => {
   });
   assertEquals(r.narrative.executive_summary, "Resumen ejecutivo de prueba.");
   assertEquals(r.usage.input_tokens, 1000);
+});
+
+// Captura los params enviados al modelo para auditar el prompt construido.
+function capturingClient(): { client: NarrativeClient; seen: () => Record<string, unknown> } {
+  let captured: Record<string, unknown> = {};
+  const client: NarrativeClient = {
+    // deno-lint-ignore require-await
+    create: async (params) => {
+      captured = params;
+      return {
+        content: [{ type: "text", text: JSON.stringify(FAKE_NARRATIVE) }],
+        stop_reason: "end_turn",
+        usage: { input_tokens: 1, output_tokens: 1 },
+      };
+    },
+  };
+  return { client, seen: () => captured };
+}
+
+function userMsg(params: Record<string, unknown>): string {
+  return (params.messages as { content: string }[])[0].content;
+}
+
+// Bug (run 8fe639d0): con web propia el Auditor decía "no existe página web" y
+// recomendaba crearla, porque website_url nunca llegaba al prompt.
+Deno.test("generateNarrative: la web propia llega al prompt cuando existe", async () => {
+  const { client, seen } = capturingClient();
+  await generateNarrative(client, {
+    clientName: "Mudanzas Roy",
+    category: "mudanzas",
+    city: "Madrid",
+    websiteUrl: "https://mudanzasroy.es",
+    presence: {},
+    subscores: {} as never,
+    overall: null,
+    insufficient: [],
+  });
+  assertStringIncludes(userMsg(seen()), "https://mudanzasroy.es");
+  assertStringIncludes(userMsg(seen()), "SÍ");
+});
+
+Deno.test("generateNarrative: sin web propia el prompt dice 'no consta'", async () => {
+  const { client, seen } = capturingClient();
+  await generateNarrative(client, {
+    clientName: "Negocio X",
+    category: "mudanzas",
+    city: "Madrid",
+    websiteUrl: null,
+    presence: {},
+    subscores: {} as never,
+    overall: null,
+    insufficient: [],
+  });
+  const msg = userMsg(seen());
+  assertStringIncludes(msg, "no consta");
+  assert(!msg.includes("https://"));
+});
+
+Deno.test("generateNarrative: el SYSTEM prohíbe negar/duplicar una web existente", async () => {
+  const { client, seen } = capturingClient();
+  await generateNarrative(client, {
+    clientName: "Mudanzas Roy",
+    category: "mudanzas",
+    city: "Madrid",
+    websiteUrl: "https://mudanzasroy.es",
+    presence: {},
+    subscores: {} as never,
+    overall: null,
+    insufficient: [],
+  });
+  const system = seen().system as string;
+  assertStringIncludes(system, "NUNCA afirmes que no tiene web");
 });
 
 Deno.test("NARRATIVE_SCHEMA exige los 3 campos", () => {

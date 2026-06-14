@@ -1,4 +1,4 @@
-import { assertAlmostEquals, assertEquals } from "jsr:@std/assert";
+import { assertAlmostEquals, assertEquals, assertStringIncludes } from "jsr:@std/assert";
 import { type Deps, handleGenerateAudit } from "./index.ts";
 
 function makeDeps(overrides: Partial<Deps> = {}): { deps: Deps; writes: Record<string, unknown>[] } {
@@ -10,6 +10,7 @@ function makeDeps(overrides: Partial<Deps> = {}): { deps: Deps; writes: Record<s
         name: "Mudanzas Roy",
         category: "mudanzas",
         city: "Madrid",
+        website_url: null,
         presence_data: {
           gbp: {
             has_hours: true,
@@ -109,6 +110,50 @@ Deno.test("coste: narrativa (Opus) y supervisor (Haiku) se tarifan por separado"
   // coste: Opus 1000·5 + 500·25 ; Haiku 200·1 + 40·5 ; todo /1e6
   const expected = (1000 * 5 + 500 * 25 + 200 * 1 + 40 * 5) / 1_000_000;
   assertAlmostEquals(run.cost as number, expected, 1e-12);
+});
+
+Deno.test("website_url del cliente llega al prompt de la narrativa (regresión run 8fe639d0)", async () => {
+  let firstUserMsg = "";
+  let call = 0;
+  const { deps } = makeDeps({
+    loadClient: () =>
+      Promise.resolve({
+        id: "c1",
+        name: "Mudanzas Roy",
+        category: "mudanzas",
+        city: "Madrid",
+        website_url: "https://mudanzasroy.es",
+        presence_data: {},
+      }),
+    llm: {
+      // deno-lint-ignore require-await
+      create: async (params) => {
+        call += 1;
+        if (call === 1) {
+          firstUserMsg = (params.messages as { content: string }[])[0].content;
+        }
+        return {
+          content: [{
+            type: "text",
+            text: JSON.stringify({
+              executive_summary:
+                "Resumen ejecutivo lo bastante largo para pasar todas las reglas del supervisor sin generar ningún flag.",
+              findings: [{ dimension: "gbp", finding: "ok", severity: "low" }],
+              recommendations: [
+                { priority: 1, action: "a", impact: "i" },
+                { priority: 2, action: "b", impact: "i" },
+                { priority: 3, action: "c", impact: "i" },
+              ],
+            }),
+          }],
+          stop_reason: "end_turn",
+          usage: { input_tokens: 10, output_tokens: 5 },
+        };
+      },
+    },
+  });
+  await handleGenerateAudit({ client_id: "c1" }, deps);
+  assertStringIncludes(firstUserMsg, "https://mudanzasroy.es");
 });
 
 Deno.test("fallo de Claude: guarda subscores deterministas + run error", async () => {
