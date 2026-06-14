@@ -31,8 +31,14 @@ Motor en `generador/` (Node + Astro). Comandos desde `generador/`:
 - Skills (en este orden): `frontend-design` (método general distintivo, 1º) → `estilo-evolink` (voz de diseño: jerarquía, anti-plantilla, 1 CTA por intención, mobile-first; 2º y manda en conflicto), `ui-ux-pro-max` (motor de diseño, *en evaluación*), `copywriting` (textos que captan en el nicho). Para macro-motion concreto: `gpt-tasteskill` (*en evaluación*); micro-interacciones: `ui-animation`.
 - Catálogo v1: Header, Hero, Services, Testimonials, Gallery, Cta, ContactForm, Footer (2-3 variantes c/u) + Layout. Si falta una pieza, se crea como **componente nuevo del catálogo** (reutilizable), nunca código suelto del cliente.
 
+## Etapa 3b — 5 previews y elección (REGLA FIJA)
+- Quién: **modelo** (+ `ui-ux-pro-max` para variar estilo/paleta/tipografía; `ui-animation` si se piden variantes de motion).
+- Qué: **SIEMPRE se preparan 5 previews de diseño distintas** (mockups visuales: HTML servido en local para verlas/animaciones, o captura) que exploran direcciones diferenciadas. Se presentan a los socios; **eligen 1**.
+- **Al elegir la ganadora, se BORRAN las otras 4** (no se conservan). El artefacto que sigue es el de la dirección elegida.
+- De la preview ganadora se elabora la **web final** (Etapas 4-5): se traduce a `marca.json` + `plan-pagina.json` del catálogo y se ensambla. Las previews son exploración desechable; la web final siempre sale del catálogo determinista.
+
 > ## 🔵 CHECKPOINT 1 (brief + diseño) — OBLIGATORIO
-> Tras etapas 1 y 3, presenta **juntos** `brief.md` y `plan-pagina.json` (con los textos) a los socios. **Nada se construye sin este OK.** Si hay cambios, itera el plan antes de seguir.
+> Tras etapas 1, 3 y 3b, presenta **juntos** `brief.md` + las **5 previews** + el `plan-pagina.json` (con los textos) a los socios. **Nada se construye sin este OK.** El socio elige 1 de las 5 → se borran las otras 4 → se construye la web final desde esa. Si hay cambios, itera antes de seguir.
 
 ## Etapa 4 — Construcción  → `clientes/<id>/site/` (Astro compilable)
 - Quién: **script determinista**. `npm run assemble -- <id>`.
