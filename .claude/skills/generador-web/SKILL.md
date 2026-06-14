@@ -32,10 +32,12 @@ Motor en `generador/` (Node + Astro). Comandos desde `generador/`:
 - Catálogo v1: Header, Hero, Services, Testimonials, Gallery, Cta, ContactForm, Footer (2-3 variantes c/u) + Layout. Si falta una pieza, se crea como **componente nuevo del catálogo** (reutilizable), nunca código suelto del cliente.
 
 ## Etapa 3b — 5 previews y elección (REGLA FIJA)
-- Quién: **modelo** (+ `ui-ux-pro-max` para variar estilo/paleta/tipografía; `ui-animation` si se piden variantes de motion).
-- Qué: **SIEMPRE se preparan 5 previews de diseño distintas** (mockups visuales: HTML servido en local para verlas/animaciones, o captura) que exploran direcciones diferenciadas. Se presentan a los socios; **eligen 1**.
+- Quién: **modelo** (+ `ui-ux-pro-max` estilo/paleta/tipografía; `ui-animation` micro-motion; `gpt-tasteskill` macro-motion/GSAP; `frontend-design` método anti-plantilla).
+- Qué: **SIEMPRE se preparan 5 previews**, cada una con **diseño distinto Y mecánicas de animación distintas** (mockups HTML servidos en local para ver el motion en vivo). Se presentan a los socios; **eligen 1**.
+- **Mezcla permitida (mix-and-match):** el socio puede pedir "diseño de la N + mecánicas de la M" (p.ej. preview 3 con el motion de la 5). El modelo compone esa combinación antes de construir.
 - **Al elegir la ganadora, se BORRAN las otras 4** (no se conservan). El artefacto que sigue es el de la dirección elegida.
-- De la preview ganadora se elabora la **web final** (Etapas 4-5): se traduce a `marca.json` + `plan-pagina.json` del catálogo y se ensambla. Las previews son exploración desechable; la web final siempre sale del catálogo determinista.
+- **Aprendizaje estadístico:** cada elección se registra en `agent_runs` (stage `preview-choice`, `output: { design, motion, mixed }`). El bloque 7 (Mejora) mina la frecuencia → qué diseños/mecánicas se eligen más para priorizarlos en futuras tandas. Determinista primero: es conteo, no preferencia hardcodeada.
+- De la preview ganadora se elabora la **web final** (Etapas 4-5): se traduce a `marca.json` + `plan-pagina.json` del catálogo y se ensambla. Las previews son exploración desechable; la web final sale del catálogo determinista (que se amplía con nuevas variantes cuando una dirección elegida no existe aún en él).
 
 > ## 🔵 CHECKPOINT 1 (brief + diseño) — OBLIGATORIO
 > Tras etapas 1, 3 y 3b, presenta **juntos** `brief.md` + las **5 previews** + el `plan-pagina.json` (con los textos) a los socios. **Nada se construye sin este OK.** El socio elige 1 de las 5 → se borran las otras 4 → se construye la web final desde esa. Si hay cambios, itera antes de seguir.
