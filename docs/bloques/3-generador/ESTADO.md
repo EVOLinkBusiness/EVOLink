@@ -28,7 +28,9 @@ Spec: `docs/superpowers/specs/2026-06-12-generador-v1-design.md` · Plan: `docs/
 Suite: `cd generador && npm test` → **20/20**.
 
 ## Dónde retomar
-El bloque está implementado y verificado E2E con datos ficticios. **Próximo: run piloto real** (web nueva de cliente del nicho) — ver Pendientes del HANDOVER. Para ese run hacen falta credenciales (Cloudflare, Supabase service role, endpoint Resend).
+**✅ PILOTO REAL SUPERADO (2026-06-14):** cadena Auditor→Generador con mudanzasroy en local — auditoría real (`fa6d78c5`) → brief/marca/plan/build → **Lighthouse móvil 100** → 5 etapas en `agent_runs`. Sistema de previews probado a mano (5 diseños `ui-ux-pro-max` + 5 motions `ui-animation` + 5 GSAP `gpt-tasteskill`, con logo+fotos reales). Elección: **F5 (Editorial Bold kinético)**. Veredicto del socio: la cadena funciona; **la estética del catálogo es lo mejorable**.
+
+**Próximo (v1.1, lo lleva el socio en sesiones aparte): MEJORA ESTÉTICA del Generador.** Traer al **motor/catálogo** el lenguaje visual ganador + el **sistema de 5 previews en código** (hoy vive en la skill, no en el motor) + motion (micro `ui-animation` / macro `gpt-tasteskill`); self-hosting de fuentes (quitar dependencia de fuentes de sistema); veredicto sobre `ui-ux-pro-max`/`gpt-tasteskill`. Metodología brainstorming→spec→plan. El socio explorará vía skills/variaciones con varias pruebas.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).
