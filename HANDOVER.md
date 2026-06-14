@@ -2,7 +2,7 @@
 
 **Última sesión:** 2026-06-14
 **Branch:** main
-**Último commit:** `docs: generador diagnostic complete, pilot-ready`
+**Último commit:** `docs: add mudanzasroy local pilot ORDEN (Auditor->Generador chain)`
 
 ---
 
