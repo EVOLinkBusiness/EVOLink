@@ -2,51 +2,51 @@
 
 **Última sesión:** 2026-06-14
 **Branch:** main
-**Último commit:** `docs: close mudanzasroy pilot (chain validated, F5 chosen, ORDEN self-delete)`
+**Último commit:** `ac09429 docs: generador v2 a 8 previews (5+1+2 Stitch manual) + tipografias + stitch-prompts; cierre actualiza README`
 
 ---
 
 ## Estado del proyecto
-**Auditor (bloque 2) ✅ y Generador (bloque 3) ✅ v1, ahora VALIDADOS E2E con el piloto real mudanzasroy en local.** La cadena Auditor→Supabase→Generador funciona de punta a punta (auditoría real → web Astro → Lighthouse móvil 100). El veredicto del socio: la mecánica funciona; **lo mejorable es la estética del Generador** (catálogo se ve "simple"), siguiente foco a cargo del socio en sesiones aparte.
+Auditor (bloque 2) ✅ en producción y Generador (bloque 3) ✅ v1 validado E2E con el piloto real mudanzasroy. **En curso: rediseño artístico v2 del Generador** — el piloto demostró que la cadena funciona; lo mejorable era la estética, así que v2 inyecta criterio real (anti-slop + variedad).
 
 ## Bloque activo
-**3-generador (v1 validado; pendiente mejora estética v1.1)** — detalle en `docs/bloques/3-generador/ESTADO.md`.
+**3-generador (rediseño v2 en curso)** — detalle en `docs/bloques/3-generador/ESTADO.md`.
 
 ## Hecho en la sesión actual (2026-06-14)
-- **Piloto Auditor→Generador (mudanzasroy, local), E2E:** auditoría real `fa6d78c5` → brief/marca/plan/build Astro → **Lighthouse móvil 100**; 5 etapas del Generador en `agent_runs`.
-- **Bug Auditor corregido + desplegado:** la narrativa afirmaba "no tiene web" teniendo web propia → cargado `website_url` al prompt + regla en el SYSTEM (`_shared/llm.ts`, `generate-audit/index.ts`); +4 tests (suite **39/39**); `generate-audit` **v6 ACTIVE**. (`6af9932`)
-- **Regla permanente del pipeline:** el Generador **siempre prepara 5 previews** (diseño Y motion distintos) → elegir 1 → **borrar las otras 4**; **mix-and-match** (diseño N + motion M); **aprendizaje estadístico** vía `agent_runs` (`preview-choice`) para el bloque 7. En `generador-web/SKILL.md` (Etapa 3b + Checkpoint 1). (`55a4425`, `d547b68`)
-- **Sistema de previews probado a mano:** 5 diseños (`ui-ux-pro-max`) + 5 motions (`ui-animation`) + 5 GSAP "fabulosas" (`gpt-tasteskill`), con logo + fotos reales de la web del cliente. Elección final: **F5 (Editorial Bold kinético)**, registrada.
-- **Limpieza Supabase:** borrados duplicados (cliente smoke `39932a68` + sus audits + audit buggy `c08852f0`); **11 `agent_runs` conservados**; queda 1 cliente (`cb1dfbea`) + 1 audit (`fa6d78c5`).
+- **Ejecutada la ORDEN de rediseño (Fases 0-6)** sin tocar el flujo autónomo: GATE Auditor verificado (✅ 100%), spec v2, BLOQUE.md + referencias (skills, despensa, flujo, stitch-prompts, tipografias), rúbrica v2.
+- **Cerebro nuevo instalado y aplanado** (0 symlinks): `impeccable` + `design-taste-frontend`. `skillui` verificado vía npx (no global). Despensa `referencias-visuales/` con smoke-test stripe OK.
+- **Validación a mano (mudanzasroy):** 3 previews de prueba en `_pruebas/` (gitignored) → detector impeccable **0 hallazgos** tras pulir tells (fuentes sobreusadas, marcadores 01/02/03, em-dash). Honestidad mantenida: sin fotos/testimonios inventados.
+- **Plan ampliado y cerrado con el socio:** **8 previews/cliente** (5 nuestras + 1 URL manual + 2 Stitch MANUAL); Stitch vía MCP descartado (comunitarios = riesgo+OAuth); tipografías = doc curado de pares; comando `/cierre` ahora mantiene el README; README con barra de progreso + sub-bloques por bloque.
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones (15 activas). **NUEVA esta sesión:** la **regla de 5 previews del Generador** (5 direcciones → 1 elegida → 4 borradas, mix-and-match, aprendizaje estadístico) — vive en `generador-web/SKILL.md` + CHANGELOG b3. *Avisar:* valorar si elevarla a `BUSINESS.md` como decisión cerrada.
+Ver `docs/BUSINESS.md` §Decisiones (15 activas). **NUEVAS esta sesión (avisar para valorar elevarlas a BUSINESS.md):** (1) cerebro de diseño = `impeccable`+`design-taste-frontend` (descartadas `ui-ux-pro-max` y `ui-animation`); (2) 8 previews/cliente = 5+1+2 Stitch manual; (3) Stitch solo manual (no MCP de terceros); (4) despensa tipográfica curada.
 
 ## Riesgos y avisos vivos
-- Nada de producto sin spec aprobada (HARD-GATE). En el Generador: nada se construye sin Checkpoint 1; nada al cliente sin el Checkpoint final.
-- El riesgo es de demanda/distribución, no técnico → validar sin promocionarse. No superar ~50 €/mes hasta tener clientes que paguen.
-- **Borrados en Supabase:** el clasificador bloquea deletes por patrón inferido ("todos menos X"); para limpiar hay que **nombrar los UUID exactos**.
-- **Generador — credenciales:** `generador/.env` (SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY) ya existe en local, **nunca commitear**. Para deploy vivo faltan Cloudflare (`CLOUDFLARE_*`) y Resend (`form_action`); diferidos a final de proyecto.
-- **Generador — entorno:** Lighthouse necesita `userDataDir` local (temp global da EPERM). Sitios de cliente = Astro self-contained (`npm install` por cliente; `assemble` borra `site/` entero, reinstala). `clientes/` gitignored (incl. las previews del piloto en `clientes/cb1dfbea/previews/`).
-- `ANTHROPIC_API_KEY` NUNCA se commitea (secret de Edge Function).
-- El MCP de Supabase pide re-OAuth cada sesión.
-- No hay Docker ni Deno: tests del Auditor con `npx deno test`; el Generador usa Node (`cd generador && npm test`). Deploy de Edge Functions vía MCP: pasar TODOS los `_shared/` que importa el entrypoint.
+- Nada de producto sin spec aprobada (HARD-GATE). En el Generador: nada al cliente sin Checkpoint final.
+- El riesgo es de demanda/distribución, no técnico → validar sin promocionarse. No superar ~50 €/mes (API ~10 €/mes) hasta tener clientes que paguen.
+- **Stitch:** sin MCP oficial; los comunitarios piden token de Google + tienen riesgo de seguridad → se usa **manual** (export HTML). Re-evaluar MCP solo si se industrializa.
+- **skillui (despensa):** solo extrae webs PÚBLICAS sin login; las grandes con anti-bot (Cloudflare challenge/CAPTCHA) pueden fallar o dar extracción parcial. Extrae el sistema de diseño, NO clona HTML/textos.
+- **Generador — credenciales:** `generador/.env` (SUPABASE_URL + SERVICE_ROLE_KEY) en local, nunca commitear. Cloudflare (`CLOUDFLARE_*`) + Resend (`form_action`) diferidos.
+- **Generador — entorno:** Lighthouse necesita `userDataDir` local. `clientes/` y `docs/bloques/3-generador/_pruebas/` gitignored.
+- `ANTHROPIC_API_KEY` NUNCA se commitea. El MCP de Supabase pide re-OAuth cada sesión. Borrados en Supabase: nombrar UUID exactos.
+- Tests: Auditor `npx deno test`; Generador `cd generador && npm test`. Deploy Edge Functions vía MCP: pasar TODOS los `_shared/`.
 - 28 symlinks pre-existentes en carpetas-grupo de `.claude/skills/` (gitignored) → poda pendiente.
 
 ## Próximo paso concreto
-**Mejora estética del Generador (v1.1)** — lo lleva el socio en sesiones aparte; ver `docs/bloques/3-generador/ESTADO.md`.
-1. brainstorming→spec: llevar el lenguaje visual ganador (F5 Editorial Bold) al **catálogo** como variantes nuevas.
-2. Implementar el **sistema de 5 previews EN CÓDIGO** (motor), hoy solo en la skill.
-3. Self-host de fuentes + motion (`ui-animation` micro / `gpt-tasteskill` macro). El socio explorará vía skills/variaciones con varias pruebas.
+**Sesión nueva: regenerar las 8 previews del Generador v2** (ver `docs/bloques/3-generador/ESTADO.md`).
+1. Ampliar despensa: shortlist mía del sector o URLs del socio → `skillui` (verificar que extraen limpio).
+2. Regenerar 5 previews con DESIGN_VARIANCE/MOTION altos + 1 de URL de referencia manual.
+3. El socio genera 2 de Stitch (manual) con `referencias/stitch-prompts.md`; integrarlas.
+4. Detector impeccable sobre las 8 → servir en local → validar → cerrar ORDEN (Fases 7-8: limpieza `_pruebas/` + autoborrado ORDEN + push) → `writing-plans` del agente de producción.
 
 ## Pendientes
-- [ ] Generador v1.1 estética (próximo paso, arriba).
-- [ ] Siguiente agente del mapa: **Captación (bloque 1, co-prioritario)** y/o Revisor/QA (bloque 4, depende del 3).
+- [ ] Regenerar 8 previews v2 (próximo paso, arriba) + self-host de fuentes en el build final.
+- [ ] Valorar elevar las 4 decisiones nuevas a `docs/BUSINESS.md`.
+- [ ] Siguiente agente: **Captación (bloque 1, co-prioritario)** y/o Revisor/QA (bloque 4, depende del 3).
 - [ ] Spec del bloque 5 (pagos) antes del primer cliente que pague.
-- [ ] Cuentas conjuntas: renombrar org Supabase/Anthropic + invitar al socio como Owner; datos fiscales Anthropic con CIF (el socio pedirá ayuda cuando toque).
-- [ ] Deploy vivo Cloudflare (diferido) + endpoint Resend para la web de un cliente real.
+- [ ] Cuentas conjuntas: renombrar org Supabase/Anthropic + invitar al socio como Owner; datos fiscales con CIF.
+- [ ] Deploy vivo Cloudflare (diferido) + endpoint Resend para una web real.
 - [ ] Poda de junctions en `.claude/skills/` (gitignored).
-- [ ] Evaluar veredicto de `ui-ux-pro-max`/`gpt-tasteskill` tras las primeras webs (anotar en CHANGELOG b3).
 
 ## Comando para reanudar
 /inicio
