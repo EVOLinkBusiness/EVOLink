@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-14):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (cerebro `impeccable`+`design-taste-frontend`, despensa `skillui`, 8 previews/cliente).
+> 🟢 **Estado (2026-06-15):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (cerebro `impeccable`+`design-taste-frontend`, despensa `skillui` con 5 referencias, 8 previews/cliente).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -91,7 +91,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] motor v1 (catálogo + ensamblador + evaluación + registro)
 - [x] piloto E2E (mudanzasroy, Lighthouse móvil 100)
 - [x] rediseño v2: spec + cerebro `impeccable`+`design-taste-frontend` + despensa `skillui`
-- [~] 8 previews/cliente (5 nuestras + 1 URL manual + 2 Google Stitch manual)
+- [~] 8 previews/cliente (5 nuestras + 1 URL manual + 2 Google Stitch manual) — despensa lista (5 refs: stripe, linear, vercel, framer, superlist)
 - [ ] `writing-plans` del agente de producción
 - [ ] deploy vivo (Cloudflare Pages + Resend)
 
