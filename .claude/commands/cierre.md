@@ -48,10 +48,20 @@ Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta 
 ```
 
 4. Si en la sesión cambió el **estado o el avance** de algún bloque, actualiza `README.md` (raíz): pon al día su **barra de progreso** y el checklist de **sub-bloques** (formato definido en el propio README). Si no cambió nada de progreso, no lo toques.
-5. Muestra `git diff --stat` (HANDOVER.md, README.md y el ESTADO.md si se tocó).
+5. Muestra un resumen breve en markdown real (sin code fence, para que el negrita se renderice):
+
+```markdown
+**Hecho en esta sesión:**
+- [bullet por cada cambio significativo, igual que en el HANDOVER]
+
+### ▶ Próximo paso
+**[una frase, igual que en el HANDOVER]**
+```
+
+   Seguido de `git diff --stat` (HANDOVER.md, README.md y el ESTADO.md si se tocó).
 6. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
 7. **Solo con tu OK:** propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
-8. Termina con: "Sesión cerrada. Próxima vez: /inicio".
+8. Termina con: "**Sesión cerrada.** Próxima vez: `/inicio`".
 
 Reglas:
 - Las decisiones cerradas viven SOLO en `docs/BUSINESS.md`: el HANDOVER las referencia, NUNCA las copia.

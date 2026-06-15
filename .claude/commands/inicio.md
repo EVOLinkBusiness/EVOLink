@@ -13,25 +13,23 @@ Ejecuta SIN pedir confirmación entre pasos. Máximo 5 tool calls.
 4. Si el HANDOVER indica un **bloque activo**, lee `docs/bloques/<bloque>/ESTADO.md`.
 5. (Opcional, solo si el HANDOVER apunta a un archivo concreto del próximo paso) léelo.
 
-Reporta en este formato exacto:
+Reporta en este formato EXACTO (markdown real, sin envolver en code fence — el negrita debe renderizarse):
 
+```markdown
+> **Sesión anterior ([fecha del HANDOVER]):** [1-2 frases: qué se hizo y en qué quedó]
+
+**Branch:** [actual] · **Último commit:** `[hash corto]` [mensaje]
+**Sin commitear:** [conteo + 1 línea, o "ninguno"]
+
+**Fase:** [del HANDOVER] · **Bloque activo:** [del HANDOVER, o "ninguno"]
+
+### ▶ Próximo paso
+**[del HANDOVER, una frase]**
+
+**Decisiones:** docs/BUSINESS.md (N activas) · **Bloqueos:** [del HANDOVER, o "ninguno"]
 ```
-Contexto cargado — EVOLink
 
-Última sesión: [fecha del HANDOVER]
-Branch: [actual]
-Último commit: [hash + mensaje corto]
-Cambios sin commit: [conteo + 1 línea, o "ninguno"]
-
-Fase actual: [del HANDOVER]
-Bloque activo: [del HANDOVER, o "ninguno"]
-Próximo paso: [del HANDOVER, una frase]
-
-Decisiones cerradas: ver docs/BUSINESS.md §Decisiones ([N] activas)
-Bloqueos: [del HANDOVER, o "ninguno"]
-
-¿Procedo con el próximo paso o tienes otra prioridad?
-```
+Termina preguntando si procedes con el próximo paso o hay otra prioridad (fuera del bloque anterior, como texto normal).
 
 Reglas:
 - NO leas `docs/` enteros. Solo HANDOVER + CLAUDE + git + ESTADO.md del bloque activo.

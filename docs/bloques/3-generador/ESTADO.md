@@ -32,12 +32,12 @@ Suite: `cd generador && npm test` → **20/20**.
 
 **▶ EN CURSO — REDISEÑO ARTÍSTICO v2 (2026-06-14).** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
 - **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Descartadas `ui-ux-pro-max` y `ui-animation`. Skills instaladas y aplanadas (0 symlinks).
-- **Despensa:** `referencias-visuales/` creada; smoke-test `skillui` OK con stripe (solo 1 referencia, pendiente ampliar).
+- **Despensa:** `referencias-visuales/` creada; smoke-test `skillui` OK con stripe. **Ampliada (2026-06-15)** con linear, vercel, framer, superlist (5 referencias). Hueco identificado: falta una referencia tipo "negocio local" (ver `referencias/despensa.md`).
 - **Docs del bloque actualizados:** BLOQUE.md + `referencias/` (skills, despensa, flujo-previews, **stitch-prompts**, **tipografias**) + rúbrica v2.
 - **Validación a mano (mudanzasroy):** 3 previews de prueba en `_pruebas/` (gitignored) → detector impeccable **0 hallazgos** tras pulir (Space Grotesk→Clash Display, Inter Tight→Hanken Grotesk, números 01/02/03→etiquetas, em-dash→flecha). Veredicto del socio: van bien pero subir variación/motion y ampliar despensa.
 - **Decisión:** **8 previews/cliente** = 5 nuestras + 1 de URL de referencia manual + **2 de Google Stitch MANUAL** (sin MCP: solo servidores comunitarios con riesgo+OAuth). Tipografías = doc curado de pares (`tipografias.md`).
 
-**Próximo (sesión nueva):** 1) ampliar despensa (shortlist mía o URLs del socio → `skillui`); 2) regenerar **5 previews** con VARIANCE/MOTION altos + 1 de URL manual; 3) el socio genera **2 de Stitch** con `referencias/stitch-prompts.md`; 4) detector sobre las 8 → servir en local → validar; 5) `writing-plans` del agente de producción + self-host de fuentes. La ORDEN original queda EXTENDIDA (no autoborrada): sus Fases 7-8 se ejecutan al cerrar el plan ampliado.
+**Próximo (sesión nueva):** ✅ 1) despensa ampliada (linear, vercel, framer, superlist + stripe; 5 referencias, ver `referencias/despensa.md`). Pendiente: 2) regenerar **5 previews** con VARIANCE/MOTION altos + 1 de URL manual; 3) el socio genera **2 de Stitch** con `referencias/stitch-prompts.md`; 4) detector sobre las 8 → servir en local → validar; 5) `writing-plans` del agente de producción + self-host de fuentes. La ORDEN original queda EXTENDIDA (no autoborrada): sus Fases 7-8 se ejecutan al cerrar el plan ampliado.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).

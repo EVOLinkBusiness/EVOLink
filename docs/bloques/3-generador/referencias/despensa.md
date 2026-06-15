@@ -23,3 +23,14 @@ En la Fase 1, impeccable lee el brief del auditor y selecciona la(s) categoría(
 
 ## Cómo ampliar
 Añadir webs es solo repetir el comando `npx skillui` con otra URL. La curación (qué webs entran) es decisión humana de los socios.
+
+## Inventario actual (2026-06-14)
+| Referencia | Tema | Motion | Encaja en |
+|---|---|---|---|
+| `stripe` | light | — | corporativo-confianza |
+| `linear` | dark | expressive | minimal-lujo |
+| `vercel` | light | expressive | minimal-lujo / editorial |
+| `framer` | light | expressive | editorial |
+| `superlist` | light | subtle | servicios-local (más cercano de las 5; sigue siendo SaaS, no negocio local) |
+
+**Hueco real:** ninguna referencia es un "negocio de barrio" genuino (mudanzas, reformas, limpieza). Si las previews de mudanzasroy salen demasiado "SaaS premium", añadir 1-2 referencias de servicios locales con buena web.
