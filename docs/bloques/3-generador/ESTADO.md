@@ -31,13 +31,13 @@ Suite: `cd generador && npm test` → **20/20**.
 **✅ PILOTO REAL SUPERADO (2026-06-14):** cadena Auditor→Generador con mudanzasroy en local — auditoría real (`fa6d78c5`) → brief/marca/plan/build → **Lighthouse móvil 100** → 5 etapas en `agent_runs`. Sistema de previews probado a mano (5 diseños `ui-ux-pro-max` + 5 motions `ui-animation` + 5 GSAP `gpt-tasteskill`, con logo+fotos reales). Elección: **F5 (Editorial Bold kinético)**. Veredicto del socio: la cadena funciona; **la estética del catálogo es lo mejorable**.
 
 **▶ EN CURSO — REDISEÑO ARTÍSTICO v2 (2026-06-14).** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
-- **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Descartadas `ui-ux-pro-max` y `ui-animation`. Skills instaladas y aplanadas (0 symlinks).
-- **Despensa:** `referencias-visuales/` creada; smoke-test `skillui` OK con stripe. **Ampliada (2026-06-15)** con linear, vercel, framer, superlist (5 referencias). Hueco identificado: falta una referencia tipo "negocio local" (ver `referencias/despensa.md`).
-- **Docs del bloque actualizados:** BLOQUE.md + `referencias/` (skills, despensa, flujo-previews, **stitch-prompts**, **tipografias**) + rúbrica v2.
-- **Validación a mano (mudanzasroy):** 3 previews de prueba en `_pruebas/` (gitignored) → detector impeccable **0 hallazgos** tras pulir (Space Grotesk→Clash Display, Inter Tight→Hanken Grotesk, números 01/02/03→etiquetas, em-dash→flecha). Veredicto del socio: van bien pero subir variación/motion y ampliar despensa.
-- **Decisión:** **8 previews/cliente** = 5 nuestras + 1 de URL de referencia manual + **2 de Google Stitch MANUAL** (sin MCP: solo servidores comunitarios con riesgo+OAuth). Tipografías = doc curado de pares (`tipografias.md`).
+- **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Skills instaladas y aplanadas (0 symlinks).
+- **Despensa dual (2026-06-16):** `referencias/despensa.md` (5 refs ADN: stripe/linear/vercel/framer/superlist) + nueva `referencias/estilos-lapa-ninja.md` (géneros de layout/paleta mapeados a perfiles EVOLink, sin clonar lapa.ninja).
+- **Reparto cambiado a 9 = 3+3+3 (2026-06-16):** 1-3 propias (despensa.md), 4-6 lapa.ninja (estilos-lapa-ninja.md), 7-9 Google Stitch. Tipografías en `tipografias.md`.
+- **6 previews generadas y validadas (2026-06-16):** 1-3 propias (stripe/linear/framer; reveal v2 en las 3), 4-6 lapa.ninja (Magazine-Editorial/Real Estate/Retro-Pattern). Detector impeccable `[]` · 0 mojibake en las 6 + index.html.
+- **Stitch MCP activado (2026-06-16):** `STITCH_API_KEY` en variables de sistema, entrada en `.mcp.json`, 14 tools disponibles. Flujo en `referencias/stitch-integracion.md`.
 
-**Próximo (sesión nueva):** ✅ 1) despensa ampliada (linear, vercel, framer, superlist + stripe; 5 referencias, ver `referencias/despensa.md`). Pendiente: 2) regenerar **5 previews** con VARIANCE/MOTION altos + 1 de URL manual; 3) el socio genera **2 de Stitch** con `referencias/stitch-prompts.md`; 4) detector sobre las 8 → servir en local → validar; 5) `writing-plans` del agente de producción + self-host de fuentes. La ORDEN original queda EXTENDIDA (no autoborrada): sus Fases 7-8 se ejecutan al cerrar el plan ampliado.
+**▶ PRÓXIMO (sesión siguiente):** Generar las 3 previews de Stitch (7-9) via MCP usando los prompts de `referencias/stitch-prompts.md` → pasar detector impeccable → servir en local → validar con el socio → `writing-plans` del agente de producción.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).

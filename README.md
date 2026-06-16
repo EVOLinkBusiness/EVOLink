@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-15):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (cerebro `impeccable`+`design-taste-frontend`, despensa `skillui` con 5 referencias, 8 previews/cliente).
+> 🟢 **Estado (2026-06-16):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (9 previews/cliente 3+3+3; 6 generadas y validadas; Stitch MCP activo con 14 tools; pendientes: previews 7-9 via Stitch).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -20,7 +20,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F1  Agente Auditor ................ ✅ completada · en producción
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
-[██████░░░░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · spec + skills listas
+[████████░░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · 6/9 previews OK · Stitch MCP activo
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
 [░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
@@ -91,7 +91,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] motor v1 (catálogo + ensamblador + evaluación + registro)
 - [x] piloto E2E (mudanzasroy, Lighthouse móvil 100)
 - [x] rediseño v2: spec + cerebro `impeccable`+`design-taste-frontend` + despensa `skillui`
-- [~] 8 previews/cliente (5 nuestras + 1 URL manual + 2 Google Stitch manual) — despensa lista (5 refs: stripe, linear, vercel, framer, superlist)
+- [~] 9 previews/cliente (3 propias + 3 lapa.ninja + 3 Stitch) — 6 generadas y validadas; `estilos-lapa-ninja.md` + Stitch MCP activo (14 tools)
 - [ ] `writing-plans` del agente de producción
 - [ ] deploy vivo (Cloudflare Pages + Resend)
 
