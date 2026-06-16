@@ -30,14 +30,18 @@ Suite: `cd generador && npm test` → **20/20**.
 ## Dónde retomar
 **✅ PILOTO REAL SUPERADO (2026-06-14):** cadena Auditor→Generador con mudanzasroy en local — auditoría real (`fa6d78c5`) → brief/marca/plan/build → **Lighthouse móvil 100** → 5 etapas en `agent_runs`. Sistema de previews probado a mano (5 diseños `ui-ux-pro-max` + 5 motions `ui-animation` + 5 GSAP `gpt-tasteskill`, con logo+fotos reales). Elección: **F5 (Editorial Bold kinético)**. Veredicto del socio: la cadena funciona; **la estética del catálogo es lo mejorable**.
 
-**▶ EN CURSO — REDISEÑO ARTÍSTICO v2 (2026-06-14).** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
+**▶ EN CURSO — REDISEÑO ARTÍSTICO v2.** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
 - **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Skills instaladas y aplanadas (0 symlinks).
-- **Despensa dual (2026-06-16):** `referencias/despensa.md` (5 refs ADN: stripe/linear/vercel/framer/superlist) + nueva `referencias/estilos-lapa-ninja.md` (géneros de layout/paleta mapeados a perfiles EVOLink, sin clonar lapa.ninja).
-- **Reparto cambiado a 9 = 3+3+3 (2026-06-16):** 1-3 propias (despensa.md), 4-6 lapa.ninja (estilos-lapa-ninja.md), 7-9 GSAP+Three.js. Tipografías en `tipografias.md`.
-- **6 previews generadas y validadas (2026-06-16):** 1-3 propias (stripe/linear/framer; reveal v2 en las 3), 4-6 lapa.ninja (Magazine-Editorial/Real Estate/Retro-Pattern). Detector impeccable `[]` · 0 mojibake en las 6 + index.html.
-- **Decisión 2026-06-16:** Google Stitch descartado (dependencia frágil, auth OAuth no resolvible sin reiniciar). Grupo 7-9 → GSAP + `frontend-design` + Three.js CDN. Skills en `referencias/gsap-skills.md`.
+- **Despensa dual (2026-06-16):** `referencias/despensa.md` (5 refs ADN: stripe/linear/vercel/framer/superlist) + `referencias/estilos-lapa-ninja.md` (géneros de layout/paleta mapeados a perfiles EVOLink, sin clonar lapa.ninja).
+- **6 previews de diseño generadas y validadas (2026-06-16):** 1-3 propias (stripe/linear/framer; reveal v2 en las 3), 4-6 lapa.ninja (Magazine-Editorial/Real Estate/Retro-Pattern). Detector impeccable `[]` · 0 mojibake en las 6 + index.html.
+- **Decisión 2026-06-16:** Google Stitch descartado (dependencia frágil). Grupo de animación → GSAP + `frontend-design` + Three.js CDN.
 
-**▶ PRÓXIMO:** Instalar skills GSAP (`npx skills add` + aplanar) → generar previews 7-9 con `frontend-design` + gsap-core/scrolltrigger/plugins + Three.js CDN → servir en local → validar las 9 → `writing-plans` del agente de producción.
+**▶ PLAN APROBADO 2026-06-17 — reestructuración a 12 previews.** `docs/superpowers/plans/2026-06-17-gsap-threejs-previews-7-12.md`. Reparto nuevo: **12 = 6 diseño (existentes, se conservan) + 6 GSAP (nuevas, 2+2+2)**:
+- 7-8: `frontend-design` + impeccable + skills GSAP · 9-10: `gpt-tasteskill` + impeccable + skills GSAP · 11-12: `frontend-design` + impeccable + GSAP + **Three.js** (skill comunitaria CloudAI-X + CDN r184, fallback solo-CDN).
+- **Regla obligatoria del bloque:** toda web (1-12 y final) usa la **estructura de prompt de 4 partes** del blog (`/*1*/` qué+cliente+dirección · `/*2*/` skills · `/*3*/` qué incluir · `/*4*/` requisitos, "Interacciones fluidas y reales" siempre). A documentar como permanente en `flujo-previews.md`.
+- **Regla obligatoria — trazabilidad:** cada preview lleva su `<nombre>.prompt.txt` (prompt exacto) junto al HTML en `clientes/<id>/previews/` (también retroactivo para 1-6).
+
+**▶ PRÓXIMO (sesión siguiente):** ejecutar Pasos 1-6 del plan → instalar GSAP + Three.js skills → ampliar lapa.ninja → actualizar docs (gsap-skills.md + nueva threejs.md + flujo-previews.md + BLOQUE.md) → generar previews 7-12 con sus `.prompt.txt` → QA local → validar las 12 con el socio → `writing-plans` del agente de producción.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).
