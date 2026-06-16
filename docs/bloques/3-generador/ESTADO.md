@@ -33,11 +33,11 @@ Suite: `cd generador && npm test` → **20/20**.
 **▶ EN CURSO — REDISEÑO ARTÍSTICO v2 (2026-06-14).** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
 - **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Skills instaladas y aplanadas (0 symlinks).
 - **Despensa dual (2026-06-16):** `referencias/despensa.md` (5 refs ADN: stripe/linear/vercel/framer/superlist) + nueva `referencias/estilos-lapa-ninja.md` (géneros de layout/paleta mapeados a perfiles EVOLink, sin clonar lapa.ninja).
-- **Reparto cambiado a 9 = 3+3+3 (2026-06-16):** 1-3 propias (despensa.md), 4-6 lapa.ninja (estilos-lapa-ninja.md), 7-9 Google Stitch. Tipografías en `tipografias.md`.
+- **Reparto cambiado a 9 = 3+3+3 (2026-06-16):** 1-3 propias (despensa.md), 4-6 lapa.ninja (estilos-lapa-ninja.md), 7-9 GSAP+Three.js. Tipografías en `tipografias.md`.
 - **6 previews generadas y validadas (2026-06-16):** 1-3 propias (stripe/linear/framer; reveal v2 en las 3), 4-6 lapa.ninja (Magazine-Editorial/Real Estate/Retro-Pattern). Detector impeccable `[]` · 0 mojibake en las 6 + index.html.
-- **Stitch MCP activado (2026-06-16):** `STITCH_API_KEY` en variables de sistema, entrada en `.mcp.json`, 14 tools disponibles. Flujo en `referencias/stitch-integracion.md`.
+- **Decisión 2026-06-16:** Google Stitch descartado (dependencia frágil, auth OAuth no resolvible sin reiniciar). Grupo 7-9 → GSAP + `frontend-design` + Three.js CDN. Skills en `referencias/gsap-skills.md`.
 
-**▶ PRÓXIMO (sesión siguiente):** Generar las 3 previews de Stitch (7-9) via MCP usando los prompts de `referencias/stitch-prompts.md` → pasar detector impeccable → servir en local → validar con el socio → `writing-plans` del agente de producción.
+**▶ PRÓXIMO:** Instalar skills GSAP (`npx skills add` + aplanar) → generar previews 7-9 con `frontend-design` + gsap-core/scrolltrigger/plugins + Three.js CDN → servir en local → validar las 9 → `writing-plans` del agente de producción.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).
