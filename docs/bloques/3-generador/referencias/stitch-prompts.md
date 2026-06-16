@@ -1,8 +1,8 @@
-# Referencia — Prompts de Google Stitch (previews 7-8)
+# Referencia — Prompts de Google Stitch (previews 7-9)
 
-Stitch se usa **manual** (stitch.withgoogle.com, login Google en el navegador, exportar HTML). Coste 0 de API de Claude. Aquí viven los prompts para que las 2 previews aporten **otra voz** y mantengan pertinencia + datos reales.
+Stitch se usa **manual** (stitch.withgoogle.com, login Google en el navegador, exportar HTML) — ver `stitch-integracion.md` para la opción MCP/API (requiere `gcloud`, no activada). Coste 0 de API de Claude. Aquí viven los prompts para que las 3 previews aporten **otra voz** y mantengan pertinencia + datos reales.
 
-## Reglas comunes (van en los 2 prompts)
+## Reglas comunes (van en los 3 prompts)
 - One-page responsive, mobile-first. Idioma del contenido: el del cliente (ES por defecto).
 - **Un solo CTA por intención** (p. ej. "Pedir presupuesto") + teléfono clicable.
 - **Sin fotos de stock fingiendo ser del cliente. Sin testimonios inventados.** Prueba social = solo hechos reales del brief.
@@ -21,9 +21,10 @@ Brand color {HEX} as the single locked accent. WCAG AA contrast. No fake testimo
 Motion: {NIVEL Y FAMILIA DE ANIMACIÓN}.
 ```
 
-## Las 2 voces (para que NO se parezcan entre sí ni a las nuestras)
+## Las 3 voces (para que NO se parezcan entre sí ni a las nuestras)
 - **Stitch-7 — confianza cálida / humana.** Motion sutil: scroll-reveals suaves + micro-hover en botones/tarjetas; jerarquía tranquila; mucho aire. *Motion line:* "subtle fade-up reveals on scroll, gentle hover lift on cards and CTA, no aggressive parallax".
 - **Stitch-8 — editorial bold kinético.** Hero tipográfico grande, acento fuerte, una animación protagonista. *Motion line:* "bold typographic hero with a staggered headline entrance, one scroll-driven moment (e.g. horizontal pan of services or a pinned section), restrained elsewhere".
+- **Stitch-9 — minimal funcional / app-like.** Sin grandes gestos de scroll: micro-interacciones instantáneas (hover/focus), subrayados de acento, estados de formulario claros; sensación de producto SaaS aplicado a un negocio local. *Motion line:* "no scroll-driven effects; crisp instant hover/focus states, accent-color underline on links, subtle 150ms transitions only".
 
 ## Ejemplo relleno — Mudanzas Roy (cliente `cb1dfbea`)
 **Stitch-7 (confianza cálida):**
@@ -45,6 +46,12 @@ Motion: subtle fade-up reveals on scroll, gentle hover lift on cards and CTA, no
 Motion: bold typographic hero with a staggered headline entrance and one scroll-driven moment
 (horizontal pan of the services), restrained motion elsewhere.
 ```
+**Stitch-9 (minimal funcional / app-like):** mismo brief, cambiar la última línea por:
+```
+Motion: no scroll-driven effects; crisp instant hover/focus states, accent-color underline on
+links, subtle 150ms transitions only. Layout should feel like a clean SaaS product applied to
+a local moving company.
+```
 
 ## Tras exportar
-Guardar el HTML como `preview-7.html` / `preview-8.html` en la carpeta de previews del cliente, pasar el detector de impeccable y servir junto a las otras 6.
+Guardar el HTML como `preview-7.html` / `preview-8.html` / `preview-9.html` en la carpeta de previews del cliente, pasar el detector de impeccable y servir junto a las otras 6.
