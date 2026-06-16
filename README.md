@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-16):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (9 previews/cliente 3+3+3; 6 generadas y validadas; Stitch MCP activo con 14 tools; pendientes: previews 7-9 via Stitch).
+> 🟢 **Estado (2026-06-16):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (9 previews/cliente 3+3+3; 6 generadas y validadas; pendientes: previews 7-9 con GSAP + Three.js).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -20,7 +20,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F1  Agente Auditor ................ ✅ completada · en producción
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
-[████████░░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · 6/9 previews OK · Stitch MCP activo
+[████████░░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · 6/9 previews OK · 7-9 con GSAP+Three.js
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
 [░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
@@ -36,7 +36,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 ### ⏳ En curso / siguiente
 
-- **Generador v2 — rediseño artístico** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); lo mejorable es la estética. v2 inyecta criterio real: cerebro `impeccable` (anti-slop) + `design-taste-frontend` (diales), despensa de ADN visual (`skillui`) y **8 previews por cliente** (5 nuestras + 1 de URL de referencia manual + 2 de Google Stitch manual). Spec y skills ya listas; siguiente: ampliar despensa → regenerar previews → `writing-plans` del agente de producción.
+- **Generador v2 — rediseño artístico** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); lo mejorable es la estética. v2 inyecta criterio real: cerebro `impeccable` (anti-slop) + `design-taste-frontend` (diales), despensa de ADN visual (`skillui`) y **9 previews por cliente** (3 propias + 3 lapa.ninja + 3 GSAP+Three.js). 6 generadas y validadas; siguiente: previews 7-9 con GSAP + `frontend-design` + Three.js CDN → `writing-plans` del agente de producción.
 
 ### ⬜ Por hacer
 
