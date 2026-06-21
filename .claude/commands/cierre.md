@@ -1,6 +1,6 @@
 ---
-description: Cierra la sesión. Reescribe HANDOVER.md (y el ESTADO.md del bloque activo), actualiza README.md y propone commit.
-allowed-tools: Read, Write, Bash(git status*), Bash(git log*), Bash(git diff*), Bash(git add *), Bash(git commit -m *)
+description: Cierra la sesión. Reescribe HANDOVER.md y ESTADO.md del bloque activo, actualiza README.md, commitea y pushea automáticamente.
+allowed-tools: Read, Write, Bash(git status*), Bash(git log*), Bash(git diff*), Bash(git add *), Bash(git commit -m *), Bash(git push*)
 ---
 
 # /cierre — Cierre de sesión (EVOLink)
@@ -47,8 +47,8 @@ Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta 
 /inicio
 ```
 
-4. Si en la sesión cambió el **estado o el avance** de algún bloque, actualiza `README.md` (raíz): pon al día su **barra de progreso** y el checklist de **sub-bloques** (formato definido en el propio README). Si no cambió nada de progreso, no lo toques.
-5. Muestra un resumen breve en markdown real (sin code fence, para que el negrita se renderice):
+4. Actualiza siempre `README.md` (raíz): pon al día la **barra de progreso** y el checklist de **sub-bloques** del bloque activo (formato definido en el propio README).
+5. Muestra un resumen breve en markdown real (sin code fence):
 
 ```markdown
 **Hecho en esta sesión:**
@@ -59,8 +59,14 @@ Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta 
 ```
 
    Seguido de `git diff --stat` (HANDOVER.md, README.md y el ESTADO.md si se tocó).
-6. Pregunta: "¿Hago commit de esta sesión? Dime el tipo (feat/fix/docs/chore)."
-7. **Solo con tu OK:** propón mensaje convencional y `git add -A && git commit -m "..."`. Recuerda hacer `git push`.
+6. Elige el tipo de commit que mejor refleje la sesión según esta lógica:
+   - `feat` — se añadió código de producto nuevo o skills funcionales
+   - `fix` — se corrigió un bug o un error de configuración
+   - `docs` — solo documentación, HANDOVER, README, ESTADO o CHANGELOG
+   - `chore` — mantenimiento (refactor, deps, limpieza)
+   - Si la sesión mezcla tipos, usa **múltiples commits atómicos** (uno por tipo).
+   Ejecuta: `git add -A && git commit -m "<tipo>(scope): <descripción concisa>\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"`
+7. Pushea: `git push origin main`
 8. Termina con: "**Sesión cerrada.** Próxima vez: `/inicio`".
 
 Reglas:
