@@ -12,7 +12,7 @@ npx skills add https://github.com/greensock/gsap-skills
 
 **Después de instalar (regla EVOLink):** aplanar la skill a `.claude/skills/gsap*/` y borrar `.agents/` + `skills-lock.json`. Los symlinks de ruta absoluta se rompen al clonar.
 
-Estado actual: **no instaladas** → instalar antes de usar en previews GSAP.
+Estado actual: **instaladas** — 8 skills aplanadas en `.claude/skills/gsap-*/` (sin symlinks, sin `.agents/`).
 
 ---
 
@@ -166,13 +166,35 @@ Quiero que el resultado se sienta como una experiencia editorial interactiva, po
 
 ---
 
-## Aplicación a EVOLink (previews 7-9 con GSAP + Three.js)
+## Aplicación a EVOLink (previews 7-12)
 
-Para el objetivo "2 previews GSAP + Three.js 3D":
+Reparto 6 GSAP (2+2+2). Skills instaladas. Todas son HTML estático + CDN, sin build.
 
-- Instalar skills: `npx skills add https://github.com/greensock/gsap-skills` + aplanar
-- Instalar skills: `npx skills add https://github.com/greensock/gsap-skills` + aplanar (ver regla EVOLink arriba)
-- Patrón: `frontend-design` → `gsap-core` + `gsap-scrolltrigger` + `gsap-plugins` + Three.js CDN
-- Three.js para figuras 3D fluidas (vía CDN `<script type="module">` en HTML estático)
-- GSAP ScrollTrigger para scroll-driven 3D: rotar/mover la escena Three.js con `scrub`
-- Sin build: HTML estático + CDN (mismo formato que previews 1-6)
+| Previews | Motor de dirección | Skills GSAP | Extra |
+|----------|-------------------|-------------|-------|
+| 7-8 | `frontend-design` + impeccable | core, scrolltrigger, timeline, plugins, utils, performance | SplitText reveal, Flip/Draggable |
+| 9-10 | `gpt-tasteskill` + impeccable | ídem | editorial bold, pinning/stacking/scrub |
+| 11-12 | `frontend-design` + impeccable | ídem | Three.js CDN r184 (ver `referencias/threejs.md`) |
+
+Patrón de prompt: estructura de 4 partes obligatoria (ver `flujo-previews.md`). El prompt completo de cada preview va en su `<nombre>.prompt.txt` junto al HTML.
+
+## Maximizar con impeccable
+
+Tras generar con las skills GSAP, pasar impeccable como capa de pulido anti-slop:
+
+```
+Usa la skill "impeccable" para revisar el resultado:
+- detect: ¿hay gradient-text, AI-purple, glass genérico, eyebrows en cada sección?
+- intensity: si pide más carácter, subir a "bold" o "editorial"
+- delight: añadir un momento de sorpresa visual (micro-interacción, hover inesperado)
+```
+
+Como dice el blog: "las skills de Impeccable añaden una capa de pulido visual" — impeccable es el cerebro del bloque y el último filtro antes de la revisión humana. El detector automático `detect.mjs` corre en QA (Paso 6).
+
+## Three.js (CDN r184)
+
+Detalle completo en `referencias/threejs.md`. Resumen para las previews 11-12:
+- Importmap: `{ "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js" }`
+- Skills: `threejs-fundamentals` (escena mínima) + `threejs-animation` (loop) + el que sea pertinente (geometry/lighting/materials)
+- Integración con GSAP: `ScrollTrigger.create({ scrub: true, onUpdate: ({ progress }) => scene.rotation.y = progress * Math.PI * 2 })`
+- Caps móvil obligatorios: `setPixelRatio(Math.min(devicePixelRatio, 2))`, antialias off en móvil, 1-2 luces máx.

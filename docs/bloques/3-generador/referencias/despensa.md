@@ -33,4 +33,8 @@ Añadir webs es solo repetir el comando `npx skillui` con otra URL. La curación
 | `framer` | light | expressive | editorial |
 | `superlist` | light | subtle | servicios-local (más cercano de las 5; sigue siendo SaaS, no negocio local) |
 
-**Hueco real:** ninguna referencia es un "negocio de barrio" genuino (mudanzas, reformas, limpieza). Si las previews de mudanzasroy salen demasiado "SaaS premium", añadir 1-2 referencias de servicios locales con buena web.
+**Hueco real (pendiente curación humana):** ninguna referencia es un "negocio de barrio" genuino (mudanzas, reformas, limpieza). Si las previews de mudanzasroy salen demasiado "SaaS premium", añadir 1-2 referencias de servicios locales con buena web.
+
+Candidatos sugeridos (los socios deciden URL concreta y ejecutan `npx skillui`):
+- Una empresa de mudanzas / transporte local con web cuidada (buscar en Google "mudanzas [ciudad] site:es" y filtrar por diseño).
+- Una empresa de reformas / construcción local con galería de proyectos bien presentada.
