@@ -7,22 +7,19 @@
 ---
 
 ## Estado del proyecto
-Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v1 validado E2E. **En curso: rediseño artístico v2** — **Pasos 1-5 COMPLETADOS**. Las 12 previews (6 diseño + 6 GSAP) están generadas en `clientes/cb1dfbea.../previews/`. Siguiente: QA + validación con socio.
+Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v1 validado E2E + las 12 previews v2 generadas. **En curso: rediseño v3 — director de arte autónomo.** Plan APROBADO esta sesión, **pendiente de ejecución** (el socio tiene otra prioridad antes).
 
 ## Bloque activo
-**3-generador (rediseño v2)** — detalle en `docs/bloques/3-generador/ESTADO.md`. Plan: `docs/superpowers/plans/2026-06-17-gsap-threejs-previews-7-12.md`.
+**3-generador (rediseño v3)** — detalle en `docs/bloques/3-generador/ESTADO.md`. Plan aprobado: `docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md`.
 
 ## Hecho en la sesión actual (2026-06-22)
-- **Paso 5 — previews GSAP 7-12:** 6 HTML + 6 `.prompt.txt` generados en `clientes/cb1dfbea.../previews/`:
-  - `gsap-7`: azul/blanco · SplitText palabras + CountUp + stagger (frontend-design)
-  - `gsap-8`: navy/dorado · Flip filter + DrawSVGPlugin + parallax scrub (frontend-design)
-  - `gsap-9`: negro/rojo · Bebas Neue chars brutal + pin bento + counter (gpt-tasteskill)
-  - `gsap-10`: negro/azul · horizontal scroll 6 paneles + hero scrub-driven + CustomEase (gpt-tasteskill)
-  - `gsap-11`: azul oscuro · Three.js partículas fondo (canvas fixed) + SplitText (Three.js + GSAP)
-  - `gsap-12`: blanco roto · Three.js BoxGeometry scroll-driven 250vh sticky (Three.js + GSAP)
+- **Validación parcial de las 12 previews con el socio:** las GSAP vistosas/elegantes gustan; **gsap-12 (cubo 3D) descartada como concepto** (animación buena, impertinente para una mudanza).
+- **Diagnóstico de raíz:** el pipeline reparte motores por **slot fijo** (1-3/4-6/7-8/9-10/11-12), sin criterio por cliente → el cubo se forzó porque el slot 11-12 obliga a Three.js. La regla de "pertinencia" está escrita pero no operacionalizada.
+- **Plan v3 APROBADO** (`director de arte autónomo`): cerebro que decide con criterio y rechaza lo impertinente, mezcla dinámica de previews, y recomendación con argumentos. Versionado en `docs/superpowers/plans/`.
+- **Alcance acotado:** cerebro + pipeline + auditoría como skills/docs; **sin código orquestador** (la generación sigue asistida; automatizar en código = plan posterior, bloque 7).
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones (N activas). Sin decisiones nuevas esta sesión.
+Ver `docs/BUSINESS.md` §Decisiones (N activas). **Nuevas esta sesión (del plan v3, pendientes de elevar a BUSINESS.md cuando se ejecute):** motion = gusto por cliente (espectro 1-5) · mezcla de previews dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3.
 
 ## Riesgos y avisos vivos
 - Nada de producto sin spec aprobada (HARD-GATE). En el Generador: nada al cliente sin Checkpoint final.
@@ -37,19 +34,17 @@ Ver `docs/BUSINESS.md` §Decisiones (N activas). Sin decisiones nuevas esta sesi
 - 28 symlinks pre-existentes en carpetas-grupo de `.claude/skills/` (gitignored) → poda pendiente.
 
 ## Próximo paso concreto
-**Paso 6 — QA de las 12 previews:**
-1. `node .claude/skills/impeccable/scripts/detect.mjs --json clientes/<id>/previews/gsap-*.html` → 0 hallazgos graves
-2. Chequeo mojibake en las 6 nuevas + index.html
-3. `python -m http.server` sobre `clientes/cb1dfbea.../previews/` → abrir las 12 en el navegador
-4. Validar las **12** con el socio → elegir dirección → `writing-plans` del agente de producción
+**Ejecutar el plan v3 cuando se retome el bloque 3** — empezar por formalizar la spec.
+1. `docs/superpowers/specs/2026-06-22-generador-director-arte-v3.md` vía `writing-plans` (formaliza las 4 decisiones cerradas).
+2. Fase A: auditoría de las 12 previews → `referencias/auditoria-diseno-v3.md`.
+3. Fase B: nueva skill `.claude/skills/director-arte/SKILL.md` (el cerebro).
+4. (Resto de fases C-G en el plan.)
 
 ## Pendientes
-- [x] ~~Paso 5: generar previews GSAP 7-12~~ ✅ 2026-06-22
-- [ ] **Paso 6:** QA (impeccable detect + mojibake + local server + validación socio).
-- [ ] Validar las 12 con el socio → elegir dirección → producción.
-- [ ] `writing-plans` del agente de producción.
+- [ ] **Ejecutar rediseño v3** (plan `2026-06-22-generador-director-arte-v3.md`, fases A-G).
+- [ ] Elevar a `docs/BUSINESS.md` las decisiones nuevas del v3 al ejecutarlas.
 - [ ] Elevar a `docs/BUSINESS.md`: "Stitch descartado / grupo animación = GSAP + Three.js".
-- [ ] Siguiente bloque: Captación (bloque 1, co-prioritario) y/o Revisor/QA (bloque 4).
+- [ ] Siguiente bloque alternativo: Captación (bloque 1, co-prioritario) y/o Revisor/QA (bloque 4).
 - [ ] Spec del bloque 5 (pagos) antes del primer cliente que pague.
 - [ ] Cuentas conjuntas: renombrar org Supabase/Anthropic + invitar socio como Owner.
 - [ ] Deploy vivo Cloudflare + endpoint Resend para una web real.

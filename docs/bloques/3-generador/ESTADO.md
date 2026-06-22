@@ -54,11 +54,14 @@ Suite: `cd generador && npm test` → **20/20**.
   - `gsap-11`: `frontend-design` + Three.js partículas fondo (canvas fixed, z-index:-1, 2000/500 pts) + SplitText hero — paleta azul muy oscuro
   - `gsap-12`: `frontend-design` + Three.js mesh scroll-driven (hero 250vh sticky, BoxGeometry rota con scrub) + texto sincronizado con progreso — paleta blanco roto/azul
 
-**▶ PRÓXIMO — PASO 6 (QA):**
-1. `node .claude/skills/impeccable/scripts/detect.mjs --json clientes/<id>/previews/gsap-*.html` → objetivo 0 hallazgos graves
-2. Chequeo mojibake en las 6 nuevas + index
-3. `python -m http.server` sobre la carpeta de previews → revisar las 12 en local
-4. Validar las **12** con el socio → elegir dirección → `writing-plans` del agente de producción
+**✅ PASO 6 — VALIDACIÓN PARCIAL CON EL SOCIO (2026-06-22):** revisadas las 12 previews. Veredicto: las GSAP "vistosas y elegantes" gustan; **gsap-12 (cubo 3D) descartada como concepto** — la animación es buena pero impertinente para una mudanza. Diagnóstico: el cubo se forzó porque el slot 11-12 obliga a Three.js → el pipeline reparte motores por **slot fijo, sin criterio por cliente**.
+
+**▶ EN CURSO — REDISEÑO v3: DIRECTOR DE ARTE AUTÓNOMO.** Plan APROBADO 2026-06-22: `docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md`. **Pendiente de ejecución** (el socio tiene otra prioridad antes). Convierte el bloque en un director de arte que DECIDE con criterio (estilo, nivel de motion, animación, referencias) y RECHAZA lo impertinente, en vez de una receta de slots fijos.
+- **Decisiones cerradas (4):** motion = gusto por cliente (revisar `estilo-evolink` a espectro 1-5) · alcance = cerebro + pipeline + auditoría **sin código orquestador** · mezcla de previews **dinámica** (la decide el cerebro, sesgo a GSAP/Three.js cuando encaja) · el agente **puntúa y recomienda** top 2-3 con argumentos.
+- **Fases A-G:** A auditoría de las 12 · B skill nueva `director-arte` (el cerebro) · C revisar `estilo-evolink` §7 · D rehacer `flujo-previews.md` (dinámico) · E evaluación+recomendación · F despensa (refs negocio local reales) + herramientas · G validación E2E sobre mudanzasroy (debe rechazar el cubo).
+- **Primer paso al retomar:** formalizar spec v3 (`docs/superpowers/specs/2026-06-22-generador-director-arte-v3.md`) vía `writing-plans`, luego Fase A.
+
+> Nota: el "código orquestador" (programa que corre la generación de diseño de punta a punta llamando a la API) queda **fuera de alcance**; la generación sigue siendo asistida con skills. Automatizarlo sería un plan posterior (encaja con bloque 7/Mejora) una vez validado el criterio.
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).

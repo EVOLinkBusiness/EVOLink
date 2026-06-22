@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-21):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño artístico v2** (18 skills instaladas: 8 GSAP + 10 Three.js; docs actualizados; 6 previews de diseño + `.prompt.txt` retroactivos listos; **pendiente: generar 6 previews GSAP 7-12**).
+> 🟢 **Estado (2026-06-22):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño v3 — director de arte autónomo** (las 12 previews v2 generadas y revisadas; plan v3 APROBADO y pendiente de ejecución: un cerebro que decide estilo/animación/referencias con criterio y rechaza lo impertinente, en vez de una receta de slots fijos).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -20,7 +20,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F1  Agente Auditor ................ ✅ completada · en producción
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
-[█████████░] F2.1 Generador v2 (rediseño) ....... ⏳ en curso · skills OK · docs OK · pendiente: 6 GSAP previews
+[█████████░] F2.1 Generador v3 (director de arte) ⏳ 12 previews OK · plan v3 aprobado · pendiente ejecutar
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
 [░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
@@ -36,7 +36,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 ### ⏳ En curso / siguiente
 
-- **Generador v2 — rediseño artístico** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); lo mejorable es la estética. v2 inyecta criterio real: cerebro `impeccable` (anti-slop) + `design-taste-frontend` (diales), despensa de ADN visual (`skillui`) y **12 previews por cliente** (6 de diseño + 6 GSAP, 2+2+2). Las 6 de diseño generadas y validadas con sus `.prompt.txt` retroactivos. **Infraestructura GSAP+Three.js lista (2026-06-21):** 18 skills instaladas (8 GSAP oficiales + 10 Three.js CloudAI-X), docs actualizados (`flujo-previews.md`, `gsap-skills.md`, nueva `threejs.md`). Siguiente: generar 6 previews GSAP 7-12 → QA → `writing-plans` del agente de producción.
+- **Generador v3 — director de arte autónomo** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); v2 generó **12 previews por cliente** (6 diseño + 6 GSAP/Three.js) con cerebro `impeccable` + `design-taste-frontend` + despensa `skillui`. Al revisarlas surgió el límite: el pipeline reparte motores por **slot fijo**, sin criterio por cliente (de ahí un cubo 3D impertinente en una mudanza). **Plan v3 aprobado (2026-06-22):** convertir el bloque en un director de arte que DECIDE estilo, nivel de motion, animación y referencias con criterio, mezcla previews de forma **dinámica** y **recomienda** la mejor con argumentos. Pendiente de ejecución: spec v3 → fases A-G (`docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md`).
 
 ### ⬜ Por hacer
 
@@ -87,14 +87,15 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] 2 Edge Functions desplegadas (suite 35/35)
 - [ ] *(diferido)* Plan B: dashboard + informe público `/r/[slug]`
 
-**3 · Generador** `██████░░░░` ~60%
+**3 · Generador** `███████░░░` ~65%
 - [x] motor v1 (catálogo + ensamblador + evaluación + registro)
 - [x] piloto E2E (mudanzasroy, Lighthouse móvil 100)
 - [x] rediseño v2: spec + cerebro `impeccable`+`design-taste-frontend` + despensa `skillui`
-- [x] 18 skills instaladas: 8 GSAP oficiales + 10 Three.js (CloudAI-X); docs actualizados; `.prompt.txt` retroactivos de 1-6
-- [~] 6 previews GSAP (7-12) pendientes de generación (Paso 5)
-- [ ] `writing-plans` del agente de producción
-- [ ] deploy vivo (Cloudflare Pages + Resend)
+- [x] 18 skills instaladas: 8 GSAP oficiales + 10 Three.js (CloudAI-X); docs actualizados
+- [x] 12 previews generadas (6 diseño + 6 GSAP/Three.js) con sus `.prompt.txt`
+- [x] plan v3 aprobado: director de arte autónomo (slots fijos → decisión con criterio)
+- [ ] ejecutar v3: spec → cerebro `director-arte` → flujo dinámico → recomendación (fases A-G)
+- [ ] `writing-plans` del agente de producción + deploy vivo (Cloudflare Pages + Resend)
 
 **4 · Revisor / QA** `░░░░░░░░░░` 0% *(depende del 3)*
 - [ ] spec
