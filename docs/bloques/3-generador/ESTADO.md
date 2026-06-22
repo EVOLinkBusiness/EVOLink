@@ -41,17 +41,24 @@ Suite: `cd generador && npm test` → **20/20**.
 - **Regla obligatoria del bloque:** toda web (1-12 y final) usa la **estructura de prompt de 4 partes** del blog (`/*1*/` qué+cliente+dirección · `/*2*/` skills · `/*3*/` qué incluir · `/*4*/` requisitos, "Interacciones fluidas y reales" siempre). A documentar como permanente en `flujo-previews.md`.
 - **Regla obligatoria — trazabilidad:** cada preview lleva su `<nombre>.prompt.txt` (prompt exacto) junto al HTML en `clientes/<id>/previews/` (también retroactivo para 1-6).
 
-**✅ PASOS 1-4 COMPLETADOS (2026-06-21):**
+**✅ PASOS 1-5 COMPLETADOS (2026-06-21/22):**
 - **Paso 1 (skills):** 8 skills GSAP oficiales + 10 Three.js comunitarias (CloudAI-X) instaladas y aplanadas en `.claude/skills/` — carpetas reales, sin symlinks, sin `.agents/`. Incidencia resuelta: threejs creaba junctions rotas; solución: `[System.IO.Directory]::Delete()` + reinstalar.
 - **Paso 2 (referencias):** `estilos-lapa-ninja.md` ampliada (Business/Agency/paletas/plataformas). `despensa.md` con placeholder servicios locales pendiente curación humana.
 - **Paso 3 (docs):** `flujo-previews.md` reescrito (12=6+6 + 2 reglas permanentes: `.prompt.txt` y esquema 4 partes). `gsap-skills.md` actualizado (instalado, sin duplicado, sección impeccable + enlace threejs.md). Nueva `referencias/threejs.md` (CDN r184, escena básica, recetas, GSAP scrub, caps móvil). `BLOQUE.md` corregido (12 previews, tabla skills completa).
-- **Paso 4 (trazabilidad parcial):** 6 `.prompt.txt` retroactivos creados en `clientes/<id>/previews/` para fab-1…fab-5 + anim-5, marcados `[reconstruido]`. Siguen estructura de 4 partes.
+- **Paso 4 (trazabilidad parcial):** 6 `.prompt.txt` retroactivos creados en `clientes/<id>/previews/` para fab-1…fab-5 + anim-5, marcados `[reconstruido]`.
+- **Paso 5 (previews GSAP 2026-06-22):** 6 previews GSAP generadas + 6 `.prompt.txt` en `clientes/cb1dfbea.../previews/`:
+  - `gsap-7`: `frontend-design` + SplitText (palabras) + CountUp + stagger reveals — paleta azul/blanco
+  - `gsap-8`: `frontend-design` + Flip filter de servicios + DrawSVGPlugin (proceso) + parallax scrub hero — paleta navy/dorado
+  - `gsap-9`: `gpt-tasteskill` + SplitText chars brutal + ScrollTrigger pin (services bento) + counter — paleta negro/rojo Bebas Neue
+  - `gsap-10`: `gpt-tasteskill` + scroll horizontal (6 paneles pin+scrub) + hero reveal scrub-driven + CustomEase — paleta negro/azul eléctrico
+  - `gsap-11`: `frontend-design` + Three.js partículas fondo (canvas fixed, z-index:-1, 2000/500 pts) + SplitText hero — paleta azul muy oscuro
+  - `gsap-12`: `frontend-design` + Three.js mesh scroll-driven (hero 250vh sticky, BoxGeometry rota con scrub) + texto sincronizado con progreso — paleta blanco roto/azul
 
-**▶ PRÓXIMO — PASO 5:** generar las 6 previews GSAP con sus `.prompt.txt` ANTES del HTML.
-- `gsap-7.html`/`.prompt.txt` y `gsap-8.html`/`.prompt.txt`: `frontend-design` + impeccable + skills GSAP. 7=reveal/stagger+SplitText hero; 8=Flip galería+ScrollTrigger scrub.
-- `gsap-9.html` y `gsap-10.html`: `gpt-tasteskill` + impeccable + skills GSAP. Editorial bold, pinning/stacking/scrub.
-- `gsap-11.html` y `gsap-12.html`: `frontend-design` + impeccable + GSAP + Three.js CDN r184. 11=fondo partículas; 12=escena protagonista scroll-driven.
-Luego Paso 6: `node .claude/skills/impeccable/scripts/detect.mjs --json` → 0 graves → local server → validar 12 con socio.
+**▶ PRÓXIMO — PASO 6 (QA):**
+1. `node .claude/skills/impeccable/scripts/detect.mjs --json clientes/<id>/previews/gsap-*.html` → objetivo 0 hallazgos graves
+2. Chequeo mojibake en las 6 nuevas + index
+3. `python -m http.server` sobre la carpeta de previews → revisar las 12 en local
+4. Validar las **12** con el socio → elegir dirección → `writing-plans` del agente de producción
 
 ## Notas técnicas de la ejecución
 - Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).
