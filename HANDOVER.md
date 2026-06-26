@@ -2,49 +2,52 @@
 
 **Última sesión:** 2026-06-26
 **Branch:** main
-**Último commit:** (ver git log)
+**Último commit:** `5ed0b98 chore: cierre ORDEN generador v4 (autoborrado)`
 
 ---
 
 ## Estado del proyecto
-Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v1 + v2. **v4 "Director de Arte Autónomo" EJECUTADO esta sesión** (ORDEN `2026-06-23-ORDEN-generador-v4.md`, Fases 0-10). El reparto de previews por **slot fijo** (origen del cubo 3D) queda sustituido por un **director de arte** que decide por cliente y rechaza lo impertinente.
+Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte Autónomo" ejecutado. Esta sesión: curación inicial del índice de referencias (candidatos Awwwards + juanmora admitida).
 
 ## Bloque activo
-**3-generador (v4 ejecutado)** — detalle en `docs/bloques/3-generador/ESTADO.md`. Spec: `docs/superpowers/specs/2026-06-23-generador-director-arte-v4-design.md`.
+**3-generador (referencias en curación)** — detalle en `docs/bloques/3-generador/ESTADO.md`.
 
 ## Hecho en la sesión actual (2026-06-26)
-- **Auditoría de las 12 previews** + fallo de slot fijo documentado → `referencias/auditoria-diseno-v4.md` (+ CHANGELOG).
-- **Cerebro nuevo:** skill `director-arte` (7 diales + presets · referencias por roles + scoring · primitivas P1-P6 con scroll reversible · rechazos · salida `direccion-arte.md`).
-- **Andamiaje:** `indice-referencias.md` (por roles) + `memoria-director-arte.md` (aprendizaje ligero).
-- **`estilo-evolink §7`** → espectro de motion **1-5** (lo fija el director); invariantes trust-first intactos.
-- **`flujo-previews.md`** dinámico **8-12** (sin slots, primitivas, referencias por roles); 2 reglas permanentes intactas. Reparto histórico → nota.
-- **`ascenso-produccion.md`** (Astro + islas React → Cloudflare) + **rúbrica** y **BLOQUE.md** al día.
-- **Validación E2E (mudanzasroy, `clientes/` gitignored):** `direccion-arte.md` con **cubo+partículas RECHAZADOS**; **8 previews** v4 + 8 `.prompt.txt`; detector **0 graves / 0 mojibake** (13 warnings: single-font + dark-glow); `recomendacion.md` (top 3); entrada nueva en memoria; render local 200; **npm test 24/24**.
+- **Comandos.txt** — nuevo apartado `[ PÁGINAS DE REFERENCIA DEL DISEÑADOR ]` con las 6 referencias activas (5 despensa + juanmora) y los candidatos pendientes.
+- **Candidatos Awwwards** añadidos a `indice-referencias.md`: `truckn-roll-r` (mudanzas), `monarch-custom-homes` (reformas), `california-vending-company` (servicios-local).
+- **Vocabulario motion `awwwards-moving-co`** documentado: bloques emergentes, image reveal, hover grid, card Flip — con sub-candidatos `loandbehold.studio`, `exergy3.com`, `feedagency.co`.
+- **`juanmora.co` extraída con `skillui`** y admitida en Inventario: motion + tipografía (Goga display, bounce springy `cubic-bezier(.292,1.932,.281,.996)`), solo idioma, motion 3-4. Tokens en `.claude/skills/referencias-visuales/juanmora/`. Corrección documentada: `webflow-icons` es icon font, font real = `Goga-Regular.otf`.
+- **Tarea pendiente preparada**: instalar Playwright + re-extraer juanmora en modo ultra (computed styles + scroll screenshots). Comando listo en `Comandos.txt`.
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones. **Pendientes de elevar a BUSINESS.md (del v4):** motion = gusto por cliente (espectro 1-5) · mezcla de previews dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3.
+Ver `docs/BUSINESS.md` §Decisiones. Sin nuevas decisiones esta sesión.
 
 ## Riesgos y avisos vivos
-- **Curación de referencias = palanca nº 1.** El `indice-referencias.md` aún NO tiene un negocio local real de mudanzas/reformas → la estructura se ancla en stripe + criterio; riesgo de "parecer startup". Curar 1-2 locales reales + Awwwards limpias antes del próximo cliente del nicho.
-- **Esqueleto de agentes ausente (Fase 0):** `.claude/agents/` + `CONTRATO.md`/`GUIA` del bloque 3 no estaban montados al ejecutar v4. Quedan pendientes de **retrofit** cuando aterrice el esqueleto. NUNCA ejecutar esta ORDEN y la de ESTRUCTURA NUEVA en la misma sesión.
-- Nada de producto sin spec aprobada (HARD-GATE); nada al cliente sin Checkpoint final. Riesgo es de demanda, no técnico → no superar ~50 €/mes hasta tener clientes que paguen (API ~10 €/mes).
-- **Single-font en previews v1 es esperado:** el brief manda fuentes de sistema (Google Fonts hunde Lighthouse móvil); el par tipográfico real se materializa en el **ascenso** con self-host.
-- **Generador — credenciales:** `generador/.env` (SUPABASE_URL + SERVICE_ROLE_KEY) local, nunca commitear. `clientes/` y `_pruebas/` gitignored. `ANTHROPIC_API_KEY` nunca se commitea. MCP Supabase pide re-OAuth cada sesión.
-- Tests: Auditor `npx deno test`; Generador `cd generador && npm test` (24/24). Lighthouse necesita `userDataDir` local.
-- **Aplanar skills post `npx skills add`:** `[System.IO.Directory]::Delete()` para junctions; luego carpeta real + copiar SKILL.md. 28 symlinks pre-existentes en carpetas-grupo de `.claude/skills/` (gitignored) → poda pendiente.
+- **Curación de referencias = palanca nº 1.** `truckn-roll-r`, `monarch-custom-homes`, `california-vending-company` pendientes de extracción real (`npx skillui`). Sin negocios locales de estructura, una mudanza tiende a parecer startup.
+- **Playwright no instalado:** `extract-design-system` y modo ultra de `skillui` fallan. Tarea preparada para próxima sesión. No bloquea ningún otro flujo.
+- **Revisión del socio del set v4 pendiente:** `python -m http.server` sobre `clientes/<id>/previews/v4/` → elegir concepto → registrar en `agent_runs` + memoria.
+- **Esqueleto de agentes ausente:** `.claude/agents/` + `CONTRATO.md`/`GUIA` del bloque 3 pendientes de retrofit cuando aterrice el esqueleto. NUNCA en la misma sesión que la ORDEN.
+- Nada de producto sin spec aprobada; nada al cliente sin Checkpoint final. API ~10 €/mes; no superar ~50 €/mes.
+- **Single-font en previews v1 es esperado** (fuentes de sistema; par tipográfico real en el ascenso con self-host).
+- Credenciales: `generador/.env` local, nunca commitear. `clientes/` gitignored. MCP Supabase pide re-OAuth cada sesión.
+- Aplanar skills post `npx skills add`: `[System.IO.Directory]::Delete()` para junctions. 28 symlinks pre-existentes en carpetas-grupo (gitignored) → poda pendiente.
 
 ## Próximo paso concreto
-**Revisión del socio del set v4** (`python -m http.server` sobre `clientes/<id>/previews/v4/`) → elegir 1 concepto → registrar en `agent_runs` + memoria. Recomendado: 1º `v4-2`, 2º `v4-3`, 3º `v4-1`. Luego **curar referencias** (palanca nº 1) y/o **ascenso a producción** del elegido.
+**Instalar Playwright y re-extraer juanmora en ultra** (`Comandos.txt` tiene el comando exacto), luego extraer los 3 candidatos Awwwards.
+1. `npm install -g playwright && npx playwright install chromium`
+2. `npx skillui@latest --url https://juanmora.co/ --mode ultra --out .claude/skills/referencias-visuales/juanmora`
+3. Repetir con `truckn-roll-r`, `monarch-custom-homes`, `california-vending-company` (ver `Comandos.txt`).
+4. Revisión del socio del set v4 previews → elección → ascenso a producción.
 
 ## Pendientes
-- [ ] Revisión + elección del socio sobre el set v4; volcar a `memoria-director-arte.md §3`.
-- [ ] **Curar referencias** en `indice-referencias.md`: 1-2 negocios locales reales + Awwwards limpias (palanca nº 1).
+- [ ] Instalar Playwright + re-extraer juanmora ultra + 3 candidatos Awwwards.
+- [ ] Revisión del socio del set v4; volcar elección a `memoria-director-arte.md §3`.
 - [ ] Ascenso a producción del concepto elegido (Astro + islas React, self-host fuentes, Cloudflare).
 - [ ] Retrofit `CONTRATO.md`/`GUIA` del bloque 3 cuando aterrice el esqueleto de agentes.
-- [ ] Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 + "Stitch descartado / grupo animación = GSAP + Three.js".
-- [ ] Siguiente bloque alternativo: Captación (bloque 1) y/o Revisor/QA (bloque 4). Spec del bloque 5 (pagos) antes del primer cliente que pague.
-- [ ] Cuentas conjuntas: renombrar org Supabase/Anthropic + invitar socio como Owner. Deploy vivo Cloudflare + endpoint Resend para una web real.
-- [ ] Poda de junctions en `.claude/skills/` (gitignored).
+- [ ] Elevar a `docs/BUSINESS.md`: motion por cliente 1-5 · mezcla dinámica · agente recomienda top 2-3 · "Stitch descartado / grupo animación = GSAP + Three.js".
+- [ ] Siguiente bloque alternativo: Captación (bloque 1) y/o Revisor/QA (bloque 4). Spec bloque 5 antes del primer cliente.
+- [ ] Cuentas conjuntas: renombrar org Supabase/Anthropic + invitar socio como Owner. Deploy vivo Cloudflare + endpoint Resend.
+- [ ] Poda de 28 junctions en `.claude/skills/` (gitignored).
 
 ## Comando para reanudar
 /inicio

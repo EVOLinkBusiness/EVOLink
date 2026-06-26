@@ -23,11 +23,73 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 | vercel | despensa | minimal/editorial | estructura, tipografia | claro | 3 | estructura | OK | referencias-visuales/vercel |
 | framer | despensa | editorial | motion, color | claro | 4 | estructura | OK | referencias-visuales/framer |
 | superlist | despensa | servicios-local | color, motion | claro | 2 | estructura | OK | referencias-visuales/superlist |
+| juanmora | awwwards | minimal-lujo · editorial | motion, tipografia | claro · cool | 3-4 | solo idioma | OK (sin Playwright) | referencias-visuales/juanmora |
+
+### Ficha extendida — juanmora (extraída 2026-06-26)
+
+**Paleta verificada:**
+| Token | Hex | Uso |
+|---|---|---|
+| fondo | `#ffffff` | base |
+| texto | `#222222` | headings + body |
+| muted | `#686868` | captions, secundario |
+| borde | `#333333` | dividers, cards |
+| acento | `#0082f3` | CTAs, links, focus |
+| acento-alt | `#2e54fe` | énfasis secundario |
+| cálido | `#ffbc95` | highlight warm (sparingly) |
+| sup-cálido | `#eeeeee` | superficie warm |
+| casi-negro | `#121314` | capas oscuras |
+
+**Tipografía real** *(corrección al análisis estático — `webflow-icons` es icon font, NO la display font):*
+- **`Goga-Regular.otf`** (self-hosted) → fuente display custom; tamaños de headline masivos (H1: 365px, H2: 200px, H3: 140px). Identidad tipográfica de la web.
+- **Sistema / Arial** → body text, UI (fallback Webflow).
+- Lección portable: tipografía display a escala enorme + mucho espacio blanco = elegancia sin decoración.
+
+**Motion tokens (extraídos del CSS):**
+- Easing: `cubic-bezier(.292,1.932,.281,.996)` — bounce springy, overshoot suave.
+- Easing alt: `cubic-bezier(.275,2.254,.281,.996)` — más pronunciado.
+- Duración: 100ms–500ms.
+- ⚠ GSAP + Lenis son JS y no fueron detectados (requiere Playwright); el nivel real es 3-4.
+
+**Estructura y layout:**
+- Grid: 4px base. Max-width: 991px. Mobile-first.
+- Secciones: Hero → Features/Portfolio → CTA. Portátil como estructura base de cualquier landing.
+- Radio: 8px por defecto; range amplio (de 3px a 100vw para shapes orgánicos).
+- Sombras: minimalistas; overlay warm (orangey glow) para diálogos.
+
+**Cómo usar:**
+- Rol `motion`: easing bounce + duración media → P1/P4 entries con overshoot sutil.
+- Rol `tipografía`: display masiva a escala + cuerpo sistema → par legible + impacto.
+- NO copiar estructura de portfolio (hero con "Brand & Web Design Specialist" y grid de proyectos). Solo el idioma.
+
+---
 
 ## Cola de candidatos (curación por demanda)
 Cualquiera pega aquí una URL buena que vea; la extracción se hace en lote después. NUNCA curación especulativa: el disparador es "un cliente cae en un sector sin buena referencia".
-- [ ] (pendiente) 1-2 negocios locales reales (mudanzas/reformas con web cuidada) → enseñan ESTRUCTURA. Palanca nº 1.
-- [ ] (pendiente) Awwwards nominadas limpias → enseñan MOTION/pulido.
+
+### Sites concretos para extraer
+- [ ] https://www.awwwards.com/sites/monarch-custom-homes — reformas/construcción premium · candidato ESTRUCTURA + motion
+- [ ] https://www.awwwards.com/sites/truckn-roll-r — mudanzas · candidato ESTRUCTURA (¡sector exacto!) · verificar si la estructura es portátil a negocio local
+- [ ] https://www.awwwards.com/sites/california-vending-company — servicios-local · candidato ESTRUCTURA + mood
+- [x] ~~https://juanmora.co/~~ → **admitida**, ver fila `juanmora` en Inventario. Tokens en `referencias-visuales/juanmora/`.
+
+### Vocabulario de motion — fuentes de técnicas (no design-system único)
+Estas fuentes no aportan estructura; aportan **idioma de animación** portable. Se usan como referencia de técnicas concretas, no como ancla de layout.
+
+| Fuente | URL | Técnicas extraíbles | Rol | Motion |
+|---|---|---|---|---|
+| awwwards-moving-co | https://www.awwwards.com/inspiration_search/moving%20company/ | bloques emergentes con scroll · image path reveal (mouse move) · hover dinámico en grids · value cards con mouse interaction · timelines scrub | motion | 3-4 |
+
+**Técnicas documentadas (curadas de la búsqueda):**
+- **Bloques emergentes (P1/P2):** elementos que aparecen desde abajo/lado al hacer scroll, con reversibilidad — ver `loandbehold.studio/about/` (value cards) y `exergy3.com/about/` (company timeline scrub).
+- **Image path reveal (mouse move):** imagen que se revela siguiendo el cursor — ver `feedagency.co/about`. Pertinente solo si el cliente tiene fotos reales; apartado de v1.
+- **Grid con hover dinámico (P4):** estado hover animado en tarjetas de servicios — ver `integratedbiosciences.com/platform/`. Directamente portable (no necesita imágenes pesadas).
+- **Card transition (P5/Flip):** cards que se reordenan o transforman con Flip.js — ver `fooror.com/`. Ya implementado en v4-4 y v4-8.
+
+**Sites específicos para extraer si se necesita depth:**
+- [ ] https://loandbehold.studio/about/ — value cards hover · motion limpio · estructura portátil
+- [ ] https://exergy3.com/about/ — company timeline · P2 scrub · estructura portátil
+- [ ] https://feedagency.co/about — image reveal path · solo si el cliente tiene fotos
 
 ## Reglas duras
 No clonar HTML/copy/imágenes · mezclar ≥2 referencias o abstraer a tokens (nunca clon reconocible) · humano elige URLs (cero crawling) · ficha de 1 línea para triar todas, DESIGN.md/tokens completos solo de las 2-4 finalistas.

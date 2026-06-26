@@ -1,0 +1,131 @@
+COMANDOS EVOLink — Referencia rápida
+=====================================
+Solo usar cuando un cliente cae en un sector SIN referencia
+en el índice. Las referencias son biblioteca compartida,
+no tarea por cliente.
+
+
+[ QUÉ ES <nombre> ]
+-------------------
+Identificador corto de la referencia.
+Minúsculas, guiones, sin espacios.
+
+  mudanzas-martinez    → empresa de mudanzas local
+  reformas-madrid      → empresa de reformas
+  barberia-premium     → barbería con buen diseño
+  awwwards-corporativo → nominada Awwwards, corporativo limpio
+  awwwards-bold        → nominada Awwwards, kinético/bold
+
+
+[ AÑADIR REFERENCIA NUEVA ]
+----------------------------
+
+# Paso 1 · Extraer ADN visual (motion + feel)
+npx skillui@latest --url <URL> --mode ultra --out .claude/skills/referencias-visuales/<nombre>
+
+# Paso 2 · Extraer tokens estructurados (color / espaciado / radio)
+npx extract-design-system <URL>
+cp -r .extract-design-system/ .claude/skills/referencias-visuales/<nombre>/tokens/
+
+# Paso 3 · Limpiar restos si aparecen
+rm -rf .agents/ skills-lock.json .extract-design-system/
+
+# Paso 4 · Generar la ficha (prompt para Claude Code)
+# Pega esto en Claude Code tras el paso 2:
+#
+#   Lee los archivos de .claude/skills/referencias-visuales/<nombre>/
+#   y .claude/skills/referencias-visuales/<nombre>/tokens/
+#   y genera la fila exacta para añadir a la tabla "Inventario admitido"
+#   de docs/bloques/3-generador/referencias/indice-referencias.md.
+#   Formato:
+#   | nombre | fuente | perfil | roles | mood | motion (1-5) | estructura/solo-idioma | OK | ruta-tokens |
+#   Usa solo los perfiles y roles válidos del índice.
+#   Justifica en una línea el motion y el tipo elegido.
+#
+# Claude Code te devuelve la fila lista. La revisas y la pegas
+# en docs/bloques/3-generador/referencias/indice-referencias.md
+# bajo la tabla "Inventario admitido".
+
+# Paso 5 · Commitear y subir
+git add .claude/skills/referencias-visuales/<nombre>/ \
+        docs/bloques/3-generador/referencias/indice-referencias.md
+git commit -m "feat: referencia <nombre> al indice (perfil: <perfil>)"
+git push
+
+
+[ DÓNDE VIVE CADA COSA ]
+--------------------------
+Índice de referencias:
+  docs/bloques/3-generador/referencias/indice-referencias.md
+
+ADN extraído:
+  .claude/skills/referencias-visuales/<nombre>/
+
+Memoria del director (aprendizaje):
+  docs/bloques/3-generador/referencias/memoria-director-arte.md
+
+Prompts de previews por cliente (gitignored):
+  clientes/<id>/previews/<preview>.prompt.txt
+
+
+[ MODELO DE PROMPT — PREVIEWS ]
+---------------------------------
+Toda preview y la web final usan este esqueleto.
+Guardar como <nombre-preview>.prompt.txt junto al HTML.
+
+  /*1 · Qué web + cliente + dirección visual*/
+  Crea [web de una sola página] para [negocio del brief].
+  Usa la skill "[frontend-design | gpt-tasteskill]"
+  para definir [dirección visual del sector y tono].
+
+  /*2 · Skills a usar*/
+  Usa también estas skills:
+  [lista explícita]
+
+  /*3 · Qué incluir*/
+  La web debe incluir:
+  - [sección + animación concreta]
+  - [sección + animación concreta]
+
+  /*4 · Requisitos*/
+  - Todo en una sola página
+  - [estética: paleta, tipografía, densidad]
+  - Interacciones fluidas y reales          ← SIEMPRE
+  - Código comentado con las técnicas usadas
+  - Mobile-first · contraste AA · prefers-reduced-motion
+  - Placeholders honestos (logo y fotos reales, no stock)
+
+=====================================
+
+
+[ PÁGINAS DE REFERENCIA DEL DISEÑADOR ]
+-----------------------------------------
+Referencias ya en el índice (indice-referencias.md · despensa).
+El director las selecciona por roles; no se clonan, se abstrae su idioma.
+
+  stripe       https://stripe.com               confianza-servicio · estructura + color · motion 1
+  linear       https://linear.app               minimal-lujo · estructura + motion · motion 3
+  vercel       https://vercel.com               minimal/editorial · estructura + tipografía · motion 3
+  framer       https://framer.com               editorial · motion + color · motion 4
+  superlist    https://superlist.com            servicios-local · color + motion · motion 2
+  juanmora     https://juanmora.co/             minimal-lujo/editorial · motion + tipografía · motion 3-4 · SOLO IDIOMA (Goga display, bounce easing, Lenis)
+
+  ─── PENDIENTES — candidatos para extraer ───
+  [ ] awwwards/truckn-roll-r          https://www.awwwards.com/sites/truckn-roll-r                   mudanzas · ESTRUCTURA
+  [ ] awwwards/monarch-custom-homes   https://www.awwwards.com/sites/monarch-custom-homes            reformas premium · ESTRUCTURA + motion
+  [ ] awwwards/california-vending     https://www.awwwards.com/sites/california-vending-company      servicios-local · ESTRUCTURA + mood
+  [✓] juanmora                        https://juanmora.co/                                           ADMITIDA — motion + tipografía (Goga display) · solo idioma · motion 3-4
+  [✓] vocabulario motion moving-co    https://www.awwwards.com/inspiration_search/moving%20company/  → técnicas documentadas en índice (bloques emergentes, image reveal, hover grid, card Flip)
+      Sub-candidatos con depth: loandbehold.studio/about · exergy3.com/about · feedagency.co/about
+
+# juanmora extraída 2026-06-26 (modo básico — sin Playwright, sin ultra).
+# Para re-extraer con ultra (computed styles + scroll screenshots):
+#   npm install -g playwright && npx playwright install chromium
+#   npx skillui@latest --url https://juanmora.co/ --mode ultra --out .claude/skills/referencias-visuales/juanmora
+
+Notas:
+  · "estructura" = enseña layout y jerarquía para negocio local.
+  · "idioma" = solo tomar el idioma visual (motion, tipografía, color); NO la estructura.
+  · Awwwards ≠ estructura para negocio local (premiado ≠ profesor).
+
+=====================================

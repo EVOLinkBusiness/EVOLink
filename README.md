@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-22):** Auditor (F1) en producción · Generador (F2) v1 **validado E2E** con el piloto real `mudanzasroy.es` (Lighthouse móvil 100) · **en curso: rediseño v3 — director de arte autónomo** (las 12 previews v2 generadas y revisadas; plan v3 APROBADO y pendiente de ejecución: un cerebro que decide estilo/animación/referencias con criterio y rechaza lo impertinente, en vez de una receta de slots fijos).
+> 🟢 **Estado (2026-06-26):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — el director decide estilo/motion/referencias por cliente y rechaza lo impertinente (cubo 3D en mudanzas = eliminado). Set v4 de 8 previews dinámicas validado E2E para `mudanzasroy`. **En curso: curación del índice de referencias** (juanmora admitida; 3 candidatos Awwwards pendientes de extracción).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -20,7 +20,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F1  Agente Auditor ................ ✅ completada · en producción
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
-[█████████░] F2.1 Generador v3 (director de arte) ⏳ 12 previews OK · plan v3 aprobado · pendiente ejecutar
+[██████████] F2.4 Generador v4 (director de arte) ✅ ejecutado · 8 previews dinámicas · referencias en curación
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
 [░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
@@ -36,7 +36,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 ### ⏳ En curso / siguiente
 
-- **Generador v3 — director de arte autónomo** *(bloque 3)*. El piloto validó la cadena Auditor→Generador (`mudanzasroy.es`, Lighthouse móvil 100); v2 generó **12 previews por cliente** (6 diseño + 6 GSAP/Three.js) con cerebro `impeccable` + `design-taste-frontend` + despensa `skillui`. Al revisarlas surgió el límite: el pipeline reparte motores por **slot fijo**, sin criterio por cliente (de ahí un cubo 3D impertinente en una mudanza). **Plan v3 aprobado (2026-06-22):** convertir el bloque en un director de arte que DECIDE estilo, nivel de motion, animación y referencias con criterio, mezcla previews de forma **dinámica** y **recomienda** la mejor con argumentos. Pendiente de ejecución: spec v3 → fases A-G (`docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md`).
+- **Curación de referencias + ascenso a producción** *(bloque 3)*. v4 ejecutado: el director de arte decide por cliente (7 diales, espectro motion 1-5, primitivas P1-P6, rechazos explícitos). Validado E2E con `mudanzasroy` (8 previews dinámicas, detector 0 graves, motor 24/24). Pendiente: (1) instalar Playwright + extraer referencias Awwwards (`truckn-roll-r`, `monarch-custom-homes`, `california-vending-company`), (2) revisión del socio del set v4 → elegir concepto → ascenso Astro+React islands → Cloudflare Pages.
 
 ### ⬜ Por hacer
 
@@ -55,7 +55,7 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 |---|--------|-----|--------|
 | 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | ⬜ pendiente |
 | 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital | ✅ completado |
-| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ⏳ rediseño v2 |
+| 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ✅ v4 director de arte ejecutado |
 | 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | ⬜ pendiente |
 | 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos | ⬜ pendiente |
 | 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas | ⬜ futuro |
@@ -87,15 +87,18 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] 2 Edge Functions desplegadas (suite 35/35)
 - [ ] *(diferido)* Plan B: dashboard + informe público `/r/[slug]`
 
-**3 · Generador** `███████░░░` ~65%
+**3 · Generador** `████████░░` ~80%
 - [x] motor v1 (catálogo + ensamblador + evaluación + registro)
 - [x] piloto E2E (mudanzasroy, Lighthouse móvil 100)
 - [x] rediseño v2: spec + cerebro `impeccable`+`design-taste-frontend` + despensa `skillui`
-- [x] 18 skills instaladas: 8 GSAP oficiales + 10 Three.js (CloudAI-X); docs actualizados
-- [x] 12 previews generadas (6 diseño + 6 GSAP/Three.js) con sus `.prompt.txt`
-- [x] plan v3 aprobado: director de arte autónomo (slots fijos → decisión con criterio)
-- [ ] ejecutar v3: spec → cerebro `director-arte` → flujo dinámico → recomendación (fases A-G)
-- [ ] `writing-plans` del agente de producción + deploy vivo (Cloudflare Pages + Resend)
+- [x] 18 skills instaladas: 8 GSAP oficiales + 10 Three.js; docs actualizados
+- [x] 12 previews v2 generadas con `.prompt.txt`; auditoría + fallo slot fijo documentados
+- [x] **v4 director de arte ejecutado**: skill `director-arte` (7 diales, P1-P6, rechazos) · flujo dinámico 8-12 · espectro motion 1-5 · ascenso Astro+React islands → Cloudflare · rúbrica v4
+- [x] índice de referencias por roles + memoria director + vocabulario motion Awwwards
+- [x] juanmora admitida en inventario (motion + tipografía Goga, motion 3-4, solo idioma)
+- [ ] instalar Playwright + re-extraer juanmora ultra + 3 candidatos Awwwards
+- [ ] revisión del socio del set v4 → elección → ascenso a producción (Cloudflare Pages)
+- [ ] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
 
 **4 · Revisor / QA** `░░░░░░░░░░` 0% *(depende del 3)*
 - [ ] spec
