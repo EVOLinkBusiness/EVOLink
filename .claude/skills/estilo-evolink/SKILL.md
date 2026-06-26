@@ -12,7 +12,7 @@ Consolidación de `taste-skill` + `soft-skill` + `minimalist-skill` (archivadas 
 
 ## Lo que diferencia a EVOLink (NO somos una agencia Awwwards)
 La audiencia no es un buyer técnico ni un jurado de diseño: es un cliente que decide si confía. Por eso:
-- **Claridad > espectáculo.** Motion bajo (1-4), sin scroll-hijack ni pinning agresivo. La web debe entenderse de un vistazo.
+- **Claridad > espectáculo.** Motion por defecto sobrio (espectro 1-5 según cliente, ver §7), sin scroll-hijack; el `pin` agresivo solo en el polo alto y nunca a costa de la lectura. La web debe entenderse de un vistazo.
 - **Mobile-first real.** La mayoría llega desde Google Maps en el móvil. Se diseña a 375px primero.
 - **Trust-first.** Teléfono, zona de servicio, fotos reales del trabajo y reseñas visibles pesan más que cualquier efecto.
 - **Conversión local:** un CTA dominante (llamar / pedir presupuesto). Sin menús de SaaS ni 6 secciones de relleno.
@@ -63,10 +63,22 @@ Antes de diseñar, declara en una línea el **"Design Read"**: *"Lo leo como: we
 - Datos clave del negocio local SIEMPRE visibles: teléfono clicable (`tel:`), zona de servicio, horario, email.
 - Revisa cada string antes de entregar: nada gramaticalmente roto, ni cute-meta de IA, ni referente perdido.
 
-## 7. Motion (sobrio por defecto)
-- Solo si comunica jerarquía, feedback o secuencia. Entrada suave en scroll (`IntersectionObserver`/`whileInView`, `translateY 12-16px` + opacidad, `cubic-bezier(0.16,1,0.3,1)`), hover táctil (`scale(0.98)` en `:active`).
-- Anima solo `transform`/`opacity`. `backdrop-blur` solo en fijos/sticky. Respeta `prefers-reduced-motion`.
-- Macro-motion (GSAP/`gpt-tasteskill`) reservado para cuando un negocio concreto lo pida y lo justifique; no por defecto.
+## 7. Motion (espectro 1-5, lo fija el `director-arte`)
+El nivel de motion NO es fijo "bajo por defecto": es un **dial 1-5 decidido por cliente** por la skill `director-arte` (lee brief + memoria). Esta skill define el espectro y los invariantes; el director elige el punto.
+
+| Nivel | Lectura | Cuándo subir |
+|---|---|---|
+| 1 | casi quieto, solo feedback (`:active`, focus) | trámite/urgencia, accesibilidad crítica |
+| 2 | entradas suaves al scroll + microinteracciones | confianza pura (mudanzas, reformas, asesorías) — **suelo habitual** |
+| 3 | reveals coordinados, algún `scrub` ligero | servicio-local premium, editorial sobrio |
+| 4 | `scrub` protagonista, `pin` puntual | editorial con historia, kinético contenido |
+| 5 | espectáculo (display enorme, pin agresivo, 3D pertinente) | agency-bold, experiencias — solo si el sector lo pide |
+
+**Regla "cuándo subir":** se sube un nivel solo si el sector lo permite Y el brief lo pide; nunca por decorar. Confianza pura se queda en 2-3. El 3D/espectáculo se justifica o se rechaza (lección cubo → ver `director-arte §8`).
+
+**Invariantes trust-first INTACTOS en todo el espectro** (el polo espectáculo nunca a costa de claridad/conversión en móvil): móvil 375px primero, contraste AA, datos del negocio visibles, **un CTA dominante**, `prefers-reduced-motion` respetado.
+
+**Mecánica (igual en todos los niveles):** anima **solo `transform`/`opacity`**; entrada suave (`translateY 12-16px` + opacidad, `cubic-bezier(0.16,1,0.3,1)`); hover táctil (`scale(0.98)` en `:active`); `backdrop-blur` solo en fijos/sticky; **scroll reversible** (P1 + P2, visible al subir y bajar, no reveal de un disparo); **Lighthouse ≥ 90 bloquea** (fluidez sin lag = regla, no deseo). El vocabulario son las **primitivas P1-P6** (ver `director-arte §6` y la spec §5); macro-motion GSAP/Three.js entra cuando el director lo selecciona, no por defecto.
 
 ## 8. Accesibilidad (la rúbrica la mide — bloquea entrega)
 - Contraste **AA**: texto principal ≥4.5:1; texto grande/botones ≥3:1. Auditar cada CTA, placeholder, foco y texto de ayuda.
