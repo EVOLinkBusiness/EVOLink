@@ -1,0 +1,98 @@
+COMANDOS EVOLink — Referencia rápida
+=====================================
+Solo usar cuando un cliente cae en un sector SIN referencia
+en el índice. Las referencias son biblioteca compartida,
+no tarea por cliente.
+
+
+[ QUÉ ES <nombre> ]
+-------------------
+Identificador corto de la referencia.
+Minúsculas, guiones, sin espacios.
+
+  mudanzas-martinez    → empresa de mudanzas local
+  reformas-madrid      → empresa de reformas
+  barberia-premium     → barbería con buen diseño
+  awwwards-corporativo → nominada Awwwards, corporativo limpio
+  awwwards-bold        → nominada Awwwards, kinético/bold
+
+
+[ AÑADIR REFERENCIA NUEVA ]
+----------------------------
+
+# Paso 1 · Extraer ADN visual (motion + feel)
+npx skillui@latest --url <URL> --mode ultra --out .claude/skills/referencias-visuales/<nombre>
+
+# Paso 2 · Extraer tokens estructurados (color / espaciado / radio)
+npx extract-design-system <URL>
+cp -r .extract-design-system/ .claude/skills/referencias-visuales/<nombre>/tokens/
+
+# Paso 3 · Limpiar restos si aparecen
+rm -rf .agents/ skills-lock.json .extract-design-system/
+
+# Paso 4 · Generar la ficha (prompt para Claude Code)
+# Pega esto en Claude Code tras el paso 2:
+#
+#   Lee los archivos de .claude/skills/referencias-visuales/<nombre>/
+#   y .claude/skills/referencias-visuales/<nombre>/tokens/
+#   y genera la fila exacta para añadir a la tabla "Inventario admitido"
+#   de docs/bloques/3-generador/referencias/indice-referencias.md.
+#   Formato:
+#   | nombre | fuente | perfil | roles | mood | motion (1-5) | estructura/solo-idioma | OK | ruta-tokens |
+#   Usa solo los perfiles y roles válidos del índice.
+#   Justifica en una línea el motion y el tipo elegido.
+#
+# Claude Code te devuelve la fila lista. La revisas y la pegas
+# en docs/bloques/3-generador/referencias/indice-referencias.md
+# bajo la tabla "Inventario admitido".
+
+# Paso 5 · Commitear y subir
+git add .claude/skills/referencias-visuales/<nombre>/ \
+        docs/bloques/3-generador/referencias/indice-referencias.md
+git commit -m "feat: referencia <nombre> al indice (perfil: <perfil>)"
+git push
+
+
+[ DÓNDE VIVE CADA COSA ]
+--------------------------
+Índice de referencias:
+  docs/bloques/3-generador/referencias/indice-referencias.md
+
+ADN extraído:
+  .claude/skills/referencias-visuales/<nombre>/
+
+Memoria del director (aprendizaje):
+  docs/bloques/3-generador/referencias/memoria-director-arte.md
+
+Prompts de previews por cliente (gitignored):
+  clientes/<id>/previews/<preview>.prompt.txt
+
+
+[ MODELO DE PROMPT — PREVIEWS ]
+---------------------------------
+Toda preview y la web final usan este esqueleto.
+Guardar como <nombre-preview>.prompt.txt junto al HTML.
+
+  /*1 · Qué web + cliente + dirección visual*/
+  Crea [web de una sola página] para [negocio del brief].
+  Usa la skill "[frontend-design | gpt-tasteskill]"
+  para definir [dirección visual del sector y tono].
+
+  /*2 · Skills a usar*/
+  Usa también estas skills:
+  [lista explícita]
+
+  /*3 · Qué incluir*/
+  La web debe incluir:
+  - [sección + animación concreta]
+  - [sección + animación concreta]
+
+  /*4 · Requisitos*/
+  - Todo en una sola página
+  - [estética: paleta, tipografía, densidad]
+  - Interacciones fluidas y reales          ← SIEMPRE
+  - Código comentado con las técnicas usadas
+  - Mobile-first · contraste AA · prefers-reduced-motion
+  - Placeholders honestos (logo y fotos reales, no stock)
+
+=====================================
