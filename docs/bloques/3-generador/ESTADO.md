@@ -1,71 +1,46 @@
 # ESTADO — Bloque 3 (Generador) · flujo superpowers
 
-Fase global: **F2 — Agente Generador web**. Spec aprobada → plan aprobado → **IMPLEMENTADO v1 (2026-06-13)**.
-Spec: `docs/superpowers/specs/2026-06-12-generador-v1-design.md` · Plan: `docs/superpowers/plans/2026-06-13-generador-v1.md`.
+Fase global: **F2 — Agente Generador web**. v1 IMPLEMENTADO (2026-06-13) · rediseño artístico v2 ejecutado · **v4 "Director de Arte Autónomo" EJECUTADO (2026-06-26).**
 
-> **✅ v1 COMPLETADO 2026-06-13.** Motor completo en `generador/` (Node + Astro). Suite TDD **20/20 en verde**. E2E verificado con cliente ficticio `demo`: ensamblado determinista → build Astro OK → evaluación con **Lighthouse móvil 98**, 0 enlaces rotos, 0 placeholders, formulario presente, contraste AA. Migración `agent_runs` (stage/output/flags) aplicada al remoto. Deploy y registro construidos y verificados offline (ejecución viva = run piloto).
->
-> **✅ DIAGNÓSTICO v1 SUPERADO 2026-06-13 — listo para piloto.** Robustez (suite adversaria + build hostil: 0 fugas, escapado completo, sin XSS), skills sin contradicciones (orden explícito en el orquestador), calidad con 3 muestras distintas (todas PASAN, variedad real). 1 bug corregido (`Footer.nombre_negocio` derivado) + 4 tests nuevos → suite **24/24**. 2 hallazgos de calidad documentados en CHANGELOG (los caza el gate ≥90). Detalle en `CHANGELOG.md` (entrada cabecera DIAGNÓSTICO v1).
+Spec vigente: `docs/superpowers/specs/2026-06-23-generador-director-arte-v4-design.md` (absorbe y sustituye el plan v3).
+Motor v1: `generador/` (Node + Astro). Suite **24/24 verde** (no se toca en v4).
 
-## Checklist de ejecución del plan
-| Task | Qué | Estado |
-|------|-----|--------|
-| FASE 2 | Skill `estilo-evolink` (consolida taste, coexiste con frontend-design) | ✅ `c66bab0` |
-| B1 | Bootstrap proyecto `generador/` (node:test, tsx) | ✅ `2057eb5` |
-| B2 | `schema.ts` + validadores (TDD) | ✅ `dbb8a31` |
-| B3 | Catálogo Astro (8 familias ×2-3 variantes + Layout) + plantilla base | ✅ `ed459b7` |
-| B4 | Ensamblador determinista (TDD) | ✅ `9f9e263` |
-| B5 | Build real del sitio demo (Astro compila) | ✅ (verificado, sin ajustes) |
-| C1 | Deps de evaluación (playwright + lighthouse + chromium) | ✅ `ac1de0f` |
-| C2 | Checkers deterministas: placeholders/contraste/enlaces (TDD) | ✅ `007d9cf` |
-| C3 | Orquestador `evaluate.cli.ts` + `report.ts` | ✅ `af178ec` |
-| D1 | Migración aditiva `agent_runs` (stage/output/flags) — aplicada al remoto | ✅ `052e81f` |
-| D2 | `run-record.ts` (buildRunRow) + `record.cli.ts` (TDD) | ✅ `0c1ad4a` |
-| D3 | `deploy.cli.ts` Cloudflare Pages preview (guarded) | ✅ `8295ed5` |
-| FASE 6 | Skill `generador-web` (orquestación 6 etapas) | ✅ `bf48010` |
-| FASE 7 | Documentación del bloque | ✅ (este commit) |
+---
 
-Suite: `cd generador && npm test` → **20/20**.
+## ✅ v4 — Director de Arte Autónomo (EJECUTADO 2026-06-26)
 
-## Dónde retomar
-**✅ PILOTO REAL SUPERADO (2026-06-14):** cadena Auditor→Generador con mudanzasroy en local — auditoría real (`fa6d78c5`) → brief/marca/plan/build → **Lighthouse móvil 100** → 5 etapas en `agent_runs`. Sistema de previews probado a mano (5 diseños `ui-ux-pro-max` + 5 motions `ui-animation` + 5 GSAP `gpt-tasteskill`, con logo+fotos reales). Elección: **F5 (Editorial Bold kinético)**. Veredicto del socio: la cadena funciona; **la estética del catálogo es lo mejorable**.
+Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el reparto de previews por **slot fijo** (origen del cubo) por un **director de arte** que decide por cliente y rechaza lo impertinente.
 
-**▶ EN CURSO — REDISEÑO ARTÍSTICO v2.** Spec aprobada: `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`. Ejecutada la ORDEN de rediseño (Fases 0-6) + planificación ampliada:
-- **Cerebro nuevo:** `impeccable` (anti-slop) + `design-taste-frontend` (diales). Skills instaladas y aplanadas (0 symlinks).
-- **Despensa dual (2026-06-16):** `referencias/despensa.md` (5 refs ADN: stripe/linear/vercel/framer/superlist) + `referencias/estilos-lapa-ninja.md` (géneros de layout/paleta mapeados a perfiles EVOLink, sin clonar lapa.ninja).
-- **6 previews de diseño generadas y validadas (2026-06-16):** 1-3 propias (stripe/linear/framer; reveal v2 en las 3), 4-6 lapa.ninja (Magazine-Editorial/Real Estate/Retro-Pattern). Detector impeccable `[]` · 0 mojibake en las 6 + index.html.
-- **Decisión 2026-06-16:** Google Stitch descartado (dependencia frágil). Grupo de animación → GSAP + `frontend-design` + Three.js CDN.
+**Entregado (commiteado):**
+- **Auditoría de las 12 previews** + fallo de slot fijo → `referencias/auditoria-diseno-v4.md` (+ CHANGELOG cabecera).
+- **Cerebro:** skill `.claude/skills/director-arte/SKILL.md` (7 diales + presets por nicho · referencias por roles + pesos de scoring · primitivas P1-P6 con scroll reversible · rechazos explícitos · salida `direccion-arte.md`).
+- **Andamiaje:** `referencias/indice-referencias.md` (por roles, gate de admisión, cola de candidatos) + `referencias/memoria-director-arte.md` (aprendizaje ligero).
+- **`estilo-evolink §7`** → espectro de motion **1-5** delegado al director, invariantes trust-first intactos.
+- **`flujo-previews.md`** reescrito: dinámico **8-12** (sin slots), primitivas + referencias por roles; reparto histórico movido a nota. Las 2 reglas permanentes (`.prompt.txt` 1:1 + esquema 4 partes) intactas.
+- **`ascenso-produccion.md`** (Astro + Tailwind + islas React → Cloudflare Pages) + **rúbrica** (encaje concepto↔referencia, pertinencia del motion, primitivas+scroll reversible, criterio de recomendación) + **BLOQUE.md** al día (63 líneas).
 
-**▶ PLAN APROBADO 2026-06-17 — reestructuración a 12 previews.** `docs/superpowers/plans/2026-06-17-gsap-threejs-previews-7-12.md`. Reparto nuevo: **12 = 6 diseño (existentes, se conservan) + 6 GSAP (nuevas, 2+2+2)**:
-- 7-8: `frontend-design` + impeccable + skills GSAP · 9-10: `gpt-tasteskill` + impeccable + skills GSAP · 11-12: `frontend-design` + impeccable + GSAP + **Three.js** (skill comunitaria CloudAI-X + CDN r184, fallback solo-CDN).
-- **Regla obligatoria del bloque:** toda web (1-12 y final) usa la **estructura de prompt de 4 partes** del blog (`/*1*/` qué+cliente+dirección · `/*2*/` skills · `/*3*/` qué incluir · `/*4*/` requisitos, "Interacciones fluidas y reales" siempre). A documentar como permanente en `flujo-previews.md`.
-- **Regla obligatoria — trazabilidad:** cada preview lleva su `<nombre>.prompt.txt` (prompt exacto) junto al HTML en `clientes/<id>/previews/` (también retroactivo para 1-6).
+**Validación E2E (mudanzasroy `cb1dfbea`, `clientes/` gitignored — sin commit):**
+- `direccion-arte.md`: perfil confianza-servicio, **motion 2-3 justificado**, **cubo 3D y partículas RECHAZADOS con motivo**. ✅
+- Set dinámico de **8 previews** (`previews/v4/v4-1…v4-8`) + 8 `.prompt.txt` 1:1, ancladas por roles + primitivas, ninguna comparte referencia/género/par tipográfico. ✅
+- Detector impeccable: **13 hallazgos, todos `warning` (0 graves)**, **0 mojibake**. Warnings = `single-font` (×8, restricción v1 conocida: fuentes de sistema porque Google Fonts hunde Lighthouse; el par tipográfico real se materializa en el ascenso con self-host) + `dark-glow` (×5, sombras sutiles intencionales). Gate "0 graves" cumplido.
+- `recomendacion.md`: top 3 (1º `v4-2` Datos que tranquilizan · 2º `v4-3` Proceso sin sorpresas · 3º `v4-1` Confianza clara), con razón de diseño. ✅
+- **Entrada nueva** en `memoria-director-arte.md §3`. ✅
+- Render local 200 (`python -m http.server`, assets reales resuelven). `cd generador && npm test` → **24/24**. ✅
 
-**✅ PASOS 1-5 COMPLETADOS (2026-06-21/22):**
-- **Paso 1 (skills):** 8 skills GSAP oficiales + 10 Three.js comunitarias (CloudAI-X) instaladas y aplanadas en `.claude/skills/` — carpetas reales, sin symlinks, sin `.agents/`. Incidencia resuelta: threejs creaba junctions rotas; solución: `[System.IO.Directory]::Delete()` + reinstalar.
-- **Paso 2 (referencias):** `estilos-lapa-ninja.md` ampliada (Business/Agency/paletas/plataformas). `despensa.md` con placeholder servicios locales pendiente curación humana.
-- **Paso 3 (docs):** `flujo-previews.md` reescrito (12=6+6 + 2 reglas permanentes: `.prompt.txt` y esquema 4 partes). `gsap-skills.md` actualizado (instalado, sin duplicado, sección impeccable + enlace threejs.md). Nueva `referencias/threejs.md` (CDN r184, escena básica, recetas, GSAP scrub, caps móvil). `BLOQUE.md` corregido (12 previews, tabla skills completa).
-- **Paso 4 (trazabilidad parcial):** 6 `.prompt.txt` retroactivos creados en `clientes/<id>/previews/` para fab-1…fab-5 + anim-5, marcados `[reconstruido]`.
-- **Paso 5 (previews GSAP 2026-06-22):** 6 previews GSAP generadas + 6 `.prompt.txt` en `clientes/cb1dfbea.../previews/`:
-  - `gsap-7`: `frontend-design` + SplitText (palabras) + CountUp + stagger reveals — paleta azul/blanco
-  - `gsap-8`: `frontend-design` + Flip filter de servicios + DrawSVGPlugin (proceso) + parallax scrub hero — paleta navy/dorado
-  - `gsap-9`: `gpt-tasteskill` + SplitText chars brutal + ScrollTrigger pin (services bento) + counter — paleta negro/rojo Bebas Neue
-  - `gsap-10`: `gpt-tasteskill` + scroll horizontal (6 paneles pin+scrub) + hero reveal scrub-driven + CustomEase — paleta negro/azul eléctrico
-  - `gsap-11`: `frontend-design` + Three.js partículas fondo (canvas fixed, z-index:-1, 2000/500 pts) + SplitText hero — paleta azul muy oscuro
-  - `gsap-12`: `frontend-design` + Three.js mesh scroll-driven (hero 250vh sticky, BoxGeometry rota con scrub) + texto sincronizado con progreso — paleta blanco roto/azul
+---
 
-**✅ PASO 6 — VALIDACIÓN PARCIAL CON EL SOCIO (2026-06-22):** revisadas las 12 previews. Veredicto: las GSAP "vistosas y elegantes" gustan; **gsap-12 (cubo 3D) descartada como concepto** — la animación es buena pero impertinente para una mudanza. Diagnóstico: el cubo se forzó porque el slot 11-12 obliga a Three.js → el pipeline reparte motores por **slot fijo, sin criterio por cliente**.
+## Dónde retomar (próximo paso)
 
-**▶ EN CURSO — REDISEÑO v3: DIRECTOR DE ARTE AUTÓNOMO.** Plan APROBADO 2026-06-22: `docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md`. **Pendiente de ejecución** (el socio tiene otra prioridad antes). Convierte el bloque en un director de arte que DECIDE con criterio (estilo, nivel de motion, animación, referencias) y RECHAZA lo impertinente, en vez de una receta de slots fijos.
-- **Decisiones cerradas (4):** motion = gusto por cliente (revisar `estilo-evolink` a espectro 1-5) · alcance = cerebro + pipeline + auditoría **sin código orquestador** · mezcla de previews **dinámica** (la decide el cerebro, sesgo a GSAP/Three.js cuando encaja) · el agente **puntúa y recomienda** top 2-3 con argumentos.
-- **Fases A-G:** A auditoría de las 12 · B skill nueva `director-arte` (el cerebro) · C revisar `estilo-evolink` §7 · D rehacer `flujo-previews.md` (dinámico) · E evaluación+recomendación · F despensa (refs negocio local reales) + herramientas · G validación E2E sobre mudanzasroy (debe rechazar el cubo).
-- **Primer paso al retomar:** formalizar spec v3 (`docs/superpowers/specs/2026-06-22-generador-director-arte-v3.md`) vía `writing-plans`, luego Fase A.
+1. **Revisión del socio** del set v4 en local (`python -m http.server` sobre `previews/v4/`) → elegir 1 concepto → registrar en `agent_runs` (stage `preview-choice`) y volcar a `memoria-director-arte.md §3`.
+2. **Palanca nº 1 (curación humana):** añadir al `indice-referencias.md` 1-2 **negocios locales reales** (mudanzas/reformas con web cuidada) → enseñan ESTRUCTURA + un puñado de **Awwwards limpias** → MOTION. Sin esto, una mudanza tiende a "parecer startup".
+3. **Ascenso a producción** del concepto elegido (Astro + islas React, self-host de fuentes, Cloudflare Pages) cuando el socio lo apruebe.
+4. **Retrofit pendiente:** el esqueleto de agentes (`.claude/agents/`, `CONTRATO.md`, `GUIA-DESARROLLO-BLOQUE.md` del bloque 3) **no estaba montado** al ejecutar v4 (Fase 0). Cuando aterrice, retrofit del contrato/guía del bloque.
+5. Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 (motion por cliente 1-5 · mezcla dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3).
 
-> Nota: el "código orquestador" (programa que corre la generación de diseño de punta a punta llamando a la API) queda **fuera de alcance**; la generación sigue siendo asistida con skills. Automatizarlo sería un plan posterior (encaja con bloque 7/Mejora) una vez validado el criterio.
+> **Código orquestador** (generación de punta a punta llamando a la API) y **pgvector** de referencias = **fuera de alcance**, diferidos al bloque 7. La generación sigue siendo asistida con skills.
 
-## Notas técnicas de la ejecución
-- Sitios de cliente: Astro 5 + Tailwind 3, proyecto self-contained por cliente (`npm install` por cliente; optimización a workspace compartido diferida).
-- Test runner `node:test` vía `tsx` (sin dependencias extra de testing).
-- Lighthouse en este entorno necesitó `userDataDir` local (el temp global da EPERM). Reusa el chromium de Playwright vía `chromePath`.
-- `clientes/` está gitignored (datos de cliente fuera del repo; el registro durable es `agent_runs`).
-- Migración aplicada vía MCP `apply_migration` (sin Docker local).
+## Notas técnicas
+- Sitios de cliente: Astro 5 + Tailwind 3 (islas React en el ascenso). Hosting webs cliente: Cloudflare Pages.
+- `clientes/` gitignored (datos fuera del repo; registro durable = `agent_runs`).
+- Lighthouse necesita `userDataDir` local (temp global da EPERM); reusa chromium de Playwright vía `chromePath`.
+- Detector anti-slop: `node .claude/skills/impeccable/scripts/detect.mjs --json <previews>/*.html`.
