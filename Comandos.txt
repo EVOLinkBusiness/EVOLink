@@ -110,18 +110,21 @@ El director las selecciona por roles; no se clonan, se abstrae su idioma.
   superlist    https://superlist.com            servicios-local · color + motion · motion 2
   juanmora     https://juanmora.co/             minimal-lujo/editorial · motion + tipografía · motion 3-4 · SOLO IDIOMA (Goga display, bounce easing, Lenis)
 
-  ─── PENDIENTES — candidatos para extraer ───
-  [ ] awwwards/truckn-roll-r          https://www.awwwards.com/sites/truckn-roll-r                   mudanzas · ESTRUCTURA
-  [ ] awwwards/monarch-custom-homes   https://www.awwwards.com/sites/monarch-custom-homes            reformas premium · ESTRUCTURA + motion
-  [ ] awwwards/california-vending     https://www.awwwards.com/sites/california-vending-company      servicios-local · ESTRUCTURA + mood
-  [✓] juanmora                        https://juanmora.co/                                           ADMITIDA — motion + tipografía (Goga display) · solo idioma · motion 3-4
+  ─── ESTADO candidatos (extraídos 2026-06-26, modo ultra c/ Playwright) ───
+  [✓] truckn-roll-r          vivo: trucknroll.com                  ADMITIDA — mudanzas (sector exacto) · National 2 Condensed display · motion 4
+  [⚠] monarch-custom-homes   vivo: monarch.us                      BLOQUEADA — 403 anti-bot, extracción degradada y descartada. Reintentar con UA real.
+  [✓] california-vending     vivo: californiavendingcompany.com    ADMITIDA — servicios-local · generalSans display · motion 4 (Next.js)
+  [✓] juanmora               https://juanmora.co/                  ADMITIDA — re-extraída ULTRA · motion + tipografía (Goga display) · solo idioma · motion 3-4
   [✓] vocabulario motion moving-co    https://www.awwwards.com/inspiration_search/moving%20company/  → técnicas documentadas en índice (bloques emergentes, image reveal, hover grid, card Flip)
       Sub-candidatos con depth: loandbehold.studio/about · exergy3.com/about · feedagency.co/about
 
-# juanmora extraída 2026-06-26 (modo básico — sin Playwright, sin ultra).
-# Para re-extraer con ultra (computed styles + scroll screenshots):
-#   npm install -g playwright && npx playwright install chromium
-#   npx skillui@latest --url https://juanmora.co/ --mode ultra --out .claude/skills/referencias-visuales/juanmora
+# Playwright YA instalado local (2026-06-26): `npm install playwright` + `npx playwright install chromium`.
+# El binario Chromium vive en caché de usuario (~/AppData/Local/ms-playwright). Modo ultra operativo.
+# Extracción ultra (computed styles + scroll screenshots):
+#   npx skillui@latest --url <URL-VIVA> --mode ultra --out .claude/skills/referencias-visuales/<nombre>
+# OJO: usar la URL VIVA del sitio, NO la de la galería awwwards.com/sites/X (extraería Awwwards).
+# OJO: sitios con anti-bot (403) pueden degradar la extracción → verificar nº de colores/componentes antes de admitir.
+# OJO: el prose de DESIGN.md suele invertir display/body; los tokens/typography.json (scale) son la fuente fiable.
 
 Notas:
   · "estructura" = enseña layout y jerarquía para negocio local.

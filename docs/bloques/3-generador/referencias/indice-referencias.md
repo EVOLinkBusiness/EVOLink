@@ -23,7 +23,9 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 | vercel | despensa | minimal/editorial | estructura, tipografia | claro | 3 | estructura | OK | referencias-visuales/vercel |
 | framer | despensa | editorial | motion, color | claro | 4 | estructura | OK | referencias-visuales/framer |
 | superlist | despensa | servicios-local | color, motion | claro | 2 | estructura | OK | referencias-visuales/superlist |
-| juanmora | awwwards | minimal-lujo · editorial | motion, tipografia | claro · cool | 3-4 | solo idioma | OK (sin Playwright) | referencias-visuales/juanmora |
+| juanmora | awwwards | minimal-lujo · editorial | motion, tipografia | claro · cool | 3-4 | solo idioma | OK (ultra) | referencias-visuales/juanmora/juanmora-design |
+| truckn-roll-r | awwwards | servicios-local · bold-industrial | estructura, motion, tipografia | claro · bold | 4 | estructura (sector exacto: mudanzas) | OK (ultra) | referencias-visuales/truckn-roll-r/trucknroll-design |
+| california-vending-company | awwwards | servicios-local | estructura, color, motion | claro · warm | 4 | estructura | OK (ultra) | referencias-visuales/california-vending-company/californiavendingcompany-design |
 
 ### Ficha extendida — juanmora (extraída 2026-06-26)
 
@@ -49,7 +51,7 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 - Easing: `cubic-bezier(.292,1.932,.281,.996)` — bounce springy, overshoot suave.
 - Easing alt: `cubic-bezier(.275,2.254,.281,.996)` — más pronunciado.
 - Duración: 100ms–500ms.
-- ⚠ GSAP + Lenis son JS y no fueron detectados (requiere Playwright); el nivel real es 3-4.
+- ✓ Re-extraída en modo ultra (Playwright, 2026-06-26): **GSAP + ScrollTrigger confirmados**, 7 scroll frames, 1 keyframe. Nivel real 3-4 verificado. Tokens en `juanmora/juanmora-design/`.
 
 **Estructura y layout:**
 - Grid: 4px base. Max-width: 991px. Mobile-first.
@@ -62,16 +64,59 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 - Rol `tipografía`: display masiva a escala + cuerpo sistema → par legible + impacto.
 - NO copiar estructura de portfolio (hero con "Brand & Web Design Specialist" y grid de proyectos). Solo el idioma.
 
+### Ficha extendida — truckn-roll-r (extraída 2026-06-26, ultra · sitio vivo trucknroll.com)
+
+**Sector exacto: mudanzas.** Awwwards. Extracción sana: 20 colores, 10 componentes, 9 animaciones (Web Animations API), 7 scroll frames.
+
+**Paleta verificada:**
+| Token | Hex | Uso |
+|---|---|---|
+| fondo | `#ffffff` | base (light) |
+| texto | `#131313` | headings + body |
+| superficie | `#eaeff2` | cards, secciones |
+| borde | `#2c2f31` | dividers |
+| acento (marca) | `#c44e47` | brick red — CTAs, énfasis de marca |
+| acento interactivo | `#4e37ff` | indigo — links/focus rings (secundario) |
+| muted | `#98a7b6` | captions |
+
+**Tipografía** *(corrección: el prose del DESIGN.md invierte display/body; los tokens del scale son correctos):*
+- **`National 2 Condensed` (Extrabold)** → DISPLAY/headings. Condensada, industrial, impacto — idónea para mudanzas.
+- **`Helvetica Now Display`** → body/UI. `SFMono` → datos/código.
+- Self-hosted woff2.
+
+**Cómo usar:** rol `estructura` real (sector exacto, layout portátil a negocio local) + rol `motion` (spring, layout animations, staggered reveals → P1/P4/P5) + rol `tipografia` (condensada bold como identidad). Verificar peso JS antes de clonar interacciones pesadas.
+
+### Ficha extendida — california-vending-company (extraída 2026-06-26, ultra · sitio vivo californiavendingcompany.com)
+
+**Servicios-local, sitio Next.js.** Awwwards. Extracción sana: 20 colores, 6 componentes, 6 animaciones, 5 keyframes, 7 scroll frames.
+
+**Paleta verificada:**
+| Token | Hex | Uso |
+|---|---|---|
+| fondo | `#ffffff` | base (light) |
+| texto | `#1d293d` | headings + body (navy) |
+| superficie | `#f0fdf4` | mint surface, warm |
+| borde | `#44403c` | dividers |
+| acento | `#e40014` | rojo — CTAs, links, focus |
+| muted | `#a8a29e` | captions |
+| warning | `#fbbc04` | avisos |
+
+**Tipografía** *(corrección: prose invierte display/body; el scale es correcto):*
+- **`generalSans` (Regular/Medium/Semibold/Bold)** → DISPLAY/headings. Identidad de marca.
+- **`GeistSans`** → body/UI · **`GeistMono`** → datos. Self-hosted woff2 vía `_next/static`.
+
+**Cómo usar:** rol `estructura` (landing servicios-local limpia) + rol `color-mood` (navy + rojo vivo + mint warm) + rol `motion` (spring/staggered → P1/P4). Buen molde para negocio local moderno sin parecer plantilla.
+
 ---
 
 ## Cola de candidatos (curación por demanda)
 Cualquiera pega aquí una URL buena que vea; la extracción se hace en lote después. NUNCA curación especulativa: el disparador es "un cliente cae en un sector sin buena referencia".
 
 ### Sites concretos para extraer
-- [ ] https://www.awwwards.com/sites/monarch-custom-homes — reformas/construcción premium · candidato ESTRUCTURA + motion
-- [ ] https://www.awwwards.com/sites/truckn-roll-r — mudanzas · candidato ESTRUCTURA (¡sector exacto!) · verificar si la estructura es portátil a negocio local
-- [ ] https://www.awwwards.com/sites/california-vending-company — servicios-local · candidato ESTRUCTURA + mood
-- [x] ~~https://juanmora.co/~~ → **admitida**, ver fila `juanmora` en Inventario. Tokens en `referencias-visuales/juanmora/`.
+- [⚠] https://www.awwwards.com/sites/monarch-custom-homes (vivo: `monarch.us`) — **BLOQUEADA**: el sitio responde 403 anti-bot; la extracción ultra quedó degradada (3 colores, Times New Roman, 0 componentes/animaciones) y se descartó. Reintentar con user-agent/headers reales o extracción manual antes de admitir.
+- [x] ~~https://www.awwwards.com/sites/truckn-roll-r~~ (vivo: `trucknroll.com`) → **admitida** `truckn-roll-r`. Sector exacto mudanzas. Ver Inventario + ficha.
+- [x] ~~https://www.awwwards.com/sites/california-vending-company~~ (vivo: `californiavendingcompany.com`) → **admitida** `california-vending-company`. Ver Inventario + ficha.
+- [x] ~~https://juanmora.co/~~ → **admitida**, ver fila `juanmora` en Inventario. Tokens en `referencias-visuales/juanmora/juanmora-design/` (re-extraída ultra).
 
 ### Vocabulario de motion — fuentes de técnicas (no design-system único)
 Estas fuentes no aportan estructura; aportan **idioma de animación** portable. Se usan como referencia de técnicas concretas, no como ancla de layout.

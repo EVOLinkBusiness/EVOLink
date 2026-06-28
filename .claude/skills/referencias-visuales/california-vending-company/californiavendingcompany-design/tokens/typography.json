@@ -1,0 +1,96 @@
+{
+  "families": [
+    "generalSans",
+    "GeistSans",
+    "GeistMono"
+  ],
+  "scale": {
+    "heading-1": {
+      "fontFamily": "generalSans",
+      "fontSize": "64px",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "heading-2": {
+      "fontFamily": "generalSans",
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "heading-3": {
+      "fontFamily": "generalSans",
+      "fontSize": "40px",
+      "fontWeight": "700",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "body": {
+      "fontFamily": "GeistSans",
+      "fontSize": "22px",
+      "fontWeight": "400",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "caption": {
+      "fontFamily": "GeistSans",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": null,
+      "source": "css"
+    },
+    "code": {
+      "fontFamily": "GeistMono",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": null,
+      "source": "css"
+    }
+  },
+  "fontFaces": [
+    {
+      "family": "GeistSans",
+      "src": "https://californiavendingcompany.com/_next/static/media/Geist_Variable-s.p.0-te~ja_gpvcf.woff2",
+      "format": "woff2",
+      "weight": "100"
+    },
+    {
+      "family": "GeistMono",
+      "src": "https://californiavendingcompany.com/_next/static/media/GeistMono_Variable.p.17jn9btb_52pq.woff2",
+      "format": "woff2",
+      "weight": "100"
+    },
+    {
+      "family": "generalSans",
+      "src": "https://californiavendingcompany.com/_next/static/media/GeneralSans_Regular-s.p.0aqd04_idyb6d.woff2",
+      "format": "woff2",
+      "weight": "400"
+    },
+    {
+      "family": "generalSans",
+      "src": "https://californiavendingcompany.com/_next/static/media/GeneralSans_Medium-s.p.0rb3ehjtk_okh.woff2",
+      "format": "woff2",
+      "weight": "500"
+    },
+    {
+      "family": "generalSans",
+      "src": "https://californiavendingcompany.com/_next/static/media/GeneralSans_Semibold-s.p.0hfk9k1kkjsdy.woff2",
+      "format": "woff2",
+      "weight": "600"
+    },
+    {
+      "family": "generalSans",
+      "src": "https://californiavendingcompany.com/_next/static/media/GeneralSans_Bold-s.p.0-mpnqa_q7f0-.woff2",
+      "format": "woff2",
+      "weight": "700"
+    }
+  ],
+  "rules": {
+    "maxSizesPerScreen": 4,
+    "headingWeightRange": "600-700",
+    "bodyWeight": 400,
+    "lineHeightBody": 1.5,
+    "lineHeightHeading": 1.2
+  }
+}

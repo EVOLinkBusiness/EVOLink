@@ -1,0 +1,88 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "core": {
+    "background": {
+      "value": "#ffffff",
+      "role": "background",
+      "name": "cc-btn-primary-color"
+    },
+    "text-primary": {
+      "value": "#131313",
+      "role": "text-primary",
+      "name": "color-black"
+    },
+    "surface": {
+      "value": "#eaeff2",
+      "role": "surface",
+      "name": "cc-btn-secondary-bg"
+    },
+    "border": {
+      "value": "#2c2f31",
+      "role": "border",
+      "name": "cc-primary-color"
+    },
+    "accent": {
+      "value": "#c44e47",
+      "role": "accent"
+    },
+    "text-muted": {
+      "value": "#98a7b6",
+      "role": "text-muted",
+      "name": "cc-btn-primary-hover-bg"
+    }
+  },
+  "status": {
+    "danger": {
+      "value": "#de3e3e",
+      "role": "danger",
+      "name": "color-feedback-error"
+    },
+    "success": {
+      "value": "#369763",
+      "role": "success"
+    }
+  },
+  "extended": {
+    "color-gray": {
+      "value": "#d8d3d3",
+      "role": "unknown",
+      "name": "color-gray"
+    },
+    "cc-btn-primary-hover-bg": {
+      "value": "#000000",
+      "role": "unknown",
+      "name": "cc-btn-primary-hover-bg"
+    },
+    "cc-btn-secondary-hover-bg": {
+      "value": "#353d43",
+      "role": "unknown",
+      "name": "cc-btn-secondary-hover-bg"
+    },
+    "cc-section-category-border": {
+      "value": "#1e2428",
+      "role": "unknown",
+      "name": "cc-section-category-border"
+    },
+    "cc-btn-primary-bg": {
+      "value": "#c2d0e0",
+      "role": "info",
+      "name": "cc-btn-primary-bg"
+    },
+    "color-c1c1c1": {
+      "value": "#c1c1c1",
+      "role": "unknown"
+    },
+    "color-4f4f4f": {
+      "value": "#4f4f4f",
+      "role": "unknown"
+    },
+    "color-a7a4a4": {
+      "value": "#a7a4a4",
+      "role": "unknown"
+    }
+  },
+  "meta": {
+    "theme": "light",
+    "extracted": "2026-06-26"
+  }
+}
