@@ -19,5 +19,5 @@ Qué NO haces:
 Reglas:
 - Determinista primero, LLM solo para juicio.
 - Nada de producto sin diseño aprobado por el humano (HARD-GATE).
-- Antes de diseñar, lee el `CONTRATO.md` y la `GUIA-DESARROLLO-BLOQUE.md` del bloque.
+- Antes de diseñar, si el bloque carece de `CONTRATO.md` o `GUIA-DESARROLLO-BLOQUE.md`, créalos desde `docs/contexto/plantillas/` rellenando el «Consume» a partir de la sección «Produce» del CONTRATO del bloque anterior; luego léelos. Si ya existen, solo léelos.
 - Español, conciso. Marca las ambigüedades en vez de resolverlas en silencio.
