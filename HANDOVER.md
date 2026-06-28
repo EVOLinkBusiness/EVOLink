@@ -2,47 +2,49 @@
 
 **Última sesión:** 28/06/2026
 **Branch:** main
-**Último commit:** `ee70f9a docs: register Spanish date policy as closed decision`
+**Último commit:** `4123c10 docs: ajustar estado real post-saneamiento`
 
 ---
 
 ## Estado del proyecto
-Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte Autónomo" ejecutado. Esta sesión: **auditoría documental completa** (PASOS 1-4) — repo consistente, sin desfases entre documentos y estado real.
+Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte Autónomo" ejecutado. **Esqueleto de los 3 agentes saneado**: los hallazgos de la validación pre-piloto (RUTA A) están resueltos. El bloque 4 queda **listo para diseño** (no arrancado).
 
 ## Bloque activo
-**3-generador (v4 ejecutado; pendiente revisión socio del set v4 + ascenso)** — detalle en `docs/bloques/3-generador/ESTADO.md`.
+**3-generador** (v4 ejecutado; pendiente revisión socio del set v4 + ascenso) — detalle en `docs/bloques/3-generador/ESTADO.md`.
 
-## Hecho en la sesión actual (28/06/2026 — auditoría documental)
-- **PASO 1:** inventario y diagnóstico (solo lectura) de 20+ archivos. Informe A-E aprobado.
-- **PASO 2.1:** `GUIA-DESARROLLO-BLOQUE.md` del bloque 3 actualizada a v4 (antes decía v3 vigente). `BLOQUE.md` y `ESTADO.md`: eliminado ítem retrofit (deuda saldada).
-- **PASO 2.2:** `CLAUDE.md` y `README.md` consistentes con estado real del bloque 3 (v4 ejecutado, curación completada).
-- **PASO 2.3:** 18 archivos convertidos a fechas dd/mm/aaaa en contenido (cubos A y B). Exentos: CHANGELOG, specs/ORDENs, TRANSICION-PLANIFICACION.
-- **PASO 3:** Política de fechas documentada en `CLAUDE.md` (metodología) y `docs/BUSINESS.md` (decisión #16).
-- **PASO 4:** Verificación — 0 fechas YYYY-MM-DD fuera de exentos; todos los archivos ≤ 200 líneas; git limpio.
+## Hecho en la sesión actual (28/06/2026 — saneamiento pre-bloque 4)
+- **B1:** `planificador.md` ahora **crea** el andamiaje del bloque (CONTRATO+GUIA) desde `docs/contexto/plantillas/` si falta, rellenando el «Consume» desde el «Produce» del bloque anterior; si existe, solo lee. (Paso 0 vía planificador, no la sesión orquestadora.)
+- **B2:** falso positivo — `programador` y `verificador` ya fijaban `model: sonnet` desde `a1bb024`. Sin cambio.
+- **I1:** `CONTRATO.md` bloque 3 acepta **ambas entradas** para el 4: preview HTML local **y** URL pública. El piloto arranca con entrada local.
+- **I2:** el **test de coincidencia** del CONTRATO sale del piloto del 4 → pendiente propio del bloque 3 (criterio de hecho: test verde en su suite). Registrado en `ESTADO.md` bloque 3.
+- **I3:** definido **ORDEN vs spec** en `politica-archivos.md` (spec = QUÉ permanente en specs/; ORDEN = CÓMO desechable en raíz, la escribe el planificador).
+- **M1–M5:** `cierre.md` (commit con `-m` múltiples + co-autor por modelo de sesión, no fijo), `inicio.md` (tope 5→6 tool calls + nota de relectura de CLAUDE.md), `verificador.md` (`tools:` acotado; Write/Edit solo para tests).
+- **Estado real:** README pasa de "listo para piloto" a "esqueleto saneado; bloque 4 listo para diseño". Nota de saneamiento añadida al doc de validación.
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones (16 activas). Nueva esta sesión: **#16 Política de fechas** (dd/mm/aaaa en contenido; YYYY-MM-DD en nombres de specs/ORDENs).
+Ver `docs/BUSINESS.md` §Decisiones (16 activas). Sin nuevas esta sesión.
 
 ## Riesgos y avisos vivos
+- **B1 es ahora responsabilidad del planificador:** al arrancar el bloque 4, el primer movimiento del planificador será crear CONTRATO+GUIA desde plantilla. Verificar que lo hace antes de diseñar.
 - **Los subagentes no leen `CLAUDE.md` solos:** la sesión principal les pasa el contexto del bloque (CONTRATO/GUIA/spec).
 - **Curación de referencias = palanca nº 1.** Mínimo cubierto (truckn-roll + california-vending = sector real; juanmora + Awwwards = motion). `monarch` queda como deuda menor.
 - **Revisión del socio del set v4 pendiente:** `python -m http.server` sobre `clientes/<id>/previews/v4/` → elegir concepto → registrar en `agent_runs` + memoria.
-- **CONTRATO del Generador — test de coincidencia pendiente:** el test que comprueba que el esquema cumple el contrato se crea en el piloto del Revisor.
+- **Test de coincidencia del CONTRATO** = pendiente del bloque 3 (no del piloto del 4).
 - Nada de producto sin spec aprobada; nada al cliente sin Checkpoint final. API ~10 €/mes; no superar ~50 €/mes.
 - **Single-font en previews v1 es esperado** (fuentes de sistema; par tipográfico real en el ascenso con self-host).
 - Credenciales: `generador/.env` local, nunca commitear. `clientes/` gitignored. MCP Supabase pide re-OAuth cada sesión.
-- Aplanar skills post `npx skills add`: `[System.IO.Directory]::Delete()` para junctions. 28 symlinks pre-existentes en carpetas-grupo (gitignored) → poda pendiente.
+- Aplanar skills post `npx skills add`. 28 symlinks pre-existentes en carpetas-grupo (gitignored) → poda pendiente.
 - Avisos LF→CRLF al commitear en Windows (sin impacto); valorar `.gitattributes` si molesta el ruido.
 
 ## Próximo paso concreto
-**PILOTO del esqueleto = construir el bloque 4 (Revisor/QA) con los 3 agentes** (planificador → programador → verificador), estrenando el `CONTRATO.md` Generador→Revisor con un caso real.
-
-1. Abrir sesión nueva con `/clear` (contexto limpio para el piloto).
-2. Cargar contexto con `/inicio` → leerá GUIA del bloque 3 (activo) o del 4 cuando se cree.
-3. Invocar `planificador` con CONTRATO Generador→Revisor como contexto de entrada.
+**Diseño del bloque 4 (Revisor/QA) — sesión 4A con el `planificador`.**
+1. Abrir sesión nueva con `/clear` + `/inicio`.
+2. Invocar `planificador` pasándole la §Produce del CONTRATO del bloque 3 como contexto → creará CONTRATO+GUIA del bloque 4 (Paso 0) y cerrará el diseño/spec.
+3. Tras spec aprobada: programador (TDD) → verificador. Entrada del piloto = preview local.
 
 ## Pendientes
-- [ ] **Piloto Revisor (bloque 4)** con los 3 agentes; crea el test de coincidencia del CONTRATO Generador↔esquema.
+- [ ] **Diseño bloque 4 (sesión 4A)** con el planificador (Paso 0 + spec).
+- [ ] **Test de coincidencia del CONTRATO** (tarea propia del bloque 3).
 - [ ] Revisión del socio del set v4; volcar elección a `memoria-director-arte.md §3`.
 - [ ] Ascenso a producción del concepto elegido (Astro + islas React, self-host fuentes, Cloudflare).
 - [ ] Preparar puesto de Javier (regenerar su ORDEN de onboarding alineada al esqueleto).
