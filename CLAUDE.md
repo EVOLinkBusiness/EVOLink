@@ -10,8 +10,15 @@ Trabajas como socio técnico, no como asistente pasivo: decides con criterio, re
 ## Modelo operativo — tejido de agentes
 Cada función es un **bloque autocontenido** con interfaz clara, testeable y arreglable por separado. Roles transversales: **Creación** · **Supervisión** (QA automático antes del humano) · **Ops/Registro** (`/inicio` `/cierre` + HANDOVER + tabla `agent_runs`) · **Mejora** (mina registros → mejora skills/rúbricas; diferido). Regla: *determinista primero, LLM solo para juicio*.
 
+## Equipo de desarrollo — 3 agentes
+Tres agentes en `.claude/agents/` (carpeta de nombre fijo de Claude Code), COMPARTIDOS por todos los bloques. El contexto del bloque se les inyecta vía su `GUIA-DESARROLLO-BLOQUE.md`; un subagente no lee este archivo por su cuenta.
+- `planificador` (Opus): diseña, planifica, redacta specs y ÓRDENES. No implementa.
+- `programador` (Sonnet): implementa con TDD lo que dice el plan.
+- `verificador` (Sonnet): escribe/refina el banco de tests y hace doble revisión (cumple-spec → calidad); emite veredicto. NO reescribe el código del programador.
+Encarnan el flujo `subagent-driven-development`: la sesión principal orquesta y delega.
+
 ## Arquitectura de bloques
-El proyecto se organiza en **7 bloques** bajo `docs/bloques/`. Cada bloque es una carpeta con contrato idéntico: `BLOQUE.md` (qué hace, estado, contrato E/S, skills que usa) · `CHANGELOG.md` (marcadores de evolución: qué cambió y qué error/run lo motivó) · `rubrica.md` (si aplica: qué comprueba script vs qué juzga el modelo) · `ESTADO.md` (solo si el bloque está en trabajo activo: fase spec→plan→código y dónde retomar).
+El proyecto se organiza en **7 bloques** bajo `docs/bloques/`. Cada bloque es una carpeta con contrato idéntico: `BLOQUE.md` (qué hace, estado, skills) · `CONTRATO.md` (entrada/salida; manda el contrato, Supabase lo cumple, un test lo comprueba) · `GUIA-DESARROLLO-BLOQUE.md` (procedimiento del equipo de desarrollo para ese bloque) · `CHANGELOG.md` (evolución; aquí se anota cada cambio de contrato, aprobado por los 2) · `rubrica.md` (si aplica) · `ESTADO.md` (solo si el bloque está en trabajo activo).
 
 | # | Bloque | Es |
 |---|--------|----|
@@ -31,7 +38,7 @@ Los bloques 1-4 son el mapa de 4 agentes (decisión cerrada). Las skills ejecuta
 3. `docs/bloques/<bloque-activo>/ESTADO.md` — punto exacto del flujo del bloque en curso.
 4. `HANDOVER.md` — estado de la última sesión y próximo paso.
 
-`/inicio` lee HANDOVER + este archivo + git + (si el HANDOVER señala bloque activo) su ESTADO.md. El resto de `docs/` se lee bajo demanda.
+`/inicio` lee HANDOVER + este archivo + git + (si el HANDOVER señala bloque activo) su ESTADO.md **y su `GUIA-DESARROLLO-BLOQUE.md`**. El resto de `docs/` se lee bajo demanda.
 
 ## Stack
 - **Sitios/app:** Next + Tailwind (Astro para marketing puro y webs de cliente).
@@ -44,7 +51,7 @@ Los bloques 1-4 son el mapa de 4 agentes (decisión cerrada). Las skills ejecuta
 
 ## Metodología de trabajo
 - **Planificar antes de codear.** Flujo superpowers: `brainstorming` → spec (`docs/superpowers/specs/`) → `writing-plans` → código. HARD-GATE: nada de producto sin diseño aprobado.
-- **Regla de 200 líneas.** Ningún archivo de contexto raíz (CLAUDE.md, HANDOVER.md) ni BLOQUE.md supera 200 líneas. Si una sección crece, se extrae a `docs/contexto/<tema>.md` (o `referencias/` dentro del bloque) y el archivo deja un enlace de una línea. Lo extraído se lee bajo demanda, nunca en `/inicio`.
+- **Regla de 200 líneas.** Ningún archivo de contexto raíz (CLAUDE.md, HANDOVER.md) ni BLOQUE.md supera 200 líneas. Si una sección crece, se extrae a `docs/contexto/<tema>.md` (o `referencias/` dentro del bloque) y el archivo deja un enlace de una línea. Lo extraído se lee bajo demanda, nunca en `/inicio`. Límites por archivo y cadencia de revisión: `docs/contexto/politica-archivos.md`.
 - **Sesiones token-económicas.** `/inicio` arranca, `/cierre` cierra (vuelca a `HANDOVER.md` y al ESTADO.md del bloque activo). ~60% de contexto → `/compact`; cambio de tarea → `/clear`; el watchdog avisa cada 20/50 prompts.
 - **Aprendizaje de los agentes.** Toda corrección a una skill/rúbrica motivada por un fallo se anota en el CHANGELOG.md de su bloque (qué cambió, qué error lo motivó, qué run lo evidencia). Cada cambio lo aprueba un humano. El minado automático de `agent_runs` es el bloque 7 (futuro).
 - **Commits atómicos y convencionales** (feat/fix/docs/chore...). Inglés en código y commits; español en la comunicación.
