@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — el director decide estilo/motion/referencias por cliente y rechaza lo impertinente (cubo 3D en mudanzas = eliminado). Set v4 de 8 previews dinámicas validado E2E para `mudanzasroy`. **Curación de referencias cerrada** (Playwright instalado; juanmora + truckn-roll + california-vending extraídas en ultra; monarch aparcado). **Siguiente: revisión del socio del set v4 → ascenso a producción.**
+> 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — referencias curadas, docs consistentes, política de fechas registrada. **Repo listo para piloto del bloque 4 (Revisor/QA)**. Siguiente: revisión del socio del set v4 → ascenso a producción (en paralelo con el piloto del Revisor).
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
