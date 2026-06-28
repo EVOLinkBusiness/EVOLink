@@ -10,7 +10,7 @@ Ejecuta SIN pedir confirmación entre pasos. Máximo 5 tool calls.
 1. Lee `HANDOVER.md` (raíz). Fuente principal del estado actual.
 2. Lee `CLAUDE.md` (raíz). Reglas operativas permanentes.
 3. Una sola llamada Bash: `git status --short && echo --- && git log --oneline -5 && echo --- && git branch --show-current`
-4. Si el HANDOVER indica un **bloque activo**, lee `docs/bloques/<bloque>/ESTADO.md`.
+4. Si el HANDOVER indica un **bloque activo**, lee `docs/bloques/<bloque>/ESTADO.md` **y `docs/bloques/<bloque>/GUIA-DESARROLLO-BLOQUE.md`** (procedimiento del bloque).
 5. (Opcional, solo si el HANDOVER apunta a un archivo concreto del próximo paso) léelo.
 
 Reporta en este formato EXACTO (markdown real, sin envolver en code fence — el negrita debe renderizarse):
