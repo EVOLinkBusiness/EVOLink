@@ -3,9 +3,9 @@
 Procedimiento del equipo de desarrollo para construir/mantener este bloque. (Recursos del producto en marcha: `referencias/generador-agente-accesos.md`.)
 
 ## Diseño vigente
-- Plan VIGENTE: `docs/superpowers/plans/2026-06-22-generador-director-arte-v3.md` (rediseño v3, pendiente de ejecución).
-- Diseño v2 (terminado): `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`.
-- Spec v3 (a formalizar al ejecutar el v3): `docs/superpowers/specs/2026-06-22-generador-director-arte-v3.md`.
+- Spec VIGENTE (v4, ejecutada): `docs/superpowers/specs/2026-06-23-generador-director-arte-v4-design.md`
+  (absorbe y sustituye el plan v3; director de arte autónomo, flujo dinámico 8-12).
+- Diseño v2 (base implementada): `docs/superpowers/specs/2026-06-14-generador-diseño-v2.md`.
 
 ## Quién hace qué (los 3 agentes)
 1. `planificador` (Opus): cierra el diseño de la tarea y escribe la spec/plan. Lee este archivo + `CONTRATO.md` + el plan/spec vigente del bloque.

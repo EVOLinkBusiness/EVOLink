@@ -42,8 +42,7 @@ Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el
 1. **Revisión del socio** del set v4 en local (`python -m http.server` sobre `previews/v4/`) → elegir 1 concepto → registrar en `agent_runs` (stage `preview-choice`) y volcar a `memoria-director-arte.md §3`.
 2. **Palanca nº 1 (curación humana):** ✅ cubierto el mínimo (truckn-roll + california-vending = sector real; juanmora + Awwwards = motion). Ampliar con más negocios locales reales solo si un nicho concreto lo pide.
 3. **Ascenso a producción** del concepto elegido (Astro + islas React, self-host de fuentes, Cloudflare Pages) cuando el socio lo apruebe.
-4. **Retrofit pendiente:** el esqueleto de agentes (`.claude/agents/`, `CONTRATO.md`, `GUIA-DESARROLLO-BLOQUE.md` del bloque 3) **no estaba montado** al ejecutar v4 (Fase 0). Cuando aterrice, retrofit del contrato/guía del bloque.
-5. Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 (motion por cliente 1-5 · mezcla dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3).
+4. Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 (motion por cliente 1-5 · mezcla dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3).
 
 > **Código orquestador** (generación de punta a punta llamando a la API) y **pgvector** de referencias = **fuera de alcance**, diferidos al bloque 7. La generación sigue siendo asistida con skills.
 

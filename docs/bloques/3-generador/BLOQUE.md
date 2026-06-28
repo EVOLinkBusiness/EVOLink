@@ -44,7 +44,6 @@ Qué es y cómo se amplía: `referencias/despensa.md` + `referencias/indice-refe
 ## Pendientes del bloque
 - [ ] **Curar 1-2 negocios locales reales + Awwwards limpias** en el índice (palanca nº 1; sin esto una mudanza sale pareciendo startup).
 - [ ] Self-host de fuentes en el ascenso (Google Fonts hunde Lighthouse móvil).
-- [ ] Retrofit del `CONTRATO.md`/`GUIA-DESARROLLO-BLOQUE.md` cuando aterrice el esqueleto de agentes (`.claude/agents/`).
 - [ ] Código orquestador (generación de punta a punta) = diferido al bloque 7.
 
 ---
