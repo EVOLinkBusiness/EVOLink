@@ -1,6 +1,6 @@
 # Auditoría de diseño v4 — las 12 previews de mudanzasroy + arquitectura del pipeline
 
-**Fecha:** 2026-06-26 · **Auditor:** Claude Code (criterio de diseñador) · **Run:** manual
+**Fecha:** 26/06/2026 · **Auditor:** Claude Code (criterio de diseñador) · **Run:** manual
 **Material:** `clientes/cb1dfbea-7306-4c1e-bdde-b5d606243083/previews/` (12 HTML + `.prompt.txt`).
 **Encargo:** clasificar cada preview (conservar / arreglar / descartar) con razón de diseño, marcar el listón "elegante y fluido", y documentar el fallo arquitectónico de raíz.
 

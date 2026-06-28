@@ -2,9 +2,9 @@
 
 Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → plan aprobado → **COMPLETADO (backend v1 + entrada de datos)**. Plan: `docs/superpowers/plans/2026-06-11-auditor-v1-backend.md`.
 
-> **✅ COMPLETADO 2026-06-13.** Smoke test real pasado (run `e55cdfe5`: score 47, 7 hallazgos por clave, `supervisor_flags: []`, coste $0,062). Dos bugs detectados y corregidos en el smoke test (share_slug base64url, dimension sin enum) — ver CHANGELOG. Ambas Edge Functions desplegadas y activas.
+> **✅ COMPLETADO 13/06/2026.** Smoke test real pasado (run `e55cdfe5`: score 47, 7 hallazgos por clave, `supervisor_flags: []`, coste $0,062). Dos bugs detectados y corregidos en el smoke test (share_slug base64url, dimension sin enum) — ver CHANGELOG. Ambas Edge Functions desplegadas y activas.
 >
-> **✅ Revisión profunda + caza de bugs 2026-06-13 (previa a ETAPA 2).** Backend revisado a fondo: sólido y defensivo. 1 bug vivo corregido (coste mal tarifado Opus/Haiku, commit `632424e`) + 1 endurecimiento (`has_maps_listing`, `130b133`) + 3 limitaciones documentadas (sin CORS, cost:0 en runs fallidos, recencia=0) — ver CHANGELOG. **Camino de visión de `extract-presence` validado end-to-end con captura real** (MG Reformas Integrales, coste $0,0027, sin bugs). Suite: **35/35 en verde**.
+> **✅ Revisión profunda + caza de bugs 13/06/2026 (previa a ETAPA 2).** Backend revisado a fondo: sólido y defensivo. 1 bug vivo corregido (coste mal tarifado Opus/Haiku, commit `632424e`) + 1 endurecimiento (`has_maps_listing`, `130b133`) + 3 limitaciones documentadas (sin CORS, cost:0 en runs fallidos, recencia=0) — ver CHANGELOG. **Camino de visión de `extract-presence` validado end-to-end con captura real** (MG Reformas Integrales, coste $0,0027, sin bugs). Suite: **35/35 en verde**.
 
 ## Checklist de ejecución del plan (backend, Plan A)
 | Task | Qué | Estado |
@@ -21,7 +21,7 @@ Fase global: **F1 — Agente Auditor + backbone Supabase**. Spec aprobada → pl
 | 10 | `rubrica.md` del bloque | ✅ `4ece835` |
 | 11→16 | Deploy + smoke test real | ✅ ambas funciones desplegadas; smoke test pasado (run `e55cdfe5`) + 2 fixes |
 
-## Entrada de datos (anexo 2026-06-12) — añadido al plan original
+## Entrada de datos (anexo 12/06/2026) — añadido al plan original
 | Task | Qué | Estado |
 |------|-----|--------|
 | 12 | Contrato `IntakeForm` + `validateForm`/`formToClient` (TDD, 9 tests) | ✅ |

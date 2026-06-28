@@ -12,7 +12,7 @@ se cierra en su brainstorming → spec. Co-prioritario con el bloque 3 (decisió
 | Edge Function `generate-audit` (bloque 2) | La invoca para producir la auditoría-gancho de cada lead cualificado | Producción | Llamada interna entre funciones |
 | Resend | SOLO genera borradores de email en v1; **un socio revisa y envía**. Envío automático = fase posterior, con baja/opt-out implementado | Producción (asistido) | API key server-side |
 | Google Places API | Rastreo de negocios por zona/nicho | ❌ Diferido (v1 = manual/semi). Activar implica coste por petición | Pendiente de spec |
-| Skill `copywriting` (coreyhaines31/marketingskills) | Referencia para redactar outreach y secuencias que no suenen a spam | Desarrollo | `.claude/skills/` (nueva, aprobada en planificación 2026-06-10) |
+| Skill `copywriting` (coreyhaines31/marketingskills) | Referencia para redactar outreach y secuencias que no suenen a spam | Desarrollo | `.claude/skills/` (nueva, aprobada en planificación 10/06/2026) |
 
 ## Límites legales (no negociables, UE)
 RGPD + ePrivacy + LSSI: nada de contacto en frío masivo automatizado. El agente investiga,
@@ -38,5 +38,5 @@ identificación clara del remitente y mecanismo de baja desde el primer email.
 ```
 
 ## Decisiones
-- [x] Skill `copywriting` aprobada e instalada (2026-06-10).
+- [x] Skill `copywriting` aprobada e instalada (10/06/2026).
 - [ ] En su spec (cuando toque): criterios de puntuación de leads y estructura de tablas.

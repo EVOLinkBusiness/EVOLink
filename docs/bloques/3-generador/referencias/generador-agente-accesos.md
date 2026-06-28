@@ -1,6 +1,6 @@
 # Accesos — Bloque 3 (Generador web)
 
-Ficha técnica de accesos del agente Generador. Borrador informado (evaluación 2026-06-10):
+Ficha técnica de accesos del agente Generador. Borrador informado (evaluación 10/06/2026):
 el contrato definitivo se cierra en su brainstorming → spec, tras el Auditor v1.
 Fórmula cerrada: **fabricar → evaluar → entregar**.
 
@@ -36,7 +36,7 @@ Producto beta de Anthropic (claude.ai/design, incluido en Pro, cupos semanales, 
 No puede ser el Generador: no es invocable por el pipeline, no registra en `agent_runs`, no pasa la rúbrica automáticamente.
 **Uso aprobado:** fase de validación manual (primeros clientes a mano), maqueta del piloto
 mudanzasroy.es, y exploración visual antes de fijar brandkits. Su exportación entrega un
-paquete a Claude Code, compatible con nuestro flujo. Tabla comparativa completa: sesión de planificación 2026-06-10.
+paquete a Claude Code, compatible con nuestro flujo. Tabla comparativa completa: sesión de planificación 10/06/2026.
 
 ## Rúbrica
 Detalle en `../rubrica.md` (única, compartida con el bloque 4): lo medible lo comprueba
@@ -55,7 +55,7 @@ script (`playwright-cli` + Lighthouse); el gusto y la coherencia los juzga el mo
                                      └── agent_runs ──> 7-Mejora (futuro)
 ```
 
-## Decisiones de skills (cerradas 2026-06-10 por ambos socios)
+## Decisiones de skills (cerradas 10/06/2026 por ambos socios)
 - [x] Instaladas `frontend-design`, `next-best-practices`, `extract-design-system`.
 - [x] Grupo taste archivado en `docs/archivo-skills/`.
 - [ ] ÚNICO punto abierto: `shadcn` (componentes accesibles) — se decide en la spec de este bloque (riesgo: "look plantilla").

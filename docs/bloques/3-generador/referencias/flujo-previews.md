@@ -70,6 +70,6 @@ La preview elegida sube a **Astro + Tailwind + islas React** sobre **Cloudflare 
 
 ## Nota histórica (reparto por slot, eliminado en v4)
 Hasta v4 el set se repartía por **slot fijo** y eso *predeterminaba el motor por posición*, no por cliente — el origen del "cubo 3D en una mudanza" (slot 11-12 obligaba a Three.js). Reparto histórico, ya no vigente:
-- **12 = 6 diseño + 6 GSAP** (2026-06-17): 1-3 propias (despensa) · 4-6 lapa.ninja · 7-8 frontend-design · 9-10 gpt-tasteskill · 11-12 Three.js.
-- Evolución previa: 8 = 5 propias + 1 URL + 2 Stitch → 9 = 3+3+3 (2026-06-16) → Stitch descartado (dependencia frágil), pivote a GSAP+Three.js → 12 = 6+6 (2026-06-17).
+- **12 = 6 diseño + 6 GSAP** (17/06/2026): 1-3 propias (despensa) · 4-6 lapa.ninja · 7-8 frontend-design · 9-10 gpt-tasteskill · 11-12 Three.js.
+- Evolución previa: 8 = 5 propias + 1 URL + 2 Stitch → 9 = 3+3+3 (16/06/2026) → Stitch descartado (dependencia frágil), pivote a GSAP+Three.js → 12 = 6+6 (17/06/2026).
 El fallo de raíz y su corrección están en `auditoria-diseno-v4.md` y `director-arte`.

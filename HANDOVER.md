@@ -1,6 +1,6 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-28
+**Última sesión:** 28/06/2026
 **Branch:** main
 **Último commit:** `c925318 feat: CONTRATO y GUIA-DESARROLLO del Generador (referencia del molde)`
 
@@ -12,7 +12,7 @@ Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de 
 ## Bloque activo
 **3-generador (esqueleto montado; pendiente revisión socio del set v4 + ascenso)** — detalle en `docs/bloques/3-generador/ESTADO.md`.
 
-## Hecho en la sesión actual (2026-06-28 — esqueleto de agentes)
+## Hecho en la sesión actual (28/06/2026 — esqueleto de agentes)
 - **3 agentes de desarrollo** en `.claude/agents/` (compartidos por todos los bloques): `planificador` (Opus), `programador` (Sonnet), `verificador` (Sonnet). Encarnan `subagent-driven-development`.
 - **Política de archivos `.md`** (3 cubos: duro / blando+revisión / congelado) → `docs/contexto/politica-archivos.md`. `CLAUDE.md` la enlaza.
 - **`CLAUDE.md` ampliado** (69 líneas ≤200): sección "Equipo de desarrollo", molde de bloque con `CONTRATO.md` + `GUIA-DESARROLLO-BLOQUE.md`, enlace a la política.

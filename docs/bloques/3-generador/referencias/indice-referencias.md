@@ -27,7 +27,7 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 | truckn-roll-r | awwwards | servicios-local · bold-industrial | estructura, motion, tipografia | claro · bold | 4 | estructura (sector exacto: mudanzas) | OK (ultra) | referencias-visuales/truckn-roll-r/trucknroll-design |
 | california-vending-company | awwwards | servicios-local | estructura, color, motion | claro · warm | 4 | estructura | OK (ultra) | referencias-visuales/california-vending-company/californiavendingcompany-design |
 
-### Ficha extendida — juanmora (extraída 2026-06-26)
+### Ficha extendida — juanmora (extraída 26/06/2026)
 
 **Paleta verificada:**
 | Token | Hex | Uso |
@@ -51,7 +51,7 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 - Easing: `cubic-bezier(.292,1.932,.281,.996)` — bounce springy, overshoot suave.
 - Easing alt: `cubic-bezier(.275,2.254,.281,.996)` — más pronunciado.
 - Duración: 100ms–500ms.
-- ✓ Re-extraída en modo ultra (Playwright, 2026-06-26): **GSAP + ScrollTrigger confirmados**, 7 scroll frames, 1 keyframe. Nivel real 3-4 verificado. Tokens en `juanmora/juanmora-design/`.
+- ✓ Re-extraída en modo ultra (Playwright, 26/06/2026): **GSAP + ScrollTrigger confirmados**, 7 scroll frames, 1 keyframe. Nivel real 3-4 verificado. Tokens en `juanmora/juanmora-design/`.
 
 **Estructura y layout:**
 - Grid: 4px base. Max-width: 991px. Mobile-first.
@@ -64,7 +64,7 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 - Rol `tipografía`: display masiva a escala + cuerpo sistema → par legible + impacto.
 - NO copiar estructura de portfolio (hero con "Brand & Web Design Specialist" y grid de proyectos). Solo el idioma.
 
-### Ficha extendida — truckn-roll-r (extraída 2026-06-26, ultra · sitio vivo trucknroll.com)
+### Ficha extendida — truckn-roll-r (extraída 26/06/2026, ultra · sitio vivo trucknroll.com)
 
 **Sector exacto: mudanzas.** Awwwards. Extracción sana: 20 colores, 10 componentes, 9 animaciones (Web Animations API), 7 scroll frames.
 
@@ -86,7 +86,7 @@ Aplanar igual que cualquier skill (sin symlinks; borrar `.agents/`/`skills-lock.
 
 **Cómo usar:** rol `estructura` real (sector exacto, layout portátil a negocio local) + rol `motion` (spring, layout animations, staggered reveals → P1/P4/P5) + rol `tipografia` (condensada bold como identidad). Verificar peso JS antes de clonar interacciones pesadas.
 
-### Ficha extendida — california-vending-company (extraída 2026-06-26, ultra · sitio vivo californiavendingcompany.com)
+### Ficha extendida — california-vending-company (extraída 26/06/2026, ultra · sitio vivo californiavendingcompany.com)
 
 **Servicios-local, sitio Next.js.** Awwwards. Extracción sana: 20 colores, 6 componentes, 6 animaciones, 5 keyframes, 7 scroll frames.
 

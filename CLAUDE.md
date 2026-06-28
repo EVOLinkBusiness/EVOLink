@@ -44,7 +44,7 @@ Los bloques 1-4 son el mapa de 4 agentes (decisión cerrada). Las skills ejecuta
 - **Sitios/app:** Next + Tailwind (Astro para marketing puro y webs de cliente).
 - **Backend/datos:** **Supabase** multi-tenant (`client_id` + RLS), Edge Functions, Auth, Storage, pgvector. Conectado por MCP `supabase`; skills `supabase` + `supabase-postgres-best-practices`.
 - **LLM:** Claude (API Anthropic), claves server-side.
-- **Diseño (generación):** `ui-ux-pro-max` (motor) + `frontend-design` (oficial Anthropic; sustituye al grupo taste, archivado en `docs/archivo-skills/` por decisión de los socios 2026-06-10), `brandkit`, `redesign-skill`, `extract-design-system`, `image-to-code-skill` + `imagegen-frontend-web`, `output-skill`, `copywriting` (textos), `next-best-practices` (stack Next). *(Índice de uso: `docs/bloques/3-generador/referencias/generador-agente-accesos.md`.)*
+- **Diseño (generación):** `ui-ux-pro-max` (motor) + `frontend-design` (oficial Anthropic; sustituye al grupo taste, archivado en `docs/archivo-skills/` por decisión de los socios 10/06/2026), `brandkit`, `redesign-skill`, `extract-design-system`, `image-to-code-skill` + `imagegen-frontend-web`, `output-skill`, `copywriting` (textos), `next-best-practices` (stack Next). *(Índice de uso: `docs/bloques/3-generador/referencias/generador-agente-accesos.md`.)*
 - **Motion:** `gpt-tasteskill` (macro/scroll, GSAP) + `ui-animation` (micro-interacciones).
 - **QA de diseño:** `web-design-guidelines` + `verification-before-completion` + **`playwright-cli`** (navegación, enlaces, formularios, capturas; interfaz por comandos = barata en tokens).
 - **Lead-gen:** Google Places API. **Email:** Resend. **Billing:** Stripe. **Deploy:** Vercel (panel) + Cloudflare Pages (webs de cliente) + Supabase (backend).

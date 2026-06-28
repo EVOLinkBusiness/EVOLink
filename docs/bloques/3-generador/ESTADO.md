@@ -1,13 +1,13 @@
 # ESTADO — Bloque 3 (Generador) · flujo superpowers
 
-Fase global: **F2 — Agente Generador web**. v1 IMPLEMENTADO (2026-06-13) · rediseño artístico v2 ejecutado · **v4 "Director de Arte Autónomo" EJECUTADO (2026-06-26).**
+Fase global: **F2 — Agente Generador web**. v1 IMPLEMENTADO (13/06/2026) · rediseño artístico v2 ejecutado · **v4 "Director de Arte Autónomo" EJECUTADO (26/06/2026).**
 
 Spec vigente: `docs/superpowers/specs/2026-06-23-generador-director-arte-v4-design.md` (absorbe y sustituye el plan v3).
 Motor v1: `generador/` (Node + Astro). Suite **24/24 verde** (no se toca en v4).
 
 ---
 
-## ✅ v4 — Director de Arte Autónomo (EJECUTADO 2026-06-26)
+## ✅ v4 — Director de Arte Autónomo (EJECUTADO 26/06/2026)
 
 Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el reparto de previews por **slot fijo** (origen del cubo) por un **director de arte** que decide por cliente y rechaza lo impertinente.
 
@@ -29,7 +29,7 @@ Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el
 
 ---
 
-## ✅ Curación de referencias (2026-06-28)
+## ✅ Curación de referencias (28/06/2026)
 
 - **Playwright instalado** como tooling del proyecto (`package.json` + `package-lock.json` versionados). Modo ultra de `skillui` operativo.
 - **juanmora** re-extraída en ultra y aplanada a carpeta real (`juanmora/juanmora-design/`): tokens + screens scroll/sections/states + references ANIMATIONS/COMPONENTS/LAYOUT/INTERACTIONS.

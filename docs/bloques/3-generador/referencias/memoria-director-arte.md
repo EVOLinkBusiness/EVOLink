@@ -14,7 +14,7 @@ Cuaderno versionado. El director lo lee ANTES de cada cliente y lo amplía DESPU
 ## 3 · Conceptos ganadores
 | Fecha | Sector | Concepto elegido | Qué modificó el socio | Lección |
 |---|---|---|---|---|
-| 2026-06-26 | mudanzas (mudanzasroy) | *(pendiente de elección del socio)* — el director recomienda **B "Datos que tranquilizan"** (`v4-2`, motion 3), 2º C "Proceso sin sorpresas" (`v4-3`), 3º A "Confianza clara" (`v4-1`) | *(pendiente)* | **Primera corrida del director v4:** set de 8 previews dinámicas (sin slots), motion 2-3, **cubo y partículas 3D rechazados con motivo**. La conversión por datos reales (contadores P2) encaja mejor que el espectáculo para confianza-servicio. |
+| 26/06/2026 | mudanzas (mudanzasroy) | *(pendiente de elección del socio)* — el director recomienda **B "Datos que tranquilizan"** (`v4-2`, motion 3), 2º C "Proceso sin sorpresas" (`v4-3`), 3º A "Confianza clara" (`v4-1`) | *(pendiente)* | **Primera corrida del director v4:** set de 8 previews dinámicas (sin slots), motion 2-3, **cubo y partículas 3D rechazados con motivo**. La conversión por datos reales (contadores P2) encaja mejor que el espectáculo para confianza-servicio. |
 
 ## 4 · Antipatrones (rechazado y por qué)
 - Cubo 3D (`BoxGeometry`) en una mudanza → animación impertinente forzada por slot fijo. NO repetir 3D sin que el sector lo justifique.

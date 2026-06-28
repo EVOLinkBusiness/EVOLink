@@ -54,4 +54,4 @@ Todo lo demás de la tabla siguiente es herramienta de construcción.
 - El 4-Revisor comparte el patrón de supervisión (rúbrica en `../3-generador/rubrica.md`).
 
 ## Decisiones
-- [x] Skill `seo-audit` aprobada e instalada (2026-06-10). Auditorías de seguridad: Trust Hub ✅ · Socket ✅ · Snyk en "Warn" (solo markdown, riesgo bajo).
+- [x] Skill `seo-audit` aprobada e instalada (10/06/2026). Auditorías de seguridad: Trust Hub ✅ · Socket ✅ · Snyk en "Warn" (solo markdown, riesgo bajo).

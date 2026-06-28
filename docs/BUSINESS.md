@@ -51,13 +51,13 @@ Mismo patrón del tejido: **fabricar → evaluar → entregar**. Rúbrica explí
 5. Núcleo = **mapa de 4 agentes** (Auditor, Generador, Captación/Seguimiento, Revisor/QA) sobre el tejido de agentes.
 6. Persistencia = Supabase multi-tenant (`client_id` + RLS), proyecto `kdernwxajzzrriolnnmq` (MCP).
 7. **Nicho de arranque = reformas** (Móstoles/Madrid).
-8. Estructura física = **los bloques viven en `docs/bloques/`** (contratos organizativos); las skills ejecutables viven en `.claude/skills/` y cada BLOQUE.md indexa cuáles usa. *(2026-06-10.)*
-9. **Generador = pipeline por etapas** con artefactos intermedios (Enfoque B); v1 en Claude Code (coste API 0), migración a API por etapas en v2. *(spec 2026-06-12.)*
+8. Estructura física = **los bloques viven en `docs/bloques/`** (contratos organizativos); las skills ejecutables viven en `.claude/skills/` y cada BLOQUE.md indexa cuáles usa. *(10/06/2026.)*
+9. **Generador = pipeline por etapas** con artefactos intermedios (Enfoque B); v1 en Claude Code (coste API 0), migración a API por etapas en v2. *(spec 12/06/2026.)*
 10. **Webs de cliente = sistema de componentes propio en Astro+Tailwind** (no generación libre, no plantillas fijas): el modelo escribe el plan, un ensamblador determinista monta el sitio (misma entrada → misma salida).
 11. **Marca básica generada** si el cliente no la tiene (colores+tipografía+logo sencillo). Fotos: del cliente + stock gratuito (Unsplash/Pexels); **sin IA en v1**.
 12. **Evaluación = script (Playwright+Lighthouse) + juicio del modelo, máx. 2 iteraciones** automáticas antes del humano.
 13. **Entrega = preview interno → socios → cliente → dominio** (paso humano; nunca dominio definitivo sin orden humana).
-14. **Grupo taste consolidado en `estilo-evolink`**; `ui-ux-pro-max` y `gpt-tasteskill` activas en evaluación. `estilo-evolink` coexiste con `frontend-design` (método general). Rediseños fuera de v1 (→ v1.1 con `redesign-skill`). *(2026-06-13.)*
+14. **Grupo taste consolidado en `estilo-evolink`**; `ui-ux-pro-max` y `gpt-tasteskill` activas en evaluación. `estilo-evolink` coexiste con `frontend-design` (método general). Rediseños fuera de v1 (→ v1.1 con `redesign-skill`). *(13/06/2026.)*
 15. **Ciclo de vida del ORDEN:** cada agente se entrega como spec (permanente) + documento ORDEN (instrucciones para Claude Code); el ORDEN se autoborra al completarse (git conserva el historial). Aplica a todos los bloques.
 
 ## Puntos abiertos

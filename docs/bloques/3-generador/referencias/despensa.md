@@ -24,7 +24,7 @@ En la Fase 1, impeccable lee el brief del auditor y selecciona la(s) categoría(
 ## Cómo ampliar
 Añadir webs es solo repetir el comando `npx skillui` con otra URL. La curación (qué webs entran) es decisión humana de los socios.
 
-## Inventario actual (2026-06-14)
+## Inventario actual (14/06/2026)
 | Referencia | Tema | Motion | Encaja en |
 |---|---|---|---|
 | `stripe` | light | — | corporativo-confianza |

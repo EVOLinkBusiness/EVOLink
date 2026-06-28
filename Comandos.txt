@@ -110,7 +110,7 @@ El director las selecciona por roles; no se clonan, se abstrae su idioma.
   superlist    https://superlist.com            servicios-local · color + motion · motion 2
   juanmora     https://juanmora.co/             minimal-lujo/editorial · motion + tipografía · motion 3-4 · SOLO IDIOMA (Goga display, bounce easing, Lenis)
 
-  ─── ESTADO candidatos (extraídos 2026-06-26, modo ultra c/ Playwright) ───
+  ─── ESTADO candidatos (extraídos 26/06/2026, modo ultra c/ Playwright) ───
   [✓] truckn-roll-r          vivo: trucknroll.com                  ADMITIDA — mudanzas (sector exacto) · National 2 Condensed display · motion 4
   [⚠] monarch-custom-homes   vivo: monarch.us                      BLOQUEADA — 403 anti-bot, extracción degradada y descartada. Reintentar con UA real.
   [✓] california-vending     vivo: californiavendingcompany.com    ADMITIDA — servicios-local · generalSans display · motion 4 (Next.js)
@@ -118,7 +118,7 @@ El director las selecciona por roles; no se clonan, se abstrae su idioma.
   [✓] vocabulario motion moving-co    https://www.awwwards.com/inspiration_search/moving%20company/  → técnicas documentadas en índice (bloques emergentes, image reveal, hover grid, card Flip)
       Sub-candidatos con depth: loandbehold.studio/about · exergy3.com/about · feedagency.co/about
 
-# Playwright YA instalado local (2026-06-26): `npm install playwright` + `npx playwright install chromium`.
+# Playwright YA instalado local (26/06/2026): `npm install playwright` + `npx playwright install chromium`.
 # El binario Chromium vive en caché de usuario (~/AppData/Local/ms-playwright). Modo ultra operativo.
 # Extracción ultra (computed styles + scroll screenshots):
 #   npx skillui@latest --url <URL-VIVA> --mode ultra --out .claude/skills/referencias-visuales/<nombre>

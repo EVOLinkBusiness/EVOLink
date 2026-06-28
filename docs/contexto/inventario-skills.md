@@ -1,8 +1,8 @@
-# Inventario de skills — mapa por bloque y criba (aprobada 2026-06-10)
+# Inventario de skills — mapa por bloque y criba (aprobada 10/06/2026)
 
-**Fecha:** 2026-06-10 · **Base:** 28 skills instaladas (~8.700 líneas) + 6 nuevas evaluadas.
+**Fecha:** 10/06/2026 · **Base:** 28 skills instaladas (~8.700 líneas) + 6 nuevas evaluadas.
 Criba informada por las fichas de accesos de los 4 agentes (`docs/bloques/*/referencias/`).
-**Criba APROBADA por ambos socios el 2026-06-10.**
+**Criba APROBADA por ambos socios el 10/06/2026.**
 "Archivar" = mover a `docs/archivo-skills/` (fuera de `.claude/skills/`, deja de cargar tokens; recuperable desde git en cualquier momento).
 
 ## Metodología (transversales — se quedan todas)
@@ -20,7 +20,7 @@ Criba informada por las fichas de accesos de los 4 agentes (`docs/bloques/*/refe
 ## Diseño (bloque 3, comparte con 2 y 4)
 | Skill | Bloques | Veredicto |
 |-------|---------|-----------|
-| **estilo-evolink** | 3 (etapas 2-3) | **ACTIVA** — voz de diseño EVOLink, consolida el grupo taste (creada 2026-06-13); coexiste con `frontend-design` (método general) |
+| **estilo-evolink** | 3 (etapas 2-3) | **ACTIVA** — voz de diseño EVOLink, consolida el grupo taste (creada 13/06/2026); coexiste con `frontend-design` (método general) |
 | ui-ux-pro-max | 3 (motor) · 2 (informe) | Mantener (activa, **en evaluación** — se decide tras las primeras webs) |
 | brandkit | 3 | Mantener |
 | redesign-skill | 3-4 (upsell) | Mantener |
@@ -30,11 +30,11 @@ Criba informada por las fichas de accesos de los 4 agentes (`docs/bloques/*/refe
 | ui-animation | 3 (micro-interacciones) | Mantener |
 | output-skill | 3 (salida completa) | Mantener |
 | web-design-guidelines | 3-4 (QA) · 2 | Mantener |
-| **taste-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
-| **soft-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
-| **minimalist-skill** | 3 | **ARCHIVADA** (2026-06-10) — principios consolidados en `estilo-evolink` (2026-06-13). En `docs/archivo-skills/` |
+| **taste-skill** | 3 | **ARCHIVADA** (10/06/2026) — principios consolidados en `estilo-evolink` (13/06/2026). En `docs/archivo-skills/` |
+| **soft-skill** | 3 | **ARCHIVADA** (10/06/2026) — principios consolidados en `estilo-evolink` (13/06/2026). En `docs/archivo-skills/` |
+| **minimalist-skill** | 3 | **ARCHIVADA** (10/06/2026) — principios consolidados en `estilo-evolink` (13/06/2026). En `docs/archivo-skills/` |
 
-## Nuevas (instaladas por la orden de setup; aprobadas en planificación 2026-06-10)
+## Nuevas (instaladas por la orden de setup; aprobadas en planificación 10/06/2026)
 | Skill | Bloques | Por qué entra | Instalación |
 |-------|---------|----------------|-------------|
 | playwright-cli (microsoft) | 3-4 | QA con navegador real; barata en tokens (CLI) | Ya en FASE 4 |
@@ -51,7 +51,7 @@ Criba informada por las fichas de accesos de los 4 agentes (`docs/bloques/*/refe
 | hyperframes / gsap (heygen) | Ya cubierto por gpt-tasteskill + ui-animation |
 | shadcn | Opcional; riesgo de "look plantilla". Se decide en la spec del bloque 3 |
 | marketing-psychology, content-strategy y resto de marketingskills | YAGNI: copywriting cubre la necesidad actual del bloque 1 |
-| self-improving-agent (charon-fan) | Descartada en sesión 2026-06-10 (seguridad en Warn con código; sus 2 buenas ideas ya adoptadas en bloque 7) |
+| self-improving-agent (charon-fan) | Descartada en sesión 10/06/2026 (seguridad en Warn con código; sus 2 buenas ideas ya adoptadas en bloque 7) |
 
 ## Balance
 28 instaladas → 25 tras archivar el grupo taste (ejecutado) + 6 nuevas = **31 skills activas, todas con bloque asignado**. Las 3 archivadas quedan en `docs/archivo-skills/`.
