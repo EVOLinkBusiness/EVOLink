@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — referencias curadas, docs consistentes, política de fechas registrada. **Esqueleto saneado; bloque 4 (Revisor/QA) listo para diseño**. Siguiente: diseño del bloque 4 con el planificador (sesión 4A) · en paralelo, revisión del socio del set v4 → ascenso a producción.
+> 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): diseño v1 cerrado y aprobado** (spec + CONTRATO + ORDEN) — es el **piloto del esqueleto de agentes**. Siguiente: implementación TDD del Revisor (sesión 4B, ORDEN en raíz) · en paralelo, revisión del socio del set v4 → ascenso a producción.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -22,7 +22,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
 [██████████] F2.4 Generador v4 (director de arte) ✅ ejecutado · 8 previews dinámicas · referencias en curación
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
-[░░░░░░░░░░] A4  Agente Revisor/QA ............. ⬜ pendiente (depende de F2)
+[███░░░░░░░] A4  Agente Revisor/QA ............. 🟡 diseño v1 cerrado · build pendiente (4B)
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
 [░░░░░░░░░░] B6  Mantenimiento webs vivas ...... ⬜ futuro
 [░░░░░░░░░░] B7  Mejora (mina agent_runs) ...... ⬜ futuro
@@ -56,7 +56,7 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 | 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | ⬜ pendiente |
 | 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital | ✅ completado |
 | 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ✅ v4 director de arte ejecutado |
-| 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | ⬜ pendiente |
+| 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | 🟡 diseño v1 cerrado · build pendiente (4B) |
 | 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos | ⬜ pendiente |
 | 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas | ⬜ futuro |
 | 7 | [mejora](docs/bloques/7-mejora/BLOQUE.md) | Mejora — mina `agent_runs` → propone diffs | ⬜ futuro |
@@ -100,10 +100,11 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [ ] revisión del socio del set v4 → elección → ascenso a producción (Cloudflare Pages)
 - [x] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
 
-**4 · Revisor / QA** `░░░░░░░░░░` 0% *(depende del 3)*
-- [ ] spec
-- [ ] suite QA Playwright (enlaces, formularios, responsive, contraste)
-- [ ] upsell de rediseño
+**4 · Revisor / QA** `███░░░░░░░` ~30% *(piloto del esqueleto · depende del 3)*
+- [x] diseño v1 cerrado: spec + CONTRATO + GUIA + ESTADO + ORDEN (entrada local, suite núcleo determinista, veredicto en `agent_runs`)
+- [ ] implementación TDD (sesión 4B): checkers GRAVE + WARNING + entrada local autocontenida + `output` jsonb
+- [ ] E2E sobre preview v4 de Mudanzas Roy + doble revisión del verificador
+- [ ] *(v2)* formulario+Resend · check de motion · upsell de rediseño
 
 **5 · Pagos** `░░░░░░░░░░` 0%
 - [ ] spec Stripe + facturación ES
