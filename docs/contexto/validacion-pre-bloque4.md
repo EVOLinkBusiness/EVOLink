@@ -110,3 +110,7 @@ Hay bloqueantes e importantes. **Antes de tocar el bloque 4, decidir/discutir:**
 6. **(Menores M1–M5)** Agrupar en una pasada de pulido de `inicio.md`/`cierre.md`/`verificador.md` (no bloquean, pero M1–M2 ensucian los commits del propio piloto).
 
 **Las correcciones NO se aplican en esta sesión** (solo diagnóstico). Recomendación: una sesión corta de saneamiento (B1+B2+M1–M5 = mecánicos) + una decisión de los socios sobre I1/I2/I3, y entonces vía libre al bloque 4.
+
+---
+
+**Saneamiento aplicado el 28/06/2026** — ver commits de la sesión. Nota: **B2 era un falso positivo** — `programador` y `verificador` ya fijaban `model: sonnet` desde su creación (commit `a1bb024`); no requirió cambio. B1/I1/I2/I3 + M1–M5 resueltos.
