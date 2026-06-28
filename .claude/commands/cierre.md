@@ -65,7 +65,7 @@ Ver `docs/BUSINESS.md` §Decisiones ([N] activas). [Solo si hubo NUEVAS en esta 
    - `docs` — solo documentación, HANDOVER, README, ESTADO o CHANGELOG
    - `chore` — mantenimiento (refactor, deps, limpieza)
    - Si la sesión mezcla tipos, usa **múltiples commits atómicos** (uno por tipo).
-   Ejecuta: `git add -A && git commit -m "<tipo>(scope): <descripción concisa>\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"`
+   Ejecuta (PowerShell, un `-m` por párrafo para evitar `\n` literales): `git add -A; git commit -m "<tipo>(scope): <descripción concisa>" -m "Co-Authored-By: Claude <modelo que corre ESTA sesión> <noreply@anthropic.com>"`. El co-autor es el modelo real de la sesión (p. ej. Opus 4.8 si la sesión corre en Opus), nunca uno fijo.
 7. Pushea: `git push origin main`
 8. Termina con: "**Sesión cerrada.** Próxima vez: `/inicio`".
 
