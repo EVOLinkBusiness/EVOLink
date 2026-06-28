@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (2026-06-26):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — el director decide estilo/motion/referencias por cliente y rechaza lo impertinente (cubo 3D en mudanzas = eliminado). Set v4 de 8 previews dinámicas validado E2E para `mudanzasroy`. **En curso: curación del índice de referencias** (juanmora admitida; 3 candidatos Awwwards pendientes de extracción).
+> 🟢 **Estado (2026-06-28):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado** — el director decide estilo/motion/referencias por cliente y rechaza lo impertinente (cubo 3D en mudanzas = eliminado). Set v4 de 8 previews dinámicas validado E2E para `mudanzasroy`. **Curación de referencias cerrada** (Playwright instalado; juanmora + truckn-roll + california-vending extraídas en ultra; monarch aparcado). **Siguiente: revisión del socio del set v4 → ascenso a producción.**
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 ## Visión
@@ -96,7 +96,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] **v4 director de arte ejecutado**: skill `director-arte` (7 diales, P1-P6, rechazos) · flujo dinámico 8-12 · espectro motion 1-5 · ascenso Astro+React islands → Cloudflare · rúbrica v4
 - [x] índice de referencias por roles + memoria director + vocabulario motion Awwwards
 - [x] juanmora admitida en inventario (motion + tipografía Goga, motion 3-4, solo idioma)
-- [ ] instalar Playwright + re-extraer juanmora ultra + 3 candidatos Awwwards
+- [x] Playwright instalado + juanmora ultra + truckn-roll y california-vending extraídas (monarch aparcado)
 - [ ] revisión del socio del set v4 → elección → ascenso a producción (Cloudflare Pages)
 - [ ] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
 

@@ -29,10 +29,18 @@ Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el
 
 ---
 
+## ✅ Curación de referencias (2026-06-28)
+
+- **Playwright instalado** como tooling del proyecto (`package.json` + `package-lock.json` versionados). Modo ultra de `skillui` operativo.
+- **juanmora** re-extraída en ultra y aplanada a carpeta real (`juanmora/juanmora-design/`): tokens + screens scroll/sections/states + references ANIMATIONS/COMPONENTS/LAYOUT/INTERACTIONS.
+- **truckn-roll-r** (mudanzas) y **california-vending-company** (servicios-local) extraídas en ultra y admitidas → 2 referencias de sector real, mínimo necesario para enseñar ESTRUCTURA.
+- **monarch-custom-homes** APARCADO: extracción problemática, no merece más tiempo ahora. Se reintenta si hace falta más referencia de reformas.
+- `indice-referencias.md` y `Comandos.txt` al día. Commit `ecc91cc`.
+
 ## Dónde retomar (próximo paso)
 
 1. **Revisión del socio** del set v4 en local (`python -m http.server` sobre `previews/v4/`) → elegir 1 concepto → registrar en `agent_runs` (stage `preview-choice`) y volcar a `memoria-director-arte.md §3`.
-2. **Palanca nº 1 (curación humana):** añadir al `indice-referencias.md` 1-2 **negocios locales reales** (mudanzas/reformas con web cuidada) → enseñan ESTRUCTURA + un puñado de **Awwwards limpias** → MOTION. Sin esto, una mudanza tiende a "parecer startup".
+2. **Palanca nº 1 (curación humana):** ✅ cubierto el mínimo (truckn-roll + california-vending = sector real; juanmora + Awwwards = motion). Ampliar con más negocios locales reales solo si un nicho concreto lo pide.
 3. **Ascenso a producción** del concepto elegido (Astro + islas React, self-host de fuentes, Cloudflare Pages) cuando el socio lo apruebe.
 4. **Retrofit pendiente:** el esqueleto de agentes (`.claude/agents/`, `CONTRATO.md`, `GUIA-DESARROLLO-BLOQUE.md` del bloque 3) **no estaba montado** al ejecutar v4 (Fase 0). Cuando aterrice, retrofit del contrato/guía del bloque.
 5. Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 (motion por cliente 1-5 · mezcla dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3).
