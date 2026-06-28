@@ -59,6 +59,7 @@ Mismo patrón del tejido: **fabricar → evaluar → entregar**. Rúbrica explí
 13. **Entrega = preview interno → socios → cliente → dominio** (paso humano; nunca dominio definitivo sin orden humana).
 14. **Grupo taste consolidado en `estilo-evolink`**; `ui-ux-pro-max` y `gpt-tasteskill` activas en evaluación. `estilo-evolink` coexiste con `frontend-design` (método general). Rediseños fuera de v1 (→ v1.1 con `redesign-skill`). *(13/06/2026.)*
 15. **Ciclo de vida del ORDEN:** cada agente se entrega como spec (permanente) + documento ORDEN (instrucciones para Claude Code); el ORDEN se autoborra al completarse (git conserva el historial). Aplica a todos los bloques.
+16. **Política de fechas:** dd/mm/aaaa en contenido; YYYY-MM-DD solo en nombres de archivos de specs/ORDENs. *(28/06/2026.)*
 
 ## Puntos abiertos
 - **Canales de promoción** (presencial / redes / internet) → sesión de brainstorming aparte. *(No resuelto.)*

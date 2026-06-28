@@ -55,6 +55,7 @@ Los bloques 1-4 son el mapa de 4 agentes (decisión cerrada). Las skills ejecuta
 - **Sesiones token-económicas.** `/inicio` arranca, `/cierre` cierra (vuelca a `HANDOVER.md` y al ESTADO.md del bloque activo). ~60% de contexto → `/compact`; cambio de tarea → `/clear`; el watchdog avisa cada 20/50 prompts.
 - **Aprendizaje de los agentes.** Toda corrección a una skill/rúbrica motivada por un fallo se anota en el CHANGELOG.md de su bloque (qué cambió, qué error lo motivó, qué run lo evidencia). Cada cambio lo aprueba un humano. El minado automático de `agent_runs` es el bloque 7 (futuro).
 - **Commits atómicos y convencionales** (feat/fix/docs/chore...). Inglés en código y commits; español en la comunicación.
+- **Fechas:** dd/mm/aaaa en el CONTENIDO de archivos (HANDOVER, CHANGELOG, tablas, listas). Los NOMBRES de archivos de specs/ORDENs mantienen YYYY-MM-DD por orden cronológico.
 
 ## Reglas de scope (NO HACER)
 - No codear producto sin spec aprobada por el usuario.
