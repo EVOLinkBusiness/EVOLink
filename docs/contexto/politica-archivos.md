@@ -19,3 +19,10 @@ Desborde → se extrae a `referencias/` (o `docs/contexto/<tema>.md`) dejando un
 
 ## Cubo C — congelados → SIN límite, SIN revisión
 specs, plans, ÓRDENES (se autoborran), `CHANGELOG.md` (solo se añade), documentos históricos. Si el contenido cambia, se escribe uno nuevo fechado; no se actualiza el viejo.
+
+## ORDEN vs spec
+Dos artefactos distintos del mismo flujo:
+- **spec** — diseño permanente del **QUÉ**. Vive en `docs/superpowers/specs/` (nombre `AAAA-MM-DD-<tema>-design.md`). **No se borra**: es la fuente del diseño.
+- **ORDEN** — guion de ejecución del **CÓMO/CUÁNDO**: pasos concretos para materializar una spec. Vive en la **raíz** y **se autoborra** al completarse (la spec permanece; git guarda el historial). Es cubo C.
+
+La escribe el **planificador** tras aprobarse la spec; la ejecuta una **sesión nueva**. Regla mental: si describe el diseño, es spec; si es un checklist de ejecución desechable, es ORDEN.
