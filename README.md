@@ -36,7 +36,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 ### ⏳ En curso / siguiente
 
-- **Curación de referencias + ascenso a producción** *(bloque 3)*. v4 ejecutado: el director de arte decide por cliente (7 diales, espectro motion 1-5, primitivas P1-P6, rechazos explícitos). Validado E2E con `mudanzasroy` (8 previews dinámicas, detector 0 graves, motor 24/24). Pendiente: (1) instalar Playwright + extraer referencias Awwwards (`truckn-roll-r`, `monarch-custom-homes`, `california-vending-company`), (2) revisión del socio del set v4 → elegir concepto → ascenso Astro+React islands → Cloudflare Pages.
+- **Curación de referencias + ascenso a producción** *(bloque 3)*. v4 ejecutado: director de arte autónomo (7 diales, motion 1-5, primitivas P1-P6, rechazos explícitos). Validado E2E con `mudanzasroy` (8 previews dinámicas, detector 0 graves, motor 24/24). Curación completada: Playwright instalado; `truckn-roll` + `california-vending-company` extraídas; `monarch-custom-homes` aparcado. Pendiente: revisión del socio del set v4 → elegir concepto → ascenso Astro+React islands → Cloudflare Pages.
 
 ### ⬜ Por hacer
 
@@ -98,7 +98,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [x] juanmora admitida en inventario (motion + tipografía Goga, motion 3-4, solo idioma)
 - [x] Playwright instalado + juanmora ultra + truckn-roll y california-vending extraídas (monarch aparcado)
 - [ ] revisión del socio del set v4 → elección → ascenso a producción (Cloudflare Pages)
-- [ ] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
+- [x] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
 
 **4 · Revisor / QA** `░░░░░░░░░░` 0% *(depende del 3)*
 - [ ] spec
