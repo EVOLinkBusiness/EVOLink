@@ -43,6 +43,7 @@ Ejecutada la ORDEN `2026-06-23-ORDEN-generador-v4.md` (Fases 0-10). Sustituye el
 2. **Palanca nº 1 (curación humana):** ✅ cubierto el mínimo (truckn-roll + california-vending = sector real; juanmora + Awwwards = motion). Ampliar con más negocios locales reales solo si un nicho concreto lo pide.
 3. **Ascenso a producción** del concepto elegido (Astro + islas React, self-host de fuentes, Cloudflare Pages) cuando el socio lo apruebe.
 4. Elevar a `docs/BUSINESS.md` las decisiones nuevas del v4 (motion por cliente 1-5 · mezcla dinámica decidida por el cerebro · el agente puntúa y recomienda top 2-3).
+5. **Test de coincidencia del CONTRATO** (pendiente propio del bloque 3, NO del piloto del 4): un test verifica que los campos del `CONTRATO.md` existen en el esquema de Supabase. Criterio de hecho: test verde en la suite del bloque 3.
 
 > **Código orquestador** (generación de punta a punta llamando a la API) y **pgvector** de referencias = **fuera de alcance**, diferidos al bloque 7. La generación sigue siendo asistida con skills.
 
