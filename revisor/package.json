@@ -1,0 +1,21 @@
+{
+  "name": "evolink-revisor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "EVOLink Revisor/QA (bloque 4): suite de QA determinista sobre previews HTML del bloque 3.",
+  "scripts": {
+    "test": "node --import tsx --test \"tests/**/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "lighthouse": "^13.4.0",
+    "playwright": "^1.60.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "wrangler": "^4.100.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.1"
+  }
+}
