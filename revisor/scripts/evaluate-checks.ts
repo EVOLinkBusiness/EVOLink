@@ -64,11 +64,15 @@ const PLACEHOLDER_PATTERNS: RegExp[] = [
 
 export function findPlaceholders(html: string): string[] {
   const found: string[] = [];
+  // Strip script/style blocks first, then all HTML tags, to get only visible text.
+  // This prevents attribute values (e.g. placeholder="...") from being matched.
+  const text = html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]+>/g, " ");
   for (const re of PLACEHOLDER_PATTERNS) {
-    const m = html.match(re);
+    const m = text.match(re);
     if (m) found.push(m[0]);
   }
-  if (/href\s*=\s*["']#["']/.test(html)) found.push('href="#" (enlace vacio)');
   return found;
 }
 
@@ -110,7 +114,7 @@ export function findBrokenLinks(html: string, validRoutes: string[]): string[] {
     if (href.startsWith("#")) {
       const id = href.slice(1);
       if (id === "") {
-        broken.push(href);
+        // href="#" is a legitimate no-op pattern in previews (logo links, etc.); ignore it.
         continue;
       }
       const idRe = new RegExp(`id\\s*=\\s*["']${escapeRegExp(id)}["']`);

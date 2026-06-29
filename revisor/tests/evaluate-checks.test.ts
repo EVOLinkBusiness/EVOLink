@@ -54,7 +54,7 @@ describe("computeVerdict", () => {
 // 2. Placeholders (GRAVE)
 // ---------------------------------------------------------------------------
 describe("findPlaceholders", () => {
-  test("detecta lorem ipsum, TODO y href vacío", () => {
+  test("detecta lorem ipsum y TODO en fixture con placeholders de texto", () => {
     const results = findPlaceholders(read("placeholder.html"));
     assert.ok(results.length > 0, "debe detectar placeholders");
   });
