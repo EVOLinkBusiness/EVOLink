@@ -1,17 +1,17 @@
-# EVOLink
+<h1 align="center">EVOLink</h1>
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
 > 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): diseño v1 cerrado y aprobado** (spec + CONTRATO + ORDEN) — es el **piloto del esqueleto de agentes**. Siguiente: implementación TDD del Revisor (sesión 4B, ORDEN en raíz) · en paralelo, revisión del socio del set v4 → ascenso a producción.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
-## Visión
+<h2 align="center">Visión</h2>
 
 Convertir negocios sin web (detectados en Google Maps) en clientes con web profesional y pago recurrente, automatizando el flujo de punta a punta: **captación → auditoría → diseño/build → entrega → cobro → mantenimiento**. El apalancamiento es la automatización, no contratar.
 
 Monetización híbrida: setup inicial (pago único) + cuota mensual (hosting, mantenimiento y mejoras). La recurrencia (MRR) es el activo del negocio.
 
-## 🗺️ Roadmap
+<h2 align="center">🗺️ Roadmap</h2>
 
 Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → código → diagnóstico).
 
@@ -47,7 +47,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 
 Detalle vivo: [`docs/ROADMAP.md`](docs/ROADMAP.md) · estado de sesión en [`HANDOVER.md`](HANDOVER.md).
 
-## Arquitectura — tejido de agentes
+<h2 align="center">Arquitectura — tejido de agentes</h2>
 
 El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques autocontenidos** bajo [`docs/bloques/`](docs/bloques/). Cada bloque tiene contrato idéntico: `BLOQUE.md` (qué hace, contrato E/S, skills que usa) · `CHANGELOG.md` (qué cambió y qué error lo motivó) · `ESTADO.md` (solo si está en trabajo activo).
 
@@ -68,7 +68,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
       └────────── Supabase (multi-tenant + RLS) · agent_runs → 7-mejora ──────────┘
 ```
 
-## Sub-bloques — pasos dentro de cada bloque
+<h2 align="center">Sub-bloques — pasos dentro de cada bloque</h2>
 
 `[x]` terminado · `[~]` en curso · `[ ]` por hacer.
 
@@ -116,7 +116,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 **7 · Mejora** `░░░░░░░░░░` 0% *(futuro)*
 - [ ] minado de `agent_runs` → propuestas de diffs a skills/rúbricas
 
-## Stack
+<h2 align="center">Stack</h2>
 
 | Capa | Tecnología |
 |------|------------|
@@ -126,7 +126,7 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 | Diseño | `ui-ux-pro-max` + `frontend-design` (oficial Anthropic) + `estilo-evolink` (voz de proyecto) · motion (`gpt-tasteskill`, `ui-animation`) · QA (`web-design-guidelines` + `playwright-cli`) |
 | Lead-gen / Billing / Deploy | Google Places API · Stripe (setup + suscripción) · Vercel + Cloudflare Pages + Supabase |
 
-## Estructura del repositorio
+<h2 align="center">Estructura del repositorio</h2>
 
 ```
 .claude/                comandos (/inicio, /cierre), hooks y skills locales
@@ -139,7 +139,7 @@ GUIA-COLABORADOR.txt    guía de instalación y trabajo, paso a paso desde cero
 .mcp.json               conexión MCP a Supabase
 ```
 
-## Metodología de trabajo
+<h2 align="center">Metodología de trabajo</h2>
 
 Sesiones reproducibles y token-económicas:
 
@@ -148,11 +148,11 @@ Sesiones reproducibles y token-económicas:
 - `/cierre` vuelca el estado a `HANDOVER.md` y propone el commit.
 - Regla del equipo: nunca trabajáis los dos a la vez; `git pull` al empezar, `git push` al terminar.
 
-## Empezar
+<h2 align="center">Empezar</h2>
 
 ¿Nuevo en el proyecto? Sigue **[GUIA-COLABORADOR.txt](GUIA-COLABORADOR.txt)**: de cero (instalar VS Code, Git, Node y Claude Code), clonar el repo y la mecánica diaria.
 
-## Documentación
+<h2 align="center">Documentación</h2>
 
 - [`docs/BUSINESS.md`](docs/BUSINESS.md) — el negocio: qué, a quién, cómo se gana dinero (decisiones cerradas).
 - [`docs/ROADMAP.md`](docs/ROADMAP.md) — fases del proyecto.
