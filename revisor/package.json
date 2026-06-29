@@ -5,7 +5,9 @@
   "type": "module",
   "description": "EVOLink Revisor/QA (bloque 4): suite de QA determinista sobre previews HTML del bloque 3.",
   "scripts": {
-    "test": "node --import tsx --test \"tests/**/*.test.ts\""
+    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "review": "node --import tsx scripts/review.cli.ts",
+    "record": "node --import tsx scripts/record.cli.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
