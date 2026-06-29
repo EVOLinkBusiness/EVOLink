@@ -1,48 +1,45 @@
 # HANDOVER — EVOLink
 
-**Última sesión:** 2026-06-28
+**Última sesión:** 2026-06-29
 **Branch:** main
-**Último commit:** `896326c docs: ORDEN ejecutable bloque 4 revisor v1 (sesion 4B)`
+**Último commit:** `ebf4a43 test(revisor): banco de regresion de falsos GRAVE (placeholder=/href=#)`
 
 ---
 
 ## Estado del proyecto
-Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte" ejecutado. **Bloque 4 (Revisor/QA): diseño v1 cerrado y aprobado** (HARD-GATE superado) — es el PILOTO oficial del esqueleto de 3 agentes: primera vez que planificador→programador→verificador construyen un bloque de cero y se estrena el CONTRATO Generador→Revisor en caliente. Pendiente: implementación (sesión 4B).
+Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte" ejecutado. **Bloque 4 (Revisor/QA) v1 IMPLEMENTADO** (sesión 4B): pase de QA reproducible sobre una preview local del bloque 3 → veredicto (`pass`/`pass_with_warnings`/`rejected`) en `agent_runs`. Es el **piloto del esqueleto de 3 agentes**, completado de extremo a extremo por primera vez (planificó 4A → implementó → revisó → halló un fallo real → corrigió). Código en `revisor/`, 69 tests verdes.
 
 ## Bloque activo
-**4-revisor** (diseño cerrado; pendiente build sesión 4B) — detalle en `docs/bloques/4-revisor/ESTADO.md`.
+**4-revisor** (v1 implementado; doble revisión APROBADA) — detalle en `docs/bloques/4-revisor/ESTADO.md`.
 
-## Hecho en la sesión actual (28/06/2026 — diseño bloque 4, sesión 4A)
-- **Paso 0 (andamiaje):** el `planificador` creó `CONTRATO.md` + `GUIA-DESARROLLO-BLOQUE.md` del bloque 4 desde plantilla, rellenando «Consume» desde la §Produce del bloque 3.
-- **Brainstorming (HARD-GATE):** 4 decisiones cerradas por el socio — (1) alcance v1 = solo QA de preview local del bloque 3; (2) suite núcleo determinista (enlaces, dominios, contraste AA, placeholders, responsive, anti-slop, Lighthouse=WARNING); (3) umbral GRAVE determinista, LLM solo para ambiguo/redacción; (4) persistencia en `agent_runs.output`, sin tabla ni migración nueva. Diferido a v2: formulario+Resend, check de motion, upsell de rediseño.
-- **Resuelto en sesión:** preview v4 de Mudanzas Roy confirmada en disco (UUID `cb1dfbea-…`, `previews/v4/v4-1..8.html`); `impeccable` disponible y aplanado (detector anti-slop) → entra en v1.
-- **Paso 2:** spec permanente `docs/superpowers/specs/2026-06-28-revisor-v1-design.md` + `BLOQUE.md`/`CONTRATO.md`/`GUIA`/`ESTADO.md`/`CHANGELOG.md` a v1 real + ORDEN `2026-06-28-ORDEN-bloque-revisor-v1.md` en raíz (lista para 4B).
-- 3 commits: `35abd2a` andamiaje · `e2340d3` diseño · `896326c` ORDEN.
+## Hecho en la sesión actual (29/06/2026 — build bloque 4, sesión 4B)
+- **Esqueleto de 3 agentes estrenado:** orquestador (Opus) delegó en `programador` (TDD, 2 olas + ronda de fix) y `verificador` (doble revisión + banco de regresión). El verificador **RECHAZÓ** la 1ª entrega por un falso GRAVE real; el programador lo corrigió; aprobado.
+- **Carpeta `revisor/`** (espeja convenciones de `generador/`: runner `node --import tsx --test`, helpers puros, `buildRunRow`). Commits `eb564f9`→`ebf4a43`.
+- **Suite QA v1 núcleo determinista:** regla de veredicto (`computeVerdict`), checks GRAVE (enlaces internos/externos, mezcla de dominios/URL malformada, contraste AA, placeholders), WARNING (responsive 375/desktop + capturas, anti-slop `impeccable`, Lighthouse). Harness `serveDir` (`python -m http.server` en puerto libre + teardown garantizado). `output` jsonb (spec §5) + recorder a `agent_runs` (`agent='revisor'`).
+- **Fix de falso GRAVE (corrección por fallo, ver CHANGELOG):** los checkers portados del bloque 3 marcaban GRAVE el atributo legítimo `placeholder=` y el ancla no-op `href="#"`, rechazando las 8 previews limpias de Mudanzas Roy. Corregido en `revisor/scripts/evaluate-checks.ts` (strip de tags → solo texto visible; `href="#"` deja de ser GRAVE). E2E sobre v4-1/v4-2 → `pass_with_warnings`, 0 GRAVE.
+- **Test de contrato** estático: `agent='revisor'`+`output`+`flags` admitidos por el esquema de `agent_runs` (sin migración nueva). ORDEN ejecutada y autoborrada; la spec permanece.
 
 ## Decisiones cerradas
-Ver `docs/BUSINESS.md` §Decisiones (16 activas). Sin nuevas esta sesión (las 4 de arriba son de alcance del bloque 4, viven en su spec/CHANGELOG, no en BUSINESS.md).
+Ver `docs/BUSINESS.md` §Decisiones (16 activas). Sin nuevas esta sesión (lo del bloque 4 vive en su spec/CHANGELOG).
 
 ## Riesgos y avisos vivos
-- **Sesión 4B = implementación:** el HARD-GATE ya está superado; se PUEDE escribir código. Ejecutar la ORDEN de raíz; el Revisor solo INSPECCIONA (frontera dura con el bloque 3).
-- **Determinista primero:** ningún GRAVE (checks 1-4) depende del LLM; mockear el LLM en los tests.
-- **Numeración de checks:** la ORDEN renumera localmente (regla de veredicto = paso 1); la spec numera enlaces = check 1. Los nombres son explícitos, sin ambigüedad real.
+- **Insert real en `agent_runs` PENDIENTE (acción del socio):** el piloto valida la fila a nivel de estructura (E2E con insert mockeado; CLI imprime la fila sin credenciales). Falta 1 insert REAL para validar el contrato "en caliente" — es outward-facing sobre la BD de producción, no se hizo sin aprobación. Credenciales en `generador/.env`; `npm run record`/`review` lo insertan si hay env.
+- **Bloque 3 tiene el MISMO falso positivo latente:** `generador/scripts/evaluate-checks.ts` conserva el patrón `placeholder=`/`href="#"`. Candidato a portar el fix (tarea del bloque 3 / rol Mejora); no tocado desde el 4 por frontera dura.
+- **Alcance v1 de enlaces:** sobre preview de página única en local solo se comprueban anclas `#id`; las rutas de página (`/servicios`) se difieren a v2 (entrada URL pública). Lighthouse/impeccable degradan a WARNING si no corren limpios.
 - **Revisión del socio del set v4 pendiente:** `python -m http.server` sobre `clientes/<id>/previews/v4/` → elegir concepto → registrar en `agent_runs` + memoria.
-- **Test de coincidencia del CONTRATO** = pendiente del bloque 3 (no del piloto del 4); el piloto del 4 sí incluye un test de que `agent='revisor'`+`output`+`flags` existen en `agent_runs`.
-- **Curación de referencias = palanca nº 1.** `monarch` queda como deuda menor.
 - Nada de producto sin spec aprobada; nada al cliente sin Checkpoint final. API ~10 €/mes; no superar ~50 €/mes.
-- **Single-font en previews v1 es esperado** (par tipográfico real en el ascenso con self-host).
-- Credenciales: `generador/.env` local, nunca commitear. `clientes/` gitignored (previews y capturas del Revisor no se commitean). MCP Supabase pide re-OAuth cada sesión.
+- Credenciales: `generador/.env` local, nunca commitear. `clientes/` y `revisor/node_modules`+`previews-qa/` gitignored (previews y capturas no se commitean). MCP Supabase pide re-OAuth cada sesión.
 - Aplanar skills post `npx skills add`. 28 symlinks pre-existentes en carpetas-grupo (gitignored) → poda pendiente.
 - Avisos LF→CRLF al commitear en Windows (sin impacto).
 
 ## Próximo paso concreto
-**Implementar el Revisor v1 (sesión 4B) ejecutando `2026-06-28-ORDEN-bloque-revisor-v1.md`.**
-1. Abrir sesión nueva con `/clear` + `/inicio` (confirmar bloque activo = 4).
-2. Seguir la ORDEN: test de contrato → checkers con TDD (programador ↔ verificador) → entrada local autocontenida → `output` jsonb + `agent_runs` → E2E sobre preview v4 de Mudanzas Roy → doble revisión.
-3. Al terminar: marcar checklist en `ESTADO.md`, anotar ajustes de contrato en `CHANGELOG.md`, borrar la ORDEN (la spec permanece).
+**Elegir entre: (a) validar el Revisor "en caliente" con 1 insert real en `agent_runs`, o (b) revisión del socio del set v4 → ascenso del Generador a producción.**
+1. (a) Aprobar el insert real → `cd revisor && npm run review -- ../clientes/cb1dfbea-7306-4c1e-bdde-b5d606243083/previews/v4/v4-1.html` con env de Supabase cargado; confirmar la fila `agent='revisor'`.
+2. (b) Servir `clientes/cb1dfbea-.../previews/v4/`, elegir concepto, volcar a `memoria-director-arte.md §3` y ascender (Astro+React islands → Cloudflare).
 
 ## Pendientes
-- [ ] **Implementación bloque 4 (sesión 4B)** según la ORDEN.
+- [ ] **Insert real en `agent_runs`** del Revisor (validación en caliente; supeditado a aprobación).
+- [ ] Portar el fix de falso-GRAVE a `generador/scripts/evaluate-checks.ts` (bloque 3).
 - [ ] **Test de coincidencia del CONTRATO** (tarea propia del bloque 3).
 - [ ] Revisión del socio del set v4; volcar elección a `memoria-director-arte.md §3`.
 - [ ] Ascenso a producción del concepto elegido (Astro + islas React, self-host fuentes, Cloudflare).

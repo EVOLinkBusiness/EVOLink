@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (28/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): diseño v1 cerrado y aprobado** (spec + CONTRATO + ORDEN) — es el **piloto del esqueleto de agentes**. Siguiente: implementación TDD del Revisor (sesión 4B, ORDEN en raíz) · en paralelo, revisión del socio del set v4 → ascenso a producción.
+> 🟢 **Estado (29/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): v1 IMPLEMENTADO** (sesión 4B) — primer bloque construido de cero con el **esqueleto de 3 agentes** (planificó → implementó → revisó → corrigió un fallo real); `revisor/`, 69 tests verdes. Siguiente: validar el Revisor "en caliente" (1 insert real en `agent_runs`) · en paralelo, revisión del socio del set v4 → ascenso a producción.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 <h2 align="center">Visión</h2>
@@ -22,7 +22,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
 [██████████] F2.4 Generador v4 (director de arte) ✅ ejecutado · 8 previews dinámicas · referencias en curación
 [░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
-[███░░░░░░░] A4  Agente Revisor/QA ............. 🟡 diseño v1 cerrado · build pendiente (4B)
+[█████████░] A4  Agente Revisor/QA ............. 🟢 v1 implementado (piloto esqueleto) · 69 tests
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
 [░░░░░░░░░░] B6  Mantenimiento webs vivas ...... ⬜ futuro
 [░░░░░░░░░░] B7  Mejora (mina agent_runs) ...... ⬜ futuro
@@ -56,7 +56,7 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 | 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | ⬜ pendiente |
 | 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital | ✅ completado |
 | 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ✅ v4 director de arte ejecutado |
-| 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | 🟡 diseño v1 cerrado · build pendiente (4B) |
+| 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | 🟢 v1 implementado (piloto esqueleto · 69 tests) |
 | 5 | [pagos](docs/bloques/5-pagos/BLOQUE.md) | Ops — Stripe + facturación ES + impagos | ⬜ pendiente |
 | 6 | [mantenimiento](docs/bloques/6-mantenimiento/BLOQUE.md) | Ops — webs vivas | ⬜ futuro |
 | 7 | [mejora](docs/bloques/7-mejora/BLOQUE.md) | Mejora — mina `agent_runs` → propone diffs | ⬜ futuro |
@@ -100,10 +100,11 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 - [ ] revisión del socio del set v4 → elección → ascenso a producción (Cloudflare Pages)
 - [x] retrofit `CONTRATO.md`/`GUIA` bloque 3 cuando aterrice el esqueleto de agentes
 
-**4 · Revisor / QA** `███░░░░░░░` ~30% *(piloto del esqueleto · depende del 3)*
+**4 · Revisor / QA** `█████████░` ~90% *(piloto del esqueleto · depende del 3)*
 - [x] diseño v1 cerrado: spec + CONTRATO + GUIA + ESTADO + ORDEN (entrada local, suite núcleo determinista, veredicto en `agent_runs`)
-- [ ] implementación TDD (sesión 4B): checkers GRAVE + WARNING + entrada local autocontenida + `output` jsonb
-- [ ] E2E sobre preview v4 de Mudanzas Roy + doble revisión del verificador
+- [x] implementación TDD (sesión 4B): checkers GRAVE + WARNING + entrada local autocontenida + `output` jsonb + recorder (`revisor/`, 69 tests)
+- [x] E2E sobre preview v4 de Mudanzas Roy + doble revisión del verificador (RECHAZÓ falso GRAVE → corregido → aprobado)
+- [ ] validación "en caliente": 1 insert real en `agent_runs` (supeditado a aprobación del socio)
 - [ ] *(v2)* formulario+Resend · check de motion · upsell de rediseño
 
 **5 · Pagos** `░░░░░░░░░░` 0%
