@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (01/07/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): v1 IMPLEMENTADO** (sesión 4B) — primer bloque construido de cero con el **esqueleto de 3 agentes**; `revisor/`, 69 tests verdes. **Bloque 1 (Captación): diseño formalizado** (CONTRATO + GUIA desde la spec 12/06) y GUIA-COLABORADOR al día para el onboarding del socio. Siguiente: validar el Revisor "en caliente" (1 insert real en `agent_runs`) · en paralelo, revisión del socio del set v4 → ascenso a producción.
+> 🟢 **Estado (01/07/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): v1 IMPLEMENTADO** (sesión 4B) — primer bloque construido de cero con el **esqueleto de 3 agentes**; `revisor/`, 69 tests verdes. **Bloque 1 (Captación): documentación completa** (CONTRATO + GUIA + ORDEN refrescada al esqueleto de 3 agentes) y GUIA-COLABORADOR al día para el onboarding del socio. Siguiente: validar el Revisor "en caliente" (1 insert real en `agent_runs`) · en paralelo, revisión del socio del set v4 → ascenso a producción.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 <h2 align="center">Visión</h2>
@@ -21,7 +21,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
 [██████████] F2.4 Generador v4 (director de arte) ✅ ejecutado · 8 previews dinámicas · referencias en curación
-[██░░░░░░░░] A1  Agente Captación (co-prior.) ... 📋 diseño listo (spec + CONTRATO + GUIA)
+[███░░░░░░░] A1  Agente Captación (co-prior.) ... 📋 docs completas (spec + CONTRATO + GUIA + ORDEN)
 [█████████░] A4  Agente Revisor/QA ............. 🟢 v1 implementado (piloto esqueleto) · 69 tests
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
 [░░░░░░░░░░] B6  Mantenimiento webs vivas ...... ⬜ futuro
@@ -72,10 +72,10 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 
 `[x]` terminado · `[~]` en curso · `[ ]` por hacer.
 
-**1 · Captación** `██░░░░░░░░` ~20% *(diseño listo; código no arranca hasta bloque 3 al 100%)*
+**1 · Captación** `███░░░░░░░` ~30% *(docs completas; código no arranca hasta bloque 3 al 100%)*
 - [x] brainstorming → spec (aprobada 12/06/2026)
 - [x] `CONTRATO.md` + `GUIA-DESARROLLO-BLOQUE.md` (contrato E/S + procedimiento de los 3 agentes)
-- [ ] refrescar la ORDEN v1 (alinear al esqueleto de agentes)
+- [x] ORDEN refrescada al esqueleto de agentes (`ordenes-pendientes/2026-07-01-ORDEN-captacion-v1.md`)
 - [ ] fuente de datos (manual → Google Places)
 - [ ] cualificación + secuencia de contacto
 - [ ] cumplimiento legal (RGPD/ePrivacy/LSSI)

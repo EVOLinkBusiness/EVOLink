@@ -2,20 +2,20 @@
 
 **Última sesión:** 2026-07-01
 **Branch:** main
-**Último commit:** `157f1e6 docs(captacion): CONTRATO y GUIA-DESARROLLO-BLOQUE del bloque 1`
+**Último commit:** `389434b docs(captacion): refrescar ORDEN alineada al esqueleto de agentes`
 
 ---
 
 ## Estado del proyecto
-Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte" ejecutado (falta elección del socio + ascenso para el 100%). Revisor (bloque 4) ✅ v1 implementado (piloto del esqueleto, 69 tests verdes). Sesión de hoy: documentación de onboarding y del bloque 1 (Captación) — su diseño queda formalizado (spec 12/06 + CONTRATO + GUIA nuevos), listo para que Javier lo programe cuando el bloque 3 esté al 100%.
+Auditor (bloque 2) ✅ en producción. Generador (bloque 3) ✅ v4 "Director de Arte" ejecutado (falta elección del socio + ascenso para el 100%). Revisor (bloque 4) ✅ v1 implementado (piloto del esqueleto, 69 tests verdes). Bloque 1 (Captación) con documentación COMPLETA: spec 12/06 + CONTRATO + GUIA + ORDEN refrescada al esqueleto de 3 agentes — listo para programarse cuando el bloque 3 esté al 100% (su Fase 0 lo verifica y aborta si no).
 
 ## Bloque activo
 **4-revisor** (v1 implementado; doble revisión APROBADA) — detalle en `docs/bloques/4-revisor/ESTADO.md`.
 
-## Hecho en la sesión actual (01/07/2026)
-- **GUIA-COLABORADOR.txt regenerada** (`de62488`, pusheado): repo PÚBLICO confirmado vía API; Parte 0 simplificada (Javier ya es colaborador con escritura, sin invitación); Parte 6 reescrita con el estado real (bloques 2/3/4 + equipo de 3 agentes en `.claude/agents/` + regla "Captación no arranca hasta bloque 3 al 100%"); Parte 9 (migración de cuenta) eliminada.
-- **Bloque 1 formalizado** (`157f1e6`, pusheado): creados `docs/bloques/1-captacion/CONTRATO.md` (entrada zona+nicho/lead manual → tablas `leads`/`contactos`/`bajas` + `agent_runs`; contrato con el bloque 2: formulario del anexo + motor en salida corta) y `GUIA-DESARROLLO-BLOQUE.md` (3 agentes, 7 fases desde la spec, TDD del scoring, HARD-GATE de cero envíos sin socio+supervisión). Plantilla: documentos del bloque 4.
-- **Detectado (no corregido):** `docs/bloques/2-auditor/BLOQUE.md` línea 3 desactualizado — dice "ACTIVO (F1), siguiente: writing-plans" cuando el Auditor está en producción.
+## Hecho en la sesión actual (01/07/2026, 2ª sesión)
+- **ORDEN de Captación refrescada** (`389434b`, pusheado): nueva `docs/superpowers/ordenes-pendientes/2026-07-01-ORDEN-captacion-v1.md` (63 líneas) y borrada la del 12/06. Fases sobre los 3 agentes (F1 `planificador` con Paso 0 de andamiaje · F2 bucle `programador`↔`verificador` con 7 commits alineados a la GUIA · F3 veredicto final · F4 cierre + autoborrado con ruta final). Sin duplicar CONTRATO/GUIA: solo precondiciones, secuencia, commits y 4 checkpoints humanos.
+- **Hard-gate de Fase 0 endurecido:** el check viejo usaba la ausencia del ORDEN del Generador como evidencia (daba falso OK: ese archivo ya no existe y el bloque 3 NO está al 100%). Sustituido por `ESTADO.md` del bloque 3 → COMPLETADO al 100% ("v4 ejecutada" NO basta: elección del socio + ascenso hechos).
+- **Nota:** la spec §14 (`2026-06-12-captacion-v1-design.md`) aún cita el nombre/ubicación viejos del ORDEN — es documento histórico aprobado, se deja tal cual; git conserva el rastro.
 
 ## Decisiones cerradas
 Ver `docs/BUSINESS.md` §Decisiones (16 activas). Sin nuevas esta sesión.
@@ -36,7 +36,6 @@ Ver `docs/BUSINESS.md` §Decisiones (16 activas). Sin nuevas esta sesión.
 2. (b) Servir `clientes/cb1dfbea-.../previews/v4/`, elegir concepto, volcar a `memoria-director-arte.md §3` y ascender (Astro+React islands → Cloudflare).
 
 ## Pendientes
-- [ ] **Refrescar la ORDEN de Captación** (`2026-06-12-ORDEN-Programacion-Agente-Captacion_v1.md`, raíz): alinearla al esqueleto de 3 agentes y a los nuevos `CONTRATO.md` + `GUIA-DESARROLLO-BLOQUE.md` del bloque 1 (paso 4 de la tarea de onboarding; la GUIA-COLABORADOR ya está hecha).
 - [ ] **Corregir `docs/bloques/2-auditor/BLOQUE.md` línea 3:** sigue diciendo "ACTIVO (F1), siguiente: writing-plans"; el Auditor está completado y en producción.
 - [ ] **Insert real en `agent_runs`** del Revisor (validación en caliente; supeditado a aprobación).
 - [ ] Portar el fix de falso-GRAVE a `generador/scripts/evaluate-checks.ts` (bloque 3).
