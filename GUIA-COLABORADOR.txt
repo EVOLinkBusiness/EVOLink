@@ -13,16 +13,16 @@ Tómatelo con calma; cada paso es un clic o una línea.
 
 
 ##########################################################
-PARTE 0 — CUENTA DE GITHUB Y ACCESO  (haz esto primero)
+PARTE 0 — CUENTA DE GITHUB Y ACCESO  (ya casi hecho)
 ##########################################################
 GitHub es la "nube" donde vive el proyecto.
 
-1) Crea una cuenta gratis en  https://github.com  (botón "Sign up").
-   Apunta tu usuario y contraseña.
-2) Dile a Kravitzz tu nombre de usuario de GitHub.
-3) Él te invitará al repositorio (es PRIVADO). Te llegará un email con un botón
-   "Accept invitation": púlsalo (o entra en https://github.com/notifications).
-   ⚠ Sin aceptar la invitación NO podrás descargar el proyecto.
+El repositorio es PÚBLICO y tú YA estás dentro como colaborador con permiso
+de escritura. No hay invitación que aceptar ni nada que pedir:
+  - DESCARGAR (clonar, pull): funciona sin más, al ser público.
+  - SUBIR (push): la primera vez Git te pedirá iniciar sesión con TU cuenta
+    de GitHub en una ventana del navegador. Hazlo y queda guardado para
+    siempre. Tu cuenta ya tiene el permiso; no hace falta nada más.
 
 
 ##########################################################
@@ -171,13 +171,31 @@ Cada agente tiene su CARPETA dentro de  docs/bloques/  (1-captacion,
 escrito qué hace, qué herramientas usa y en qué estado está. Si quieres
 saber qué hace un agente, entra en su carpeta y lee BLOQUE.md.
 
-PUNTO ACTUAL: la PLANIFICACIÓN está terminada. El diseño del Auditor está
-cerrado y aprobado (documento en docs/superpowers/specs/), y toda la
-estructura de bloques, herramientas y skills ya está instalada y decidida
-por los dos socios. Lo siguiente, en orden:
-  1) Migrar el proyecto a un repositorio compartido por los dos (Parte 9).
-  2) EMPEZAR A PROGRAMAR: convertir el diseño del Auditor en un plan de
-     tareas y picar código.
+PUNTO ACTUAL (verificado a 01/07/2026):
+  - Bloque 2 (AUDITOR):   ✅ COMPLETADO y en producción.
+  - Bloque 3 (GENERADOR): ✅ v4 "director de arte" ejecutada (las previews del
+    cliente piloto ya están generadas). Le falta el ÚLTIMO paso para estar
+    al 100%: que los socios elijan el concepto ganador y se "ascienda" a
+    web real publicada (Astro + Cloudflare).
+  - Bloque 4 (REVISOR):   ✅ v1 implementado. Es el bloque ACTIVO ahora mismo
+    y fue el estreno del "equipo de desarrollo" (ver abajo). 69 tests verdes.
+  - Bloque 1 (CAPTACIÓN): SIN EMPEZAR. Este es TU bloque: lo programarás tú.
+
+CÓMO SE PROGRAMA UN BLOQUE — el equipo de 3 agentes:
+En la carpeta  .claude/agents/  viven 3 agentes de IA compartidos por todos
+los bloques; son la "fábrica" con la que se construye cada uno:
+  - planificador: diseña y redacta el plan/spec (no toca código).
+  - programador:  implementa el código siguiendo el plan, con tests.
+  - verificador:  revisa el trabajo del programador y da el veredicto.
+Tú orquestas desde el chat de Claude y ellos hacen el trabajo. El bloque 4
+(Revisor) se construyó entero así como piloto y funcionó: el verificador
+llegó a rechazar una entrega con un fallo real y se corrigió.
+
+QUÉ FALTA PARA QUE EMPIECES CON CAPTACIÓN (regla cerrada entre los socios):
+Captación NO arranca hasta que el bloque 3 esté al 100% (elección del
+concepto + ascenso a producción). Cuando eso ocurra, tu punto de entrada
+será la carpeta  docs/bloques/1-captacion/  y su GUIA-DESARROLLO-BLOQUE.md,
+usando el equipo de 3 agentes de arriba.
 
 Para entender el negocio a fondo, lee en este orden:
   docs/BUSINESS.md  ->  docs/ROADMAP.md  ->  HANDOVER.md  ->  docs/bloques/
@@ -205,14 +223,6 @@ PARTE 8 — GLOSARIO MÍNIMO
 - terminal: la ventana donde escribes comandos (dentro de VS Code).
 - branch (rama): la línea de trabajo; nosotros usamos "main".
 
-
-##########################################################
-PARTE 9 — FUTURO  (cuando toque)
-##########################################################
-- El repositorio ya se llama EVOLink (hecho).
-- Migraremos a una cuenta de GitHub compartida por los dos. Cuando pase, solo
-  cambiará la dirección del repo con UN comando que os pasaremos ya escrito.
-  No se pierde nada: todo el historial viaja con el proyecto.
 
 ==========================================================
   ¿Dudas? Pregunta a Kravitzz ANTES de tocar algo que no entiendas.
