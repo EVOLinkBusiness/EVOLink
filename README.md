@@ -2,7 +2,7 @@
 
 Agencia web **automatizada**: detecta negocios sin presencia online, les genera una auditoría y una web profesional, y los mantiene con una suscripción mensual. El sistema se apoya en agentes de IA autónomos sobre Supabase, operado por un equipo de 2.
 
-> 🟢 **Estado (29/06/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): v1 IMPLEMENTADO** (sesión 4B) — primer bloque construido de cero con el **esqueleto de 3 agentes** (planificó → implementó → revisó → corrigió un fallo real); `revisor/`, 69 tests verdes. Siguiente: validar el Revisor "en caliente" (1 insert real en `agent_runs`) · en paralelo, revisión del socio del set v4 → ascenso a producción.
+> 🟢 **Estado (01/07/2026):** Auditor (F1) en producción · Generador (F2) **v4 "Director de Arte Autónomo" ejecutado**. **Bloque 4 (Revisor/QA): v1 IMPLEMENTADO** (sesión 4B) — primer bloque construido de cero con el **esqueleto de 3 agentes**; `revisor/`, 69 tests verdes. **Bloque 1 (Captación): diseño formalizado** (CONTRATO + GUIA desde la spec 12/06) y GUIA-COLABORADOR al día para el onboarding del socio. Siguiente: validar el Revisor "en caliente" (1 insert real en `agent_runs`) · en paralelo, revisión del socio del set v4 → ascenso a producción.
 > Repositorio: https://github.com/EVOLinkBusiness/EVOLink
 
 <h2 align="center">Visión</h2>
@@ -21,7 +21,7 @@ Progreso por fases. Cada fase pasa por su ciclo superpowers (spec → plan → c
 [██████████] F2  Agente Generador web (v1) ..... ✅ v1 + piloto validado E2E
 [██████████] ▶   Piloto mudanzasroy (local) .... ✅ validado · Lighthouse móvil 100
 [██████████] F2.4 Generador v4 (director de arte) ✅ ejecutado · 8 previews dinámicas · referencias en curación
-[░░░░░░░░░░] A1  Agente Captación (co-prior.) ... ⬜ pendiente
+[██░░░░░░░░] A1  Agente Captación (co-prior.) ... 📋 diseño listo (spec + CONTRATO + GUIA)
 [█████████░] A4  Agente Revisor/QA ............. 🟢 v1 implementado (piloto esqueleto) · 69 tests
 [░░░░░░░░░░] B5  Pagos + facturación ES ........ ⬜ pendiente
 [░░░░░░░░░░] B6  Mantenimiento webs vivas ...... ⬜ futuro
@@ -53,7 +53,7 @@ El sistema es un **mapa de 4 agentes** organizado físicamente en **7 bloques au
 
 | # | Bloque | Rol | Estado |
 |---|--------|-----|--------|
-| 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | ⬜ pendiente |
+| 1 | [captacion](docs/bloques/1-captacion/BLOQUE.md) | Creación — leads y outreach; los socios cierran | 📋 diseño listo · código pendiente |
 | 2 | [auditor](docs/bloques/2-auditor/BLOQUE.md) | Creación — auditoría de presencia digital | ✅ completado |
 | 3 | [generador](docs/bloques/3-generador/BLOQUE.md) | Creación — fabricar → evaluar → entregar la web | ✅ v1 validado · ✅ v4 director de arte ejecutado |
 | 4 | [revisor](docs/bloques/4-revisor/BLOQUE.md) | Supervisión — QA con `playwright-cli` (depende del 3) | 🟢 v1 implementado (piloto esqueleto · 69 tests) |
@@ -72,8 +72,10 @@ Regla transversal: *lógica determinista primero, LLM solo para juicio.*
 
 `[x]` terminado · `[~]` en curso · `[ ]` por hacer.
 
-**1 · Captación** `░░░░░░░░░░` 0%
-- [ ] brainstorming → spec
+**1 · Captación** `██░░░░░░░░` ~20% *(diseño listo; código no arranca hasta bloque 3 al 100%)*
+- [x] brainstorming → spec (aprobada 12/06/2026)
+- [x] `CONTRATO.md` + `GUIA-DESARROLLO-BLOQUE.md` (contrato E/S + procedimiento de los 3 agentes)
+- [ ] refrescar la ORDEN v1 (alinear al esqueleto de agentes)
 - [ ] fuente de datos (manual → Google Places)
 - [ ] cualificación + secuencia de contacto
 - [ ] cumplimiento legal (RGPD/ePrivacy/LSSI)
